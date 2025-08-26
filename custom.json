@@ -27,8 +27,22 @@
             }
         },
         {
+            "key": "Lib",
+            "name": "🌟立播┃秒播",
+            "type": 3,
+            "api": "csp_LibvioGuard",
+            "timeout": 15,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "ext": {
+                "Cloud-drive": "http://127.0.0.1:9978/file/TVBox/Cloud-drive.txt",
+                "from": "4k|auto"
+            }
+        },
+        {
             "key": "抠搜",
-            "name": "抠抠┃搜搜",
+            "name": "🍄抠抠┃搜搜",
             "type": 3,
             "api": "csp_KkSsGuard",
             "searchable": 1,
@@ -41,7 +55,7 @@
         },
         {
             "key": "UC",
-            "name": "优汐┃搜搜",
+            "name": "🌈优汐┃搜搜",
             "type": 3,
             "api": "csp_UuSsGuard",
             "searchable": 1,
@@ -53,22 +67,8 @@
             }
         },
         {
-            "key": "Lib",
-            "name": "立播┃秒播",
-            "type": 3,
-            "api": "csp_LibvioGuard",
-            "timeout": 10,
-            "searchable": 1,
-            "quickSearch": 1,
-            "changeable": 1,
-            "ext": {
-                "Cloud-drive": "http://127.0.0.1:9978/file/TVBox/Cloud-drive.txt",
-                "from": "4k|auto"
-            }
-        },
-        {
             "key": "YpanSo",
-            "name": "盘她┃三盘",
+            "name": "🐟盘她┃三盘",
             "type": 3,
             "api": "csp_YpanSoGuard",
             "searchable": 1,
@@ -81,7 +81,7 @@
         },
         {
             "key": "xzso",
-            "name": "盘它┃三盘",
+            "name": "👻盘它┃三盘",
             "type": 3,
             "api": "csp_XzsoGuard",
             "searchable": 1,
@@ -94,7 +94,7 @@
         },
         {
             "key": "米搜",
-            "name": "米搜┃夸父",
+            "name": "🦋米搜┃夸父",
             "type": 3,
             "api": "csp_MIPanSoGuard",
             "searchable": 1,
@@ -107,7 +107,7 @@
         },
         {
             "key": "夸搜",
-            "name": "夸搜┃夸父",
+            "name": "😻夸搜┃夸父",
             "type": 3,
             "api": "csp_PanSearchGuard",
             "searchable": 1,
@@ -121,7 +121,7 @@
         },
         {
             "key": "Aliso",
-            "name": "盘搜┃阿狸",
+            "name": "🙀盘搜┃阿狸",
             "type": 3,
             "api": "csp_PanSearchGuard",
             "searchable": 1,
@@ -134,7 +134,7 @@
         },
         {
             "key": "YiSo",
-            "name": "易搜┃阿狸",
+            "name": "😹易搜┃阿狸",
             "type": 3,
             "api": "csp_YiSoGuard",
             "searchable": 1,
@@ -147,7 +147,7 @@
         },
         {
             "key": "push_agent",
-            "name": "手机┃推送",
+            "name": "🛴手机┃推送",
             "type": 3,
             "api": "csp_PushGuard",
             "searchable": 0,
@@ -156,6 +156,6 @@
                 "Cloud-drive": "http://127.0.0.1:9978/file/TVBox/Cloud-drive.txt",
                 "from": "4k|auto"
             }
-        }
+        },
   ]
 }
