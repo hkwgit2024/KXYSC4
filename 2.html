@@ -535,40 +535,39 @@ body.simple-mode #api-panel {
   margin-top: 8px !important;
 }
 
-/* ===== 合作共创（使用 a.html 样式） ===== */
+/* ===== 合作共创 ===== */
 .contributor-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   margin-top: 12px;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 600px) {
   .contributor-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .contributor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }
 
 .contributor-card {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: transparent;      /* 去掉白色背景 */
-  border: none;                 /* 去掉边框 */
-  border-radius: 0;             /* 无圆角 */
-  padding: 10px 0;              /* 上下留呼吸感 */
-  box-shadow: none;             /* 无阴影 */
-}
-
-@media (max-width: 600px) {
-  .contributor-card {
-    padding: 8px 0;
-  }
+  gap: 12px;
+  background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 12px;
+  padding: 12px 14px;
 }
 
 .contributor-avatar {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -578,8 +577,7 @@ body.simple-mode #api-panel {
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: .82rem;
-  box-shadow: 0 1px 4px rgba(74, 158, 255, .25);
+  font-size: .85rem;
 }
 
 .contributor-info {
@@ -598,30 +596,25 @@ body.simple-mode #api-panel {
 
 .contributor-role {
   display: inline-block;
-  margin-top: 3px;
-  font-size: .58rem;
+  margin-top: 4px;
+  font-size: .6rem;
   font-weight: 500;
   color: #4a9eff;
-  background: rgba(74, 158, 255, .12);
-  padding: 1px 8px;
+  background: #e8f2ff;
+  padding: 2px 10px;
   border-radius: 50px;
 }
 
 .contributor-desc {
-  margin-top: 4px;
-  font-size: .65rem;
-  color: #5a6f88;
-  line-height: 1.35;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  margin-top: 6px;
+  font-size: .68rem;
+  color: #7a8fa3;
+  line-height: 1.4;
 }
 
 .contributor-social {
-  margin-top: 4px;
-  font-size: .65rem;
+  margin-top: 6px;
+  font-size: .68rem;
   color: #4a9eff;
 }
 
@@ -718,10 +711,6 @@ body.simple-mode #api-panel {
 
   .live-info-inline {
     font-size: .6rem;
-  }
-
-  .contributor-grid {
-    grid-template-columns: 1fr;
   }
 }
 </style>
@@ -824,8 +813,9 @@ body.simple-mode #api-panel {
         <ul style="padding-left:16px">
           <li style="font-size:.76rem;color:#5a6f88;line-height:1.6">本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。</li>
         </ul>
-        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">QQ 交流群：<strong style="color:#4a9eff">1067685939</strong></p>
-        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<strong style="color:#4a9eff">https://t.me/+nrWtFerPAfcwOTg9</strong></p>
+        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">QQ 交流群：<a href="https://qm.qq.com/q/gmRKKPT3x0" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">1067685939</a></p>
+        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<a href="https://t.me/+nrWtFerPAfcwOTg9" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">https://t.me/+nrWtFerPAfcwOTg9</a></p>
+        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">项目地址：<a href="https://github.com/lubin776/tvbox-api-backup" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">https://github.com/lubin776/tvbox-api-backup</a></p>
       </div>
     </div>
 
