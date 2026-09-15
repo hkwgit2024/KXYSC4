@@ -195,7 +195,8 @@ body:not(.simple-mode) .search-box {
 
 .api-item.hidden,
 .live-item.hidden,
-.download-card.hidden {
+.download-card.hidden,
+.contributor-card.hidden {
   display: none !important;
 }
 
@@ -534,6 +535,96 @@ body.simple-mode #api-panel {
   margin-top: 8px !important;
 }
 
+/* ===== 合作共创（使用 a.html 样式） ===== */
+.contributor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+@media (max-width: 600px) {
+  .contributor-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contributor-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;      /* 去掉白色背景 */
+  border: none;                 /* 去掉边框 */
+  border-radius: 0;             /* 无圆角 */
+  padding: 10px 0;              /* 上下留呼吸感 */
+  box-shadow: none;             /* 无阴影 */
+}
+
+@media (max-width: 600px) {
+  .contributor-card {
+    padding: 8px 0;
+  }
+}
+
+.contributor-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #4a9eff, #1e6fda);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: .82rem;
+  box-shadow: 0 1px 4px rgba(74, 158, 255, .25);
+}
+
+.contributor-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.contributor-name {
+  font-size: .82rem;
+  font-weight: 600;
+  color: #0a1a2b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contributor-role {
+  display: inline-block;
+  margin-top: 3px;
+  font-size: .58rem;
+  font-weight: 500;
+  color: #4a9eff;
+  background: rgba(74, 158, 255, .12);
+  padding: 1px 8px;
+  border-radius: 50px;
+}
+
+.contributor-desc {
+  margin-top: 4px;
+  font-size: .65rem;
+  color: #5a6f88;
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.contributor-social {
+  margin-top: 4px;
+  font-size: .65rem;
+  color: #4a9eff;
+}
+
 /* ===== 移动端适配 ===== */
 @media (max-width: 600px) {
   body {
@@ -628,6 +719,10 @@ body.simple-mode #api-panel {
   .live-info-inline {
     font-size: .6rem;
   }
+
+  .contributor-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
@@ -692,9 +787,10 @@ body.simple-mode #api-panel {
 
     <!-- 关于面板 -->
     <div class="tab-panel" id="about-panel">
+      <!-- 域名备份 -->
       <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
         <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">🌐 备份线路域名</h3>
-        <p style="margin-bottom:6px;font-size:.76rem;color:#5a6f88">三个域名互为备份，任一个可用：</p>
+        <p style="margin-bottom:6px;font-size:.76rem;color:#5a6f88">四个域名互为备份，任一个可用：</p>
         <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
           <span style="flex:1;font-size:.75rem;color:#2563eb">https://0.12yue.de5.net</span>
           <button class="copy-btn" data-url="https://0.12yue.de5.net">复制</button>
@@ -707,7 +803,22 @@ body.simple-mode #api-panel {
           <span style="flex:1;font-size:.75rem;color:#2563eb">https://0.wdzb.eu.cc</span>
           <button class="copy-btn" data-url="https://0.wdzb.eu.cc">复制</button>
         </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
+          <span style="flex:1;font-size:.75rem;color:#2563eb">https://tvbox.moliys.icu</span>
+          <button class="copy-btn" data-url="https://tvbox.moliys.icu">复制</button>
+        </div>
       </div>
+
+      <!-- 合作共创 -->
+      <div id="contributors-card" style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
+        <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">🤝 合作共创</h3>
+        <p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">感谢以下伙伴对本站的内容贡献与支持：</p>
+        <div class="contributor-grid" id="contributors-list">
+          <div class="loading">⏳ 正在加载贡献者...</div>
+        </div>
+      </div>
+
+      <!-- 声明与联系 -->
       <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
         <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">📢 声明与联系</h3>
         <ul style="padding-left:16px">
@@ -761,7 +872,6 @@ const API_WEIGHTS = {
   "小虎斑.json": 13
 };
 
-// 模糊匹配关键词 —— 只要接口名里包含这些词之一就算命中
 const ROTATE_KEYWORDS = ["模糊搜索","模糊搜索"];
 
 /* ===== 状态变量 ===== */
@@ -770,6 +880,7 @@ let currentTabId = 'api';
 let topSeed = Date.now();
 let DOWNLOAD_SOURCES = [];
 let DANMU_SOURCES = [];
+let SITE_CONFIG = null;
 let rawListText = null;
 let rawLiveText = null;
 
@@ -825,19 +936,6 @@ function getTopItem(rotateItems) {
   return rotateItems[idx];
 }
 
-async function loadDownloadConfig() {
-  try {
-    const res = await fetch('config.json?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const cfg = await res.json();
-    DOWNLOAD_SOURCES = Array.isArray(cfg.downloadSources) ? cfg.downloadSources : [];
-    DANMU_SOURCES = Array.isArray(cfg.danmuSources) ? cfg.danmuSources : [];
-  } catch (e) {
-    DOWNLOAD_SOURCES = [];
-    DANMU_SOURCES = [];
-  }
-}
-
 function formatDateToChinese(d) {
   if (!d || d.length !== 8) return '----';
   return d.slice(0, 4) + '年' + d.slice(4, 6) + '月' + d.slice(6, 8) + '日';
@@ -849,6 +947,55 @@ function isRecent(d) {
   const m = parseInt(d.slice(4, 6)) - 1;
   const day = parseInt(d.slice(6, 8));
   return (Date.now() - new Date(y, m, day).getTime()) / 86400000 <= 2;
+}
+
+function getInitials(name) {
+  if (!name) return '?';
+  return name.slice(0, 1).toUpperCase();
+}
+
+/* ===== 配置加载（统一入口） ===== */
+async function loadConfig() {
+  try {
+    const res = await fetch('config.json?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    SITE_CONFIG = await res.json();
+    DOWNLOAD_SOURCES = Array.isArray(SITE_CONFIG.downloadSources) ? SITE_CONFIG.downloadSources : [];
+    DANMU_SOURCES = Array.isArray(SITE_CONFIG.danmuSources) ? SITE_CONFIG.danmuSources : [];
+    renderContributors(SITE_CONFIG.about && SITE_CONFIG.about.contributors);
+  } catch (e) {
+    DOWNLOAD_SOURCES = [];
+    DANMU_SOURCES = [];
+    renderContributors([]);
+  }
+}
+
+/* ===== 贡献者渲染 ===== */
+function renderContributors(list) {
+  const container = document.getElementById('contributors-list');
+  if (!container) return;
+
+  if (!Array.isArray(list) || !list.length) {
+    container.innerHTML = '<div class="error-msg">暂无合作共创人员</div>';
+    return;
+  }
+
+  container.innerHTML = list.map(c => `
+    <div class="contributor-card" data-name="${(c.name || '').toLowerCase()}">
+      ${c.avatar ? `
+        <img class="contributor-avatar" src="${c.avatar}" alt="${c.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="contributor-avatar" style="display:none">${getInitials(c.name)}</div>
+      ` : `
+        <div class="contributor-avatar">${getInitials(c.name)}</div>
+      `}
+      <div class="contributor-info">
+        <div class="contributor-name" title="${c.name}">${c.name}</div>
+        ${c.role ? `<div class="contributor-role">${c.role}</div>` : ''}
+        ${c.desc ? `<div class="contributor-desc">${c.desc}</div>` : ''}
+        ${c.social ? `<div class="contributor-social">${c.social}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
 }
 
 /* ===== 点播接口 ===== */
@@ -891,7 +1038,6 @@ function renderApi() {
       return;
     }
 
-    // 模糊匹配：接口名里包含任一关键词即算命中
     const ri = items.filter(i => {
       const lower = i.name.toLowerCase();
       return ROTATE_KEYWORDS.some(kw => lower.includes(kw.toLowerCase()));
@@ -1095,6 +1241,7 @@ function showPanel(tabId) {
     document.querySelectorAll('#live-panel .live-item.hidden').forEach(e => e.classList.remove('hidden'));
     document.querySelectorAll('.download-card.hidden').forEach(e => e.classList.remove('hidden'));
     document.querySelectorAll('#danmu-panel .danmu-item.hidden').forEach(e => e.classList.remove('hidden'));
+    document.querySelectorAll('.contributor-card.hidden').forEach(e => e.classList.remove('hidden'));
   }
   if (tabId === 'api') {
     topSeed = Date.now() + Math.random();
@@ -1129,6 +1276,10 @@ function globalSearch() {
     document.querySelectorAll('#danmu-panel .danmu-item').forEach(e => {
       const n = e.getAttribute('data-name') || '';
       e.classList.toggle('hidden', !n.includes(kw));
+    });
+    document.querySelectorAll('.contributor-card').forEach(c => {
+      const n = c.getAttribute('data-name') || '';
+      c.classList.toggle('hidden', !n.includes(kw));
     });
   }
 }
@@ -1171,7 +1322,7 @@ btn.addEventListener('click', () => {
 /* ===== 启动 ===== */
 renderTabs();
 renderApi();
-loadDownloadConfig().then(() => {
+loadConfig().then(() => {
   if (currentMode !== 'simple') {
     renderDownloads();
     renderDanmu();
