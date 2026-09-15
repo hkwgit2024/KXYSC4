@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>海量接口搬运备份 · 合作共创布局调整</title>
+<title>海量接口搬运备份</title>
 <style>
 /* ===== 全局重置与基础 ===== */
 *, *::before, *::after {
@@ -536,27 +536,33 @@ body.simple-mode #api-panel {
 }
 
 /* ===== 合作共创人员名单 ===== */
-/* 核心修改：去掉外层大圆角容器，只保留每个小卡片 */
-#contributors-card {
+/* 盖过全局 #about-panel > div 的白色大圆角容器 */
+#about-panel > #contributors-card {
   background: transparent !important;
   border-radius: 0 !important;
   padding: 0 !important;
   margin-bottom: 0 !important;
   border: none !important;
-  /* 保证内部网格直接暴露 */
+  box-shadow: none !important;
 }
 
-.contributor-grid {
+/* 小卡片群容器：透明、无圆角、无内边距 */
+#contributors-card .contributor-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 12px;
   width: 100%;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
 }
 
-.contributor-card {
+/* 每个作者小卡片：保留自己的圆角 */
+#contributors-card .contributor-card {
   background: #fff;
   border: 1px solid #e4ebf3;
-  border-radius: 14px;          /* 小卡片保留圆角 */
+  border-radius: 14px;
   padding: 16px 12px 14px;
   text-align: center;
   display: flex;
@@ -565,11 +571,12 @@ body.simple-mode #api-panel {
   transition: transform .15s, box-shadow .15s;
 }
 
-.contributor-card:active {
+#contributors-card .contributor-card:active {
   transform: scale(.98);
 }
 
-.contributor-avatar {
+/* 头像、名字、角色、描述等保持原样 */
+#contributors-card .contributor-avatar {
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -585,20 +592,20 @@ body.simple-mode #api-panel {
   flex-shrink: 0;
 }
 
-.contributor-avatar img {
+#contributors-card .contributor-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.contributor-name {
+#contributors-card .contributor-name {
   font-size: .85rem;
   font-weight: 700;
   color: #0b1e33;
   line-height: 1.3;
 }
 
-.contributor-role {
+#contributors-card .contributor-role {
   display: inline-block;
   font-size: .62rem;
   font-weight: 600;
@@ -610,14 +617,14 @@ body.simple-mode #api-panel {
   line-height: 1.4;
 }
 
-.contributor-desc {
+#contributors-card .contributor-desc {
   font-size: .7rem;
   color: #7a8fa3;
   line-height: 1.5;
   flex: 1;
 }
 
-.contributor-social {
+#contributors-card .contributor-social {
   margin-top: 8px;
   font-size: .68rem;
   color: #4a9eff;
@@ -625,7 +632,7 @@ body.simple-mode #api-panel {
   text-decoration: none;
 }
 
-.contributor-social:hover {
+#contributors-card .contributor-social:hover {
   text-decoration: underline;
 }
 
@@ -819,7 +826,7 @@ body.simple-mode #api-panel {
         <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<strong style="color:#4a9eff">https://t.me/+nrWtFerPAfcwOTg9</strong></p>
       </div>
 
-      <!-- 合作共创： 已移除外层大圆角，仅保留每个 contributor-card 的小圆角 -->
+      <!-- 合作共创 -->
       <div id="contributors-card">
         <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">🤝 合作共创</h3>
         <p style="font-size:.72rem;color:#8b9eb0;margin-bottom:12px;line-height:1.6">感谢以下伙伴对本站的内容贡献与支持，排名不分先后。</p>
@@ -834,7 +841,6 @@ body.simple-mode #api-panel {
   </footer>
 
 </div>
-
 <script>
 /* ===== 基础配置 ===== */
 const MODE_KEY = 'site_mode';
