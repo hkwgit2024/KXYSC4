@@ -733,24 +733,6 @@
       "source": "幸福年年"
     },
     {
-      "name": "🔯develop202",
-      "url": "https://gh.llkk.cc/http://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
-      "ua": "",
-      "source": "幸福年年"
-    },
-    {
-      "name": "港台",
-      "url": "http://150.158.52.248/tgyg/lib/46363.txt",
-      "ua": "",
-      "source": "幸福年年"
-    },
-    {
-      "name": "🔥金曲欣赏",
-      "url": "http://150.158.52.248/tgyg/lib/g.txt",
-      "ua": "",
-      "source": "幸福年年"
-    },
-    {
       "name": "☀轮播直播",
       "url": "http://150.158.52.248/tgyg/lib/dsj.txt",
       "ua": "",
@@ -793,63 +775,9 @@
       "source": "幸福年年"
     },
     {
-      "name": "💖冰茶②",
-      "url": "https://bc.188766.xyz/?ip=&mima=bingcha1130",
-      "ua": "okhttp/3",
-      "source": "幸福年年"
-    },
-    {
       "name": "💖天微③",
       "url": "http://150.158.52.248/tgyg/lib/kjtwzb.txt",
       "ua": "okhttp/3",
-      "source": "幸福年年"
-    },
-    {
-      "name": "💖AI线④",
-      "url": "http://150.158.52.248/tgyg/lib/result.m3u",
-      "ua": "",
-      "source": "幸福年年"
-    },
-    {
-      "name": "💖线路⑤",
-      "url": "http://150.158.52.248/tgyg/lib/interface.txt",
-      "ua": "okhttp/3",
-      "source": "幸福年年"
-    },
-    {
-      "name": "Yoursmile2线",
-      "url": "http://150.158.52.248/tgyg/lib/live.txt",
-      "ua": "okhttp/3.15",
-      "source": "幸福年年"
-    },
-    {
-      "name": "feiyang.allinone",
-      "url": "http://127.0.0.1:35457/tv.m3u",
-      "ua": "okhttp/3.15",
-      "source": "幸福年年"
-    },
-    {
-      "name": "feiyang.bililive",
-      "url": "http://127.0.0.1:35457/bililive.m3u",
-      "ua": "okhttp/3.15",
-      "source": "幸福年年"
-    },
-    {
-      "name": "feiyang.huyayqk",
-      "url": "http://127.0.0.1:35457/huyayqk.m3u",
-      "ua": "okhttp/3.15",
-      "source": "幸福年年"
-    },
-    {
-      "name": "feiyang.douyuyqk",
-      "url": "http://127.0.0.1:35457/douyuyqk.m3u",
-      "ua": "okhttp/3.15",
-      "source": "幸福年年"
-    },
-    {
-      "name": "feiyang.yylunbo",
-      "url": "http://127.0.0.1:35457/yylunbo.m3u",
-      "ua": "okhttp/3.15",
       "source": "幸福年年"
     },
     {
@@ -911,6 +839,12 @@
       "url": "https://wget.la/https://github.com/Kimentanm/aptv/raw/master/m3u/iptv.m3u",
       "ua": "okhttp/3.15,AptvPlayer/1.4.0",
       "source": "真六线路"
+    },
+    {
+      "name": "develop2024线",
+      "url": "https://gh.llkk.cc/http://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+      "ua": "",
+      "source": "肥猫一线"
     },
     {
       "name": "初秋语",
