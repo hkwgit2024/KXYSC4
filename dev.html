@@ -6,7 +6,7 @@
 <title>海量接口搬运备份</title>
 <style>
 /* ============================================================
-   公共 CSS（完整内联，与原项目一致）
+   公共 CSS（从 index.html 完整扣出）
    ============================================================ */
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -44,12 +44,13 @@ h1 .header-logo {
 .header-divider { height:1px; background:#e4ebf3; margin:12px 0; }
 .subtitle { font-size:.78rem; color:#7a8fa3; line-height:1.6; }
 
-/* 搜索 */
+/* 搜索框 */
 .search-box {
   width:100%; padding:10px 16px; border:1px solid #d4dbe5;
   border-radius:50px; font-size:.92rem; background:#fff; outline:none; -webkit-appearance:none;
-  margin-bottom:14px;
 }
+body.simple-mode .search-box { margin-bottom:20px; }
+body:not(.simple-mode) .search-box { margin-bottom:14px; }
 
 /* 主卡片 */
 .main-card {
@@ -79,12 +80,19 @@ h1 .header-logo {
 .api-item-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
 .api-item-name { font-size:1rem; font-weight:700; color:#0a1a2b; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1; min-width:0; }
 .api-item-meta { display:flex; align-items:center; gap:8px; font-size:.72rem; white-space:nowrap; flex-shrink:0; }
+.badge-new { color:#16a34a; font-weight:600; }
+.badge-old { color:#ca8a04; font-weight:600; }
+
+/* URL行 */
+.api-item-urls { display:flex; flex-direction:column; gap:6px; }
 .url-line {
   display:flex; align-items:center; gap:8px; padding:6px 14px;
-  background:#f4f8fc; border:1px solid #e0e8f0; border-radius:50px; min-width:0; margin-top:6px;
+  background:#f4f8fc; border:1px solid #e0e8f0; border-radius:50px; min-width:0;
 }
 .url-tag { font-size:.68rem; font-weight:600; color:#3a5a7a; background:#d8e8f8; padding:2px 14px; border-radius:50px; white-space:nowrap; flex-shrink:0; }
 .url-text { font-size:.78rem; color:#2563eb; word-break:break-all; overflow-wrap:break-word; line-height:1.4; flex:1; min-width:0; }
+
+/* 复制按钮 */
 .copy-btn {
   flex-shrink:0; background:#4a9eff; color:#fff; border:none; border-radius:30px;
   padding:0 14px; font-size:.7rem; font-weight:500; cursor:pointer; height:26px;
@@ -102,16 +110,15 @@ h1 .header-logo {
 /* footer */
 .page-footer { text-align:center; padding:24px 0 10px; font-size:.7rem; color:#8fa3b8; line-height:1.8; flex-shrink:0; }
 
-/* ===== 简洁模式 ===== */
+/* 简洁模式 */
 body.simple-mode .nav-tabs { display:none !important; }
 body.simple-mode #live-panel,
 body.simple-mode #download-panel,
 body.simple-mode #danmu-panel,
 body.simple-mode #about-panel { display:none !important; }
 body.simple-mode #api-panel { display:block !important; }
-body.simple-mode .search-box { margin-bottom:20px; }
 
-/* ===== 空壳面板（开发中占位，无调试字样） ===== */
+/* 空壳面板 */
 .panel-placeholder {
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   min-height:200px; color:#b0bec5; text-align:center; padding:40px 20px;
@@ -131,10 +138,10 @@ body.simple-mode .search-box { margin-bottom:20px; }
 </style>
 </head>
 
-<body class="full-mode">
+<body class="simple-mode">
 
 <div class="container">
-  <button id="modeToggleBtn">切换<br>简洁版</button>
+  <button id="modeToggleBtn">切换<br>全能版</button>
 
   <!-- 标题 -->
   <div class="header-block">
@@ -143,25 +150,19 @@ body.simple-mode .search-box { margin-bottom:20px; }
     <p class="subtitle">备用数据源，防屏不迷路<br>QQ交流群：1067685939</p>
   </div>
 
-  <!-- 搜索 -->
-  <input class="search-box" id="search" type="text" placeholder="🔍 搜索..." oninput="globalSearch()">
-
   <!-- 主卡片 -->
   <div class="main-card">
 
     <!-- 导航栏 -->
-    <div class="nav-tabs">
-      <button class="nav-tab active" data-tab="api" onclick="showPanel('api')">点播</button>
-      <button class="nav-tab" data-tab="live" onclick="showPanel('live')">直播</button>
-      <button class="nav-tab" data-tab="danmu" onclick="showPanel('danmu')">弹幕</button>
-      <button class="nav-tab" data-tab="download" onclick="showPanel('download')">下载</button>
-      <button class="nav-tab" data-tab="about" onclick="showPanel('about')">关于</button>
-    </div>
+    <div class="nav-tabs" id="navTabs"></div>
+
+    <!-- 搜索框（全能版时在导航下方） -->
+    <input class="search-box" id="search" type="text" placeholder="🔍 搜索..." oninput="globalSearch()">
 
     <!-- 点播面板（真实数据） -->
     <div class="tab-panel active" id="api-panel">
       <div class="api-list" id="listContainer">
-        <div class="loading">⏳ 正在加载接口列表...</div>
+        <div class="loading" id="apiLoading">⏳ 正在加载接口列表...</div>
       </div>
     </div>
 
@@ -207,101 +208,187 @@ body.simple-mode .search-box { margin-bottom:20px; }
 
 <script>
 /* ============================================================
-   公共 JS（完整内联）
+   公共 JS（从 index.html 完整扣出，适配单文件）
    ============================================================ */
 
 const MODE_KEY = 'site_mode';
+const btn = document.getElementById('modeToggleBtn');
+const searchBox = document.getElementById('search');
+const mainCard = document.querySelector('.main-card');
+const navTabs = document.getElementById('navTabs');
 
-let currentMode = localStorage.getItem(MODE_KEY) || 'full';
+const API_DOMAINS = [
+  { tag:"备份一线", base:"https://0.12yue.de5.net/tvbox/" },
+  { tag:"备份二线", base:"https://0.cdz.qzz.io/tvbox/" },
+  { tag:"备份三线", base:"https://0.wdzb.eu.cc/tvbox/" }
+];
+
+const API_WEIGHTS = {
+  "轮替占位.json":1,"幸福年年.json":2,"饭太硬.json":4,"肥猫.json":5,
+  "摸鱼.json":6,"王二小.json":7,"集多.json":8,"潇洒.json":9,"小米.json":10,
+  "嗷呜.json":11,"南风.json":12,"小虎斑.json":13
+};
+
+const ROTATE_KEYWORDS = ["模糊搜索","模糊搜索"];
+
+let currentMode = localStorage.getItem(MODE_KEY) || 'simple';
 let currentTabId = 'api';
+let topSeed = Date.now();
+let rawListText = null;
+
 document.body.className = currentMode + '-mode';
 updateBtnText();
+positionSearchBox();
 
 /* 复制 */
 document.addEventListener('click', e => {
-  const btn = e.target.closest('.copy-btn');
-  if (!btn) return;
+  const copyBtn = e.target.closest('.copy-btn');
+  if (!copyBtn) return;
   e.preventDefault(); e.stopPropagation();
-  const url = btn.dataset.url;
+  const url = copyBtn.getAttribute('data-url');
   if (!url) return;
   const done = () => {
-    btn.textContent = '✅ 已复制';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = '复制'; btn.classList.remove('copied'); }, 1500);
+    const originalText = copyBtn.textContent;
+    copyBtn.textContent = '✅ 已复制';
+    copyBtn.classList.add('copied');
+    setTimeout(() => { copyBtn.textContent = originalText; copyBtn.classList.remove('copied'); }, 1500);
   };
-  if (navigator.clipboard) navigator.clipboard.writeText(url).then(done).catch(fb);
-  else fb();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done).catch(fb);
+  } else { fb(); }
   function fb() {
-    const i = document.createElement('input'); i.value = url;
-    document.body.appendChild(i); i.select(); document.execCommand('copy');
-    document.body.removeChild(i); done();
+    const input = document.createElement('input'); input.value = url;
+    input.style.position='fixed'; input.style.opacity='0';
+    document.body.appendChild(input); input.focus(); input.select();
+    try{document.execCommand('copy');}catch(_){}
+    document.body.removeChild(input); done();
   }
 });
 
+/* 工具 */
+function getTopItem(rotateItems) {
+  if (!rotateItems || !rotateItems.length) return null;
+  if (rotateItems.length === 1) return rotateItems[0];
+  const idx = Math.abs(Math.floor(Math.sin(topSeed) * 10000)) % rotateItems.length;
+  return rotateItems[idx];
+}
+
+function formatDateToChinese(d) {
+  if (!d || d.length !== 8) return '----';
+  return d.slice(0,4)+'年'+d.slice(4,6)+'月'+d.slice(6,8)+'日';
+}
+
+function isRecent(d) {
+  if (!d || d.length !== 8) return false;
+  const y=parseInt(d.slice(0,4)),m=parseInt(d.slice(4,6))-1,day=parseInt(d.slice(6,8));
+  return (Date.now()-new Date(y,m,day).getTime())/86400000 <= 2;
+}
+
 /* 搜索 */
 function globalSearch() {
-  const kw = document.getElementById('search').value.toLowerCase().trim();
-  document.querySelectorAll('.api-item').forEach(el => {
-    const n = el.dataset.name || '';
+  const kw = (searchBox.value || '').toLowerCase().trim();
+  document.querySelectorAll('#api-panel .api-item').forEach(el => {
+    const n = el.getAttribute('data-name') || '';
     el.classList.toggle('hidden', !n.includes(kw));
   });
 }
 
-/* 面板切换 */
-function showPanel(tabId) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(tabId + '-panel').classList.add('active');
-  document.querySelector(`.nav-tab[data-tab="${tabId}"]`)?.classList.add('active');
-  currentTabId = tabId;
+/* 点播加载 */
+async function fetchListText() {
+  if (rawListText !== null) return rawListText;
+  const res = await fetch('list.txt?t='+Date.now()+'&r='+Math.random(), {cache:'no-store'});
+  if (!res.ok) throw new Error('HTTP '+res.status);
+  rawListText = await res.text();
+  return rawListText;
 }
+
+function parseItems(text) {
+  if (!text || !text.trim()) return [];
+  return text.trim().split('\n').filter(l=>l.trim()).map(line=>{
+    const p=line.split('|').map(s=>s.trim());
+    if(!p[0]) return null;
+    return { file:p[0], name:p[0].replace(/\.json$/i,''), date:p[1]||'', size:p[2]||'', origUrl:p[3]||'', weight:API_WEIGHTS.hasOwnProperty(p[0])?API_WEIGHTS[p[0]]:999 };
+  }).filter(Boolean);
+}
+
+function renderApi() {
+  const container = document.getElementById('listContainer');
+  fetchListText().then(text=>{
+    const tip = document.getElementById('apiLoading');
+    if(tip) tip.style.display='none';
+    let items = parseItems(text);
+    if(!items.length){ container.innerHTML='<div class="error-msg">⚠️ 接口列表为空</div>'; return; }
+    const ri = items.filter(i=>ROTATE_KEYWORDS.some(kw=>i.name.toLowerCase().includes(kw.toLowerCase())));
+    const top = getTopItem(ri);
+    if(top) top.weight = Number.MIN_SAFE_INTEGER;
+    items.sort((a,b)=>a.weight-b.weight);
+    let html='';
+    items.forEach(it=>{
+      const isNew=isRecent(it.date);
+      let lines='';
+      if(it.origUrl) lines+=`<div class="url-line"><span class="url-tag">原始线路</span><span class="url-text">${it.origUrl}</span><button class="copy-btn" data-url="${it.origUrl}">复制</button></div>`;
+      API_DOMAINS.forEach(d=>{ const u=d.base+it.name+'.json'; lines+=`<div class="url-line"><span class="url-tag">${d.tag}</span><span class="url-text">${u}</span><button class="copy-btn" data-url="${u}">复制</button></div>`; });
+      html+=`<div class="api-item" data-name="${it.name.toLowerCase()}"><div class="api-item-header"><div class="api-item-name" title="${it.name}">${it.name}</div><div class="api-item-meta"><span class="${isNew?'badge-new':'badge-old'}">备份时间 ${formatDateToChinese(it.date)}</span>${it.size?'&nbsp;&nbsp;'+it.size:''}</div></div><div class="api-item-urls">${lines}</div></div>`;
+    });
+    container.innerHTML=html;
+  }).catch(err=>{
+    const tip=document.getElementById('apiLoading');
+    if(tip) tip.style.display='none';
+    container.innerHTML=`<div class="error-msg">❌ 加载失败：${err.message}</div>`;
+  });
+}
+
+/* 标签导航 */
+const tabsData = [
+  {id:"api",label:"点播"},{id:"live",label:"直播"},
+  {id:"danmu",label:"弹幕"},{id:"download",label:"下载"},{id:"about",label:"关于"}
+];
+
+function renderTabs() {
+  navTabs.innerHTML = tabsData.map(t=>`<button class="nav-tab ${t.id===currentTabId?'active':''}" data-tab="${t.id}">${t.label}</button>`).join('');
+  navTabs.querySelectorAll('.nav-tab').forEach(tab=>{
+    tab.addEventListener('click',function(){
+      navTabs.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+      this.classList.add('active');
+      currentTabId=this.getAttribute('data-tab');
+      showPanel(currentTabId);
+    });
+  });
+}
+
+function showPanel(tabId) {
+  if(searchBox){ searchBox.value=''; document.querySelectorAll('#api-panel .api-item.hidden').forEach(e=>e.classList.remove('hidden')); }
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  const panel=document.getElementById(tabId+'-panel');
+  if(panel) panel.classList.add('active');
+  if(tabId==='api'){ topSeed=Date.now()+Math.random(); renderApi(); }
+}
+
+/* 搜索框位置 */
+function positionSearchBox() {
+  if(currentMode==='simple'){
+    if(searchBox.parentNode!==mainCard.parentNode) mainCard.parentNode.insertBefore(searchBox,mainCard);
+  } else {
+    if(searchBox.parentNode!==mainCard) navTabs.insertAdjacentElement('afterend',searchBox);
+  }
+}
+
+function updateBtnText(){ btn.innerHTML=currentMode==='simple'?'切换<br>全能版':'切换<br>简洁版'; }
 
 /* 模式切换 */
-document.getElementById('modeToggleBtn').addEventListener('click', () => {
-  currentMode = currentMode === 'simple' ? 'full' : 'simple';
-  localStorage.setItem(MODE_KEY, currentMode);
-  document.body.className = currentMode + '-mode';
+btn.addEventListener('click',()=>{
+  topSeed=Date.now()+Math.random();
+  currentMode=currentMode==='simple'?'full':'simple';
+  localStorage.setItem(MODE_KEY,currentMode);
+  document.body.className=currentMode+'-mode';
   updateBtnText();
-  if (currentMode === 'simple') {
-    showPanel('api');
-  }
+  if(currentMode!=='simple'){ positionSearchBox(); renderTabs(); showPanel(currentTabId); }
+  else{ searchBox.style.display=''; positionSearchBox(); renderApi(); }
 });
 
-function updateBtnText() {
-  document.getElementById('modeToggleBtn').innerHTML = currentMode === 'simple' ? '切换<br>全能版' : '切换<br>简洁版';
-}
-
-/* ============================================================
-   点播列表加载（真实数据）
-   ============================================================ */
-
-(async () => {
-  const c = document.getElementById('listContainer');
-  try {
-    const res = await fetch('list.txt?t=' + Date.now(), { cache: 'no-store' });
-    const text = await res.text();
-    const items = text.trim().split('\n').filter(l => l.trim()).map(line => {
-      const p = line.split('|').map(s => s.trim());
-      return { file: p[0], name: p[0]?.replace(/\.json$/i, ''), date: p[1], size: p[2], origUrl: p[3] };
-    });
-    c.innerHTML = items.map(it => `
-      <div class="api-item" data-name="${(it.name || '').toLowerCase()}">
-        <div class="api-item-header">
-          <div class="api-item-name">${it.name}</div>
-          <div class="api-item-meta"><span>备份时间 ${it.date || ''}</span></div>
-        </div>
-        ${it.origUrl ? `
-        <div class="url-line">
-          <span class="url-tag">原始</span>
-          <span class="url-text">${it.origUrl}</span>
-          <button class="copy-btn" data-url="${it.origUrl}">复制</button>
-        </div>` : ''}
-      </div>
-    `).join('');
-  } catch (e) {
-    c.innerHTML = '<div class="error-msg">❌ 加载失败：' + e.message + '</div>';
-  }
-})();
+/* 启动 */
+renderTabs();
+renderApi();
 </script>
 </body>
 </html>
