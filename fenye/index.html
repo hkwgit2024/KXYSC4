@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
+<title>海量接口搬运备份</title>
+<link rel="stylesheet" href="assets/common.css">
+</head>
+<body class="simple-mode">
+
+<div class="container">
+  <button id="modeToggleBtn">切换<br>全能版</button>
+
+  <!-- ① 外框标题+小字 -->
+  <iframe src="modules/header.html" data-module="header" scrolling="no"></iframe>
+
+  <!-- ② 搜索框 -->
+  <iframe src="modules/search.html" data-module="search" scrolling="no"></iframe>
+
+  <!-- ⑤ 导航栏+分页外框（内含 ③⑥⑦⑧⑨⑩ 的面板容器） -->
+  <iframe src="modules/nav-tabs.html" data-module="nav-tabs" scrolling="no"></iframe>
+
+  <!-- ④ footer -->
+  <iframe src="modules/footer.html" data-module="footer" scrolling="no"></iframe>
+</div>
+
+<script src="assets/common.js"></script>
+<script>
+/* 主入口：初始化模式、搜索框位置、面板切换 */
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.className = (localStorage.getItem('site_mode') || 'simple') + '-mode';
+  updateBtnText();
+  positionSearchBox();
+  renderTabs();
+  renderApi();
+  loadConfig().then(() => {
+    if (document.body.classList.contains('full-mode')) {
+      renderDownloads();
+      renderDanmu();
+    }
+  });
+});
+</script>
+</body>
+</html>
