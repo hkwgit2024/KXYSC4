@@ -3,20 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>🛠 调试 - 全能版完整框架</title>
+<title>海量接口搬运备份</title>
 <style>
 /* ============================================================
-   公共 CSS（与原项目 assets/common.css + assets/page.css 一致）
+   公共 CSS（完整内联，与原项目一致）
    ============================================================ */
-
-/* 调试标识 */
-body.dev-mode::before {
-  content: "🛠 DEV · 全能版完整框架";
-  position: fixed; top: 0; right: 0;
-  background: #f59e0b; color: #fff;
-  font-size: .55rem; font-weight: 700;
-  padding: 3px 14px; border-bottom-left-radius: 8px; z-index: 9999;
-}
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
@@ -120,25 +111,13 @@ body.simple-mode #about-panel { display:none !important; }
 body.simple-mode #api-panel { display:block !important; }
 body.simple-mode .search-box { margin-bottom:20px; }
 
-/* ===== 空壳面板 ===== */
-.dev-shell {
-  border: 2px dashed #f59e0b; border-radius: 10px;
-  background: #fffbeb; min-height: 200px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 24px;
+/* ===== 空壳面板（开发中占位，无调试字样） ===== */
+.panel-placeholder {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:200px; color:#b0bec5; text-align:center; padding:40px 20px;
 }
-.dev-shell .icon { font-size: 2.5rem; margin-bottom: 10px; }
-.dev-shell .title { font-size: .95rem; font-weight: 700; color: #d97706; margin-bottom: 6px; }
-.dev-shell .desc { font-size: .75rem; color: #9ca3af; line-height: 1.6; max-width: 380px; }
-.dev-shell .desc code { background:#f3f4f6; padding:1px 6px; border-radius:4px; font-size:.7rem; color:#4b5563; }
-.dev-shell .actions { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-.dev-btn {
-  padding: 6px 16px; border-radius: 30px;
-  border: 1.5px solid #4a9eff; background: #fff; color: #4a9eff;
-  font-size: .72rem; cursor: pointer;
-}
-.dev-btn:active { transform: scale(.96); }
-.dev-btn.primary { background: #4a9eff; color: #fff; }
+.panel-placeholder .placeholder-icon { font-size:2.5rem; margin-bottom:12px; opacity:.5; }
+.panel-placeholder .placeholder-text { font-size:.85rem; }
 
 /* 移动端 */
 @media (max-width:600px) {
@@ -152,25 +131,25 @@ body.simple-mode .search-box { margin-bottom:20px; }
 </style>
 </head>
 
-<body class="full-mode dev-mode">
+<body class="full-mode">
 
 <div class="container">
   <button id="modeToggleBtn">切换<br>简洁版</button>
 
-  <!-- ===== 模块：标题 ===== -->
+  <!-- 标题 -->
   <div class="header-block">
     <h1><img class="header-logo" src="https://0.12yue.de5.net/tvbox/x/jueson.jpg" alt="Logo">海量接口搬运备份</h1>
     <div class="header-divider"></div>
     <p class="subtitle">备用数据源，防屏不迷路<br>QQ交流群：1067685939</p>
   </div>
 
-  <!-- ===== 模块：搜索 ===== -->
+  <!-- 搜索 -->
   <input class="search-box" id="search" type="text" placeholder="🔍 搜索..." oninput="globalSearch()">
 
-  <!-- ===== 主卡片 ===== -->
+  <!-- 主卡片 -->
   <div class="main-card">
 
-    <!-- ===== 模块：导航栏 ===== -->
+    <!-- 导航栏 -->
     <div class="nav-tabs">
       <button class="nav-tab active" data-tab="api" onclick="showPanel('api')">点播</button>
       <button class="nav-tab" data-tab="live" onclick="showPanel('live')">直播</button>
@@ -179,64 +158,48 @@ body.simple-mode .search-box { margin-bottom:20px; }
       <button class="nav-tab" data-tab="about" onclick="showPanel('about')">关于</button>
     </div>
 
-    <!-- ===== 点播面板（真实内容） ===== -->
+    <!-- 点播面板（真实数据） -->
     <div class="tab-panel active" id="api-panel">
       <div class="api-list" id="listContainer">
         <div class="loading">⏳ 正在加载接口列表...</div>
       </div>
     </div>
 
-    <!-- ===== 直播面板（空壳） ===== -->
+    <!-- 直播面板（空壳） -->
     <div class="tab-panel" id="live-panel">
-      <div class="dev-shell">
-        <div class="icon">📺</div>
-        <div class="title">直播面板</div>
-        <div class="desc">开发 livelist.txt 解析 + 聚合区渲染<br>迁移目标：<code>modules/live-aggregate.html</code> + <code>live-list.html</code></div>
-        <div class="actions">
-          <button class="dev-btn primary" onclick="showPanel('danmu')">→ 弹幕</button>
-        </div>
+      <div class="panel-placeholder">
+        <div class="placeholder-icon">📺</div>
+        <div class="placeholder-text">直播内容加载中...</div>
       </div>
     </div>
 
-    <!-- ===== 弹幕面板（空壳） ===== -->
+    <!-- 弹幕面板（空壳） -->
     <div class="tab-panel" id="danmu-panel">
-      <div class="dev-shell">
-        <div class="icon">💬</div>
-        <div class="title">弹幕面板</div>
-        <div class="desc">开发 config.json → danmuSources 渲染<br>迁移目标：<code>modules/danmu.html</code></div>
-        <div class="actions">
-          <button class="dev-btn primary" onclick="showPanel('download')">→ 下载</button>
-        </div>
+      <div class="panel-placeholder">
+        <div class="placeholder-icon">💬</div>
+        <div class="placeholder-text">弹幕内容加载中...</div>
       </div>
     </div>
 
-    <!-- ===== 下载面板（空壳） ===== -->
+    <!-- 下载面板（空壳） -->
     <div class="tab-panel" id="download-panel">
-      <div class="dev-shell">
-        <div class="icon">📦</div>
-        <div class="title">下载面板</div>
-        <div class="desc">开发 config.json → downloadSources 渲染<br>迁移目标：<code>modules/download.html</code></div>
-        <div class="actions">
-          <button class="dev-btn primary" onclick="showPanel('about')">→ 关于</button>
-        </div>
+      <div class="panel-placeholder">
+        <div class="placeholder-icon">📦</div>
+        <div class="placeholder-text">下载内容加载中...</div>
       </div>
     </div>
 
-    <!-- ===== 关于面板（空壳） ===== -->
+    <!-- 关于面板（空壳） -->
     <div class="tab-panel" id="about-panel">
-      <div class="dev-shell">
-        <div class="icon">ℹ️</div>
-        <div class="title">关于面板</div>
-        <div class="desc">开发域名备份 + 贡献者 + 声明<br>迁移目标：<code>modules/about.html</code></div>
-        <div class="actions">
-          <button class="dev-btn primary" onclick="showPanel('api')">→ 回到点播</button>
-        </div>
+      <div class="panel-placeholder">
+        <div class="placeholder-icon">ℹ️</div>
+        <div class="placeholder-text">关于内容加载中...</div>
       </div>
     </div>
 
   </div>
 
-  <!-- ===== 模块：footer ===== -->
+  <!-- footer -->
   <footer class="page-footer">
     <p>本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。 QQ 群：1067685939。</p>
   </footer>
@@ -244,13 +207,14 @@ body.simple-mode .search-box { margin-bottom:20px; }
 
 <script>
 /* ============================================================
-   公共 JS（与原项目 assets/common.js 一致）
+   公共 JS（完整内联）
    ============================================================ */
 
 const MODE_KEY = 'site_mode';
 
 let currentMode = localStorage.getItem(MODE_KEY) || 'full';
-document.body.className = currentMode + '-mode dev-mode';
+let currentTabId = 'api';
+document.body.className = currentMode + '-mode';
 updateBtnText();
 
 /* 复制 */
@@ -296,7 +260,7 @@ function showPanel(tabId) {
 document.getElementById('modeToggleBtn').addEventListener('click', () => {
   currentMode = currentMode === 'simple' ? 'full' : 'simple';
   localStorage.setItem(MODE_KEY, currentMode);
-  document.body.className = currentMode + '-mode dev-mode';
+  document.body.className = currentMode + '-mode';
   updateBtnText();
   if (currentMode === 'simple') {
     showPanel('api');
@@ -308,7 +272,7 @@ function updateBtnText() {
 }
 
 /* ============================================================
-   点播列表加载（真实数据，跑通公共代码）
+   点播列表加载（真实数据）
    ============================================================ */
 
 (async () => {
@@ -334,15 +298,10 @@ function updateBtnText() {
         </div>` : ''}
       </div>
     `).join('');
-    console.log(`✅ 点播列表加载完成，${items.length} 条`);
   } catch (e) {
     c.innerHTML = '<div class="error-msg">❌ 加载失败：' + e.message + '</div>';
-    console.error('❌ 点播列表加载失败', e);
   }
 })();
-
-console.log('%c🛠 全能版完整框架调试页', 'color:#f59e0b;font-size:14px;font-weight:bold');
-console.log('%c标题/搜索/导航/点播/footer 全部公共代码内联 | 其余面板空壳待开发', 'color:#6b7280;font-size:11px');
 </script>
 </body>
 </html>
