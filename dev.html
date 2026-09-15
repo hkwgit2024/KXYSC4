@@ -3,27 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>海量接口搬运备份</title>
+<title>海量接口搬运备份1</title>
 <style>
 /* ============================================================
-   公共 CSS（从 index.html 完整扣出）
+   公共 CSS（修正版：全屏撑高 + 导航栏一致）
    ============================================================ */
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
+html, body {
+  height:100%;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   background:#eef2f7; color:#1a2b3d;
-  padding:20px 14px 10px; min-height:100vh;
+  padding:20px 14px 10px;
+  min-height:100vh;
   display:flex; flex-direction:column; overflow-x:hidden;
   -webkit-tap-highlight-color:transparent;
 }
 button:focus, button:focus-visible, input:focus, input:focus-visible,
 .nav-tab:focus, .copy-btn:focus { outline:none !important; }
 
+/* 容器：min-height 撑满视口，flex 推 footer 到底部 */
 .container {
-  max-width:820px; margin:0 auto; position:relative;
-  flex:1; display:flex; flex-direction:column; width:100%; overflow-x:hidden;
+  width:100%;
+  max-width:820px;
+  margin:0 auto;
+  position:relative;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  min-height:calc(100vh - 30px);
+  overflow-x:hidden;
 }
 
 /* 模式切换 */
@@ -52,18 +65,31 @@ h1 .header-logo {
 body.simple-mode .search-box { margin-bottom:20px; }
 body:not(.simple-mode) .search-box { margin-bottom:14px; }
 
-/* 主卡片 */
+/* 主卡片：flex:1 撑满剩余高度 */
 .main-card {
   background:#fff; border-radius:8px; padding:20px 22px 18px;
-  border:1px solid #d4dbe5; flex:1; display:flex; flex-direction:column;
+  border:1px solid #d4dbe5; flex:1;
+  display:flex; flex-direction:column;
   overflow-x:hidden; width:100%;
+  min-height:300px; /* ← 关键：没内容时也要有高度，导航栏宽度才准 */
 }
 
-/* 导航 */
-.nav-tabs { display:flex; gap:10px; margin-bottom:16px; justify-content:center; flex-wrap:wrap; }
+/* 导航栏 —— 跟原版完全一致 */
+.nav-tabs {
+  display:flex;
+  gap:10px;
+  margin-bottom:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
 .nav-tab {
-  padding:7px 24px; border:1.5px solid #4a9eff; border-radius:40px;
-  background:#fff; color:#4a9eff; font-size:.82rem; font-weight:500; cursor:pointer; white-space:nowrap;
+  padding:7px 24px;
+  border:1.5px solid #4a9eff;
+  border-radius:40px;
+  background:#fff; color:#4a9eff;
+  font-size:.82rem; font-weight:500;
+  cursor:pointer; white-space:nowrap;
+  flex-shrink:0; /* ← 关键：禁止 tab 被压缩 */
 }
 .nav-tab.active { background:#4a9eff; color:#fff; }
 .nav-tab:active { transform:scale(.96); }
@@ -83,7 +109,6 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 .badge-new { color:#16a34a; font-weight:600; }
 .badge-old { color:#ca8a04; font-weight:600; }
 
-/* URL行 */
 .api-item-urls { display:flex; flex-direction:column; gap:6px; }
 .url-line {
   display:flex; align-items:center; gap:8px; padding:6px 14px;
@@ -92,7 +117,6 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 .url-tag { font-size:.68rem; font-weight:600; color:#3a5a7a; background:#d8e8f8; padding:2px 14px; border-radius:50px; white-space:nowrap; flex-shrink:0; }
 .url-text { font-size:.78rem; color:#2563eb; word-break:break-all; overflow-wrap:break-word; line-height:1.4; flex:1; min-width:0; }
 
-/* 复制按钮 */
 .copy-btn {
   flex-shrink:0; background:#4a9eff; color:#fff; border:none; border-radius:30px;
   padding:0 14px; font-size:.7rem; font-weight:500; cursor:pointer; height:26px;
@@ -103,11 +127,9 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 .copy-btn:active { background:#2a7ed9; transform:scale(.96); }
 .copy-btn.copied { background:#3b9b6c; }
 
-/* 加载/错误 */
 .loading { text-align:center; color:#8fa3b8; padding:60px 0; font-size:.88rem; }
 .error-msg { text-align:center; color:#dc2626; padding:16px 20px; font-size:.8rem; background:#fef2f2; border:1px solid #fecaca; border-radius:4px; margin:12px 0; word-break:break-all; }
 
-/* footer */
 .page-footer { text-align:center; padding:24px 0 10px; font-size:.7rem; color:#8fa3b8; line-height:1.8; flex-shrink:0; }
 
 /* 简洁模式 */
@@ -130,7 +152,8 @@ body.simple-mode #api-panel { display:block !important; }
 @media (max-width:600px) {
   body { padding:14px 8px 6px; }
   #modeToggleBtn { top:10px; left:6px; width:48px; font-size:.52rem; padding:4px 2px; }
-  .main-card { padding:14px 14px 12px; }
+  .main-card { padding:14px 14px 12px; min-height:200px; }
+  .nav-tab { padding:6px 18px; font-size:.75rem; }
   .api-item { padding:12px 0; }
   .url-line { padding:6px 10px; gap:6px; }
   .copy-btn { font-size:.62rem; padding:0 10px; height:24px; }
