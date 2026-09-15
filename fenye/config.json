@@ -1,0 +1,75 @@
+{
+  "site": {
+    "title": "海量接口搬运备份",
+    "logo": "/tvbox/x/jueson.jpg",
+    "subtitle": "备用数据源，防屏不迷路",
+    "qqGroup": "1067685939"
+  },
+  "tabs": [
+    { "id": "api",      "label": "接口", "type": "api" },
+    { "id": "download", "label": "下载", "type": "download" },
+    { "id": "danmu",    "label": "弹幕", "type": "danmu" },
+    { "id": "about",    "label": "关于", "type": "about", "hideSearch": true }
+  ],
+  "api": {
+    "domains": [
+      { "tag": "备份一线", "base": "https://0.12yue.de5.net/tvbox/" },
+      { "tag": "备份二线", "base": "https://0.cdz.qzz.io/tvbox/" },
+      { "tag": "备份三线", "base": "https://0.wdzb.eu.cc/tvbox/" }
+    ],
+    "weights": {
+      "菠菜园.json": 1, "少儿频道.json": 2, "饭太硬.json": 4, "肥猫.json": 5,
+      "摸鱼.json": 6, "王二小.json": 7, "集多.json": 8, "潇洒.json": 9,
+      "小米.json": 10, "嗷呜.json": 11, "南风.json": 12, "小虎斑.json": 13
+    }
+  },
+  "downloadSources": [
+    { "name": "菠菜园",   "url": "ry/菠菜园下载.json",  "description": "整理者：误道者" },
+    { "name": "奇奇副本", "url": "ry/奇奇副本.json",    "description": "整理者：误道者" },
+    { "name": "无优",     "url": "ry/无忧下载.json",    "description": "云星" },
+    { "name": "潇洒",     "url": "ry/潇洒下载.json",    "description": "潇洒" },
+    { "name": "柒豪下载", "url": "ry/柒豪下载.json",    "description": "" },
+    { "name": "应用下载", "url": "ry/应用市场二.json",  "description": "" },
+    { "name": "应用市场", "url": "ry/应用市场一.json",  "description": "" }
+  ],
+  "danmuSources": [
+    { "name": "ecs源",     "url": "http://ecs.dysobo.cn:9321/87654321" },
+    { "name": "快源",       "url": "http://43.143.108.212/87654321" },
+    { "name": "阿里云源",   "url": "http://47.107.188.112:6008/87654321" },
+    { "name": "腾讯云源",   "url": "http://43.135.134.121/87654321" },
+    { "name": "华为云源",   "url": "http://114.116.228.54/87654321" },
+    { "name": "ucloud源",  "url": "http://120.131.0.58/87654321" },
+    { "name": "天翼云源",   "url": "http://106.55.240.101/87654321" },
+    { "name": "百度云源",   "url": "http://180.76.120.66/87654321" },
+    { "name": "京东云源",   "url": "http://114.67.161.57/87654321" },
+    { "name": "青云源",     "url": "http://139.198.18.248/87654321" },
+    { "name": "移动云源",   "url": "http://111.229.198.102/87654321" },
+    { "name": "联通云源",   "url": "http://123.249.36.74/87654321" }
+  ],
+  "about": {
+    "domains": [
+      "https://0.12yue.de5.net",
+      "https://0.cdz.qzz.io",
+      "https://0.wdzb.eu.cc"
+    ],
+    "declaration": "本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。",
+    "qqGroup": "1067685939",
+    "telegram": "https://t.me/+nrWtFerPAfcwOTg9",
+    "contributors": [
+      {
+        "name": "误道者",
+        "role": "站长 / 资源整理",
+        "desc": "站点发起与接口资源整理",
+        "avatar": "/tvbox/x/jueson.jpg",
+        "social": "@误道者"
+      },
+      {
+        "name": "沫离",
+        "role": "弹幕分页",
+        "desc": "独立贡献弹幕接口分页模块",
+        "avatar": "vip/沫离.jpg",
+        "social": "@沫离"
+      }
+    ]
+  }
+}
