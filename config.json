@@ -8,7 +8,7 @@
   "tabs": [
     { "id": "api",      "label": "接口", "type": "api" },
     { "id": "download", "label": "下载", "type": "download" },
-    { "id": "danmu",    "label": "弹幕", "type": "danmu", "hideSearch": true },
+    { "id": "danmu",    "label": "弹幕", "type": "danmu" },
     { "id": "about",    "label": "关于", "type": "about", "hideSearch": true }
   ],
   "api": {
@@ -24,55 +24,27 @@
     }
   },
   "downloadSources": [
-    {
-      "name": "菠菜园",
-      "url": "ry/菠菜园下载.json",
-      "description": "整理者：误道者"
-    },
-    {
-      "name": "奇奇副本",
-      "url": "ry/奇奇副本.json",
-      "description": "整理者：误道者"
-    },
-    {
-      "name": "无优",
-      "url": "ry/无忧下载.json",
-      "description": "云星"
-    },
-    {
-      "name": "潇洒",
-      "url": "ry/潇洒下载.json",
-      "description": "潇洒"
-    },
-    {
-      "name": "柒豪下载",
-      "url": "ry/柒豪下载.json",
-      "description": ""
-    },
-    {
-      "name": "应用下载",
-      "url": "ry/应用市场二.json",
-      "description": ""
-    },
-    {
-      "name": "应用市场",
-      "url": "ry/应用市场一.json",
-      "description": ""
-    }
+    { "name": "菠菜园",   "url": "ry/菠菜园下载.json",  "description": "整理者：误道者" },
+    { "name": "奇奇副本", "url": "ry/奇奇副本.json",    "description": "整理者：误道者" },
+    { "name": "无优",     "url": "ry/无忧下载.json",    "description": "云星" },
+    { "name": "潇洒",     "url": "ry/潇洒下载.json",    "description": "潇洒" },
+    { "name": "柒豪下载", "url": "ry/柒豪下载.json",    "description": "" },
+    { "name": "应用下载", "url": "ry/应用市场二.json",  "description": "" },
+    { "name": "应用市场", "url": "ry/应用市场一.json",  "description": "" }
   ],
   "danmuSources": [
-    { "name": "ecs源",    "url": "http://ecs.dysobo.cn:9321/87654321" },
-    { "name": "快源",     "url": "http://43.143.108.212/87654321" },
-    { "name": "阿里云源", "url": "http://47.107.188.112:6008/87654321" },
-    { "name": "量大",     "url": "http://38.207.186.41/87654321" },
-    { "name": "luosen",   "url": "https://dm.ljiaovm.com/luosen" },
-    { "name": "ip源",     "url": "https://172.252.125.145/87654321" },
-    { "name": "sym源",    "url": "https://danmu1.sym9233.dpdns.org/87654321" },
-    { "name": "777775源", "url": "https://danmu.7777735.xyz/87654321" },
-    { "name": "pizazz源", "url": "https://pizazz.us.ci/1314" },
-    { "name": "公益1",    "url": "https://danmu.iyo.us.ci/theft-dastardly-prognosis-hula-agenda2-dropkick" },
-    { "name": "公益2",    "url": "https://danmu-api-one-vert.vercel.app/87654321" },
-    { "name": "W佬公益源", "url": "https://dm.660505.xyz:8443/a123456" }
+    { "name": "ecs源",     "url": "http://ecs.dysobo.cn:9321/87654321" },
+    { "name": "快源",       "url": "http://43.143.108.212/87654321" },
+    { "name": "阿里云源",   "url": "http://47.107.188.112:6008/87654321" },
+    { "name": "腾讯云源",   "url": "http://43.135.134.121/87654321" },
+    { "name": "华为云源",   "url": "http://114.116.228.54/87654321" },
+    { "name": "ucloud源",  "url": "http://120.131.0.58/87654321" },
+    { "name": "天翼云源",   "url": "http://106.55.240.101/87654321" },
+    { "name": "百度云源",   "url": "http://180.76.120.66/87654321" },
+    { "name": "京东云源",   "url": "http://114.67.161.57/87654321" },
+    { "name": "青云源",     "url": "http://139.198.18.248/87654321" },
+    { "name": "移动云源",   "url": "http://111.229.198.102/87654321" },
+    { "name": "联通云源",   "url": "http://123.249.36.74/87654321" }
   ],
   "about": {
     "domains": [
@@ -81,7 +53,23 @@
       "https://0.wdzb.eu.cc"
     ],
     "declaration": "本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。",
-    "qqGroup": "1067685939"
+    "qqGroup": "1067685939",
+    "telegram": "https://t.me/+nrWtFerPAfcwOTg9",
+    "contributors": [
+      {
+        "name": "误道者",
+        "role": "站长 / 资源整理",
+        "desc": "站点发起与接口资源整理",
+        "avatar": "",
+        "social": "@误道者"
+      },
+      {
+        "name": "沫离",
+        "role": "弹幕分页",
+        "desc": "独立贡献弹幕接口分页模块",
+        "avatar": "",
+        "social": "@沫离"
+      }
+    ]
   }
 }
-
