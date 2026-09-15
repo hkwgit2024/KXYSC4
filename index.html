@@ -383,6 +383,7 @@ body.simple-mode .nav-tabs {
 
 body.simple-mode #live-panel,
 body.simple-mode #download-panel,
+body.simple-mode #danmu-panel,
 body.simple-mode #about-panel {
   display: none !important;
 }
@@ -682,6 +683,13 @@ body.simple-mode #api-panel {
       </div>
     </div>
 
+    <!-- 弹幕面板 -->
+    <div class="tab-panel" id="danmu-panel">
+      <div id="danmu-content">
+        <div class="loading">⏳ 正在加载弹幕接口...</div>
+      </div>
+    </div>
+
     <!-- 关于面板 -->
     <div class="tab-panel" id="about-panel">
       <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
@@ -699,15 +707,18 @@ body.simple-mode #api-panel {
           <span style="flex:1;font-size:.75rem;color:#2563eb">https://0.wdzb.eu.cc</span>
           <button class="copy-btn" data-url="https://0.wdzb.eu.cc">复制</button>
         </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
+          <span style="flex:1;font-size:.75rem;color:#2563eb">https://tvbox.moliys.icu</span>
+          <button class="copy-btn" data-url="https://tvbox.moliys.icu">复制</button>
+        </div>
       </div>
       <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
         <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">📢 声明与联系</h3>
         <ul style="padding-left:16px">
           <li style="font-size:.76rem;color:#5a6f88;line-height:1.6">本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。</li>
         </ul>
-        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">QQ交流群：<a href="https://qm.qq.com/q/gmRKKPT3x0" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">1067685939</a></p>
-        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<a href="https://t.me/+nrWtFerPAfcwOTg9" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">t.me/+nrWtFerPAfcwOTg9</a></p>
-        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">项目地址：<a href="https://github.com/lubin776/tvbox-api-backup" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">github.com/lubin776/tvbox-api-backup</a></p>
+        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">QQ 交流群：<strong style="color:#4a9eff">1067685939</strong></p>
+        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<strong style="color:#4a9eff">https://t.me/+nrWtFerPAfcwOTg9</strong></p>
       </div>
     </div>
 
@@ -762,6 +773,7 @@ let currentMode = localStorage.getItem(MODE_KEY) || 'simple';
 let currentTabId = 'api';
 let topSeed = Date.now();
 let DOWNLOAD_SOURCES = [];
+let DANMU_SOURCES = [];
 let rawListText = null;
 let rawLiveText = null;
 
@@ -823,8 +835,10 @@ async function loadDownloadConfig() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const cfg = await res.json();
     DOWNLOAD_SOURCES = Array.isArray(cfg.downloadSources) ? cfg.downloadSources : [];
+    DANMU_SOURCES = Array.isArray(cfg.danmuSources) ? cfg.danmuSources : [];
   } catch (e) {
     DOWNLOAD_SOURCES = [];
+    DANMU_SOURCES = [];
   }
 }
 
@@ -1033,11 +1047,35 @@ async function renderDownloads(force) {
   container.innerHTML = html;
 }
 
+/* ===== 弹幕接口 ===== */
+function renderDanmu() {
+  const container = document.getElementById('danmu-content');
+  if (!container) return;
+  if (!DANMU_SOURCES.length) {
+    container.innerHTML = '<div class="error-msg">⚠️ 未配置弹幕源，请检查 config.json 中的 danmuSources</div>';
+    return;
+  }
+  let rows = '';
+  DANMU_SOURCES.forEach(s => {
+    rows += `<div class="danmu-item" data-name="${s.name.toLowerCase()}" style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:8px">
+      <span style="flex:0 0 auto;font-size:.78rem;font-weight:600;color:#0b1e33">${s.name}</span>
+      <span style="flex:1;font-size:.75rem;color:#2563eb;word-break:break-all">${s.url}</span>
+      <button class="copy-btn" data-url="${s.url}">复制</button>
+    </div>`;
+  });
+  container.innerHTML = `<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7">
+    <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">💬 弹幕接口</h3>
+    <p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">共 ${DANMU_SOURCES.length} 条，点击「复制」把地址填入播放器的弹幕接口。</p>
+    ${rows}
+  </div>`;
+}
+
 /* ===== 标签导航 ===== */
 const tabsData = [
   { id: "api", label: "点播", hideSearch: false },
   { id: "live", label: "直播", hideSearch: false },
   { id: "download", label: "下载", hideSearch: false },
+  { id: "danmu", label: "弹幕", hideSearch: true },
   { id: "about", label: "关于", hideSearch: true }
 ];
 
@@ -1060,6 +1098,7 @@ function showPanel(tabId) {
     document.querySelectorAll('#api-panel .api-item.hidden').forEach(e => e.classList.remove('hidden'));
     document.querySelectorAll('#live-panel .live-item.hidden').forEach(e => e.classList.remove('hidden'));
     document.querySelectorAll('.download-card.hidden').forEach(e => e.classList.remove('hidden'));
+    document.querySelectorAll('#danmu-panel .danmu-item.hidden').forEach(e => e.classList.remove('hidden'));
   }
   if (tabId === 'api') {
     topSeed = Date.now() + Math.random();
@@ -1070,6 +1109,7 @@ function showPanel(tabId) {
   if (panel) panel.classList.add('active');
   if (tabId === 'live') renderLiveList();
   if (tabId === 'download') renderDownloads();
+  if (tabId === 'danmu') renderDanmu();
   const t = tabsData.find(t => t.id === tabId);
   if (searchBox) searchBox.style.display = (t && t.hideSearch) ? 'none' : '';
 }
@@ -1089,6 +1129,10 @@ function globalSearch() {
     document.querySelectorAll('.download-card').forEach(c => {
       const n = c.getAttribute('data-name') || '';
       c.classList.toggle('hidden', !n.includes(kw));
+    });
+    document.querySelectorAll('#danmu-panel .danmu-item').forEach(e => {
+      const n = e.getAttribute('data-name') || '';
+      e.classList.toggle('hidden', !n.includes(kw));
     });
   }
 }
@@ -1132,7 +1176,10 @@ btn.addEventListener('click', () => {
 renderTabs();
 renderApi();
 loadDownloadConfig().then(() => {
-  if (currentMode !== 'simple') renderDownloads();
+  if (currentMode !== 'simple') {
+    renderDownloads();
+    renderDanmu();
+  }
 });
 </script>
 </body>
