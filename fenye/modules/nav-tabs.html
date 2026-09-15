@@ -1,40 +1,48 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="../assets/common.css">
-</head>
-<body>
 <div class="main-card">
   <div class="nav-tabs" id="navTabs"></div>
-
-  <!-- ③ 点播面板 -->
   <div class="tab-panel active" id="api-panel">
-    <iframe src="api-list.html" data-module="api-list" scrolling="no"></iframe>
+    <div class="api-list" id="listContainer">
+      <div class="loading" id="apiLoading">⏳ 正在加载接口列表...</div>
+    </div>
   </div>
-
-  <!-- ⑥⑦ 直播面板 -->
   <div class="tab-panel" id="live-panel">
-    <iframe src="live-aggregate.html" data-module="live-aggregate" scrolling="no"></iframe>
-    <iframe src="live-list.html" data-module="live-list" scrolling="no"></iframe>
+    <div class="live-top-aggregate">
+      <h3>海量直播聚合多线路专用接口</h3>
+      <div class="domain-line">
+        <span>https://0.12yue.de5.net/tvbox/海量直播线路.json</span>
+        <button class="copy-btn" data-url="https://0.12yue.de5.net/tvbox/海量直播线路.json">复制</button>
+      </div>
+    </div>
+    <div class="live-list" id="liveListContainer">
+      <div class="loading" id="liveLoading">⏳ 正在加载直播列表...</div>
+    </div>
   </div>
-
-  <!-- ⑧ 下载面板 -->
   <div class="tab-panel" id="download-panel">
-    <iframe src="download.html" data-module="download" scrolling="no"></iframe>
+    <div id="downloads-content"><div class="loading">⏳ 正在加载下载资源...</div></div>
   </div>
-
-  <!-- ⑨ 弹幕面板 -->
   <div class="tab-panel" id="danmu-panel">
-    <iframe src="danmu.html" data-module="danmu" scrolling="no"></iframe>
+    <div id="danmu-content"><div class="loading">⏳ 正在加载弹幕接口...</div></div>
   </div>
-
-  <!-- ⑩ 关于面板 -->
   <div class="tab-panel" id="about-panel">
-    <iframe src="about.html" data-module="about" scrolling="no"></iframe>
+    <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
+      <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">🌐 备份线路域名</h3>
+      <p style="margin-bottom:6px;font-size:.76rem;color:#5a6f88">四个域名互为备份，任一个可用：</p>
+      <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px"><span style="flex:1;font-size:.75rem;color:#2563eb">https://0.12yue.de5.net</span><button class="copy-btn" data-url="https://0.12yue.de5.net">复制</button></div>
+      <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px"><span style="flex:1;font-size:.75rem;color:#2563eb">https://0.cdz.qzz.io</span><button class="copy-btn" data-url="https://0.cdz.qzz.io">复制</button></div>
+      <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px"><span style="flex:1;font-size:.75rem;color:#2563eb">https://0.wdzb.eu.cc</span><button class="copy-btn" data-url="https://0.wdzb.eu.cc">复制</button></div>
+      <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px"><span style="flex:1;font-size:.75rem;color:#2563eb">https://tvbox.moliys.icu</span><button class="copy-btn" data-url="https://tvbox.moliys.icu">复制</button></div>
+    </div>
+    <div id="contributors-card" style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
+      <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">🤝 合作共创</h3>
+      <p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">感谢以下伙伴对本站的内容贡献与支持：</p>
+      <div class="contributor-grid" id="contributors-list"><div class="loading">⏳ 正在加载贡献者...</div></div>
+    </div>
+    <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
+      <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">📢 声明与联系</h3>
+      <ul style="padding-left:16px"><li style="font-size:.76rem;color:#5a6f88;line-height:1.6">本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。</li></ul>
+      <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">QQ 交流群：<a href="https://qm.qq.com/q/gmRKKPT3x0" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">1067685939</a></p>
+      <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<a href="https://t.me/+nrWtFerPAfcwOTg9" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">https://t.me/+nrWtFerPAfcwOTg9</a></p>
+      <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">项目地址：<a href="https://github.com/lubin776/tvbox-api-backup" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">https://github.com/lubin776/tvbox-api-backup</a></p>
+    </div>
   </div>
 </div>
-
-<script src="../assets/common.js"></script>
-</body>
-</html>
