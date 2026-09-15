@@ -535,20 +535,13 @@ body.simple-mode #api-panel {
   margin-top: 8px !important;
 }
 
-/* ===== 合作共创人员名单（复刻自0.html） ===== */
+/* ===== 合作共创人员名单 ===== */
 #contributors-card {
-  background: #f8fafd !important;
-  border-radius: 8px !important;
-  padding: 16px 18px !important;
-  margin-bottom: 14px !important;
-  border: 1px solid #e4ebf3 !important;
-}
-
-.contributor-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 12px;
-  width: 100%;
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+  border: none !important;
 }
 
 .contributor-card {
@@ -817,7 +810,7 @@ body.simple-mode #api-panel {
         <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<strong style="color:#4a9eff">https://t.me/+nrWtFerPAfcwOTg9</strong></p>
       </div>
 
-      <!-- 合作共创（复刻自0.html） -->
+      <!-- 合作共创 -->
       <div id="contributors-card">
         <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">🤝 合作共创</h3>
         <p style="font-size:.72rem;color:#8b9eb0;margin-bottom:12px;line-height:1.6">感谢以下伙伴对本站的内容贡献与支持，排名不分先后。</p>
@@ -962,7 +955,7 @@ async function loadConfig() {
   }
 }
 
-/* ===== 关于页：合作共创人员名单（复刻自0.html） ===== */
+/* ===== 关于页：合作共创人员名单 ===== */
 function renderAbout(about) {
   const list = about && Array.isArray(about.contributors) ? about.contributors : [];
   const container = document.getElementById('contributors-list');
@@ -971,7 +964,7 @@ function renderAbout(about) {
     container.innerHTML = '<div class="error-msg">暂无贡献者信息</div>';
     return;
   }
-  container.innerHTML = '<div class="contributor-grid">' + list.map(c => {
+  container.innerHTML = list.map(c => {
     const initial = (c.name || '?').trim().charAt(0);
     const avatar = c.avatar
       ? `<img src="${c.avatar}" alt="${c.name}" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}'}))">`
@@ -986,7 +979,7 @@ function renderAbout(about) {
         <div class="contributor-desc">${c.desc || ''}</div>
         ${social}
       </div>`;
-  }).join('') + '</div>';
+  }).join('');
 }
 
 /* ===== 点播接口 ===== */
