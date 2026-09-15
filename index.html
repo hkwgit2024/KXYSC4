@@ -383,7 +383,6 @@ body.simple-mode .nav-tabs {
 
 body.simple-mode #live-panel,
 body.simple-mode #download-panel,
-body.simple-mode #danmu-panel,
 body.simple-mode #about-panel {
   display: none !important;
 }
@@ -532,6 +531,98 @@ body.simple-mode #api-panel {
   border-radius: 50px !important;
   padding: 8px 16px !important;
   margin-top: 8px !important;
+}
+
+/* ===== 合作共创人员名单 ===== */
+#contributors-card {
+  background: #f8fafd !important;
+  border-radius: 8px !important;
+  padding: 16px 18px !important;
+  margin-bottom: 14px !important;
+  border: 1px solid #e4ebf3 !important;
+}
+
+.contributor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.contributor-card {
+  background: #fff;
+  border: 1px solid #e4ebf3;
+  border-radius: 14px;
+  padding: 16px 12px 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.contributor-card:active {
+  transform: scale(.98);
+}
+
+.contributor-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4a9eff, #1e6fda);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.contributor-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contributor-name {
+  font-size: .85rem;
+  font-weight: 700;
+  color: #0b1e33;
+  line-height: 1.3;
+}
+
+.contributor-role {
+  display: inline-block;
+  font-size: .62rem;
+  font-weight: 600;
+  color: #1e6fda;
+  background: #e6f2ff;
+  padding: 2px 10px;
+  border-radius: 50px;
+  margin: 6px 0 6px;
+  line-height: 1.4;
+}
+
+.contributor-desc {
+  font-size: .7rem;
+  color: #7a8fa3;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.contributor-social {
+  margin-top: 8px;
+  font-size: .68rem;
+  color: #4a9eff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.contributor-social:hover {
+  text-decoration: underline;
 }
 
 /* ===== 移动端适配 ===== */
@@ -683,18 +774,11 @@ body.simple-mode #api-panel {
       </div>
     </div>
 
-    <!-- 弹幕面板 -->
-    <div class="tab-panel" id="danmu-panel">
-      <div id="danmu-content">
-        <div class="loading">⏳ 正在加载弹幕接口...</div>
-      </div>
-    </div>
-
     <!-- 关于面板 -->
     <div class="tab-panel" id="about-panel">
       <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
         <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">🌐 备份线路域名</h3>
-        <p style="margin-bottom:6px;font-size:.76rem;color:#5a6f88">三个域名互为备份，任一个可用：</p>
+        <p style="margin-bottom:6px;font-size:.76rem;color:#5a6f88">域名互为备份，任一个可用：</p>
         <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
           <span style="flex:1;font-size:.75rem;color:#2563eb">https://0.12yue.de5.net</span>
           <button class="copy-btn" data-url="https://0.12yue.de5.net">复制</button>
@@ -719,6 +803,11 @@ body.simple-mode #api-panel {
         </ul>
         <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">QQ 交流群：<strong style="color:#4a9eff">1067685939</strong></p>
         <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<strong style="color:#4a9eff">https://t.me/+nrWtFerPAfcwOTg9</strong></p>
+      </div>
+      <div id="contributors-card">
+        <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">🤝 合作共创</h3>
+        <p style="font-size:.72rem;color:#8b9eb0;margin-bottom:12px;line-height:1.6">感谢以下伙伴对本站的内容贡献与支持，排名不分先后。</p>
+        <div id="contributors-list"><div class="loading" style="padding:24px 0">⏳ 正在加载贡献者名单...</div></div>
       </div>
     </div>
 
@@ -774,6 +863,7 @@ let currentTabId = 'api';
 let topSeed = Date.now();
 let DOWNLOAD_SOURCES = [];
 let DANMU_SOURCES = [];
+let CONFIG = null;
 let rawListText = null;
 let rawLiveText = null;
 
@@ -829,17 +919,50 @@ function getTopItem(rotateItems) {
   return rotateItems[idx];
 }
 
-async function loadDownloadConfig() {
+async function loadConfig() {
   try {
     const res = await fetch('config.json?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const cfg = await res.json();
+    CONFIG = cfg;
     DOWNLOAD_SOURCES = Array.isArray(cfg.downloadSources) ? cfg.downloadSources : [];
     DANMU_SOURCES = Array.isArray(cfg.danmuSources) ? cfg.danmuSources : [];
+    if (cfg.about) renderAbout(cfg.about);
   } catch (e) {
+    CONFIG = null;
     DOWNLOAD_SOURCES = [];
     DANMU_SOURCES = [];
   }
+}
+
+// 兼容旧调用名
+function loadDownloadConfig() { return loadConfig(); }
+
+/* ===== 关于页：合作共创人员名单 ===== */
+function renderAbout(about) {
+  const list = about && Array.isArray(about.contributors) ? about.contributors : [];
+  const container = document.getElementById('contributors-list');
+  if (!container) return;
+  if (!list.length) {
+    container.innerHTML = '<div class="error-msg">暂无贡献者信息</div>';
+    return;
+  }
+  container.innerHTML = '<div class="contributor-grid">' + list.map(c => {
+    const initial = (c.name || '?').trim().charAt(0);
+    const avatar = c.avatar
+      ? `<img src="${c.avatar}" alt="${c.name}" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}'}))">`
+      : `<span>${initial}</span>`;
+    const social = c.social
+      ? `<a class="contributor-social" href="javascript:void(0)" data-social="${c.social}">${c.social}</a>`
+      : '';
+    return `<div class="contributor-card" data-name="${(c.name || '').toLowerCase()}">
+        <div class="contributor-avatar">${avatar}</div>
+        <div class="contributor-name">${c.name || ''}</div>
+        <span class="contributor-role">${c.role || '贡献者'}</span>
+        <div class="contributor-desc">${c.desc || ''}</div>
+        ${social}
+      </div>`;
+  }).join('') + '</div>';
 }
 
 function formatDateToChinese(d) {
@@ -1047,35 +1170,11 @@ async function renderDownloads(force) {
   container.innerHTML = html;
 }
 
-/* ===== 弹幕接口 ===== */
-function renderDanmu() {
-  const container = document.getElementById('danmu-content');
-  if (!container) return;
-  if (!DANMU_SOURCES.length) {
-    container.innerHTML = '<div class="error-msg">⚠️ 未配置弹幕源，请检查 config.json 中的 danmuSources</div>';
-    return;
-  }
-  let rows = '';
-  DANMU_SOURCES.forEach(s => {
-    rows += `<div class="danmu-item" data-name="${s.name.toLowerCase()}" style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:8px">
-      <span style="flex:0 0 auto;font-size:.78rem;font-weight:600;color:#0b1e33">${s.name}</span>
-      <span style="flex:1;font-size:.75rem;color:#2563eb;word-break:break-all">${s.url}</span>
-      <button class="copy-btn" data-url="${s.url}">复制</button>
-    </div>`;
-  });
-  container.innerHTML = `<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7">
-    <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">💬 弹幕接口</h3>
-    <p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">共 ${DANMU_SOURCES.length} 条，点击「复制」把地址填入播放器的弹幕接口。</p>
-    ${rows}
-  </div>`;
-}
-
 /* ===== 标签导航 ===== */
 const tabsData = [
   { id: "api", label: "点播", hideSearch: false },
   { id: "live", label: "直播", hideSearch: false },
   { id: "download", label: "下载", hideSearch: false },
-  { id: "danmu", label: "弹幕", hideSearch: true },
   { id: "about", label: "关于", hideSearch: true }
 ];
 
@@ -1098,7 +1197,6 @@ function showPanel(tabId) {
     document.querySelectorAll('#api-panel .api-item.hidden').forEach(e => e.classList.remove('hidden'));
     document.querySelectorAll('#live-panel .live-item.hidden').forEach(e => e.classList.remove('hidden'));
     document.querySelectorAll('.download-card.hidden').forEach(e => e.classList.remove('hidden'));
-    document.querySelectorAll('#danmu-panel .danmu-item.hidden').forEach(e => e.classList.remove('hidden'));
   }
   if (tabId === 'api') {
     topSeed = Date.now() + Math.random();
@@ -1109,7 +1207,6 @@ function showPanel(tabId) {
   if (panel) panel.classList.add('active');
   if (tabId === 'live') renderLiveList();
   if (tabId === 'download') renderDownloads();
-  if (tabId === 'danmu') renderDanmu();
   const t = tabsData.find(t => t.id === tabId);
   if (searchBox) searchBox.style.display = (t && t.hideSearch) ? 'none' : '';
 }
@@ -1130,11 +1227,12 @@ function globalSearch() {
       const n = c.getAttribute('data-name') || '';
       c.classList.toggle('hidden', !n.includes(kw));
     });
-    document.querySelectorAll('#danmu-panel .danmu-item').forEach(e => {
-      const n = e.getAttribute('data-name') || '';
-      e.classList.toggle('hidden', !n.includes(kw));
+    document.querySelectorAll('.contributor-card').forEach(c => {
+      const n = c.getAttribute('data-name') || '';
+      c.classList.toggle('hidden', !n.includes(kw));
     });
   }
+  if (!kw) renderAbout((CONFIG && CONFIG.about) || null);
 }
 
 /* ===== 搜索框位置 ===== */
@@ -1176,10 +1274,7 @@ btn.addEventListener('click', () => {
 renderTabs();
 renderApi();
 loadDownloadConfig().then(() => {
-  if (currentMode !== 'simple') {
-    renderDownloads();
-    renderDanmu();
-  }
+  if (currentMode !== 'simple') renderDownloads();
 });
 </script>
 </body>
