@@ -8,6 +8,7 @@
   "tabs": [
     { "id": "api",      "label": "接口", "type": "api" },
     { "id": "download", "label": "下载", "type": "download" },
+    { "id": "danmu",    "label": "弹幕", "type": "danmu", "hideSearch": true },
     { "id": "about",    "label": "关于", "type": "about", "hideSearch": true }
   ],
   "api": {
@@ -23,16 +24,16 @@
     }
   },
   "downloadSources": [
-      {
+    {
       "name": "菠菜园",
       "url": "ry/菠菜园下载.json",
       "description": "整理者：误道者"
-    }, 
+    },
     {
       "name": "奇奇副本",
       "url": "ry/奇奇副本.json",
       "description": "整理者：误道者"
-    }, 
+    },
     {
       "name": "无优",
       "url": "ry/无忧下载.json",
@@ -59,6 +60,20 @@
       "description": ""
     }
   ],
+  "danmuSources": [
+    { "name": "ecs源",    "url": "http://ecs.dysobo.cn:9321/87654321" },
+    { "name": "快源",     "url": "http://43.143.108.212/87654321" },
+    { "name": "阿里云源", "url": "http://47.107.188.112:6008/87654321" },
+    { "name": "量大",     "url": "http://38.207.186.41/87654321" },
+    { "name": "luosen",   "url": "https://dm.ljiaovm.com/luosen" },
+    { "name": "ip源",     "url": "https://172.252.125.145/87654321" },
+    { "name": "sym源",    "url": "https://danmu1.sym9233.dpdns.org/87654321" },
+    { "name": "777775源", "url": "https://danmu.7777735.xyz/87654321" },
+    { "name": "pizazz源", "url": "https://pizazz.us.ci/1314" },
+    { "name": "公益1",    "url": "https://danmu.iyo.us.ci/theft-dastardly-prognosis-hula-agenda2-dropkick" },
+    { "name": "公益2",    "url": "https://danmu-api-one-vert.vercel.app/87654321" },
+    { "name": "W佬公益源", "url": "https://dm.660505.xyz:8443/a123456" }
+  ],
   "about": {
     "domains": [
       "https://0.12yue.de5.net",
@@ -69,3 +84,4 @@
     "qqGroup": "1067685939"
   }
 }
+
