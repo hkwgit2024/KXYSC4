@@ -2,344 +2,512 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>海量接口搬运备份9</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
+<title>海量接口搬运备份</title>
 <style>
-/* ========== 全局重置 ========== */
-* {
+/* ===== 全局重置与基础 ===== */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  background: linear-gradient(135deg, #f0f4f8 0%, #e8eef5 100%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #eef2f7;
+  color: #1a2b3d;
+  padding: 20px 14px 10px;
   min-height: 100vh;
-  color: #1a2b3c;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus,
+button:focus-visible,
+.nav-tab:focus,
+.nav-tab:focus-visible,
+.copy-btn:focus,
+.copy-btn:focus-visible,
+input:focus,
+input:focus-visible {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* ===== 布局容器 ===== */
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ===== 模式切换按钮 ===== */
+#modeToggleBtn {
+  position: absolute;
+  top: 14px;
+  left: 10px;
+  z-index: 999;
+  width: 56px;
+  padding: 6px 4px;
+  border-radius: 50px;
+  border: 1px solid #4a9eff;
+  background: #fff;
+  color: #4a9eff;
+  font-size: .58rem;
+  line-height: 1.3;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* ===== 头部 ===== */
+.header-block {
+  text-align: center;
+  margin-bottom: 16px;
+  padding-top: 14px;
+}
+
+h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0a1a2b;
+}
+
+h1 .header-logo {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid #4a9eff;
+  object-fit: cover;
+  vertical-align: -.5rem;
+  margin-right: 8px;
+}
+
+.header-divider {
+  height: 1px;
+  background: #e4ebf3;
+  margin: 12px 0;
+}
+
+.subtitle {
+  font-size: .78rem;
+  color: #7a8fa3;
   line-height: 1.6;
 }
 
-/* ========== 头部 ========== */
-.header {
-  background: linear-gradient(135deg, #1e6fda 0%, #4a9eff 100%);
-  color: #fff;
-  padding: 24px 16px 20px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.header::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 60%);
-  animation: headerGlow 8s ease-in-out infinite;
-}
-
-@keyframes headerGlow {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(5%, 5%); }
-}
-
-.header h1 {
-  font-size: 1.4rem;
-  font-weight: 800;
-  margin-bottom: 4px;
-  position: relative;
-  letter-spacing: -.02em;
-}
-
-.header p {
-  font-size: .82rem;
-  opacity: .88;
-  position: relative;
-}
-
-/* ========== 搜索栏 ========== */
-.search-bar {
-  max-width: 640px;
-  margin: -14px auto 0;
-  padding: 0 14px;
-  position: relative;
-  z-index: 10;
-}
-
-.search-input {
+/* ===== 搜索框 ===== */
+.search-box {
   width: 100%;
-  height: 40px;
-  padding: 0 38px 0 14px;
-  border: 1.5px solid #dde4ef;
-  border-radius: 12px;
-  font-size: .85rem;
+  padding: 10px 16px;
+  border: 1px solid #d4dbe5;
+  border-radius: 50px;
+  font-size: .92rem;
   background: #fff;
   outline: none;
-  transition: border-color .15s, box-shadow .15s;
   -webkit-appearance: none;
 }
 
-.search-input:focus {
-  border-color: #4a9eff;
-  box-shadow: 0 0 0 3px rgba(74,158,255,.12);
+body.simple-mode .search-box {
+  margin-bottom: 20px;
 }
 
-.search-clear {
-  position: absolute;
-  right: 22px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #e8eef5;
-  color: #7a8fa3;
-  font-size: .8rem;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: none;
-}
-
-.search-clear.visible {
-  display: flex;
-}
-
-/* ========== 主容器 ========== */
-.container {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 14px;
-}
-
-/* ========== 统计栏 ========== */
-.stats-bar {
-  display: flex;
-  gap: 8px;
+body:not(.simple-mode) .search-box {
   margin-bottom: 14px;
 }
 
-.stat-item {
+/* ===== 主卡片 ===== */
+.main-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px 22px 18px;
+  border: 1px solid #d4dbe5;
   flex: 1;
-  background: #fff;
-  border-radius: 12px;
-  padding: 12px 8px;
-  text-align: center;
-  border: 1px solid #e4ebf3;
-}
-
-.stat-num {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #1e6fda;
-  line-height: 1.2;
-}
-
-.stat-label {
-  font-size: .68rem;
-  color: #7a8fa3;
-  margin-top: 2px;
-}
-
-/* ========== 分类标签 ========== */
-.category-tabs {
   display: flex;
-  gap: 8px;
-  margin-bottom: 14px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding-bottom: 2px;
+  flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
 }
 
-.category-tabs::-webkit-scrollbar { display: none; }
+/* ===== 导航标签 ===== */
+.nav-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-.tab-btn {
-  padding: 7px 16px;
-  border-radius: 50px;
-  font-size: .8rem;
-  font-weight: 600;
+.nav-tab {
+  padding: 7px 24px;
+  border: 1.5px solid #4a9eff;
+  border-radius: 40px;
   background: #fff;
-  border: 1px solid #e4ebf3;
-  color: #4a5d6a;
+  color: #4a9eff;
+  font-size: .82rem;
+  font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  transition: all .15s;
-  flex-shrink: 0;
 }
 
-.tab-btn.active {
-  background: #1e6fda;
+.nav-tab.active {
+  background: #4a9eff;
   color: #fff;
-  border-color: #1e6fda;
-  box-shadow: 0 2px 8px rgba(30,111,218,.3);
 }
 
-/* ========== 接口卡片 ========== */
-.api-card {
-  background: #fff;
-  border-radius: 14px;
-  border: 1px solid #e4ebf3;
-  margin-bottom: 10px;
-  overflow: hidden;
-  transition: transform .12s, box-shadow .12s;
+.nav-tab:active {
+  transform: scale(.96);
 }
 
-.api-card:active {
-  transform: scale(.995);
+/* ===== 面板 ===== */
+.tab-panel {
+  display: none;
+  width: 100%;
 }
 
-.card-header {
-  padding: 12px 14px 10px;
+.tab-panel.active {
+  display: block;
+}
+
+/* ===== 列表项 ===== */
+.api-list,
+.live-list {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  cursor: pointer;
+  flex-direction: column;
+  width: 100%;
 }
 
-.card-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #e8f4ff, #d8eaff);
+.api-item,
+.live-item {
+  padding: 14px 0;
+  border-bottom: 1px solid #e4ebf3;
+}
+
+.api-item:last-child,
+.live-item:last-child {
+  border-bottom: none;
+}
+
+.api-item.hidden,
+.live-item.hidden,
+.download-card.hidden,
+.contributor-card.hidden {
+  display: none !important;
+}
+
+.api-item-header,
+.live-item-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  flex-shrink: 0;
+  gap: 12px;
+  margin-bottom: 10px;
 }
 
-.card-info {
+.api-item-name,
+.live-item-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0a1a2b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   flex: 1;
   min-width: 0;
 }
 
-.card-title {
-  font-size: .9rem;
-  font-weight: 700;
-  color: #0b1e33;
-  margin-bottom: 2px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.card-size {
-  font-size: .65rem;
-  font-weight: 600;
-  color: #1e6fda;
-  background: #e6f2ff;
-  padding: 1px 7px;
-  border-radius: 50px;
-}
-
-.card-date {
-  font-size: .7rem;
-  color: #8fa3b5;
-}
-
-.expand-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #f0f4f8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform .2s;
-  flex-shrink: 0;
-  border: none;
-  color: #4a5d6a;
-  font-size: .75rem;
-}
-
-.expand-btn.expanded {
-  transform: rotate(180deg);
-  background: #e6f2ff;
-  color: #1e6fda;
-}
-
-.card-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .25s ease;
-}
-
-.card-body.expanded {
-  max-height: 400px;
-}
-
-.link-row {
+.api-item-meta,
+.live-item-meta {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
-  border-top: 1px solid #f0f4f8;
-}
-
-.link-label {
-  font-size: .7rem;
-  font-weight: 600;
-  color: #7a8fa3;
-  min-width: 48px;
-  flex-shrink: 0;
-}
-
-.link-url {
-  flex: 1;
-  font-size: .75rem;
-  color: #4a5d6a;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-family: "SF Mono", "Fira Code", monospace;
-}
-
-.copy-btn {
-  padding: 5px 12px;
-  border-radius: 7px;
   font-size: .72rem;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: all .12s;
+  white-space: nowrap;
   flex-shrink: 0;
 }
 
-.copy-btn-primary {
-  background: #1e6fda;
+.badge-new,
+.live-badge-new {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.badge-old,
+.live-badge-old {
+  color: #ca8a04;
+  font-weight: 600;
+}
+
+/* ===== URL 行 ===== */
+.api-item-urls,
+.live-item-urls {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.url-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: #f4f8fc;
+  border: 1px solid #e0e8f0;
+  border-radius: 50px;
+  min-width: 0;
+}
+
+.url-tag,
+.live-url-tag {
+  font-size: .68rem;
+  font-weight: 600;
+  color: #3a5a7a;
+  background: #d8e8f8;
+  padding: 2px 14px;
+  border-radius: 50px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.url-text,
+.live-url-text {
+  font-size: .78rem;
+  color: #2563eb;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  line-height: 1.4;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ===== 复制按钮 ===== */
+.copy-btn {
+  flex-shrink: 0;
+  background: #4a9eff;
   color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 0 14px;
+  font-size: .7rem;
+  font-weight: 500;
+  cursor: pointer;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s, transform .05s;
+  white-space: nowrap;
+  margin-left: auto;
+  position: relative;
+  z-index: 2;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-.copy-btn-primary:active {
-  background: #155bc0;
-  transform: scale(.95);
+.copy-btn:active {
+  background: #2a7ed9;
+  transform: scale(.96);
 }
 
-.copy-btn-secondary {
-  background: #f0f4f8;
-  color: #4a5d6a;
+.copy-btn.copied {
+  background: #3b9b6c;
 }
 
-.copy-btn-secondary:active {
-  background: #e0e8f0;
-  transform: scale(.95);
+/* 直播聚合块复制按钮差异化 */
+.live-top-aggregate .copy-btn {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, .92);
+  color: #1a4a7a;
+  margin-left: 0;
+  border-radius: 30px;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/* ========== 关于面板 ========== */
-#about-panel {
-  display: none;
+.live-top-aggregate .copy-btn:active {
+  transform: scale(.96);
+  background: rgba(255, 255, 255, 1);
 }
 
-#about-panel.active {
-  display: block;
+.live-top-aggregate .copy-btn.copied {
+  background: #d1f5e0;
+  color: #0a6a3a;
 }
 
+.live-top-aggregate .domain-line span {
+  pointer-events: none;
+}
+
+/* ===== 加载/错误 ===== */
+.loading {
+  text-align: center;
+  color: #8fa3b8;
+  padding: 60px 0;
+  font-size: .88rem;
+}
+
+.error-msg {
+  text-align: center;
+  color: #dc2626;
+  padding: 16px 20px;
+  font-size: .8rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+  margin: 12px 0;
+  word-break: break-all;
+}
+
+/* ===== 页脚 ===== */
+.page-footer {
+  text-align: center;
+  padding: 24px 0 10px;
+  font-size: .7rem;
+  color: #8fa3b8;
+  line-height: 1.8;
+  flex-shrink: 0;
+}
+
+/* ===== 简洁模式 ===== */
+body.simple-mode .nav-tabs {
+  display: none !important;
+}
+
+body.simple-mode #live-panel,
+body.simple-mode #download-panel,
+body.simple-mode #danmu-panel,
+body.simple-mode #about-panel {
+  display: none !important;
+}
+
+body.simple-mode #api-panel {
+  display: block !important;
+}
+
+/* ===== 直播面板 ===== */
+#live-panel {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.live-top-aggregate {
+  background: linear-gradient(135deg, #4a9eff 0%, #1e6fda 100%);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(74, 158, 255, .3);
+  overflow-x: hidden;
+}
+
+.live-top-aggregate h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.live-top-aggregate .domain-line {
+  background: rgba(255, 255, 255, .15);
+  border: 1px solid rgba(255, 255, 255, .3);
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  min-width: 0;
+}
+
+.live-top-aggregate .domain-line span {
+  flex: 1;
+  font-size: .74rem;
+  font-weight: 500;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.live-url-line {
+  background: #f4f8fc;
+  border: 1px solid #e0e8f0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+}
+
+.live-info-inline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .65rem;
+  color: #7a8fa3;
+  line-height: 1.4;
+  flex-wrap: wrap;
+  word-break: break-all;
+}
+
+.live-info-inline .sep {
+  color: #b8c8d8;
+}
+
+.live-url-body {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* ===== 下载面板 ===== */
+#download-panel {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+#downloads-content {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.download-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px 14px 22px;
+  text-align: center;
+  border: 1px solid #e4ebf3;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 170px;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.download-card img {
+  width: 80%;
+  max-width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  object-fit: cover;
+  background: #f0f3f8;
+}
+
+/* ===== 关于面板 ===== */
 #about-panel > div {
   background: #f8fafd !important;
   border-radius: 8px !important;
@@ -349,33 +517,25 @@ body {
 }
 
 #about-panel h3 {
-  font-size: .95rem;
-  font-weight: 700;
-  color: #0b1e33;
-  margin-bottom: 8px;
+  font-size: .9rem !important;
+  margin-bottom: 10px !important;
 }
 
 #about-panel p,
 #about-panel li {
-  font-size: .78rem;
-  color: #4a5d6a;
-  line-height: 1.7;
+  font-size: .75rem !important;
+  line-height: 1.7 !important;
 }
 
-#about-panel ul {
-  padding-left: 16px;
+#about-panel > div > div {
+  background: #fff !important;
+  border: 1px solid #e4ebf3 !important;
+  border-radius: 50px !important;
+  padding: 8px 16px !important;
+  margin-top: 8px !important;
 }
 
-#about-panel a {
-  color: #1e6fda;
-  text-decoration: none;
-}
-
-#about-panel a:active {
-  opacity: .7;
-}
-
-/* ========== 合作共创 — 每人独立小圆角卡片 ========== */
+/* ===== 合作共创人员名单 ===== */
 #about-panel #contributors-card {
   background: transparent !important;
   border-radius: 0 !important;
@@ -384,7 +544,6 @@ body {
   border: none !important;
   box-shadow: none !important;
 }
-
 .contributor-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -405,16 +564,16 @@ body {
 }
 
 .contributor-card:active {
-  transform: scale(.97);
+  transform: scale(.98);
 }
 
 .contributor-avatar {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: linear-gradient(135deg, #4a9eff, #1e6fda);
   color: #fff;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -468,192 +627,698 @@ body {
   text-decoration: underline;
 }
 
-/* ========== 空状态 ========== */
-.empty-state {
-  text-align: center;
-  padding: 48px 20px;
-  color: #8fa3b5;
+/* ===== 移动端适配 ===== */
+@media (max-width: 600px) {
+  body {
+    padding: 14px 8px 6px;
+  }
+
+  #modeToggleBtn {
+    top: 10px;
+    left: 6px;
+    width: 48px;
+    font-size: .52rem;
+    padding: 4px 2px;
+  }
+
+  .header-block {
+    padding-top: 10px;
+    margin-bottom: 12px;
+  }
+
+  .main-card {
+    padding: 14px 14px 12px;
+  }
+
+  h1 {
+    font-size: 1.15rem;
+  }
+
+  h1 .header-logo {
+    width: 1.7rem;
+    height: 1.7rem;
+    vertical-align: -.4rem;
+  }
+
+  .nav-tab {
+    padding: 6px 18px;
+    font-size: .75rem;
+  }
+
+  .api-item,
+  .live-item {
+    padding: 12px 0;
+  }
+
+  .api-item-name,
+  .live-item-name {
+    font-size: .92rem;
+  }
+
+  .url-line {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  .url-tag,
+  .live-url-tag {
+    font-size: .62rem;
+    padding: 2px 10px;
+  }
+
+  .url-text,
+  .live-url-text {
+    font-size: .72rem;
+  }
+
+  .copy-btn {
+    font-size: .62rem;
+    padding: 0 10px;
+    height: 24px;
+  }
+
+  .live-top-aggregate {
+    padding: 14px 16px;
+  }
+
+  .live-item {
+    padding: 12px 0;
+  }
+
+  .live-url-line {
+    padding: 8px 10px;
+  }
+
+  .live-url-body .live-url-tag {
+    font-size: .62rem;
+    padding: 2px 10px;
+  }
+
+  .live-url-body .live-url-text {
+    font-size: .72rem;
+  }
+
+  .live-info-inline {
+    font-size: .6rem;
+  }
 }
-
-.empty-state .empty-icon {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.empty-state p {
-  font-size: .85rem;
-}
-
-/* ========== 底部 ========== */
-.footer {
-  text-align: center;
-  padding: 20px 14px 28px;
-  font-size: .72rem;
-  color: #8fa3b5;
-}
-
-/* ========== Toast ========== */
-.toast {
-  position: fixed;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: rgba(11,30,51,.88);
-  color: #fff;
-  padding: 9px 20px;
-  border-radius: 50px;
-  font-size: .78rem;
-  font-weight: 500;
-  opacity: 0;
-  pointer-events: none;
-  transition: all .25s ease;
-  z-index: 9999;
-  white-space: nowrap;}
-
-.toast.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* ========== 隐藏类 ========== */
-.hidden { display: none !important; }
 </style>
 </head>
-<body>
-
-<div class="header">
-  <h1>海量接口搬运备份</h1>
-  <p>备用数据源，防屏不迷路</p>
-</div>
-
-<div class="search-bar">
-  <input class="search-input" id="searchInput" placeholder="搜索接口名称...">
-  <button class="search-clear" id="searchClear">✕</button>
-</div>
+<body class="simple-mode">
 
 <div class="container">
-  <div class="stats-bar">
-    <div class="stat-item">
-      <div class="stat-num" id="totalCount">-</div>
-      <div class="stat-label">接口总数</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" id="updateCount">-</div>
-      <div class="stat-label">今日更新</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" id="sourceCount">3</div>
-      <div class="stat-label">备份线路</div>
-    </div>
+
+  <button id="modeToggleBtn">切换<br>全能版</button>
+
+  <div class="header-block">
+    <h1>
+      <img class="header-logo" src="https://0.12yue.de5.net/tvbox/x/jueson.jpg" alt="Logo">
+      海量接口搬运备份
+    </h1>
+    <div class="header-divider"></div>
+    <p class="subtitle">
+      备用数据源，防屏不迷路<br>
+      QQ交流群：1067685939
+    </p>
   </div>
 
-  <div class="category-tabs" id="categoryTabs"></div>
+  <input class="search-box" id="search" type="text" placeholder="🔍 搜索..." oninput="globalSearch()">
 
-  <div id="apiList"></div>
+  <div class="main-card">
 
-  <div id="about-panel" class="active">
-    <div id="backup-domains-card">
-      <h3>🌐 备份线路域名</h3>
-      <p>三个域名互为备份，任一个可用：</p>
-      <ul id="backupDomainsList"></ul>
+    <div class="nav-tabs" id="navTabs"></div>
+
+    <!-- 点播面板 -->
+    <div class="tab-panel active" id="api-panel">
+      <div class="api-list" id="listContainer">
+        <div class="loading" id="apiLoading">⏳ 正在加载接口列表...</div>
+      </div>
     </div>
-    <div id="contributors-card">
-      <h3>🤝 合作共创人员名单</h3>
-      <div class="contributor-grid" id="contributorsList"></div>
+
+    <!-- 直播面板 -->
+    <div class="tab-panel" id="live-panel">
+      <div class="live-top-aggregate">
+        <h3>海量直播聚合多线路专用接口</h3>
+        <div class="domain-line">
+          <span>https://0.12yue.de5.net/tvbox/海量直播线路.json</span>
+          <button class="copy-btn" data-url="https://0.12yue.de5.net/tvbox/海量直播线路.json">复制</button>
+        </div>
+      </div>
+      <div class="live-list" id="liveListContainer">
+        <div class="loading" id="liveLoading">⏳ 正在加载直播列表...</div>
+      </div>
     </div>
-    <div id="disclaimer-card">
-      <h3>📢 声明与联系</h3>
-      <p id="disclaimerText"></p>
+
+    <!-- 下载面板 -->
+    <div class="tab-panel" id="download-panel">
+      <div id="downloads-content">
+        <div class="loading">⏳ 正在加载下载资源...</div>
+      </div>
     </div>
+
+    <!-- 弹幕面板 -->
+    <div class="tab-panel" id="danmu-panel">
+      <div id="danmu-content">
+        <div class="loading">⏳ 正在加载弹幕接口...</div>
+      </div>
+    </div>
+
+    <!-- 关于面板 -->
+    <div class="tab-panel" id="about-panel">
+      <!-- 域名备份 -->
+      <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
+        <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">🌐 备份线路域名</h3>
+        <p style="margin-bottom:6px;font-size:.76rem;color:#5a6f88">四个域名互为备份，任一个可用：</p>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
+          <span style="flex:1;font-size:.75rem;color:#2563eb">https://0.12yue.de5.net</span>
+          <button class="copy-btn" data-url="https://0.12yue.de5.net">复制</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
+          <span style="flex:1;font-size:.75rem;color:#2563eb">https://0.cdz.qzz.io</span>
+          <button class="copy-btn" data-url="https://0.cdz.qzz.io">复制</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
+          <span style="flex:1;font-size:.75rem;color:#2563eb">https://0.wdzb.eu.cc</span>
+          <button class="copy-btn" data-url="https://0.wdzb.eu.cc">复制</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
+          <span style="flex:1;font-size:.75rem;color:#2563eb">https://tvbox.moliys.icu</span>
+          <button class="copy-btn" data-url="https://tvbox.moliys.icu">复制</button>
+        </div>
+      </div>
+
+      <!-- 声明与联系 -->
+      <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
+        <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">📢 声明与联系</h3>
+        <ul style="padding-left:16px">
+          <li style="font-size:.76rem;color:#5a6f88;line-height:1.6">本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。</li>
+        </ul>
+        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">QQ 交流群：<strong style="color:#4a9eff">1067685939</strong></p>
+        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<strong style="color:#4a9eff">https://t.me/+nrWtFerPAfcwOTg9</strong></p>
+      </div>
+
+      <!-- 合作共创 -->
+      <div id="contributors-card">
+        <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">🤝 合作共创</h3>
+        <p style="font-size:.72rem;color:#8b9eb0;margin-bottom:12px;line-height:1.6">感谢以下伙伴对本站的内容贡献与支持，排名不分先后。</p>
+        <div id="contributors-list"><div class="loading" style="padding:24px 0">⏳ 正在加载贡献者名单...</div></div>
+      </div>
+    </div>
+
   </div>
 
-  <div class="empty-state hidden" id="emptyState">
-    <div class="empty-icon">🔍</div>
-    <p>没有找到匹配的接口</p>
-  </div>
+  <footer class="page-footer">
+    <p>本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。 QQ 群：1067685939。</p>
+  </footer>
+
 </div>
-
-<div class="footer">
-  <p>本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。<br>仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。<br>如涉及侵权，请联系删除。</p>
-</div>
-
-<div class="toast" id="toast"></div>
 
 <script>
-// ========== 数据 ==========
-const backupDomains = [
-  'https://0.12yue.de5.net',
-  'https://0.cdz.qzz.io',
-  'https://0.wdzb.eu.cc'
+/* ===== 基础配置 ===== */
+const MODE_KEY = 'site_mode';
+const btn = document.getElementById('modeToggleBtn');
+const searchBox = document.getElementById('search');
+const mainCard = document.querySelector('.main-card');
+const navTabs = document.getElementById('navTabs');
+
+const API_DOMAINS = [
+  { tag: "备份一线", base: "https://0.12yue.de5.net/tvbox/" },
+  { tag: "备份二线", base: "https://0.cdz.qzz.io/tvbox/" },
+  { tag: "备份三线", base: "https://0.wdzb.eu.cc/tvbox/" }
 ];
 
-const contributors = [
-  { name: '误道者', role: '整理维护', desc: '本站资源整理与日常维护', avatar: '', social: 'https://0.12yue.de5.net' },
-  { name: '饭太硬', role: '接口作者', desc: '提供优质影视接口源', avatar: '', social: 'http://www.饭太硬.net/tv' },
-  { name: '肥猫', role: '接口作者', desc: '提供优质影视接口源', avatar: '', social: 'http://肥猫.net/tv' },
-  { name: '摸鱼', role: '接口作者', desc: '提供优质影视接口源', avatar: '', social: 'https://6800.kstore.vip/fish.json' },
-  { name: '王二小', role: '接口作者', desc: '提供优质影视接口源', avatar: '', social: 'https://9280.kstore.vip/aiwex.json' },
-  { name: '集多', role: '接口作者', desc: '提供优质影视接口源', avatar: '', social: 'http://rihou.cc:88/demo.php' },
-  { name: '潇洒', role: '接口作者', desc: '提供优质影视接口源', avatar: '', social: 'https://9877.kstore.space/one.json' },
-  { name: '南风', role: '接口作者', desc: '提供优质影视接口源', avatar: '', social: 'https://ghproxy.monkeyray.net/raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json' }
+const LIVE_DOMAINS = [
+  { tag: "备份一线", base: "https://0.12yue.de5.net/tvbox/" },
+  { tag: "备份二线", base: "https://0.cdz.qzz.io/tvbox/" },
+  { tag: "备份三线", base: "https://0.wdzb.eu.cc/tvbox/" }
 ];
 
-const disclaimer = '本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。 QQ 群：1067685939';
+const API_WEIGHTS = {
+  "轮替占位.json": 1,
+  "幸福年年.json": 2,
+  "饭太硬.json": 4,
+  "肥猫.json": 5,
+  "摸鱼.json": 6,
+  "王二小.json": 7,
+  "集多.json": 8,
+  "潇洒.json": 9,
+  "小米.json": 10,
+  "嗷呜.json": 11,
+  "南风.json": 12,
+  "小虎斑.json": 13
+};
 
-// ========== 接口数据 ==========
-let apiData = [];
+const ROTATE_KEYWORDS = ["模糊搜索","模糊搜索"];
 
-// ========== 工具函数 ==========
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(t._timer);
-  t._timer = setTimeout(() => t.classList.remove('show'), 2000);
-}
+/* ===== 状态变量 ===== */
+let currentMode = localStorage.getItem(MODE_KEY) || 'simple';
+let currentTabId = 'api';
+let topSeed = Date.now();
+let DOWNLOAD_SOURCES = [];
+let DANMU_SOURCES = [];
+let SITE_CONFIG = null;
+let rawListText = null;
+let rawLiveText = null;
 
-function copyText(text) {
+/* ===== 初始化 ===== */
+document.body.className = currentMode + '-mode';
+updateBtnText();
+positionSearchBox();
+
+/* ===== 全局复制事件委托 ===== */
+document.addEventListener('click', function (e) {
+  const copyBtn = e.target.closest('.copy-btn');
+  if (!copyBtn) return;
+  e.preventDefault();
+  e.stopPropagation();
+  const url = copyBtn.getAttribute('data-url');
+  if (!url) return;
+
+  const done = () => {
+    const originalText = copyBtn.textContent;
+    copyBtn.textContent = '✅ 已复制';
+    copyBtn.classList.add('copied');
+    setTimeout(() => {
+      copyBtn.textContent = originalText;
+      copyBtn.classList.remove('copied');
+    }, 1500);
+  };
+
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(() => showToast('已复制到剪贴板')).catch(() => fallbackCopy());
+    navigator.clipboard.writeText(url).then(done).catch(fallbackCopy);
   } else {
     fallbackCopy();
   }
+
   function fallbackCopy() {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.cssText = 'position:fixed;opacity:0;left:0;top:0';
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
-    try { document.execCommand('copy'); showToast('已复制'); } catch(e) { showToast('复制失败'); }
-    document.body.removeChild(ta);
+    const input = document.createElement('input');
+    input.value = url;
+    input.style.position = 'fixed';
+    input.style.opacity = '0';
+    document.body.appendChild(input);
+    input.focus();
+    input.select();
+    try { document.execCommand('copy'); } catch (_) {}
+    document.body.removeChild(input);
+    done();
+  }
+});
+
+/* ===== 工具函数 ===== */
+function getTopItem(rotateItems) {
+  if (!rotateItems || !rotateItems.length) return null;
+  if (rotateItems.length === 1) return rotateItems[0];
+  const idx = Math.abs(Math.floor(Math.sin(topSeed) * 10000)) % rotateItems.length;
+  return rotateItems[idx];
+}
+
+function formatDateToChinese(d) {
+  if (!d || d.length !== 8) return '----';
+  return d.slice(0, 4) + '年' + d.slice(4, 6) + '月' + d.slice(6, 8) + '日';
+}
+
+function isRecent(d) {
+  if (!d || d.length !== 8) return false;
+  const y = parseInt(d.slice(0, 4));
+  const m = parseInt(d.slice(4, 6)) - 1;
+  const day = parseInt(d.slice(6, 8));
+  return (Date.now() - new Date(y, m, day).getTime()) / 86400000 <= 2;
+}
+
+/* ===== 配置加载 ===== */
+async function loadConfig() {
+  try {
+    const res = await fetch('config.json?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const cfg = await res.json();
+    SITE_CONFIG = cfg;
+    DOWNLOAD_SOURCES = Array.isArray(cfg.downloadSources) ? cfg.downloadSources : [];
+    DANMU_SOURCES = Array.isArray(cfg.danmuSources) ? cfg.danmuSources : [];
+    if (cfg.about) renderAbout(cfg.about);
+  } catch (e) {
+    SITE_CONFIG = null;
+    DOWNLOAD_SOURCES = [];
+    DANMU_SOURCES = [];
   }
 }
 
-// ========== 渲染 ==========
-function renderBackupDomains() {
-  const list = document.getElementById('backupDomainsList');
-  list.innerHTML = backupDomains.map(d => `<li><a href="${d}" target="_blank">${d}</a></li>`).join('');
+/* ===== 关于页：合作共创人员名单 ===== */
+function renderAbout(about) {
+  const list = about && Array.isArray(about.contributors) ? about.contributors : [];
+  const container = document.getElementById('contributors-list');
+  if (!container) return;
+  if (!list.length) {
+    container.innerHTML = '<div class="error-msg">暂无贡献者信息</div>';
+    return;
+  }
+  container.innerHTML = '<div class="contributor-grid">' + list.map(c => {
+    const initial = (c.name || '?').trim().charAt(0);
+    const avatar = c.avatar
+      ? `<img src="${c.avatar}" alt="${c.name}" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}'}))">`
+      : `<span>${initial}</span>`;
+    const social = c.social
+      ? `<a class="contributor-social" href="javascript:void(0)" data-social="${c.social}">${c.social}</a>`
+      : '';
+    return `<div class="contributor-card" data-name="${(c.name || '').toLowerCase()}">
+        <div class="contributor-avatar">${avatar}</div>
+        <div class="contributor-name">${c.name || ''}</div>
+        <span class="contributor-role">${c.role || '贡献者'}</span>
+        <div class="contributor-desc">${c.desc || ''}</div>
+        ${social}
+      </div>`;
+  }).join('') + '</div>';
 }
 
-function renderAbout() {
-  document.getElementById('disclaimerText').textContent = disclaimer;
-  const list = document.getElementById('contributorsList');
-  list.innerHTML = contributors.map(c => `
-    <div class="contributor-card">
-      <div class="contributor-avatar">${c.avatar ? `<img src="${c.avatar}" alt="${c.name}">` : c.name.charAt(0)}</div>
-      <div class="contributor-name">${c.name}</div>
-      <span class="contributor-role">${c.role}</span>
-      <div class="contributor-desc">${c.desc}</div>
-      ${c.social ? `<a class="contributor-social" href="${c.social}" target="_blank">访问主页</a>` : ''}
-    </div>
-  `).join('');
+/* ===== 点播接口 ===== */
+async function fetchListText() {
+  if (rawListText !== null) return rawListText;
+  const res = await fetch('list.txt?t=' + Date.now() + '&r=' + Math.random(), {
+    cache: 'no-store',
+    headers: { 'Cache-Control': 'no-cache' }
+  });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  rawListText = await res.text();
+  return rawListText;
 }
 
-// ========== 初始化 ==========
-document.addEventListener('DOMContentLoaded', () => {
-  renderBackupDomains();
-  renderAbout();
+function parseItems(text) {
+  if (!text || !text.trim()) return [];
+  return text.trim().split('\n').filter(l => l.trim()).map(line => {
+    const p = line.split('|').map(s => s.trim());
+    if (!p[0]) return null;
+    return {
+      file: p[0],
+      name: p[0].replace(/\.json$/i, ''),
+      date: p[1] || '',
+      size: p[2] || '',
+      origUrl: p[3] || '',
+      weight: API_WEIGHTS.hasOwnProperty(p[0]) ? API_WEIGHTS[p[0]] : 999
+    };
+  }).filter(Boolean);
+}
+
+function renderApi() {
+  const container = document.getElementById('listContainer');
+  fetchListText().then(text => {
+    const tip = document.getElementById('apiLoading');
+    if (tip) tip.style.display = 'none';
+
+    let items = parseItems(text);
+    if (!items.length) {
+      container.innerHTML = '<div class="error-msg">⚠️ 接口列表为空，请检查 list.txt</div>';
+      return;
+    }
+
+    const ri = items.filter(i => {
+      const lower = i.name.toLowerCase();
+      return ROTATE_KEYWORDS.some(kw => lower.includes(kw.toLowerCase()));
+    });
+
+    const top = getTopItem(ri);
+    if (top) {
+      top.weight = Number.MIN_SAFE_INTEGER;
+    }
+
+    items.sort((a, b) => a.weight - b.weight);
+
+    let html = '';
+    items.forEach(it => {
+      const isNew = isRecent(it.date);
+      let lines = '';
+      if (it.origUrl) {
+        lines += `<div class="url-line"><span class="url-tag">原始线路</span><span class="url-text">${it.origUrl}</span><button class="copy-btn" data-url="${it.origUrl}">复制</button></div>`;
+      }
+      API_DOMAINS.forEach(d => {
+        const u = d.base + it.name + '.json';
+        lines += `<div class="url-line"><span class="url-tag">${d.tag}</span><span class="url-text">${u}</span><button class="copy-btn" data-url="${u}">复制</button></div>`;
+      });
+      html += `<div class="api-item" data-name="${it.name.toLowerCase()}">
+        <div class="api-item-header">
+          <div class="api-item-name" title="${it.name}">${it.name}</div>
+          <div class="api-item-meta">
+            <span class="${isNew ? 'badge-new' : 'badge-old'}">备份时间 ${formatDateToChinese(it.date)}</span>
+            ${it.size ? '&nbsp;&nbsp;' + it.size : ''}
+          </div>
+        </div>
+        <div class="api-item-urls">${lines}</div>
+      </div>`;
+    });
+    container.innerHTML = html;
+  }).catch(err => {
+    const tip = document.getElementById('apiLoading');
+    if (tip) tip.style.display = 'none';
+    container.innerHTML = `<div class="error-msg">❌ 接口加载失败：${err.message || err}</div>`;
+  });
+}
+
+/* ===== 直播接口 ===== */
+async function fetchLiveText() {
+  if (rawLiveText !== null) return rawLiveText;
+  const res = await fetch('livelist.txt?t=' + Date.now(), { cache: 'no-store' });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  rawLiveText = await res.text();
+  return rawLiveText;
+}
+
+function parseLiveItems(text) {
+  if (!text || !text.trim()) return [];
+  return text.trim().split('\n').filter(l => l.trim()).map(line => {
+    const p = line.split('|').map(s => s.trim());
+    if (!p[0]) return null;
+    return {
+      name: p[0] || '',
+      displayName: p[0].replace(/\.[^.]+$/, ''),
+      date: p[1] || '',
+      size: p[2] || '',
+      origUrl: p[3] || '',
+      source: p[4] || '',
+      ua: p[5] || ''
+    };
+  }).filter(Boolean);
+}
+
+function renderLiveList() {
+  const container = document.getElementById('liveListContainer');
+  const loading = document.getElementById('liveLoading');
+  fetchLiveText().then(text => {
+    if (loading) loading.style.display = 'none';
+    const items = parseLiveItems(text);
+    if (!items.length) {
+      container.innerHTML = '<div class="error-msg">⚠️ 直播列表为空，请检查 livelist.txt</div>';
+      return;
+    }
+    let html = '';
+    items.forEach(it => {
+      const isNew = isRecent(it.date);
+      let urls = '';
+      if (it.origUrl) {
+        urls += `<div class="live-url-line">
+          <div class="live-info-inline"><span>来源：${it.source || '未知'}</span>${it.ua ? `<span class="sep">|</span><span>UA：${it.ua}</span>` : ''}</div>
+          <div class="live-url-body"><span class="live-url-tag">原始线路</span><span class="live-url-text">${it.origUrl}</span><button class="copy-btn" data-url="${it.origUrl}">复制</button></div>
+        </div>`;
+      }
+      LIVE_DOMAINS.forEach(d => {
+        const u = d.base + it.name;
+        urls += `<div class="live-url-line"><div class="live-url-body"><span class="live-url-tag">${d.tag}</span><span class="live-url-text">${u}</span><button class="copy-btn" data-url="${u}">复制</button></div></div>`;
+      });
+      html += `<div class="live-item" data-name="${it.displayName.toLowerCase()}">
+        <div class="live-item-header">
+          <div class="live-item-name" title="${it.displayName}">${it.displayName}</div>
+          <div class="live-item-meta">
+            <span class="${isNew ? 'live-badge-new' : 'live-badge-old'}">备份时间 ${formatDateToChinese(it.date)}</span>
+            ${it.size ? '&nbsp;&nbsp;' + it.size : ''}
+          </div>
+        </div>
+        <div class="live-item-urls">${urls}</div>
+      </div>`;
+    });
+    container.innerHTML = html;
+  }).catch(err => {
+    if (loading) loading.style.display = 'none';
+    container.innerHTML = `<div class="error-msg">❌ 直播列表加载失败：${err.message || err}</div>`;
+  });
+}
+
+/* ===== 下载资源 ===== */
+async function renderDownloads(force) {
+  const container = document.getElementById('downloads-content');
+  if (!container || (container.dataset.rendered && !force)) return;
+  container.dataset.rendered = 'true';
+  container.innerHTML = '<div class="loading">⏳ 正在加载下载资源...</div>';
+  if (!DOWNLOAD_SOURCES.length) {
+    container.innerHTML = '<div class="error-msg">⚠️ 未配置下载源</div>';
+    return;
+  }
+  let html = '';
+  for (const src of DOWNLOAD_SOURCES) {
+    try {
+      const res = await fetch(src.url + '?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const raw = await res.text();
+      const cleaned = raw.replace(/[\u201c\u201d]/g, '"').replace(/[\u2018\u2019]/g, "'").replace(/：/g, ':').replace(/，/g, ',');
+      const data = JSON.parse(cleaned);
+      let section = `<div style="background:#f8fafc;border-radius:12px;padding:12px 14px;margin-bottom:12px;border:1px solid #eef2f7;">`;
+      if (src.name) section += `<div style="font-size:.95rem;font-weight:600;color:#0b1e33;margin-bottom:2px;">${src.name}</div>`;
+      if (src.description) section += `<div style="font-size:.7rem;color:#8b9eb0;margin-bottom:10px;">${src.description}</div>`;
+      section += `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;width:100%;max-width:100%;overflow:hidden;">`;
+      (data.list || data).forEach(group => {
+        (group.list || []).forEach(i => {
+          section += `<a class="download-card" href="${i.url || '#'}" target="_blank" rel="noopener noreferrer" data-name="${(i.name || '').toLowerCase()}">
+            <img src="${i.icon || ''}" onerror="this.style.visibility='hidden'" style="width:90%;max-width:100%;height:auto;aspect-ratio:1/1;border-radius:10px;margin-bottom:14px;object-fit:cover;background:#f0f3f8;">
+            <div style="flex:1;width:100%;margin-top:auto;">
+              <div style="font-size:.76rem;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${i.name || ''}</div>
+              ${i.version ? `<div style="font-size:.6rem;color:#8b9eb0;margin-top:2px;">${i.version}</div>` : ''}
+            </div>
+          </a>`;
+        });
+      });
+      html += section + '</div></div>';
+    } catch (e) {
+      html += `<div class="error-msg">❌ ${src.name} 加载失败：${e.message}</div>`;
+    }
+  }
+  container.innerHTML = html;
+}
+
+/* ===== 弹幕接口 ===== */
+function renderDanmu() {
+  const container = document.getElementById('danmu-content');
+  if (!container) return;
+  if (!DANMU_SOURCES.length) {
+    container.innerHTML = '<div class="error-msg">⚠️ 未配置弹幕源，请检查 config.json 中的 danmuSources</div>';
+    return;
+  }
+  let rows = '';
+  DANMU_SOURCES.forEach(s => {
+    rows += `<div class="danmu-item" data-name="${s.name.toLowerCase()}" style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:8px">
+      <span style="flex:0 0 auto;font-size:.78rem;font-weight:600;color:#0b1e33">${s.name}</span>
+      <span style="flex:1;font-size:.75rem;color:#2563eb;word-break:break-all">${s.url}</span>
+      <button class="copy-btn" data-url="${s.url}">复制</button>
+    </div>`;
+  });
+  container.innerHTML = `<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7">
+    <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">💬 弹幕接口</h3>
+    <p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">共 ${DANMU_SOURCES.length} 条，点击「复制」把地址填入播放器的弹幕接口。</p>
+    ${rows}
+  </div>`;
+}
+
+/* ===== 标签导航 ===== */
+const tabsData = [
+  { id: "api", label: "点播", hideSearch: false },
+  { id: "live", label: "直播", hideSearch: false },
+  { id: "download", label: "下载", hideSearch: false },
+  { id: "danmu", label: "弹幕", hideSearch: true },
+  { id: "about", label: "关于", hideSearch: true }
+];
+
+function renderTabs() {
+  const nav = document.getElementById('navTabs');
+  nav.innerHTML = tabsData.map(t => `<button class="nav-tab ${t.id === currentTabId ? 'active' : ''}" data-tab="${t.id}">${t.label}</button>`).join('');
+  nav.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', function () {
+      nav.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      currentTabId = this.getAttribute('data-tab');
+      showPanel(currentTabId);
+    });
+  });
+}
+
+function showPanel(tabId) {
+  if (searchBox) {
+    searchBox.value = '';
+    document.querySelectorAll('#api-panel .api-item.hidden').forEach(e => e.classList.remove('hidden'));
+    document.querySelectorAll('#live-panel .live-item.hidden').forEach(e => e.classList.remove('hidden'));
+    document.querySelectorAll('.download-card.hidden').forEach(e => e.classList.remove('hidden'));
+    document.querySelectorAll('#danmu-panel .danmu-item.hidden').forEach(e => e.classList.remove('hidden'));
+    document.querySelectorAll('.contributor-card.hidden').forEach(e => e.classList.remove('hidden'));
+  }
+  if (tabId === 'api') {
+    topSeed = Date.now() + Math.random();
+    renderApi();
+  }
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById(tabId + '-panel');
+  if (panel) panel.classList.add('active');
+  if (tabId === 'live') renderLiveList();
+  if (tabId === 'download') renderDownloads();
+  if (tabId === 'danmu') renderDanmu();
+  const t = tabsData.find(t => t.id === tabId);
+  if (searchBox) searchBox.style.display = (t && t.hideSearch) ? 'none' : '';
+}
+
+/* ===== 搜索 ===== */
+function globalSearch() {
+  const kw = (searchBox.value || '').toLowerCase().trim();
+  document.querySelectorAll('#api-panel .api-item').forEach(e => {
+    const n = e.getAttribute('data-name') || '';
+    e.classList.toggle('hidden', !n.includes(kw));
+  });
+  document.querySelectorAll('#live-panel .live-item').forEach(e => {
+    const n = e.getAttribute('data-name') || '';
+    e.classList.toggle('hidden', !n.includes(kw));
+  });
+  if (currentMode !== 'simple') {
+    document.querySelectorAll('.download-card').forEach(c => {
+      const n = c.getAttribute('data-name') || '';
+      c.classList.toggle('hidden', !n.includes(kw));
+    });
+    document.querySelectorAll('#danmu-panel .danmu-item').forEach(e => {
+      const n = e.getAttribute('data-name') || '';
+      e.classList.toggle('hidden', !n.includes(kw));
+    });
+    document.querySelectorAll('.contributor-card').forEach(c => {
+      const n = c.getAttribute('data-name') || '';
+      c.classList.toggle('hidden', !n.includes(kw));
+    });
+    if (!kw) renderAbout((SITE_CONFIG && SITE_CONFIG.about) || null);
+  }
+}
+
+/* ===== 搜索框位置 ===== */
+function positionSearchBox() {
+  if (currentMode === 'simple') {
+    if (searchBox.parentNode !== mainCard.parentNode) {
+      mainCard.parentNode.insertBefore(searchBox, mainCard);
+    }
+  } else {
+    if (searchBox.parentNode !== mainCard) {
+      navTabs.insertAdjacentElement('afterend', searchBox);
+    }
+  }
+}
+
+function updateBtnText() {
+  btn.innerHTML = currentMode === 'simple' ? '切换<br>全能版' : '切换<br>简洁版';
+}
+
+/* ===== 模式切换 ===== */
+btn.addEventListener('click', () => {
+  topSeed = Date.now() + Math.random();
+  currentMode = currentMode === 'simple' ? 'full' : 'simple';
+  localStorage.setItem(MODE_KEY, currentMode);
+  document.body.className = currentMode + '-mode';
+  updateBtnText();
+  if (currentMode !== 'simple') {
+    positionSearchBox();
+    renderTabs();
+    showPanel(currentTabId);
+  } else {
+    searchBox.style.display = '';
+    positionSearchBox();
+    renderApi();
+  }
+});
+
+/* ===== 启动 ===== */
+renderTabs();
+renderApi();
+loadConfig().then(() => {
+  if (currentMode !== 'simple') {
+    renderDownloads();
+    renderDanmu();
+  }
 });
 </script>
 </body>
