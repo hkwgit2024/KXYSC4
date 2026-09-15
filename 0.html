@@ -533,6 +533,98 @@ body.simple-mode #api-panel {
   margin-top: 8px !important;
 }
 
+/* ===== 合作共创人员名单 ===== */
+#contributors-card {
+  background: #f8fafd !important;
+  border-radius: 8px !important;
+  padding: 16px 18px !important;
+  margin-bottom: 14px !important;
+  border: 1px solid #e4ebf3 !important;
+}
+
+.contributor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.contributor-card {
+  background: #fff;
+  border: 1px solid #e4ebf3;
+  border-radius: 14px;
+  padding: 16px 12px 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.contributor-card:active {
+  transform: scale(.98);
+}
+
+.contributor-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4a9eff, #1e6fda);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.contributor-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contributor-name {
+  font-size: .85rem;
+  font-weight: 700;
+  color: #0b1e33;
+  line-height: 1.3;
+}
+
+.contributor-role {
+  display: inline-block;
+  font-size: .62rem;
+  font-weight: 600;
+  color: #1e6fda;
+  background: #e6f2ff;
+  padding: 2px 10px;
+  border-radius: 50px;
+  margin: 6px 0 6px;
+  line-height: 1.4;
+}
+
+.contributor-desc {
+  font-size: .7rem;
+  color: #7a8fa3;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.contributor-social {
+  margin-top: 8px;
+  font-size: .68rem;
+  color: #4a9eff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.contributor-social:hover {
+  text-decoration: underline;
+}
+
 /* ===== 移动端适配 ===== */
 @media (max-width: 600px) {
   body {
@@ -709,9 +801,13 @@ body.simple-mode #api-panel {
         <ul style="padding-left:16px">
           <li style="font-size:.76rem;color:#5a6f88;line-height:1.6">本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。</li>
         </ul>
-        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">QQ交流群：<a href="https://qm.qq.com/q/gmRKKPT3x0" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">1067685939</a></p>
-        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<a href="https://t.me/+nrWtFerPAfcwOTg9" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">t.me/+nrWtFerPAfcwOTg9</a></p>
-        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">项目地址：<a href="https://github.com/lubin776/tvbox-api-backup" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">github.com/lubin776/tvbox-api-backup</a></p>
+        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">QQ 交流群：<strong style="color:#4a9eff">1067685939</strong></p>
+        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<strong style="color:#4a9eff">https://t.me/+nrWtFerPAfcwOTg9</strong></p>
+      </div>
+      <div id="contributors-card">
+        <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">🤝 合作共创</h3>
+        <p style="font-size:.72rem;color:#8b9eb0;margin-bottom:12px;line-height:1.6">感谢以下伙伴对本站的内容贡献与支持，排名不分先后。</p>
+        <div id="contributors-list"><div class="loading" style="padding:24px 0">⏳ 正在加载贡献者名单...</div></div>
       </div>
     </div>
 
@@ -766,6 +862,8 @@ let currentMode = localStorage.getItem(MODE_KEY) || 'simple';
 let currentTabId = 'api';
 let topSeed = Date.now();
 let DOWNLOAD_SOURCES = [];
+let DANMU_SOURCES = [];
+let CONFIG = null;
 let rawListText = null;
 let rawLiveText = null;
 
@@ -821,15 +919,50 @@ function getTopItem(rotateItems) {
   return rotateItems[idx];
 }
 
-async function loadDownloadConfig() {
+async function loadConfig() {
   try {
     const res = await fetch('config.json?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const cfg = await res.json();
+    CONFIG = cfg;
     DOWNLOAD_SOURCES = Array.isArray(cfg.downloadSources) ? cfg.downloadSources : [];
+    DANMU_SOURCES = Array.isArray(cfg.danmuSources) ? cfg.danmuSources : [];
+    if (cfg.about) renderAbout(cfg.about);
   } catch (e) {
+    CONFIG = null;
     DOWNLOAD_SOURCES = [];
+    DANMU_SOURCES = [];
   }
+}
+
+// 兼容旧调用名
+function loadDownloadConfig() { return loadConfig(); }
+
+/* ===== 关于页：合作共创人员名单 ===== */
+function renderAbout(about) {
+  const list = about && Array.isArray(about.contributors) ? about.contributors : [];
+  const container = document.getElementById('contributors-list');
+  if (!container) return;
+  if (!list.length) {
+    container.innerHTML = '<div class="error-msg">暂无贡献者信息</div>';
+    return;
+  }
+  container.innerHTML = '<div class="contributor-grid">' + list.map(c => {
+    const initial = (c.name || '?').trim().charAt(0);
+    const avatar = c.avatar
+      ? `<img src="${c.avatar}" alt="${c.name}" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${initial}'}))">`
+      : `<span>${initial}</span>`;
+    const social = c.social
+      ? `<a class="contributor-social" href="javascript:void(0)" data-social="${c.social}">${c.social}</a>`
+      : '';
+    return `<div class="contributor-card" data-name="${(c.name || '').toLowerCase()}">
+        <div class="contributor-avatar">${avatar}</div>
+        <div class="contributor-name">${c.name || ''}</div>
+        <span class="contributor-role">${c.role || '贡献者'}</span>
+        <div class="contributor-desc">${c.desc || ''}</div>
+        ${social}
+      </div>`;
+  }).join('') + '</div>';
 }
 
 function formatDateToChinese(d) {
@@ -1094,7 +1227,12 @@ function globalSearch() {
       const n = c.getAttribute('data-name') || '';
       c.classList.toggle('hidden', !n.includes(kw));
     });
+    document.querySelectorAll('.contributor-card').forEach(c => {
+      const n = c.getAttribute('data-name') || '';
+      c.classList.toggle('hidden', !n.includes(kw));
+    });
   }
+  if (!kw) renderAbout((CONFIG && CONFIG.about) || null);
 }
 
 /* ===== 搜索框位置 ===== */
