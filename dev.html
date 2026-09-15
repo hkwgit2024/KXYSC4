@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>🛠 调试 - 全能版骨架</title>
+<title>🛠 调试 - 全能版骨架（无搜索）</title>
 <style>
 /* ===== 调试标识 ===== */
 body.dev::before {
@@ -33,15 +33,9 @@ body {
 }
 
 /* ===== 标题 ===== */
-.header-block { text-align:center; margin-bottom:12px; padding-top:14px; }
-.header-block h1 { font-size:1.2rem; font-weight:700; }
-.header-block .sub { font-size:.72rem; color:#7a8fa3; margin-top:4px; }
-
-/* ===== 搜索 ===== */
-.search-box {
-  width:100%; padding:10px 16px; border:1px solid #d4dbe5;
-  border-radius:50px; font-size:.9rem; background:#fff; outline:none; margin-bottom:14px;
-}
+.header-block { text-align:center; margin-bottom:16px; padding-top:14px; }
+.header-block h1 { font-size:1.2rem; font-weight:700; color:#0a1a2b; }
+.header-block .sub { font-size:.72rem; color:#7a8fa3; margin-top:4px; line-height:1.5; }
 
 /* ===== 主卡片 ===== */
 .main-card {
@@ -62,19 +56,20 @@ body {
 .tab-panel { display:none; width:100%; }
 .tab-panel.active { display:block; }
 
-/* ===== 空壳面板（所有面板统一风格） ===== */
+/* ===== 空壳面板 ===== */
 .shell {
   border: 2px dashed #f59e0b; border-radius: 10px;
-  background: #fffbeb; min-height: 200px;
+  background: #fffbeb; min-height: 220px;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; padding: 24px;
 }
 .shell .icon { font-size: 2.5rem; margin-bottom: 10px; }
 .shell .title { font-size: .95rem; font-weight: 700; color: #d97706; margin-bottom: 6px; }
-.shell .desc { font-size: .75rem; color: #9ca3af; line-height: 1.6; max-width: 360px; }
+.shell .desc { font-size: .75rem; color: #9ca3af; line-height: 1.6; max-width: 380px; }
+.shell .desc code { background:#f3f4f6; padding:1px 6px; border-radius:4px; font-size:.7rem; color:#4b5563; }
 .shell .actions { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
 
-/* ===== 开发用按钮 ===== */
+/* ===== 开发按钮 ===== */
 .dev-btn {
   padding: 6px 16px; border-radius: 30px;
   border: 1.5px solid #4a9eff; background: #fff; color: #4a9eff;
@@ -86,10 +81,7 @@ body {
 /* ===== footer ===== */
 .footer { text-align:center; padding:20px 0 10px; font-size:.68rem; color:#8fa3b8; line-height:1.8; }
 
-/* ===== 隐藏 ===== */
-.hidden { display:none !important; }
-
-/* ===== 简洁模式（调试用，不加载任何面板） ===== */
+/* ===== 简洁模式 ===== */
 body.simple-mode .nav-tabs { display:none !important; }
 body.simple-mode .tab-panel { display:none !important; }
 </style>
@@ -103,11 +95,8 @@ body.simple-mode .tab-panel { display:none !important; }
   <!-- 标题 -->
   <div class="header-block">
     <h1>🛠 全能版骨架调试</h1>
-    <div class="sub">所有面板均为空壳 · 逐个开发填充 · 快捷键 1-5 切换</div>
+    <div class="sub">无搜索框 · 5个空壳面板 · 逐个开发填充<br>快捷键 1-5 切换面板</div>
   </div>
-
-  <!-- 搜索 -->
-  <input class="search-box" id="search" type="text" placeholder="🔍 搜索（调试用）" oninput="onSearch()">
 
   <!-- 主卡片 -->
   <div class="main-card">
@@ -121,63 +110,64 @@ body.simple-mode .tab-panel { display:none !important; }
       <button class="nav-tab" data-tab="about" onclick="switchTab('about')">关于</button>
     </div>
 
-    <!-- ===== 点播面板（空壳） ===== -->
+    <!-- ===== 点播面板 ===== -->
     <div class="tab-panel active" id="panel-api">
       <div class="shell">
         <div class="icon">📋</div>
         <div class="title">点播面板</div>
-        <div class="desc">在此开发 list.txt 解析 + 接口卡片渲染逻辑<br>完成后迁移到 <code>modules/api-list.html</code></div>
+        <div class="desc">开发 list.txt 解析 + 接口卡片渲染<br>迁移目标：<code>modules/api-list.html</code></div>
         <div class="actions">
           <button class="dev-btn primary" onclick="switchTab('live')">→ 直播</button>
-          <button class="dev-btn" onclick="testFetch()">测试 fetch list.txt</button>
+          <button class="dev-btn" onclick="testFetch('list.txt')">测试 fetch</button>
         </div>
       </div>
     </div>
 
-    <!-- ===== 直播面板（空壳） ===== -->
+    <!-- ===== 直播面板 ===== -->
     <div class="tab-panel" id="panel-live">
       <div class="shell">
         <div class="icon">📺</div>
         <div class="title">直播面板</div>
-        <div class="desc">在此开发 livelist.txt 解析 + 聚合区 + 直播列表<br>完成后迁移到 <code>modules/live-aggregate.html</code> + <code>live-list.html</code></div>
+        <div class="desc">开发 livelist.txt 解析 + 聚合区渲染<br>迁移目标：<code>modules/live-aggregate.html</code> + <code>live-list.html</code></div>
         <div class="actions">
           <button class="dev-btn primary" onclick="switchTab('danmu')">→ 弹幕</button>
-          <button class="dev-btn" onclick="testFetchLive()">测试 fetch livelist.txt</button>
+          <button class="dev-btn" onclick="testFetch('livelist.txt')">测试 fetch</button>
         </div>
       </div>
     </div>
 
-    <!-- ===== 弹幕面板（空壳） ===== -->
+    <!-- ===== 弹幕面板 ===== -->
     <div class="tab-panel" id="panel-danmu">
       <div class="shell">
         <div class="icon">💬</div>
         <div class="title">弹幕面板</div>
-        <div class="desc">在此开发 config.json → danmuSources 渲染<br>完成后迁移到 <code>modules/danmu.html</code></div>
+        <div class="desc">开发 config.json → danmuSources 渲染<br>迁移目标：<code>modules/danmu.html</code></div>
         <div class="actions">
           <button class="dev-btn primary" onclick="switchTab('download')">→ 下载</button>
-          <button class="dev-btn" onclick="testFetchConfig()">测试 fetch config.json</button>
+          <button class="dev-btn" onclick="testFetch('config.json')">测试 fetch</button>
         </div>
       </div>
     </div>
 
-    <!-- ===== 下载面板（空壳） ===== -->
+    <!-- ===== 下载面板 ===== -->
     <div class="tab-panel" id="panel-download">
       <div class="shell">
         <div class="icon">📦</div>
         <div class="title">下载面板</div>
-        <div class="desc">在此开发 config.json → downloadSources 渲染<br>完成后迁移到 <code>modules/download.html</code></div>
+        <div class="desc">开发 config.json → downloadSources 渲染<br>迁移目标：<code>modules/download.html</code></div>
         <div class="actions">
           <button class="dev-btn primary" onclick="switchTab('about')">→ 关于</button>
+          <button class="dev-btn" onclick="testFetch('config.json')">测试 fetch</button>
         </div>
       </div>
     </div>
 
-    <!-- ===== 关于面板（空壳） ===== -->
+    <!-- ===== 关于面板 ===== -->
     <div class="tab-panel" id="panel-about">
       <div class="shell">
         <div class="icon">ℹ️</div>
         <div class="title">关于面板</div>
-        <div class="desc">在此开发域名备份 + 贡献者 + 声明<br>完成后迁移到 <code>modules/about.html</code></div>
+        <div class="desc">开发域名备份 + 贡献者列表 + 声明<br>迁移目标：<code>modules/about.html</code></div>
         <div class="actions">
           <button class="dev-btn primary" onclick="switchTab('api')">→ 回到点播</button>
         </div>
@@ -188,7 +178,7 @@ body.simple-mode .tab-panel { display:none !important; }
 
   <!-- footer -->
   <div class="footer">
-    <p>🛠 全能版骨架调试页 · 所有面板空壳 · 开发完一个迁移一个</p>
+    <p>🛠 全能版骨架调试 · 无搜索框 · 开发完一个迁移一个</p>
   </div>
 </div>
 
@@ -202,25 +192,18 @@ function switchTab(tab) {
   console.log(`📋 switchTab → ${tab}`);
 }
 
-/* ===== 搜索（调试：高亮当前面板内 .shell） ===== */
-function onSearch() {
-  const kw = document.getElementById('search').value.trim();
-  console.log('🔍 search:', kw || '(empty)');
-  // 开发时在此加真实搜索逻辑
-}
-
-/* ===== 模式切换（简洁↔全能） ===== */
+/* ===== 模式切换 ===== */
 let mode = 'full';
 document.getElementById('modeBtn').addEventListener('click', () => {
   mode = mode === 'full' ? 'simple' : 'full';
   document.body.className = mode + '-mode dev';
   document.getElementById('modeBtn').innerHTML = mode === 'full' ? '切换<br>简洁' : '切换<br>全能';
   if (mode === 'simple') {
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    console.log('🔄 简洁模式：导航+面板全部隐藏');
   } else {
     switchTab('api');
+    console.log('🔄 全能模式：恢复面板');
   }
-  console.log(`🔄 mode → ${mode}`);
 });
 
 /* ===== 快捷键 ===== */
@@ -230,45 +213,23 @@ document.addEventListener('keydown', e => {
   if (map[e.key]) switchTab(map[e.key]);
 });
 
-/* ===== 测试用 fetch（开发时逐个取消注释验证） ===== */
-async function testFetch() {
+/* ===== 通用 fetch 测试 ===== */
+async function testFetch(file) {
   try {
-    const r = await fetch('list.txt?t=' + Date.now(), { cache: 'no-store' });
-    const t = await r.text();
-    const lines = t.trim().split('\n').filter(l => l.trim());
-    alert(`✅ list.txt 加载成功\n${lines.length} 行数据\n\n第一行预览:\n${lines[0]?.slice(0, 80)}...`);
-    console.log('📋 list.txt:', lines.slice(0, 3));
+    const r = await fetch(file + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const text = await r.text();
+    const preview = text.slice(0, 120).replace(/\n/g, ' ');
+    alert(`✅ ${file} 加载成功\n${text.length} 字符\n\n预览: ${preview}...`);
+    console.log(`📄 ${file}:`, text.slice(0, 300));
   } catch (e) {
-    alert('❌ list.txt 加载失败:\n' + e.message);
+    alert(`❌ ${file} 加载失败:\n${e.message}`);
     console.error(e);
   }
 }
 
-async function testFetchLive() {
-  try {
-    const r = await fetch('livelist.txt?t=' + Date.now(), { cache: 'no-store' });
-    const t = await r.text();
-    const lines = t.trim().split('\n').filter(l => l.trim());
-    alert(`✅ livelist.txt 加载成功\n${lines.length} 行数据`);
-    console.log('📺 livelist.txt:', lines.slice(0, 3));
-  } catch (e) {
-    alert('❌ livelist.txt 加载失败:\n' + e.message);
-  }
-}
-
-async function testFetchConfig() {
-  try {
-    const r = await fetch('config.json?t=' + Date.now(), { cache: 'no-store' });
-    const j = await r.json();
-    alert(`✅ config.json 加载成功\nkeys: ${Object.keys(j).join(', ')}`);
-    console.log('⚙️ config.json:', j);
-  } catch (e) {
-    alert('❌ config.json 加载失败:\n' + e.message);
-  }
-}
-
-console.log('%c🛠 全能版骨架调试页', 'color:#f59e0b;font-size:14px;font-weight:bold');
-console.log('%c快捷键 1-5 切换面板 | 搜索框实时调试 | 模式切换测试简洁/全能', 'color:#6b7280;font-size:11px');
+console.log('%c🛠 全能版骨架调试页（无搜索框）', 'color:#f59e0b;font-size:14px;font-weight:bold');
+console.log('%c快捷键 1-5 切换 | 模式按钮测试简洁/全能 | 各面板测试按钮验证数据', 'color:#6b7280;font-size:11px');
 </script>
 </body>
 </html>
