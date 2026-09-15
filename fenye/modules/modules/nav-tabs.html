@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+<div class="main-card">
+  <div class="nav-tabs" id="navTabs"></div>
+
+  <!-- ③ 点播面板 -->
+  <div class="tab-panel active" id="api-panel">
+    <iframe src="api-list.html" data-module="api-list" scrolling="no"></iframe>
+  </div>
+
+  <!-- ⑥⑦ 直播面板 -->
+  <div class="tab-panel" id="live-panel">
+    <iframe src="live-aggregate.html" data-module="live-aggregate" scrolling="no"></iframe>
+    <iframe src="live-list.html" data-module="live-list" scrolling="no"></iframe>
+  </div>
+
+  <!-- ⑧ 下载面板 -->
+  <div class="tab-panel" id="download-panel">
+    <iframe src="download.html" data-module="download" scrolling="no"></iframe>
+  </div>
+
+  <!-- ⑨ 弹幕面板 -->
+  <div class="tab-panel" id="danmu-panel">
+    <iframe src="danmu.html" data-module="danmu" scrolling="no"></iframe>
+  </div>
+
+  <!-- ⑩ 关于面板 -->
+  <div class="tab-panel" id="about-panel">
+    <iframe src="about.html" data-module="about" scrolling="no"></iframe>
+  </div>
+</div>
+
+<script src="../assets/common.js"></script>
+</body>
+</html>
