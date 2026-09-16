@@ -234,6 +234,78 @@ body.simple-mode #api-panel { display:block !important; }
   .live-url-body .live-url-text { font-size:.72rem; }
   .live-info-inline { font-size:.6rem; }
 }
+/* ===== 合作共创：透明自适应容器（解决小屏挤压） ===== */
+.contributor-grid {
+  /* 原 grid 保留，仅增强小屏表现 */
+  gap: 10px;
+}
+
+/* 透明无边包裹容器 */
+.contributor-card {
+  background: transparent !important;      /* 无边透明 */
+  border: none !important;                 /* 去掉边框 */
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-sizing: border-box;
+
+  /* 防止内容被挤压 */
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* 头像在小屏下略微缩小，避免挤压文字 */
+.contributor-avatar {
+  width: 40px;
+  height: 40px;
+  font-size: .8rem;
+  flex-shrink: 0;
+}
+
+/* 文字区域自适应 */
+.contributor-info {
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* 名字、描述在小屏自动换行 */
+.contributor-name,
+.contributor-desc,
+.contributor-social {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ===== 小屏专项优化（≤600px） ===== */
+@media (max-width: 600px) {
+  .contributor-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px;
+  }
+
+  .contributor-card {
+    padding: 8px 10px;
+  }
+
+  .contributor-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: .75rem;
+  }
+
+  .contributor-name {
+    font-size: .78rem;
+  }
+
+  .contributor-role {
+    font-size: .58rem;
+    padding: 2px 8px;
+  }
+
+  .contributor-desc {
+    font-size: .65rem;
+    line-height: 1.35;
+  }
+}
 </style>
 </head>
 
