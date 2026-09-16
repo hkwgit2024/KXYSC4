@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>海量接口搬运备份调试</title>
+<title>海量接口搬运备份公共代码框架</title>
 <style>
 /* ============================================================
    公共 CSS
@@ -11,10 +11,15 @@
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
+html { height:100%; }
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   background:#eef2f7; color:#1a2b3d;
   padding:20px 14px 10px;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
   overflow-x:hidden;
   -webkit-tap-highlight-color:transparent;
 }
@@ -28,6 +33,9 @@ button:focus, button:focus-visible, input:focus, input:focus-visible,
   position:relative;
   width:100%;
   overflow-x:hidden;
+  flex:1;
+  display:flex;
+  flex-direction:column;
 }
 
 /* 模式切换 */
@@ -62,6 +70,7 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
   border:1px solid #d4dbe5;
   width:100%;
   overflow-x:hidden;
+  flex:1;
 }
 
 /* 导航栏 —— 跟原版一致 */
@@ -120,7 +129,15 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 .loading { text-align:center; color:#8fa3b8; padding:60px 0; font-size:.88rem; }
 .error-msg { text-align:center; color:#dc2626; padding:16px 20px; font-size:.8rem; background:#fef2f2; border:1px solid #fecaca; border-radius:4px; margin:12px 0; word-break:break-all; }
 
-.page-footer { text-align:center; padding:24px 0 10px; font-size:.7rem; color:#8fa3b8; line-height:1.8; }
+/* ✅ footer 自动沉底 */
+.page-footer {
+  text-align:center;
+  padding:24px 0 10px;
+  font-size:.7rem;
+  color:#8fa3b8;
+  line-height:1.8;
+  margin-top:auto;
+}
 
 /* 简洁模式 */
 body.simple-mode .nav-tabs { display:none !important; }
