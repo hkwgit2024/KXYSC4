@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>海量接口搬运备份3</title>
+<title>海量接口搬运备份</title>
 <style>
 /* ============================================================
    公共 CSS（dev.html 基础框架 + 1.html 全量补充）
@@ -341,12 +341,12 @@ body.simple-mode #api-panel { display:block !important; }
 
 <script>
 /* ============================================================
-   完整 JS 逻辑（含刷新记住面板 + localStorage）
+   完整 JS 逻辑（含刷新记住面板 + localStorage，已修复启动恢复）
    ============================================================ */
 
 const MODE_KEY = 'site_mode';
-const TAB_KEY = 'current_tab';          // ✅ 面板缓存 key
-const VALID_TABS = ['api','live','download','danmu','about']; // ✅ 合法面板白名单
+const TAB_KEY = 'current_tab';
+const VALID_TABS = ['api','live','download','danmu','about'];
 
 const btn = document.getElementById('modeToggleBtn');
 const searchBox = document.getElementById('search');
@@ -647,10 +647,25 @@ btn.addEventListener('click',()=>{
   }
 });
 
-/* ===== 启动 ===== */
+/* ===== 启动（✅ 修复：根据模式正确恢复面板） ===== */
 renderTabs();
-renderApi();
-loadConfig().then(()=>{if(currentMode!=='simple'){renderDownloads();renderDanmu();}});
+
+if (currentMode === 'simple') {
+  // 简洁模式：强制点播
+  currentTabId = 'api';
+  localStorage.setItem(TAB_KEY, 'api');
+  renderApi();
+} else {
+  // ✅ 全能模式：恢复上次面板（标签 + 内容一起恢复）
+  showPanel(currentTabId);
+}
+
+loadConfig().then(()=>{
+  if(currentMode!=='simple'){
+    renderDownloads();
+    renderDanmu();
+  }
+});
 </script>
 </body>
 </html>
