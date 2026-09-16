@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>海量接口搬运备份调试</title>
+<title>海量接口搬运备份公共代码框架</title>
 <style>
 /* ============================================================
    公共 CSS
@@ -26,7 +26,7 @@ body {
 button:focus, button:focus-visible, input:focus, input:focus-visible,
 .nav-tab:focus, .copy-btn:focus { outline:none !important; }
 
-/* 容器：纯自适应，不撑高度 */
+/* 容器 */
 .container {
   max-width:820px;
   margin:0 auto;
@@ -129,7 +129,7 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 .loading { text-align:center; color:#8fa3b8; padding:60px 0; font-size:.88rem; }
 .error-msg { text-align:center; color:#dc2626; padding:16px 20px; font-size:.8rem; background:#fef2f2; border:1px solid #fecaca; border-radius:4px; margin:12px 0; word-break:break-all; }
 
-/* footer */
+/* footer 自动沉底 */
 .page-footer {
   text-align:center;
   padding:24px 0 10px;
@@ -142,7 +142,9 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 /* 简洁模式 */
 body.simple-mode .nav-tabs { display:none !important; }
 body.simple-mode #live-panel,
-body.simple-mode #danmu-panel { display:none !important; }
+body.simple-mode #download-panel,
+body.simple-mode #danmu-panel,
+body.simple-mode #about-panel { display:none !important; }
 body.simple-mode #api-panel { display:block !important; }
 
 /* 空壳面板 */
@@ -207,6 +209,22 @@ body.simple-mode #api-panel { display:block !important; }
       <div class="panel-placeholder">
         <div class="placeholder-icon">💬</div>
         <div class="placeholder-text">弹幕内容加载中...</div>
+      </div>
+    </div>
+
+    <!-- 下载面板 -->
+    <div class="tab-panel" id="download-panel">
+      <div class="panel-placeholder">
+        <div class="placeholder-icon">📦</div>
+        <div class="placeholder-text">下载内容加载中...</div>
+      </div>
+    </div>
+
+    <!-- 关于面板 -->
+    <div class="tab-panel" id="about-panel">
+      <div class="panel-placeholder">
+        <div class="placeholder-icon">ℹ️</div>
+        <div class="placeholder-text">关于内容加载中...</div>
       </div>
     </div>
 
@@ -353,7 +371,7 @@ function renderApi() {
 /* 标签导航 */
 const tabsData = [
   {id:"api",label:"点播"},{id:"live",label:"直播"},
-  {id:"danmu",label:"弹幕"}
+  {id:"danmu",label:"弹幕"},{id:"download",label:"下载"},{id:"about",label:"关于"}
 ];
 
 function renderTabs() {
@@ -369,11 +387,25 @@ function renderTabs() {
 }
 
 function showPanel(tabId) {
-  if(searchBox){ searchBox.value=''; document.querySelectorAll('#api-panel .api-item.hidden').forEach(e=>e.classList.remove('hidden')); }
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  const panel=document.getElementById(tabId+'-panel');
-  if(panel) panel.classList.add('active');
-  if(tabId==='api'){ topSeed=Date.now()+Math.random(); renderApi(); }
+  /* ✅ 搜索框：仅在点播/直播/弹幕显示，下载和关于隐藏 */
+  if (searchBox) {
+    if (tabId === 'download' || tabId === 'about') {
+      searchBox.style.display = 'none';
+    } else {
+      searchBox.style.display = '';
+    }
+    searchBox.value = '';
+    document.querySelectorAll('#api-panel .api-item.hidden').forEach(e => e.classList.remove('hidden'));
+  }
+
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById(tabId + '-panel');
+  if (panel) panel.classList.add('active');
+
+  if (tabId === 'api') {
+    topSeed = Date.now() + Math.random();
+    renderApi();
+  }
 }
 
 /* 搜索框位置 */
