@@ -122,7 +122,7 @@
       "filterable": 1,
       "ext": {
         "proxy": "https://www.tangsan.fun/jingyu.php",
-        "site": "https://17264.kstore.space/aiyingshi",
+        "site": "aiyingshi",
         "pic": "http://222.211.75.252:23433"
       }
     },
@@ -198,8 +198,8 @@
       "api": "https://fastlink.cokey.xyz/f/nLaNhm/get.js",
       "ext": {
         "host": "https://yun-1316442804.cos.ap-guangzhou.myqcloud.com/603.txt",
-        "key": "https://17264.kstore.space/FTgP4Gq8zPiqbt7M",
-        "init": "https://17264.kstore.space/V122",
+        "key": "FTgP4Gq8zPiqbt7M",
+        "init": "V122",
         "api": 2,
         "ua": "https://17264.kstore.space/okhttp/3.10.0"
       }
@@ -211,8 +211,8 @@
       "api": "https://fastlink.cokey.xyz/f/nLaNhm/get.js",
       "ext": {
         "host": "http://110.42.67.130:1226",
-        "key": "https://17264.kstore.space/kj37zs29q22jk96t",
-        "init": "https://17264.kstore.space/V122",
+        "key": "kj37zs29q22jk96t",
+        "init": "V122",
         "api": 2,
         "ua": "https://17264.kstore.space/okhttp/3.10.0"
       }
@@ -306,8 +306,8 @@
       "searchable": 1,
       "ext": {
         "host": "http://103.217.190.91:9999",
-        "key": "https://17264.kstore.space/zxPtEUDGVllIUhDB",
-        "init": "https://17264.kstore.space/V122",
+        "key": "zxPtEUDGVllIUhDB",
+        "init": "V122",
         "api": 2,
         "ua": "https://17264.kstore.space/okhttp/3.10.0"
       }
@@ -394,8 +394,8 @@
       "api": "https://pan.szfx.top/down.php/08343ea7d5d8d12da1c16f9ccf03040d.js",
       "ext": {
         "host": "http://110.42.67.221:6802",
-        "key": "https://17264.kstore.space/1vi33w2pAHEm8Y6U",
-        "init": "https://17264.kstore.space/V122",
+        "key": "1vi33w2pAHEm8Y6U",
+        "init": "V122",
         "api": 2,
         "ua": "https://17264.kstore.space/okhttp/3.10.0"
       }
@@ -606,9 +606,9 @@
       "api": "csp_XBPQ",
       "jar": "https://wp.kayyw.com/f/bobgtv/%E5%B0%B1%E5%87%A0%E4%B8%AA.jar",
       "ext": {
-        "副标题": "https://17264.kstore.space/保护正版，人人有责",
-        "请求头": "https://17264.kstore.space/User-Agent$MOBILE_UA",
-        "编码": "https://17264.kstore.space/UTF-8",
+        "副标题": "保护正版，人人有责",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "分类url": "https://m.ycblcw.com/"
       }
     },
@@ -619,9 +619,9 @@
       "api": "csp_XBPQ",
       "jar": "https://wp.kayyw.com/f/bobgtv/%E5%B0%B1%E5%87%A0%E4%B8%AA.jar",
       "ext": {
-        "副标题": "https://17264.kstore.space/保护正版，人人有责",
-        "请求头": "https://17264.kstore.space/User-Agent$MOBILE_UA",
-        "编码": "https://17264.kstore.space/UTF-8",
+        "副标题": "保护正版，人人有责",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "分类url": "https://vip.wwgz.cn:5200/"
       }
     },
@@ -644,12 +644,12 @@
       "api": "csp_XBPQ",
       "jar": "https://wp.kayyw.com/f/bobgtv/%E5%B0%B1%E5%87%A0%E4%B8%AA.jar",
       "ext": {
-        "副标题": "https://17264.kstore.space/保护正版，人人有责",
-        "请求头": "https://17264.kstore.space/User-Agent$MOBILE_UA",
-        "编码": "https://17264.kstore.space/UTF-8",
+        "副标题": "保护正版，人人有责",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "主页url": "https://www.cd-zj.com/label/qq.html",
         "分类url": "https://www.cd-zj.com/cupfox-list/{cateId}-{area}--{class}-----{catePg}---{year}.html",
-        "分类": "https://17264.kstore.space/腾讯$5#电视剧$2#电影$1#动漫$4#综艺$3"
+        "分类": "腾讯$5#电视剧$2#电影$1#动漫$4#综艺$3"
       }
     },
     {
@@ -659,11 +659,11 @@
       "api": "csp_XBPQ",
       "jar": "https://wp.kayyw.com/f/bobgtv/%E5%B0%B1%E5%87%A0%E4%B8%AA.jar",
       "ext": {
-        "副标题": "https://17264.kstore.space/保护正版，人人有责",
-        "请求头": "https://17264.kstore.space/User-Agent$MOBILE_UA",
-        "编码": "https://17264.kstore.space/UTF-8",
+        "副标题": "保护正版，人人有责",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "分类url": "http://114bate.com/hdshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html",
-        "分类": "https://17264.kstore.space/电影$1#电视剧$2#综艺$3#动漫$4#短剧$5#日韩$6"
+        "分类": "电影$1#电视剧$2#综艺$3#动漫$4#短剧$5#日韩$6"
       }
     },
     {
@@ -673,11 +673,11 @@
       "api": "csp_XBPQ",
       "jar": "https://wp.kayyw.com/f/bobgtv/%E5%B0%B1%E5%87%A0%E4%B8%AA.jar",
       "ext": {
-        "副标题": "https://17264.kstore.space/保护正版，人人有责",
-        "请求头": "https://17264.kstore.space/User-Agent$MOBILE_UA",
-        "编码": "https://17264.kstore.space/UTF-8",
+        "副标题": "保护正版，人人有责",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "分类url": "https://www.wbbb1.com/",
-        "分类": "https://17264.kstore.space/电影$1#电视剧$2#动漫$3#综艺$4"
+        "分类": "电影$1#电视剧$2#动漫$3#综艺$4"
       }
     },
     {
@@ -690,14 +690,14 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": {
-        "请求头": "https://17264.kstore.space/User-Agent$MOBILE_UA",
-        "编码": "https://17264.kstore.space/UTF-8",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "主页url": "https://cn.agekkkk.com/",
-        "线路标题": "https://17264.kstore.space/动漫",
-        "跳转播放链接": "https://17264.kstore.space/urlDecode(var player_*\"url\":\"&&\")",
+        "线路标题": "动漫",
+        "跳转播放链接": "urlDecode(var player_*\"url\":\"&&\")",
         "简介": "https://17264.kstore.space/style=\"display: none;\">&&</span>",
         "分类url": "https://cn.agekkkk.com/type/{cateId}-{catePg}.html",
-        "分类": "https://17264.kstore.space/日韩漫$1#国产漫$2#动态漫$5#特摄片$4#欧美漫$3"
+        "分类": "日韩漫$1#国产漫$2#动态漫$5#特摄片$4#欧美漫$3"
       }
     },
     {
@@ -710,12 +710,12 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": {
-        "请求头": "https://17264.kstore.space/User-Agent$MOBILE_UA",
-        "编码": "https://17264.kstore.space/UTF-8",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "主页url": "https://silidm.com/",
-        "线路标题": "https://17264.kstore.space/保护正版，人人有责",
+        "线路标题": "保护正版，人人有责",
         "分类url": "https://silidm.com/show/{cateId}-{area}-{by}-{class}-{lang}-{letter}---{catePg}---{year}.html",
-        "分类": "https://17264.kstore.space/电影$dianying#剧集$juji#动漫$dongman#综艺$zongyi"
+        "分类": "电影$dianying#剧集$juji#动漫$dongman#综艺$zongyi"
       }
     },
     {
@@ -957,8 +957,8 @@
       "ext": {
         "host": "http://www.yingsw.top",
         "timeout": 8,
-        "key": "https://17264.kstore.space/guluyinghua_123",
-        "sign": "https://17264.kstore.space/679543610991810f19698c187e5e106e"
+        "key": "guluyinghua_123",
+        "sign": "679543610991810f19698c187e5e106e"
       }
     },
     {
@@ -988,7 +988,7 @@
       "api": "csp_AppGet",
       "ext": {
         "host": "https://miget-1313189639.cos.ap-guangzhou.myqcloud.com/mifun.txt",
-        "datakey": "https://17264.kstore.space/GETMIFUNGEIMIFUN"
+        "datakey": "GETMIFUNGEIMIFUN"
       }
     },
     {
@@ -1460,7 +1460,7 @@
         "site": [
           "https://www.kfzys.net"
         ],
-        "cookie": "https://17264.kstore.space/bbs_sid=p5mugcm9r147o1d3qpi0su1ucm; bbs_token=gDMAOehNUQetTJv9Lnet0J_2FGJmgdvnx90iTZqzU_2FnO0_3D"
+        "cookie": "bbs_sid=p5mugcm9r147o1d3qpi0su1ucm; bbs_token=gDMAOehNUQetTJv9Lnet0J_2FGJmgdvnx90iTZqzU_2FnO0_3D"
       },
       "timeout": 60
     },
@@ -1755,7 +1755,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": {
-        "cloudDrives": "https://17264.kstore.space/aliyun"
+        "cloudDrives": "aliyun"
       }
     },
     {
@@ -1768,7 +1768,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": {
-        "cloudDrives": "https://17264.kstore.space/quark"
+        "cloudDrives": "quark"
       }
     },
     {
@@ -1781,7 +1781,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": {
-        "cloudDrives": "https://17264.kstore.space/uc"
+        "cloudDrives": "uc"
       }
     },
     {
@@ -1794,7 +1794,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": {
-        "cloudDrives": "https://17264.kstore.space/tianyi"
+        "cloudDrives": "tianyi"
       }
     },
     {
@@ -1820,7 +1820,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": {
-        "cloudDrives": "https://17264.kstore.space/baidu"
+        "cloudDrives": "baidu"
       }
     },
     {
@@ -1833,7 +1833,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": {
-        "cloudDrives": "https://17264.kstore.space/mobile"
+        "cloudDrives": "mobile"
       }
     },
     {
@@ -1909,7 +1909,7 @@
     {
       "name": "自动解析",
       "type": 2,
-      "url": "https://17264.kstore.space/Parallel"
+      "url": "Parallel"
     },
     {
       "name": "不知道谁的",
@@ -2018,249 +2018,5 @@
         "document.getElementsByClassName('swal-buttonswal-button--confirm')[0].click()"
       ]
     }
-  ],
-  "doh": [
-    {
-      "name": "Google",
-      "url": "https://dns.google/dns-query",
-      "ips": [
-        "8.8.4.4",
-        "8.8.8.8"
-      ]
-    },
-    {
-      "name": "Cloudflare",
-      "url": "https://cloudflare-dns.com/dns-query",
-      "ips": [
-        "1.1.1.1",
-        "1.0.0.1",
-        "2606:4700:4700::1111",
-        "2606:4700:4700::1001"
-      ]
-    },
-    {
-      "name": "AdGuard",
-      "url": "https://dns.adguard.com/dns-query",
-      "ips": [
-        "94.140.14.140",
-        "94.140.14.141"
-      ]
-    },
-    {
-      "name": "DNSWatch",
-      "url": "https://resolver2.dns.watch/dns-query",
-      "ips": [
-        "84.200.69.80",
-        "84.200.70.40"
-      ]
-    },
-    {
-      "name": "Quad9",
-      "url": "https://dns.quad9.net/dns-quer",
-      "ips": [
-        "9.9.9.9",
-        "149.112.112.112"
-      ]
-    }
-  ],
-  "flags": [
-    "youku",
-    "优酷",
-    "优 酷",
-    "优酷视频",
-    "qq",
-    "腾讯",
-    "腾 讯",
-    "腾讯视频",
-    "iqiyi",
-    "qiyi",
-    "奇艺",
-    "爱奇艺",
-    "爱 奇 艺",
-    "m1905",
-    "xigua",
-    "letv",
-    "leshi",
-    "乐视",
-    "乐 视",
-    "sohu",
-    "搜狐",
-    "搜 狐",
-    "搜狐视频",
-    "tudou",
-    "pptv",
-    "mgtv",
-    "芒果",
-    "imgo",
-    "芒果TV",
-    "芒 果 T V",
-    "bilibili",
-    "哔 哩",
-    "哔 哩 哔 哩"
-  ],
-  "ijk": [
-    {
-      "group": "软解码",
-      "options": [
-        {
-          "category": 4,
-          "name": "opensles",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "overlay-format",
-          "value": "842225234"
-        },
-        {
-          "category": 4,
-          "name": "framedrop",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "soundtouch",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "start-on-prepared",
-          "value": "1"
-        },
-        {
-          "category": 1,
-          "name": "http-detect-range-support",
-          "value": "0"
-        },
-        {
-          "category": 1,
-          "name": "fflags",
-          "value": "fastseek"
-        },
-        {
-          "category": 2,
-          "name": "skip_loop_filter",
-          "value": "48"
-        },
-        {
-          "category": 4,
-          "name": "reconnect",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "enable-accurate-seek",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec-auto-rotate",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec-handle-resolution-change",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec-hevc",
-          "value": "0"
-        },
-        {
-          "category": 1,
-          "name": "dns_cache_timeout",
-          "value": "600000000"
-        }
-      ]
-    },
-    {
-      "group": "硬解码",
-      "options": [
-        {
-          "category": 4,
-          "name": "opensles",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "overlay-format",
-          "value": "842225234"
-        },
-        {
-          "category": 4,
-          "name": "framedrop",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "soundtouch",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "start-on-prepared",
-          "value": "1"
-        },
-        {
-          "category": 1,
-          "name": "http-detect-range-support",
-          "value": "0"
-        },
-        {
-          "category": 1,
-          "name": "fflags",
-          "value": "fastseek"
-        },
-        {
-          "category": 2,
-          "name": "skip_loop_filter",
-          "value": "48"
-        },
-        {
-          "category": 4,
-          "name": "reconnect",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "enable-accurate-seek",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec-auto-rotate",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec-handle-resolution-change",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec-hevc",
-          "value": "1"
-        },
-        {
-          "category": 1,
-          "name": "dns_cache_timeout",
-          "value": "600000000"
-        }
-      ]
-    }
-  ],
-  "ads": [
-    "static-mozai.4gtv.tv"
   ]
 }

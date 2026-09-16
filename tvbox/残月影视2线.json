@@ -1,4 +1,5 @@
 {
+  "spider": "https://gh.xmly.dev/https://raw.githubusercontent.com/1771245847/TvBox/master/canyue.jar",
   "logo": "http://q2.qlogo.cn/headimg_dl?dst_uin=1771245847&spec=100",
   "sites": [
     {
@@ -163,7 +164,7 @@
       "key": "如意影视",
       "name": "如意影视",
       "type": 1,
-      "api": "https://cj.rycjapi.com/api.php/provide/vod/from/rym3u8/at/json/",
+      "api": "https://cj.rytvapi.com/api.php/provide/vod/from/rym3u8/at/json/",
       "playUrl": "",
       "searchable": 1,
       "quickSearch": 1,

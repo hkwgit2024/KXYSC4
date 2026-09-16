@@ -5,7 +5,7 @@
   "lives": [
     {
       "name": "直播名字自定义",
-      "url": "https://raw.githubusercontent.com/guot55/yg/main/pg/直播链接自定义"
+      "url": "直播链接自定义"
     }
   ],
   "sites": [
@@ -61,7 +61,7 @@
       "changeable": 1,
       "ext": {
         "filters": "https://bitbucket.org/guot55/ygbh/raw/main/pro/json/douban.json",
-        "channel": "https://raw.githubusercontent.com/guot55/yg/main/pg/tgsearchers3"
+        "channel": "tgsearchers3"
       }
     },
     {
@@ -73,7 +73,7 @@
       "changeable": 1,
       "ext": {
         "filters": "https://bitbucket.org/guot55/ygbh/raw/main/pro/json/douban.json",
-        "channel": "https://raw.githubusercontent.com/guot55/yg/main/pg/PanjClub,guoman4K,alyp_1"
+        "channel": "PanjClub,guoman4K,alyp_1"
       }
     },
     {
@@ -85,7 +85,7 @@
       "changeable": 1,
       "ext": {
         "filters": "https://bitbucket.org/guot55/ygbh/raw/main/pro/json/douban.json",
-        "channel": "https://raw.githubusercontent.com/guot55/yg/main/pg/yunpanuc"
+        "channel": "yunpanuc"
       }
     },
     {
@@ -97,7 +97,7 @@
       "changeable": 1,
       "ext": {
         "filters": "https://bitbucket.org/guot55/ygbh/raw/main/pro/json/douban.json",
-        "channel": "https://raw.githubusercontent.com/guot55/yg/main/pg/BaiduCloudDisk,Baidu_Netdisk,bdwpzhpd"
+        "channel": "BaiduCloudDisk,Baidu_Netdisk,bdwpzhpd"
       }
     },
     {
@@ -109,7 +109,7 @@
       "changeable": 1,
       "ext": {
         "filters": "https://bitbucket.org/guot55/ygbh/raw/main/pro/json/douban.json",
-        "channel": "https://raw.githubusercontent.com/guot55/yg/main/pg/zyfb123,xx123pan,zyzhpd123,yp123pan"
+        "channel": "zyfb123,xx123pan,zyzhpd123,yp123pan"
       }
     },
     {
@@ -121,7 +121,7 @@
       "changeable": 1,
       "ext": {
         "filters": "https://bitbucket.org/guot55/ygbh/raw/main/pro/json/douban.json",
-        "channel": "https://raw.githubusercontent.com/guot55/yg/main/pg/cloudtianyi,txtyzy,peccxinpd,yunpan189,tianyirigeng,tyypzhpd"
+        "channel": "cloudtianyi,txtyzy,peccxinpd,yunpan189,tianyirigeng,tyypzhpd"
       }
     },
     {
@@ -133,7 +133,7 @@
       "changeable": 1,
       "ext": {
         "filters": "https://bitbucket.org/guot55/ygbh/raw/main/pro/json/douban.json",
-        "channel": "https://raw.githubusercontent.com/guot55/yg/main/pg/shareAliyun,zaihuayun"
+        "channel": "shareAliyun,zaihuayun"
       }
     },
     {
@@ -145,7 +145,7 @@
       "changeable": 1,
       "ext": {
         "filters": "https://bitbucket.org/guot55/ygbh/raw/main/pro/json/douban.json",
-        "channel": "https://raw.githubusercontent.com/guot55/yg/main/pg/yunpan139,ydypzyfx"
+        "channel": "yunpan139,ydypzyfx"
       }
     },
     {
@@ -206,7 +206,7 @@
       },
       "ext": {
         "sites": "https://www.91panta.cn",
-        "proxy": "https://raw.githubusercontent.com/guot55/yg/main/pg/noproxy",
+        "proxy": "noproxy",
         "classes": "https://bitbucket.org/guot55/ygbh/raw/main/pro/json/panta.json"
       }
     },
@@ -236,7 +236,7 @@
       },
       "ext": {
         "sites": "https://www.bixbiy.com",
-        "proxy": "https://raw.githubusercontent.com/guot55/yg/main/pg/noproxy",
+        "proxy": "noproxy",
         "classes": "https://bitbucket.org/guot55/ygbh/raw/main/pro/json/bixbiy.json"
       }
     },
@@ -250,7 +250,7 @@
       "changeable": 1,
       "ext": {
         "sites": "",
-        "proxy": "https://raw.githubusercontent.com/guot55/yg/main/pg/proxy"
+        "proxy": "proxy"
       }
     },
     {
@@ -279,7 +279,7 @@
       },
       "ext": {
         "sites": "https://www.leijing.xyz,https://www.leijing1.com,https://leijing.xyz,https://leijing1.com",
-        "proxy": "https://raw.githubusercontent.com/guot55/yg/main/pg/noproxy",
+        "proxy": "noproxy",
         "classes": "https://bitbucket.org/guot55/ygbh/raw/main/pro/json/leijing.json"
       }
     },
@@ -293,7 +293,7 @@
       "changeable": 1,
       "ext": {
         "sites": "https://wogg.xxooo.cf",
-        "proxy": "https://raw.githubusercontent.com/guot55/yg/main/pg/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -366,7 +366,7 @@
       "changeable": 1,
       "ext": {
         "sites": "https://woog.nxog.eu.org",
-        "proxy": "https://raw.githubusercontent.com/guot55/yg/main/pg/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -379,7 +379,7 @@
       "changeable": 1,
       "ext": {
         "sites": "https://feimao666.fun",
-        "proxy": "https://raw.githubusercontent.com/guot55/yg/main/pg/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -392,7 +392,7 @@
       "changeable": 1,
       "ext": {
         "sites": "http://2xiaopan.fun",
-        "proxy": "https://raw.githubusercontent.com/guot55/yg/main/pg/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -405,7 +405,7 @@
       "changeable": 1,
       "ext": {
         "sites": "https://www.muou.site",
-        "proxy": "https://raw.githubusercontent.com/guot55/yg/main/pg/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -418,7 +418,7 @@
       "changeable": 1,
       "ext": {
         "sites": "https://mihdr.top",
-        "proxy": "https://raw.githubusercontent.com/guot55/yg/main/pg/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -430,8 +430,8 @@
       "changeable": 1,
       "ext": {
         "host": "https://muouapp.oss-cn-hangzhou.aliyuncs.com/MUOUAPP/godbbq.txt",
-        "name": "https://raw.githubusercontent.com/guot55/yg/main/pg/金牌影院（请断网再安装）",
-        "version": "https://raw.githubusercontent.com/guot55/yg/main/pg/4.2.0"
+        "name": "金牌影院（请断网再安装）",
+        "version": "4.2.0"
       }
     },
     {
@@ -443,7 +443,7 @@
       "api": "csp_AppGet",
       "ext": {
         "host": "https://miget-1313189639.cos.ap-guangzhou.myqcloud.com/mifun.txt",
-        "datakey": "https://raw.githubusercontent.com/guot55/yg/main/pg/GETMIFUNGEIMIFUN"
+        "datakey": "GETMIFUNGEIMIFUN"
       }
     },
     {
@@ -455,7 +455,7 @@
       "api": "csp_AppGet",
       "ext": {
         "host": "https://staraugust123456.oss-cn-hangzhou.aliyuncs.com/2.txt",
-        "datakey": "https://raw.githubusercontent.com/guot55/yg/main/pg/staraugust123456",
+        "datakey": "staraugust123456",
         "api": 2
       }
     },
@@ -468,7 +468,7 @@
       "api": "csp_AppGet",
       "ext": {
         "host": "https://ceshi307386.oss-cn-beijing.aliyuncs.com/blurl.txt",
-        "datakey": "https://raw.githubusercontent.com/guot55/yg/main/pg/5f2b7ed203a3a581",
+        "datakey": "5f2b7ed203a3a581",
         "api": 2
       }
     },
@@ -481,7 +481,7 @@
       "api": "csp_AppGet",
       "ext": {
         "host": "https://hk421appcms.cs4k.top",
-        "datakey": "https://raw.githubusercontent.com/guot55/yg/main/pg/da61247f5b662597",
+        "datakey": "da61247f5b662597",
         "api": "2"
       }
     },
@@ -494,7 +494,7 @@
       "api": "csp_AppGet",
       "ext": {
         "host": "http://ys.xiaos12.cn",
-        "datakey": "https://raw.githubusercontent.com/guot55/yg/main/pg/chfgjfrhhf628vw1"
+        "datakey": "chfgjfrhhf628vw1"
       }
     },
     {
@@ -507,8 +507,8 @@
       "api": "csp_AppYsV2",
       "ext": {
         "api": "http://yjyi.juyongjiu.com:80/icciu_api.php/v1.vod",
-        "datasignkey": "https://raw.githubusercontent.com/guot55/yg/main/pg/6QQNUsP3PkD2ajJCPCY8",
-        "apisignkey": "https://raw.githubusercontent.com/guot55/yg/main/pg/lvdoutv-1.0.0"
+        "datasignkey": "6QQNUsP3PkD2ajJCPCY8",
+        "apisignkey": "lvdoutv-1.0.0"
       }
     },
     {
@@ -518,10 +518,10 @@
       "api": "csp_Hmys",
       "ext": {
         "host": "https://dy.hengshengmy.com",
-        "app_id": "https://raw.githubusercontent.com/guot55/yg/main/pg/senlin",
-        "deviceid": "https://raw.githubusercontent.com/guot55/yg/main/pg/ce8bd1f9cd8cf302",
+        "app_id": "senlin",
+        "deviceid": "ce8bd1f9cd8cf302",
         "versionCode": "10000",
-        "UMENG_CHANNEL": "https://raw.githubusercontent.com/guot55/yg/main/pg/semd10"
+        "UMENG_CHANNEL": "semd10"
       }
     },
     {
@@ -876,17 +876,17 @@
     {
       "name": "Json聚合",
       "type": 3,
-      "url": "https://raw.githubusercontent.com/guot55/yg/main/pg/Demo"
+      "url": "Demo"
     },
     {
       "name": "Web聚合",
       "type": 3,
-      "url": "https://raw.githubusercontent.com/guot55/yg/main/pg/Web"
+      "url": "Web"
     },
     {
       "name": "自定义解析名称",
       "type": 1,
-      "url": "https://raw.githubusercontent.com/guot55/yg/main/pg/自定义解析链接"
+      "url": "自定义解析链接"
     }
   ]
 }

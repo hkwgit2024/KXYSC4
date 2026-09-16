@@ -33,7 +33,7 @@
         "副标题": "p:.->pic-text",
         "搜索模式": "1",
         "搜索url": "https://www.zhenbuka34.com/search-{wd}----------{pg}---/",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$dianying#电视剧$dianshiju#综艺$zongyi#动漫$dongman#纪录片$jilupian#福利$lunlipian#",
+        "分类": "电影$dianying#电视剧$dianshiju#综艺$zongyi#动漫$dongman#纪录片$jilupian#福利$lunlipian#",
         "分类url": "https://www.zhenbuka34.com/vodtype/{cateId}-{catePg}/"
       }
     },
@@ -50,15 +50,15 @@
         "请求头": "https://gitee.com/hulanlu/04/raw/master/User-Agent$Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1#{{曲奇-c}}",
         "特殊": "https://gitee.com/hulanlu/04/raw/master/User-Agent$Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1",
         "曲-c": "https://www.kkys04.com/渲染目标:/name=\"t\".*?value=\"(.*?)\"/请求头(特殊)[工具:渲染#url]",
-        "曲奇-c": "https://gitee.com/hulanlu/04/raw/master/{{曲-c}}[工具:返回{{奇-c}}]",
-        "奇-c": "https://gitee.com/hulanlu/04/raw/master/{{响应头}}[工具:Cookie$⊕set-cookie=\\[截取\\]]",
+        "曲奇-c": "{{曲-c}}[工具:返回{{奇-c}}]",
+        "奇-c": "{{响应头}}[工具:Cookie$⊕set-cookie=\\[截取\\]]",
         "域名-c": "https://www.kkys04.com",
         "主页url": "https://www.kkys04.com",
         "数组": "https://gitee.com/hulanlu/04/raw/master/<div class=\"module-item\">&&</a>",
         "标题": "https://gitee.com/hulanlu/04/raw/master/<div class=\"v-item-title\">&&</div>",
         "副标题": "https://gitee.com/hulanlu/04/raw/master/<span>&&</span>[不含:可可]",
-        "图片": "https://gitee.com/hulanlu/04/raw/master/{{二-c}}+data-original=\"&&\"[不含:http]",
-        "链接": "https://gitee.com/hulanlu/04/raw/master/href=\"&&\"",
+        "图片": "{{二-c}}+data-original=\"&&\"[不含:http]",
+        "链接": "href=\"&&\"",
         "影片年代": "https://gitee.com/hulanlu/04/raw/master/class=\"detail-tags-item\">&&</a>",
         "影片地区": "https://gitee.com/hulanlu/04/raw/master/class=\"detail-tags-item\">&&</a>[含序号:2]",
         "影片类型": "https://gitee.com/hulanlu/04/raw/master/class=\"detail-tags-item\">&&</a>[含序号:3]",
@@ -66,24 +66,24 @@
         "主演": "https://gitee.com/hulanlu/04/raw/master/演员*</div>&&</div>",
         "简介": "https://gitee.com/hulanlu/04/raw/master/detail-desc\">&&</div>",
         "线路数组": "https://gitee.com/hulanlu/04/raw/master/<span class=\"source-item-label&&/span>[不含:4K(]",
-        "线路标题": "https://gitee.com/hulanlu/04/raw/master/>&&<",
+        "线路标题": ">&&<",
         "播放数组": "https://gitee.com/hulanlu/04/raw/master/<div class=\"episode-list&&</div>",
-        "播放列表": "https://gitee.com/hulanlu/04/raw/master/&&分割(<a)",
-        "播放标题": "https://gitee.com/hulanlu/04/raw/master/>&&<",
-        "播放链接": "https://gitee.com/hulanlu/04/raw/master/href=\"&&\"",
-        "跳转播放链接": "https://gitee.com/hulanlu/04/raw/master/const playSource = {*src*\"&&\"||TMDPPPP = '&&'[工具:解aes-Isu7fOAvI6!&IKpAbVdhf&^F]",
-        "过滤词": "https://gitee.com/hulanlu/04/raw/master/baidu.com",
+        "播放列表": "&&分割(<a)",
+        "播放标题": ">&&<",
+        "播放链接": "href=\"&&\"",
+        "跳转播放链接": "const playSource = {*src*\"&&\"||TMDPPPP = '&&'[工具:解aes-Isu7fOAvI6!&IKpAbVdhf&^F]",
+        "过滤词": "baidu.com",
         "搜索url": "https://gitee.com/hulanlu/04/raw/master/{{域名-c}}/search?t={{曲-c}}&k={wd}",
-        "搜索二次截取": "https://gitee.com/hulanlu/04/raw/master/<div class=\"search-result-list&&<div class=\"pagenation-box",
+        "搜索二次截取": "<div class=\"search-result-list&&<div class=\"pagenation-box",
         "搜索数组": "https://gitee.com/hulanlu/04/raw/master/<a&&</a>",
-        "搜索标题": "https://gitee.com/hulanlu/04/raw/master/title=\"&&\"",
+        "搜索标题": "title=\"&&\"",
         "搜索副标题": "https://gitee.com/hulanlu/04/raw/master/<div class=\"tags\">&&</div>",
-        "搜索图片": "https://gitee.com/hulanlu/04/raw/master/{{二-c}}+data-original=\"&&\"[不含:http]",
-        "搜索链接": "https://gitee.com/hulanlu/04/raw/master/href=\"&&\"",
+        "搜索图片": "{{二-c}}+data-original=\"&&\"[不含:http]",
+        "搜索链接": "href=\"&&\"",
         "分类url": "https://gitee.com/hulanlu/04/raw/master/{{域名-c}}/show/{cateId}-----{by}-{catePg}.html;;ad0m0s0xn",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$1#电视剧$2#综艺$4#动漫$3#短剧$6",
-        "排序": "https://gitee.com/hulanlu/04/raw/master/综合$1#最新$2#最热$3#评分$4",
-        "二-c": "https://gitee.com/hulanlu/04/raw/master/<script src=\"&&\"[包含:rdul][工具:源码#'截取'∬\"截取\"]"
+        "分类": "电影$1#电视剧$2#综艺$4#动漫$3#短剧$6",
+        "排序": "综合$1#最新$2#最热$3#评分$4",
+        "二-c": "<script src=\"&&\"[包含:rdul][工具:源码#'截取'∬\"截取\"]"
       }
     },
     {
@@ -94,7 +94,7 @@
       "jar": "https://gitee.com/hulanlu/04/raw/master/jar/XBPQ.jar",
       "ext": {
         "分类url": "https://www.newxing.cc/iyf/{cateId}-{catePg}.html",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$1#电视剧$2#综艺$3#动漫$4#短剧$37#体育赛事$46"
+        "分类": "电影$1#电视剧$2#综艺$3#动漫$4#短剧$37#体育赛事$46"
       }
     },
     {
@@ -115,7 +115,7 @@
       "jar": "https://gitee.com/hulanlu/04/raw/master/jar/XBPQ.jar",
       "ext": {
         "分类url": "http://www.dyxz6.com/list/{cateId}_{catePg}.html",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$1#电视剧$2#动漫$3#综艺$4#伦理$6"
+        "分类": "电影$1#电视剧$2#动漫$3#综艺$4#伦理$6"
       }
     },
     {
@@ -136,7 +136,7 @@
       "jar": "https://gitee.com/hulanlu/04/raw/master/jar/XBPQ.jar",
       "ext": {
         "分类url": "http://m.hairuiyy.com/show/{cateId}-{area}-{by}-{class}-{lang}-{letter}---{catePg}---{year}.html",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$1#电视剧$2#综艺$3#动漫$4#短剧$36#",
+        "分类": "电影$1#电视剧$2#综艺$3#动漫$4#短剧$36#",
         "数组": "p:.lazyload",
         "链接": "p:->href",
         "标题": "p:->title",
@@ -175,14 +175,14 @@
       "ext": {
         "主页url": "http://pw7.net/",
         "分类url": "http://pw7.net/index.php/vod/show/id/{cateId}/area/{area}/by/{by}/class/{class}/lang/{lang}/letter/{letter}/page/{catePg}/year/{year}.html",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电视剧$2#电影$1#综艺$3#动漫$4#短剧$5#",
+        "分类": "电视剧$2#电影$1#综艺$3#动漫$4#短剧$5#",
         "数组": "p:.lazyload",
         "链接": "p:->href",
         "标题": "p:->title",
         "图片": "p:->data-original",
         "副标题": "p:span->text",
         "线路数组": "p:.active",
-        "线路标题": "https://gitee.com/hulanlu/04/raw/master/立即播放",
+        "线路标题": "立即播放",
         "播放数组": "p:.tab-pane",
         "播放列表": "p:a",
         "播放标题": "p:->text",
@@ -212,11 +212,11 @@
       "api": "csp_XBPQ",
       "jar": "https://gitee.com/hulanlu/04/raw/master/jar/XBPQ.jar",
       "ext": {
-        "请求头": "https://gitee.com/hulanlu/04/raw/master/User-Agent$MOBILE_UA",
-        "编码": "https://gitee.com/hulanlu/04/raw/master/UTF-8",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "分类url": "https://www.ruiding3bu.com/ruvodshow/{cateId}-{area}-{by}-{class}-{lang}-{letter}---{catePg}---{year}.html",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$dianying#电视剧$dianshiju#动漫$dongman#综艺$zongyi#豆瓣电影Top250$42",
-        "简介": "https://gitee.com/hulanlu/04/raw/master/🍁澜露🍁水印广告勿信，谨防诈骗🍁"
+        "分类": "电影$dianying#电视剧$dianshiju#动漫$dongman#综艺$zongyi#豆瓣电影Top250$42",
+        "简介": "🍁澜露🍁水印广告勿信，谨防诈骗🍁"
       }
     },
     {
@@ -232,7 +232,7 @@
         "标题": "p:->title",
         "搜索模式": "",
         "搜索url": "",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$1#电视剧$2#综艺$3#动漫$4#",
+        "分类": "电影$1#电视剧$2#综艺$3#动漫$4#",
         "分类url": "https://www.dzwhs.com/zwhstp/{cateId}-{catePg}.html"
       }
     },
@@ -243,7 +243,7 @@
       "api": "csp_XBPQ",
       "jar": "https://gitee.com/hulanlu/04/raw/master/jar/XBPQ.jar",
       "ext": {
-        "分类": "https://gitee.com/hulanlu/04/raw/master/Netflix$60#电影$1#剧集$15#动漫$30#综艺$24#纪录片$63#短剧$47",
+        "分类": "Netflix$60#电影$1#剧集$15#动漫$30#综艺$24#纪录片$63#短剧$47",
         "分类url": "https://cjysw.cc/index.php/vod/show/id/{cateId}/page/{catePg}.html"
       }
     },
@@ -268,16 +268,16 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": {
-        "请求头": "https://gitee.com/hulanlu/04/raw/master/User-Agent$MOBILE_UA",
-        "编码": "https://gitee.com/hulanlu/04/raw/master/UTF-8",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "数组": "https://gitee.com/hulanlu/04/raw/master/list-exp\"&&</a>",
-        "标题": "https://gitee.com/hulanlu/04/raw/master/title=\"&&\"",
-        "图片": "https://gitee.com/hulanlu/04/raw/master/data-src=\"&&\"",
-        "链接": "https://gitee.com/hulanlu/04/raw/master/href=\"&&\"",
-        "主页url": "https://gitee.com/hulanlu/04/raw/master/www.iysdq.com",
+        "标题": "title=\"&&\"",
+        "图片": "data-src=\"&&\"",
+        "链接": "href=\"&&\"",
+        "主页url": "www.iysdq.com",
         "分类url": "https://www.iysdq.com/vodshow/{cateId}-{area}-{by}-{class}-{lang}-{letter}---{catePg}---{year}.html;;d",
         "搜索url": "https://www.iysdq.com/vodsearch/{wd}----------{pg}---.html",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$1#电视剧$2#综艺$3#动漫$4#短剧$5"
+        "分类": "电影$1#电视剧$2#综艺$3#动漫$4#短剧$5"
       }
     },
     {
@@ -289,7 +289,7 @@
       "ext": {
         "分类url": "https://www.jingmao.org/Movie/show/{cateId}--{by}------{catePg}---/",
         "搜索url": "https://www.jingmao.org/Movie/search/{wd}----------{pg}---/",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$rMMMMr#综艺$OMMMMr#动漫$EMMMMr#短剧$mMMMMr#电视剧$HMMMMr#纪录片$3MMMMr#其他$aMMMMr"
+        "分类": "电影$rMMMMr#综艺$OMMMMr#动漫$EMMMMr#短剧$mMMMMr#电视剧$HMMMMr#纪录片$3MMMMr#其他$aMMMMr"
       }
     },
     {
@@ -311,16 +311,16 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": {
-        "请求头": "https://gitee.com/hulanlu/04/raw/master/User-Agent$MOBILE_UA",
-        "编码": "https://gitee.com/hulanlu/04/raw/master/UTF-8",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "数组": "https://gitee.com/hulanlu/04/raw/master/lazyload\"&&</a>",
-        "标题": "https://gitee.com/hulanlu/04/raw/master/title=\"&&\"",
-        "图片": "https://gitee.com/hulanlu/04/raw/master/data-original=\"&&\"",
-        "链接": "https://gitee.com/hulanlu/04/raw/master/href=\"&&\"",
+        "标题": "title=\"&&\"",
+        "图片": "data-original=\"&&\"",
+        "链接": "href=\"&&\"",
         "主页url": "https://www.51kjy.com",
         "搜索url": "https://www.51kjy.com/vodsearch/{wd}----------{pg}---.html",
         "分类url": "https://www.51kjy.com/vodshow/{cateId}-{area}--{class}-{lang}-------{year}.html",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$1#电视剧$2#综艺$3#动漫$4#动画片$35#短剧$36#动作片$6#喜剧片$7#爱情片$8#科幻片$9#恐怖片$10#剧情片$11#战争片$12#纪录片$24#国产剧$13#港剧$14#台剧$15#日剧$16#泰剧$20#韩剧$21"
+        "分类": "电影$1#电视剧$2#综艺$3#动漫$4#动画片$35#短剧$36#动作片$6#喜剧片$7#爱情片$8#科幻片$9#恐怖片$10#剧情片$11#战争片$12#纪录片$24#国产剧$13#港剧$14#台剧$15#日剧$16#泰剧$20#韩剧$21"
       }
     },
     {
@@ -353,7 +353,7 @@
       "api": "csp_XBPQ",
       "ext": {
         "分类url": "https://www.hitv.app/show/{cateId}-{area}-{by}-{class}-{lang}-------{year}.html;;!",
-        "简介": "https://gitee.com/hulanlu/04/raw/master/🍁澜露🍁水印广告勿信，谨防诈骗🍁"
+        "简介": "🍁澜露🍁水印广告勿信，谨防诈骗🍁"
       }
     },
     {
@@ -363,9 +363,9 @@
       "jar": "https://gitee.com/hulanlu/04/raw/master/jar/XBPQ.jar",
       "api": "csp_XBPQ",
       "ext": {
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$1#电视剧$2#综艺$3#动漫$4",
+        "分类": "电影$1#电视剧$2#综艺$3#动漫$4",
         "分类url": "https://m.88hd.org/vod-type-id-{cateId}-pg-{catePg}.html;;!",
-        "简介": "https://gitee.com/hulanlu/04/raw/master/🍁澜露🍁水印广告勿信，谨防诈骗🍁"
+        "简介": "🍁澜露🍁水印广告勿信，谨防诈骗🍁"
       }
     },
     {
@@ -428,15 +428,15 @@
       "jar": "https://gitee.com/hulanlu/04/raw/master/jar/XBPQ.jar",
       "api": "csp_XBPQ",
       "ext": {
-        "请求头": "https://gitee.com/hulanlu/04/raw/master/User-Agent$MOBILE_UA",
-        "编码": "https://gitee.com/hulanlu/04/raw/master/UTF-8",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "数组": "https://gitee.com/hulanlu/04/raw/master/stui-vodlist__box\">&&</div>",
-        "图片": "https://gitee.com/hulanlu/04/raw/master/data-original=\"&&\"",
-        "标题": "https://gitee.com/hulanlu/04/raw/master/title=\"&&\"",
-        "副标题": "https://gitee.com/hulanlu/04/raw/master/text-right\">&&<",
-        "链接": "https://gitee.com/hulanlu/04/raw/master/href=\"&&\"",
+        "图片": "data-original=\"&&\"",
+        "标题": "title=\"&&\"",
+        "副标题": "text-right\">&&<",
+        "链接": "href=\"&&\"",
         "线路标题": "https://gitee.com/hulanlu/04/raw/master/<h3>&&</h3>",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$1#电视剧$2#综艺$3#动漫$4#短剧$5",
+        "分类": "电影$1#电视剧$2#综艺$3#动漫$4#短剧$5",
         "分类url": "https://www.esuppy.com/gqsw/{cateId}--{by}--{lang}----{catePg}---{year}.html"
       }
     },
@@ -479,13 +479,13 @@
       "api": "csp_XBPQ",
       "jar": "https://gitee.com/hulanlu/04/raw/master/jar/XBPQ.jar",
       "ext": {
-        "请求头": "https://gitee.com/hulanlu/04/raw/master/User-Agent$MOBILE_UA",
-        "编码": "https://gitee.com/hulanlu/04/raw/master/UTF-8",
-        "线路数组": "https://gitee.com/hulanlu/04/raw/master/<h4&&h4>",
-        "线路标题": "https://gitee.com/hulanlu/04/raw/master/>&&<",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$1#电视剧$2#综艺$3#动漫$4",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
+        "线路数组": "<h4&&h4>",
+        "线路标题": ">&&<",
+        "分类": "电影$1#电视剧$2#综艺$3#动漫$4",
         "分类url": "https://www.kaixinyes.com/show/{cateId}--------{catePg}---.html",
-        "简介": "https://gitee.com/hulanlu/04/raw/master/🍁水印广告勿信，谨防诈骗🍁"
+        "简介": "🍁水印广告勿信，谨防诈骗🍁"
       }
     },
     {
@@ -514,7 +514,7 @@
       "ext": {
         "搜索url": "https://www.xcyycn.com/s.html?wd={wd}&submit=",
         "分类url": "https://www.xcyycn.com/vs/{cateId}-{aera}-{by}-{class}-----{catePg}---{year}.html",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$1#剧集$2#综艺$3#动漫$4#短剧$5#"
+        "分类": "电影$1#剧集$2#综艺$3#动漫$4#短剧$5#"
       }
     },
     {
@@ -536,12 +536,12 @@
       "api": "csp_XBPQ",
       "jar": "https://gitee.com/hulanlu/04/raw/master/jar/XBPQ.jar",
       "ext": {
-        "请求头": "https://gitee.com/hulanlu/04/raw/master/User-Agent$MOBILE_UA",
-        "编码": "https://gitee.com/hulanlu/04/raw/master/UTF-8",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$1#电视剧$2#动漫$4#综艺$3",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
+        "分类": "电影$1#电视剧$2#动漫$4#综艺$3",
         "分类url": "https://rrys.lv/k/{cateId}--------{catePg}---/",
-        "线路标题": "https://gitee.com/hulanlu/04/raw/master/🍁澜露🍁祝您观影愉快🍁",
-        "简介": "https://gitee.com/hulanlu/04/raw/master/🍁澜露🍁水印广告勿信，谨防诈骗🍁"
+        "线路标题": "🍁澜露🍁祝您观影愉快🍁",
+        "简介": "🍁澜露🍁水印广告勿信，谨防诈骗🍁"
       }
     },
     {
@@ -551,19 +551,19 @@
       "jar": "https://gitee.com/hulanlu/04/raw/master/jar/XBPQ.jar",
       "api": "csp_XBPQ",
       "ext": {
-        "作者": "https://gitee.com/hulanlu/04/raw/master/硬如铁",
-        "站名": "https://gitee.com/hulanlu/04/raw/master/顶级影院",
-        "请求头": "https://gitee.com/hulanlu/04/raw/master/User-Agent$MOBILE_UA",
-        "编码": "https://gitee.com/hulanlu/04/raw/master/UTF-8",
+        "作者": "硬如铁",
+        "站名": "顶级影院",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "主页url": "",
         "首页": "120",
         "起始页": "1",
         "分类url": "https://www.dj191.com/vodtype/{cateId}-{catePg}.html",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/电影$1#电视剧$2#综艺$3#动漫$4#短剧$29#午夜饭$20",
+        "分类": "电影$1#电视剧$2#综艺$3#动漫$4#短剧$29#午夜饭$20",
         "二次截取": "",
         "数组": "https://gitee.com/hulanlu/04/raw/master/vod-item\">&&</p>",
-        "链接": "https://gitee.com/hulanlu/04/raw/master/href=\"&&\"",
-        "图片": "https://gitee.com/hulanlu/04/raw/master/data-original=\"&&\"",
+        "链接": "href=\"&&\"",
+        "图片": "data-original=\"&&\"",
         "标题": "https://gitee.com/hulanlu/04/raw/master/<h3*>*>&&</a>",
         "副标题": "https://gitee.com/hulanlu/04/raw/master/text-row-1\">&&</span>+vod-item-score\">&&</span>",
         "简介": "",
@@ -579,18 +579,18 @@
         "播放数组": "https://gitee.com/hulanlu/04/raw/master/ewave-playlist-content&&</ul",
         "倒序": "0",
         "播放列表": "https://gitee.com/hulanlu/04/raw/master/<a&&/a>",
-        "播放标题": "https://gitee.com/hulanlu/04/raw/master/>&&<",
-        "播放链接": "https://gitee.com/hulanlu/04/raw/master/href=\"&&\"",
-        "跳转播放链接": "https://gitee.com/hulanlu/04/raw/master/var player_*\"url\":\"&&\"",
+        "播放标题": ">&&<",
+        "播放链接": "href=\"&&\"",
+        "跳转播放链接": "var player_*\"url\":\"&&\"",
         "嗅探词": "",
-        "搜索请求头": "https://gitee.com/hulanlu/04/raw/master/User-Agent$MOBILE_UA",
+        "搜索请求头": "User-Agent$MOBILE_UA",
         "搜索模式": "1",
         "搜索url": "https://www.dj191.com/vodsearch/{wd}----------{pg}---.html",
         "搜索数组": "https://gitee.com/hulanlu/04/raw/master/vod-item\">&&</p>",
-        "搜索图片": "https://gitee.com/hulanlu/04/raw/master/data-original=\"&&\"",
+        "搜索图片": "data-original=\"&&\"",
         "搜索标题": "https://gitee.com/hulanlu/04/raw/master/<h3*>*>&&</a>",
         "搜索副标题": "https://gitee.com/hulanlu/04/raw/master/text-row-1\">&&</span>+vod-item-score\">&&</span>",
-        "搜索链接": "https://gitee.com/hulanlu/04/raw/master/href=\"&&\""
+        "搜索链接": "href=\"&&\""
       }
     },
     {
@@ -722,8 +722,8 @@
       "jar": "https://gitee.com/hulanlu/04/raw/master/lib/jar.jar",
       "ext": {
         "url": "http://app1-0-0.87333.cc",
-        "dataKey": "https://gitee.com/hulanlu/04/raw/master/VwsHxkCViDXEExWa",
-        "dataIv": "https://gitee.com/hulanlu/04/raw/master/VwsHxkCViDXEExWa"
+        "dataKey": "VwsHxkCViDXEExWa",
+        "dataIv": "VwsHxkCViDXEExWa"
       }
     },
     {
@@ -735,8 +735,8 @@
       "jar": "https://gitee.com/hulanlu/04/raw/master/lib/jar.jar",
       "ext": {
         "site": "https://gitee.com/wmmoliill/wimg/raw/master/img/bk/9.txt",
-        "dataKey": "https://gitee.com/hulanlu/04/raw/master/88689667dce61725",
-        "dataIv": "https://gitee.com/hulanlu/04/raw/master/88689667dce61725"
+        "dataKey": "88689667dce61725",
+        "dataIv": "88689667dce61725"
       }
     },
     {
@@ -748,8 +748,8 @@
       "jar": "https://gitee.com/hulanlu/04/raw/master/lib/jar.jar",
       "ext": {
         "url": "https://ios.hgyx.vip",
-        "dataKey": "https://gitee.com/hulanlu/04/raw/master/062dec75d039980e",
-        "dataIv": "https://gitee.com/hulanlu/04/raw/master/062dec75d039980e",
+        "dataKey": "062dec75d039980e",
+        "dataIv": "062dec75d039980e",
         "ua": "https://gitee.com/hulanlu/04/raw/master/Dart/3.5 (dart:io)"
       }
     },
@@ -780,8 +780,8 @@
       "jar": "https://gitee.com/hulanlu/04/raw/master/lib/jar.jar",
       "ext": {
         "url": "https://www.jumengwu.com",
-        "dataKey": "https://gitee.com/hulanlu/04/raw/master/1f0a873caf2550a5",
-        "dataIv": "https://gitee.com/hulanlu/04/raw/master/1f0a873caf2550a5"
+        "dataKey": "1f0a873caf2550a5",
+        "dataIv": "1f0a873caf2550a5"
       }
     },
     {
@@ -806,8 +806,8 @@
       "jar": "https://gitee.com/hulanlu/04/raw/master/lib/jar.jar",
       "ext": {
         "site": "https://bind.315999.xyz/89.txt",
-        "dataKey": "https://gitee.com/hulanlu/04/raw/master/#getapp@TMD@2025",
-        "dataIv": "https://gitee.com/hulanlu/04/raw/master/#getapp@TMD@2025",
+        "dataKey": "#getapp@TMD@2025",
+        "dataIv": "#getapp@TMD@2025",
         "version": "120"
       }
     },
@@ -837,15 +837,15 @@
       "api": "csp_XBPQ",
       "jar": "https://gitee.com/hulanlu/04/raw/master/jar/XBPQ.jar",
       "ext": {
-        "请求头": "https://gitee.com/hulanlu/04/raw/master/User-Agent$MOBILE_UA",
-        "编码": "https://gitee.com/hulanlu/04/raw/master/UTF-8",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "直接播放": "1",
         "分类数组": "https://gitee.com/hulanlu/04/raw/master/layui-unselect&&</img>",
-        "标题": "https://gitee.com/hulanlu/04/raw/master/title=\"&&\"",
-        "图片": "https://gitee.com/hulanlu/04/raw/master/img src=\"&&\"",
-        "副标题": "https://gitee.com/hulanlu/04/raw/master/text-right\">&&<",
-        "链接": "https://gitee.com/hulanlu/04/raw/master/href=\"&&\"",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/超清MV$12#车载MV$123#跳舞MV$112#国内夜店$158#派对MV$90#发烧MV$125#国外夜店$21#抒情MV$20#泳装MV$56#车模MV$58#粤语MV$114#外语MV$46#日韩MV$50#串烧MV$62#钢管舞MV$64#国外MV$65#户外MV$159#模特MV$160#",
+        "标题": "title=\"&&\"",
+        "图片": "img src=\"&&\"",
+        "副标题": "text-right\">&&<",
+        "链接": "href=\"&&\"",
+        "分类": "超清MV$12#车载MV$123#跳舞MV$112#国内夜店$158#派对MV$90#发烧MV$125#国外夜店$21#抒情MV$20#泳装MV$56#车模MV$58#粤语MV$114#外语MV$46#日韩MV$50#串烧MV$62#钢管舞MV$64#国外MV$65#户外MV$159#模特MV$160#",
         "分类url": "https://wap.pgdjz.com/video/lists/{cateId}/{catePg}.html"
       }
     },
@@ -871,15 +871,15 @@
       "api": "csp_XBPQ",
       "jar": "https://gitee.com/hulanlu/04/raw/master/lib/xyqxbpq.jar",
       "ext": {
-        "请求头": "https://gitee.com/hulanlu/04/raw/master/User-Agent$MOBILE_UA",
-        "编码": "https://gitee.com/hulanlu/04/raw/master/UTF-8",
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
         "数组": "https://gitee.com/hulanlu/04/raw/master/video_content\"&&</a>",
         "标题": "https://gitee.com/hulanlu/04/raw/master/video_text\">&&</p>",
-        "图片": "https://gitee.com/hulanlu/04/raw/master/src=\"&&\"",
+        "图片": "src=\"&&\"",
         "副标题": "https://gitee.com/hulanlu/04/raw/master/video_time\">&&</p>",
-        "链接": "https://gitee.com/hulanlu/04/raw/master/data-src=\"&&\"",
+        "链接": "data-src=\"&&\"",
         "分类url": "https://m.live.qq.com/video/data?page={catePg}&id={cateId}&nomore=false;;z",
-        "分类": "https://gitee.com/hulanlu/04/raw/master/赛事集锦$1001#小视频$999#NBA$1#CBA$2#排球$103#足球$32#综合$50#专题$special"
+        "分类": "赛事集锦$1001#小视频$999#NBA$1#CBA$2#排球$103#足球$32#综合$50#专题$special"
       }
     }
   ]

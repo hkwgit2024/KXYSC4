@@ -1,7 +1,6 @@
 {
   "spider": "https://zl.wpscdn.cn/2026/09/11/space_img/96c38469-df36-433c-b400-74ed5e5a7d7a.png;md5;6b076a8a31e03cbfa5db73e079155629",
   "logo": "https://file.icve.com.cn/file_doc/945/35/EC508FBD046D33EC4832BB76B63B6C94.gif",
-  "danmaku": "http://127.0.0.1:2525/danmu?name={name}&epid={episode}",
   "wallpaper": "http://127.0.0.1:9978/proxy?do=AowuWapper&mode=2",
   "sites": [
     {
@@ -13,7 +12,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/Douban"
+      "ext": "Douban"
     },
     {
       "name": "更新日期:【侏罗纪】",
@@ -23,7 +22,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/Y360"
+      "ext": "Y360"
     },
     {
       "name": "🔥短剧┃推荐",
@@ -34,7 +33,7 @@
       "quickSearch": 1,
       "changeable": 0,
       "genre": "shortdrama",
-      "ext": "http://itv666.cc/aowu/Hgdh"
+      "ext": "Hgdh"
     },
     {
       "name": "⚙️配置┃中心",
@@ -62,7 +61,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/woWogg"
+      "ext": "woWogg"
     },
     {
       "name": "💥木偶┃4K",
@@ -72,7 +71,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/moWobg"
+      "ext": "moWobg"
     },
     {
       "name": "⭐夏天┃秒播",
@@ -82,7 +81,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/NewGrV2"
+      "ext": "NewGrV2"
     },
     {
       "name": "⭐韩剧┃秒播",
@@ -101,7 +100,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/Guazi"
+      "ext": "Guazi"
     },
     {
       "name": "📦①线┃秒播",
@@ -111,7 +110,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/AppV7Fz"
+      "ext": "AppV7Fz"
     },
     {
       "name": "📦②线┃秒播",
@@ -121,7 +120,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/AppV7Xy"
+      "ext": "AppV7Xy"
     },
     {
       "name": "📦③线┃秒播",
@@ -131,7 +130,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/AppV7Zjdr"
+      "ext": "AppV7Zjdr"
     },
     {
       "name": "📦④线┃秒播",
@@ -141,7 +140,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/AppV7Xyz"
+      "ext": "AppV7Xyz"
     },
     {
       "name": "📦⑤线┃秒播",
@@ -151,7 +150,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/AppV7Xnm"
+      "ext": "AppV7Xnm"
     },
     {
       "name": "📦⑥线┃秒播",
@@ -161,7 +160,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/AppV7Mtq"
+      "ext": "AppV7Mtq"
     },
     {
       "name": "📦⑦线┃秒播",
@@ -171,7 +170,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/AppV7Llq"
+      "ext": "AppV7Llq"
     },
     {
       "name": "📦⑧线┃秒播",
@@ -181,7 +180,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/AppV7Xsz"
+      "ext": "AppV7Xsz"
     },
     {
       "name": "📦⑨线┃秒播",
@@ -191,7 +190,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/AppV7Xhr"
+      "ext": "AppV7Xhr"
     },
     {
       "name": "📦师兄┃秒播",
@@ -201,7 +200,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/AppV7Dsx"
+      "ext": "AppV7Dsx"
     },
     {
       "name": "📦特狗┃秒播",
@@ -211,7 +210,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/AppV6Tg"
+      "ext": "AppV6Tg"
     },
     {
       "name": "☁️闪电┃4K",
@@ -221,7 +220,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/yxWobg"
+      "ext": "yxWobg"
     },
     {
       "name": "☁️多多┃4K",
@@ -231,7 +230,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/ddWobg"
+      "ext": "ddWobg"
     },
     {
       "name": "☁️虎斑┃4K",
@@ -241,7 +240,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/hbWobg"
+      "ext": "hbWobg"
     },
     {
       "name": "☁️Sed┃4K",
@@ -251,7 +250,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/SeedHub"
+      "ext": "SeedHub"
     },
     {
       "name": "☁️观影┃4K",
@@ -261,7 +260,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/Gying"
+      "ext": "Gying"
     },
     {
       "name": "☁️盘库┃4K",
@@ -271,7 +270,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/Panku"
+      "ext": "Panku"
     },
     {
       "name": "☁️七味┃4K",
@@ -281,7 +280,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/Qiwei"
+      "ext": "Qiwei"
     },
     {
       "name": "☁️原盘┃4K",
@@ -291,7 +290,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/Zhinan"
+      "ext": "Zhinan"
     },
     {
       "name": "☁️Sek┃4K",
@@ -364,7 +363,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/Bidys"
+      "ext": "Bidys"
     },
     {
       "name": "🔗厂长┃2K",
@@ -374,7 +373,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/Czzy"
+      "ext": "Czzy"
     },
     {
       "name": "🔗LBV┃2K",
@@ -384,7 +383,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/Libvio"
+      "ext": "Libvio"
     },
     {
       "name": "🎬嗷嗚┃短剧",
@@ -483,7 +482,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/JPian"
+      "ext": "JPian"
     },
     {
       "name": "🧩热播┃快速",
@@ -493,7 +492,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/Rbys"
+      "ext": "Rbys"
     },
     {
       "name": "🧩杜北┃快速",
@@ -503,7 +502,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/Dubk"
+      "ext": "Dubk"
     },
     {
       "name": "🧩伊外┃快速",
@@ -593,7 +592,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/GuaziLive"
+      "ext": "GuaziLive"
     },
     {
       "name": "🏆飞球┃体育",
@@ -612,7 +611,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://itv666.cc/aowu/BbkqLive"
+      "ext": "BbkqLive"
     },
     {
       "name": "🏆咖啡┃体育",
@@ -886,12 +885,12 @@
     {
       "name": "聚合1",
       "type": 3,
-      "url": "http://itv666.cc/aowu/Demo"
+      "url": "Demo"
     },
     {
       "name": "聚合0",
       "type": 3,
-      "url": "http://itv666.cc/aowu/Web"
+      "url": "Web"
     },
     {
       "name": "ikun",
@@ -947,100 +946,6 @@
       "name": "优选",
       "type": 1,
       "url": "http://1.94.221.189:88/algorithm.php?url="
-    }
-  ],
-  "doh": [
-    {
-      "name": "阿里",
-      "url": "https://dns.alidns.com/dns-query",
-      "ips": [
-        "223.5.5.5",
-        "223.6.6.6",
-        "2400:3200::1"
-      ]
-    },
-    {
-      "name": "腾讯",
-      "url": "https://doh.pub/dns-query",
-      "ips": [
-        "119.29.29.29",
-        "119.28.28.28",
-        "2402:4e00::"
-      ]
-    },
-    {
-      "name": "360",
-      "url": "https://doh.360.cn/dns-query",
-      "ips": [
-        "101.226.4.6",
-        "218.30.118.6"
-      ]
-    },
-    {
-      "name": "OneDNS",
-      "url": "https://doh-pure.onedns.net/dns-query",
-      "ips": [
-        "117.50.10.10",
-        "52.80.52.52"
-      ]
-    },
-    {
-      "name": "Cloudflare",
-      "url": "https://cloudflare-dns.com/dns-query",
-      "ips": [
-        "1.1.1.1",
-        "1.0.0.1",
-        "2606:4700:4700::1111",
-        "2606:4700:4700::1001"
-      ]
-    },
-    {
-      "name": "Google",
-      "url": "https://dns.google/dns-query",
-      "ips": [
-        "8.8.8.8",
-        "8.8.4.4"
-      ]
-    },
-    {
-      "name": "Quad9",
-      "url": "https://dns.quad9.net/dns-query",
-      "ips": [
-        "9.9.9.9",
-        "149.112.112.112"
-      ]
-    },
-    {
-      "name": "AdGuard",
-      "url": "https://dns.adguard-dns.com/dns-query",
-      "ips": [
-        "94.140.14.14",
-        "94.140.15.15"
-      ]
-    },
-    {
-      "name": "DNSWatch",
-      "url": "https://resolver2.dns.watch/dns-query",
-      "ips": [
-        "84.200.69.80",
-        "84.200.70.40"
-      ]
-    },
-    {
-      "name": "NextDNS",
-      "url": "https://dns.nextdns.io/your_profile_id",
-      "ips": [
-        "45.90.28.0",
-        "45.90.30.0"
-      ]
-    },
-    {
-      "name": "ControlD",
-      "url": "https://freedns.controld.com/p0",
-      "ips": [
-        "76.76.2.0",
-        "76.76.10.0"
-      ]
     }
   ],
   "rules": [

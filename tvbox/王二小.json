@@ -246,7 +246,7 @@
       "searchable": 1,
       "changeable": 0,
       "ext": {
-        "config": "https://9280.kstore.vip/AppV7Dsx",
+        "config": "AppV7Dsx",
         "proxyImg": false
       },
       "timeout": 120
@@ -259,7 +259,7 @@
       "searchable": 1,
       "changeable": 0,
       "ext": {
-        "config": "https://9280.kstore.vip/AppV7Fz",
+        "config": "AppV7Fz",
         "proxyImg": false
       },
       "timeout": 120
@@ -272,7 +272,7 @@
       "searchable": 1,
       "changeable": 0,
       "ext": {
-        "config": "https://9280.kstore.vip/AppV7Xy",
+        "config": "AppV7Xy",
         "proxyImg": false
       },
       "timeout": 120
@@ -285,7 +285,7 @@
       "searchable": 1,
       "changeable": 0,
       "ext": {
-        "config": "https://9280.kstore.vip/AppV7Zjdr",
+        "config": "AppV7Zjdr",
         "proxyImg": false
       },
       "timeout": 120
@@ -298,7 +298,7 @@
       "searchable": 1,
       "changeable": 0,
       "ext": {
-        "config": "https://9280.kstore.vip/AppV7Xyz",
+        "config": "AppV7Xyz",
         "proxyImg": false
       },
       "timeout": 120
@@ -311,7 +311,7 @@
       "searchable": 1,
       "changeable": 0,
       "ext": {
-        "config": "https://9280.kstore.vip/AppV7Xnm",
+        "config": "AppV7Xnm",
         "proxyImg": false
       },
       "timeout": 120
@@ -324,7 +324,7 @@
       "searchable": 1,
       "changeable": 0,
       "ext": {
-        "config": "https://9280.kstore.vip/AppV7Mtq",
+        "config": "AppV7Mtq",
         "proxyImg": false
       },
       "timeout": 120
@@ -337,7 +337,7 @@
       "searchable": 1,
       "changeable": 0,
       "ext": {
-        "config": "https://9280.kstore.vip/AppV7Llq",
+        "config": "AppV7Llq",
         "proxyImg": false
       },
       "timeout": 120
@@ -350,7 +350,7 @@
       "searchable": 1,
       "changeable": 0,
       "ext": {
-        "config": "https://9280.kstore.vip/AppV7Xsz",
+        "config": "AppV7Xsz",
         "proxyImg": false
       },
       "timeout": 120
@@ -363,7 +363,7 @@
       "searchable": 1,
       "changeable": 0,
       "ext": {
-        "config": "https://9280.kstore.vip/AppV7Xhr",
+        "config": "AppV7Xhr",
         "proxyImg": false
       },
       "timeout": 120
@@ -1000,50 +1000,6 @@
       "url": "http://pan.qiaoji8.com/tvbox/neibu.php?url="
     }
   ],
-  "doh": [
-    {
-      "name": "Google",
-      "url": "https://dns.google/dns-query",
-      "ips": [
-        "8.8.4.4",
-        "8.8.8.8"
-      ]
-    },
-    {
-      "name": "Cloudflare",
-      "url": "https://cloudflare-dns.com/dns-query",
-      "ips": [
-        "1.1.1.1",
-        "1.0.0.1",
-        "2606:4700:4700::1111",
-        "2606:4700:4700::1001"
-      ]
-    },
-    {
-      "name": "AdGuard",
-      "url": "https://dns.adguard.com/dns-query",
-      "ips": [
-        "94.140.14.140",
-        "94.140.14.141"
-      ]
-    },
-    {
-      "name": "DNSWatch",
-      "url": "https://resolver2.dns.watch/dns-query",
-      "ips": [
-        "84.200.69.80",
-        "84.200.70.40"
-      ]
-    },
-    {
-      "name": "Quad9",
-      "url": "https://dns.quad9.net/dns-quer",
-      "ips": [
-        "9.9.9.9",
-        "149.112.112.112"
-      ]
-    }
-  ],
   "rules": [
     {
       "name": "proxy",
@@ -1145,11 +1101,6 @@
       ]
     }
   ],
-  "ads": [
-    "mozai.4gtv.tv",
-    "pv.vipwm.cc",
-    "static-mozai.4gtv.tv"
-  ],
   "lives": [
     {
       "name": "Kimentanm",
@@ -1163,14 +1114,6 @@
       "playerType": 2,
       "url": "http://193.123.86.190:14888/TV/iptv.php",
       "ua": "bingcha/1.1 (mianfeifenxiang) "
-    }
-  ],
-  "headers": [
-    {
-      "host": "hlsztemgsplive.miguvideo.com",
-      "header": {
-        "User-Agent": "bingcha/1.1 (mianfeifenxiang) "
-      }
     }
   ]
 }

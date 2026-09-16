@@ -1,5 +1,4 @@
 {
-  "warningText": "声明：资源来自网络，无盈利，所有内容仅供学习测试使用，请勿用于违法及商业用途，请勿付费购买，测试之后请自行删除]",
   "sites": [
     {
       "key": "豆瓣",
@@ -112,8 +111,8 @@
       "api": "https://7337.kstore.vip/xw/js/cat_荐片app.js",
       "ext": {
         "host": "https://api.ztcgi.com",
-        "catesSet": "https://7337.kstore.vip/xw/电影&电视剧&综艺&动漫&纪录片",
-        "tabsSet": "https://7337.kstore.vip/xw/极速蓝光"
+        "catesSet": "电影&电视剧&综艺&动漫&纪录片",
+        "tabsSet": "极速蓝光"
       }
     },
     {
@@ -380,13 +379,13 @@
       "ext": {
         "host": "https://api.12321app.com",
         "LoginPath": "https://7337.kstore.vip/app/log",
-        "version": "https://7337.kstore.vip/xw/0b4328287a5d953e",
-        "appkey": "https://7337.kstore.vip/xw/a0a18659a9977a47e53442cd084b536c",
-        "versionName": "https://7337.kstore.vip/xw/2.8.1",
-        "name": "https://7337.kstore.vip/xw/听心视频",
-        "package": "https://7337.kstore.vip/xw/com.iksp.adsys.jjsp",
+        "version": "0b4328287a5d953e",
+        "appkey": "a0a18659a9977a47e53442cd084b536c",
+        "versionName": "2.8.1",
+        "name": "听心视频",
+        "package": "com.iksp.adsys.jjsp",
         "buildNumber": "2001",
-        "buildSignature": "https://7337.kstore.vip/xw/03DD38CE4C3D62D0F0DEFACC06768D14EB382C7BD77A05B2EBF4D66E154A0D47"
+        "buildSignature": "03DD38CE4C3D62D0F0DEFACC06768D14EB382C7BD77A05B2EBF4D66E154A0D47"
       }
     },
     {
@@ -396,7 +395,7 @@
       "api": "csp_Nmvod",
       "playerType": 2,
       "jar": "https://ncstatic.clewm.net/rsrc/2025/0915/15/e210975c2c794cbc8bb1839b54ac213e.png;md5;939FFBC2941A28CA533F2653FA4B449E",
-      "ext": "https://7337.kstore.vip/xw/7lj763gg402i7942503g839jg74h8h88highi40799jh6i6k454419l0l5184k0g549h0kg2i01i838i2h42g891lgg1"
+      "ext": "7lj763gg402i7942503g839jg74h8h88highi40799jh6i6k454419l0l5184k0g549h0kg2i01i838i2h42g891lgg1"
     },
     {
       "key": "360_spider",
@@ -510,7 +509,7 @@
       "ext": {
         "sites": "https://wogg.xxooo.cf",
         "filters": "https://7337.kstore.vip/xw/js/wogg.json",
-        "proxy": "https://7337.kstore.vip/xw/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -526,7 +525,7 @@
       "ext": {
         "sites": "https://woog.nxog.eu.org",
         "filters": "https://7337.kstore.vip/xw/js/wogg.json",
-        "proxy": "https://7337.kstore.vip/xw/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -542,7 +541,7 @@
       "ext": {
         "sites": "https://www.wexwp.cc",
         "filters": "https://7337.kstore.vip/xw/js/wogg.json",
-        "proxy": "https://7337.kstore.vip/xw/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -558,7 +557,7 @@
       "ext": {
         "sites": "https://www.muou.site",
         "filters": "https://7337.kstore.vip/xw/js/wogg.json",
-        "proxy": "https://7337.kstore.vip/xw/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -574,7 +573,7 @@
       "ext": {
         "sites": "https://mihdr.top",
         "filters": "https://7337.kstore.vip/xw/js/wogg.json",
-        "proxy": "https://7337.kstore.vip/xw/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -590,7 +589,7 @@
       "ext": {
         "sites": "https://tv.yydsys.top/",
         "filters": "https://7337.kstore.vip/xw/js/wogg.json",
-        "proxy": "https://7337.kstore.vip/xw/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -606,7 +605,7 @@
       "ext": {
         "sites": "https://duanmu.laozhangone.top",
         "filters": "http://rihou.cc:88/json/wogg2.json",
-        "proxy": "https://7337.kstore.vip/xw/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -622,7 +621,7 @@
       "ext": {
         "sites": "http://38.76.197.172:16969",
         "filters": "https://7337.kstore.vip/xw/js/wogg.json",
-        "proxy": "https://7337.kstore.vip/xw/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -638,7 +637,7 @@
       "ext": {
         "sites": "http://38.76.197.172:12521",
         "filters": "https://7337.kstore.vip/xw/js/wogg.json",
-        "proxy": "https://7337.kstore.vip/xw/noproxy"
+        "proxy": "noproxy"
       }
     },
     {
@@ -751,7 +750,7 @@
     {
       "name": "Web聚合",
       "type": 3,
-      "url": "https://7337.kstore.vip/xw/Web"
+      "url": "Web"
     },
     {
       "name": "解析",
@@ -793,20 +792,6 @@
         }
       }
     }
-  ],
-  "flags": [
-    "youku",
-    "qq",
-    "iqiyi",
-    "qiyi",
-    "letv",
-    "sohu",
-    "tudou",
-    "pptv",
-    "mgtv",
-    "wasu",
-    "bilibili",
-    "renrenmi"
   ],
   "rules": [
     {
@@ -1032,227 +1017,5 @@
         "UUE29"
       ]
     }
-  ],
-  "ijk": [
-    {
-      "group": "软解码",
-      "options": [
-        {
-          "category": 4,
-          "name": "opensles",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "overlay-format",
-          "value": "842225234"
-        },
-        {
-          "category": 4,
-          "name": "framedrop",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "soundtouch",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "start-on-prepared",
-          "value": "1"
-        },
-        {
-          "category": 1,
-          "name": "http-detect-range-support",
-          "value": "0"
-        },
-        {
-          "category": 1,
-          "name": "fflags",
-          "value": "fastseek"
-        },
-        {
-          "category": 2,
-          "name": "skip_loop_filter",
-          "value": "48"
-        },
-        {
-          "category": 4,
-          "name": "reconnect",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "enable-accurate-seek",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec-auto-rotate",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec-handle-resolution-change",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec-hevc",
-          "value": "0"
-        },
-        {
-          "category": 1,
-          "name": "dns_cache_timeout",
-          "value": "600000000"
-        }
-      ]
-    },
-    {
-      "group": "硬解码",
-      "options": [
-        {
-          "category": 4,
-          "name": "opensles",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "overlay-format",
-          "value": "842225234"
-        },
-        {
-          "category": 4,
-          "name": "framedrop",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "soundtouch",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "start-on-prepared",
-          "value": "1"
-        },
-        {
-          "category": 1,
-          "name": "http-detect-range-support",
-          "value": "0"
-        },
-        {
-          "category": 1,
-          "name": "fflags",
-          "value": "fastseek"
-        },
-        {
-          "category": 2,
-          "name": "skip_loop_filter",
-          "value": "48"
-        },
-        {
-          "category": 4,
-          "name": "reconnect",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "enable-accurate-seek",
-          "value": "0"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec-auto-rotate",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec-handle-resolution-change",
-          "value": "1"
-        },
-        {
-          "category": 4,
-          "name": "mediacodec-hevc",
-          "value": "1"
-        },
-        {
-          "category": 1,
-          "name": "dns_cache_timeout",
-          "value": "600000000"
-        }
-      ]
-    }
-  ],
-  "ads": [
-    "mimg.0c1q0l.cn",
-    "www.googletagmanager.com",
-    "www.google-analytics.com",
-    "mc.usihnbcq.cn",
-    "mg.g1mm3d.cn",
-    "mscs.svaeuzh.cn",
-    "cnzz.hhttm.top",
-    "tp.vinuxhome.com",
-    "cnzz.mmstat.com",
-    "www.baihuillq.com",
-    "s23.cnzz.com",
-    "z3.cnzz.com",
-    "c.cnzz.com",
-    "stj.v1vo.top",
-    "z12.cnzz.com",
-    "img.mosflower.cn",
-    "tips.gamevvip.com",
-    "ehwe.yhdtns.com",
-    "xdn.cqqc3.com",
-    "www.jixunkyy.cn",
-    "sp.chemacid.cn",
-    "hm.baidu.com",
-    "s9.cnzz.com",
-    "z6.cnzz.com",
-    "um.cavuc.com",
-    "mav.mavuz.com",
-    "wofwk.aoidf3.com",
-    "z5.cnzz.com",
-    "xc.hubeijieshikj.cn",
-    "tj.tianwenhu.com",
-    "xg.gars57.cn",
-    "k.jinxiuzhilv.com",
-    "cdn.bootcss.com",
-    "ppl.xunzhuo123.com",
-    "xomk.jiangjunmh.top",
-    "img.xunzhuo123.com",
-    "z1.cnzz.com",
-    "s13.cnzz.com",
-    "xg.huataisangao.cn",
-    "z7.cnzz.com",
-    "xg.huataisangao.cn",
-    "z2.cnzz.com",
-    "s96.cnzz.com",
-    "q11.cnzz.com",
-    "thy.dacedsfa.cn",
-    "xg.whsbpw.cn",
-    "s19.cnzz.com",
-    "z8.cnzz.com",
-    "s4.cnzz.com",
-    "f5w.as12df.top",
-    "ae01.alicdn.com",
-    "www.92424.cn",
-    "k.wudejia.com",
-    "vivovip.mmszxc.top",
-    "qiu.xixiqiu.com",
-    "cdnjs.hnfenxun.com",
-    "cms.qdwght.com",
-    "api.htpan.net"
   ]
 }

@@ -227,22 +227,22 @@
     {
       "name": "解析聚合",
       "type": 3,
-      "url": "https://www.yingm.cc/dm/Demo"
+      "url": "Demo"
     },
     {
       "name": "Json并发",
       "type": 2,
-      "url": "https://www.yingm.cc/dm/Parallel"
+      "url": "Parallel"
     },
     {
       "name": "Json轮询",
       "type": 2,
-      "url": "https://www.yingm.cc/dm/Sequence"
+      "url": "Sequence"
     },
     {
       "name": "Web聚合",
       "type": 3,
-      "url": "https://www.yingm.cc/dm/Web"
+      "url": "Web"
     },
     {
       "name": "1-看看",
@@ -378,17 +378,5 @@
       "type": 0,
       "url": "https://jx.m3u8.tv/jiexi/?url="
     }
-  ],
-  "flags": [
-    "youku",
-    "qq",
-    "iqiyi",
-    "qiyi",
-    "letv",
-    "sohu",
-    "tudou",
-    "pptv",
-    "mgtv",
-    "wasu"
   ]
 }

@@ -15,7 +15,7 @@
         "ratio": 1.33
       },
       "ext": {
-        "class": "https://zhangqun1818.serv00.net/zq/YoutubeSpider",
+        "class": "YoutubeSpider",
         "ext": {
           "youtube_txt": "http://zhangqun1818.serv00.net/zq/youtube0418.txt"
         }
@@ -33,7 +33,7 @@
         "ratio": 1.33
       },
       "ext": {
-        "class": "https://zhangqun1818.serv00.net/zq/Music1",
+        "class": "Music1",
         "ext": "http://zhangqun1818.serv00.net/zq/jdyy.json"
       },
       "filterable": 1
@@ -44,7 +44,7 @@
       "type": 3,
       "api": "csp_ProxySpider",
       "ext": {
-        "class": "https://zhangqun1818.serv00.net/zq/LegadoSpider",
+        "class": "LegadoSpider",
         "ext": "http://zhangqun1818.serv00.net/zq/sources.json"
       },
       "style": {
@@ -215,7 +215,7 @@
       "quickSearch": 0,
       "filterable": 0,
       "ext": {
-        "class": "https://zhangqun1818.serv00.net/zq/TxtLiveSpider",
+        "class": "TxtLiveSpider",
         "ext": "https://zhangqun1818.serv00.net/zq/虎牙全集.txt"
       }
     },
@@ -230,7 +230,7 @@
       },
       "changeable": 1,
       "ext": {
-        "class": "https://zhangqun1818.serv00.net/zq/ReaderHelper"
+        "class": "ReaderHelper"
       }
     },
     {
@@ -244,7 +244,7 @@
       },
       "changeable": 1,
       "ext": {
-        "class": "https://zhangqun1818.serv00.net/zq/Bilibili"
+        "class": "Bilibili"
       }
     }
   ],
@@ -252,7 +252,7 @@
     {
       "name": "解析聚合",
       "type": 3,
-      "url": "https://zhangqun1818.serv00.net/zq/Web"
+      "url": "Web"
     },
     {
       "name": "777",
@@ -299,22 +299,6 @@
         }
       }
     }
-  ],
-  "flags": [
-    "youku",
-    "tudou",
-    "qq",
-    "qiyi",
-    "iqiyi",
-    "leshi",
-    "letv",
-    "sohu",
-    "imgo",
-    "mgtv",
-    "bilibili",
-    "pptv",
-    "PPTV",
-    "migu"
   ],
   "rules": [
     {
@@ -435,54 +419,6 @@
       ]
     }
   ],
-  "doh": [
-    {
-      "name": "Google",
-      "url": "https://dns.google/dns-query",
-      "ips": [
-        "8.8.4.4",
-        "8.8.8.8"
-      ]
-    },
-    {
-      "name": "Cloudflare",
-      "url": "https://cloudflare-dns.com/dns-query",
-      "ips": [
-        "1.1.1.1",
-        "1.0.0.1",
-        "2606:4700:4700::1111",
-        "2606:4700:4700::1001"
-      ]
-    },
-    {
-      "name": "AdGuard",
-      "url": "https://dns.adguard.com/dns-query",
-      "ips": [
-        "94.140.14.140",
-        "94.140.14.141"
-      ]
-    },
-    {
-      "name": "DNSWatch",
-      "url": "https://resolver2.dns.watch/dns-query",
-      "ips": [
-        "84.200.69.80",
-        "84.200.70.40"
-      ]
-    },
-    {
-      "name": "Quad9",
-      "url": "https://dns.quad9.net/dns-quer",
-      "ips": [
-        "9.9.9.9",
-        "149.112.112.112"
-      ]
-    }
-  ],
-  "ads": [
-    "static-mozai.4gtv.tv",
-    "s3t3d2y8.afcdn.net"
-  ],
   "lives": [
     {
       "name": "MQ",
@@ -501,7 +437,7 @@
     },
     {
       "name": "野火直播",
-      "url": "https://zhangqun1818.serv00.net/zq/野火改.txt",
+      "url": "./野火改.txt",
       "epg": "https://epg.112114.xyz/?ch={name}&date={date}",
       "logo": "https://epg.112114.xyz/logo/{name}.png"
     }

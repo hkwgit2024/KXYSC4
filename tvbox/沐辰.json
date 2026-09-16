@@ -22,7 +22,7 @@
       "quickSearch": 0,
       "changeable": 0,
       "ext": {
-        "module_name": "https://php.doube.eu.org/spider/php/BuBu"
+        "module_name": "BuBu"
       }
     },
     {
@@ -34,7 +34,7 @@
       "quickSearch": 0,
       "changeable": 0,
       "ext": {
-        "module_name": "https://php.doube.eu.org/spider/php/CmsSuggest",
+        "module_name": "CmsSuggest",
         "url": "https://api.wsyzy.net/api.php/provide/vod"
       }
     },
@@ -47,7 +47,7 @@
       "quickSearch": 0,
       "changeable": 0,
       "ext": {
-        "module_name": "https://php.doube.eu.org/spider/php/Ole"
+        "module_name": "Ole"
       }
     },
     {
@@ -59,7 +59,7 @@
       "quickSearch": 0,
       "changeable": 0,
       "ext": {
-        "module_name": "https://php.doube.eu.org/spider/php/DouYu"
+        "module_name": "DouYu"
       }
     },
     {
@@ -71,7 +71,7 @@
       "quickSearch": 0,
       "changeable": 0,
       "ext": {
-        "module_name": "https://php.doube.eu.org/spider/php/HuYa"
+        "module_name": "HuYa"
       }
     },
     {

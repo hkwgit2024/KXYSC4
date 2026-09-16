@@ -466,6 +466,13 @@
       "ext": "http://www.cttv.vip/ys/jar/Blixq.json"
     },
     {
+      "key": "19",
+      "name": "👖戏曲2",
+      "type": 3,
+      "api": "https://iduo.us.ci/gt/leevi0709/one/main/js/drpy2.min.js",
+      "ext": "https://www.cttv.vip/ys/jar/戏曲大全.js"
+    },
+    {
       "key": "相声小品",
       "name": "有声专辑┃刺桐",
       "type": 3,
@@ -481,12 +488,12 @@
     {
       "name": "聚合1",
       "type": 3,
-      "url": "https://www.cttv.vip/ys/json/Demo"
+      "url": "Demo"
     },
     {
       "name": "聚合0",
       "type": 3,
-      "url": "https://www.cttv.vip/ys/json/Web"
+      "url": "Web"
     },
     {
       "name": "BL",

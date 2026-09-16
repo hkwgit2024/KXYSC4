@@ -1,6 +1,5 @@
 {
   "spider": "http://150.158.52.248/tgyg/lib/spider.jar",
-  "warningText": "禁止任何商业用途，后果自负",
   "logo": "https://150.158.52.248:8888/down/bwrZrbLrsURH.gif",
   "wallpaper": "http://饭太硬.top/深色壁纸/api.php",
   "sites": [
@@ -311,7 +310,7 @@
       "api": "csp_Nmvod",
       "playerType": 2,
       "jar": "http://150.158.52.248/tgyg/lib/柠檬.jar",
-      "ext": "http://150.158.52.248/tgyg/7lj763gg402i7942503g839jg74h8h88highi40799jh6i6k454419l0l5184k0g549h0kg2i01i838i2h42g891lgg1"
+      "ext": "7lj763gg402i7942503g839jg74h8h88highi40799jh6i6k454419l0l5184k0g549h0kg2i01i838i2h42g891lgg1"
     },
     {
       "key": "橘子2",
@@ -323,14 +322,14 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": {
-        "appName": "http://150.158.52.248/tgyg/橘汁",
+        "appName": "橘汁",
         "publicKey": "http://150.158.52.248/tgyg/MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCr8SzZhjYy+rsya1K09t8d2K50pWFoBkgUqMpKOiW+3IEVKd4eTdvg9RSOjQ82kypL6R9BnsmrS1V8s4PVDwjQbUtYhTPPC9Hz16qY7rpD6m0d2vr09/UpWQ5uOy9PR0QTrsioveZ+DIe9jc3C+zBCu/kZSY/R8stwJoiitki3gwIDAQAB",
-        "dataKey": "http://150.158.52.248/tgyg/DGVQRUX5R1LWWDLHTGJSUKG1DJRVPQ==",
-        "dataIv": "http://150.158.52.248/tgyg/OC1A06E197EF10CF3F6058CA7A803B5E",
-        "pkg": "http://150.158.52.248/tgyg/com.lxf.snzlcgtzxyx",
+        "dataKey": "DGVQRUX5R1LWWDLHTGJSUKG1DJRVPQ==",
+        "dataIv": "OC1A06E197EF10CF3F6058CA7A803B5E",
+        "pkg": "com.lxf.snzlcgtzxyx",
         "host": "",
         "site": "http://150.158.52.248/tgyg/lib/app.txt",
-        "version": "http://150.158.52.248/tgyg/3.0.2.1",
+        "version": "3.0.2.1",
         "decrypt": "1"
       }
     },
@@ -2455,84 +2454,6 @@
       }
     }
   ],
-  "doh": [
-    {
-      "name": "DNSPod",
-      "url": "https://doh.pub/dns-query",
-      "ips": [
-        "119.29.29.29",
-        "119.28.28.28",
-        "2400:da00::6666",
-        "2400:da00:1::6666"
-      ]
-    },
-    {
-      "name": "Alidns",
-      "url": "https://dns.alidns.com/dns-query",
-      "ips": [
-        "223.5.5.5",
-        "223.6.6.6",
-        "2400:3200::1",
-        "2400:3200:baba::1"
-      ]
-    },
-    {
-      "name": "Google",
-      "url": "https://dns.google/dns-query",
-      "ips": [
-        "8.8.4.4",
-        "8.8.8.8",
-        "2001:4860:4860::8888",
-        "2001:4860:4860::8844"
-      ]
-    },
-    {
-      "name": "Cloudflare",
-      "url": "https://cloudflare-dns.com/dns-query",
-      "ips": [
-        "1.1.1.1",
-        "1.0.0.1",
-        "2606:4700:4700::1111",
-        "2606:4700:4700::1001"
-      ]
-    },
-    {
-      "name": "AdGuard",
-      "url": "https://dns.adguard.com/dns-query",
-      "ips": [
-        "94.140.14.140",
-        "94.140.14.141",
-        "2a10:50c0::ad1:ff",
-        "2a10:50c0::ad2:ff"
-      ]
-    },
-    {
-      "name": "DNSWatch",
-      "url": "https://dns.watch/dns-query",
-      "ips": [
-        "84.200.69.80",
-        "84.200.70.40",
-        "2001:67c:2354:2::64",
-        "2001:67c:2354:3::64"
-      ]
-    },
-    {
-      "name": "Quad9",
-      "url": "https://dns.quad9.net/dns-query",
-      "ips": [
-        "9.9.9.9",
-        "149.112.112.112",
-        "2620:fe::fe",
-        "2620:fe::9"
-      ]
-    }
-  ],
-  "proxy": [
-    "raw.githubusercontent.com",
-    "googlevideo.com",
-    "googleapis.com",
-    "youtube.com"
-  ],
   "rules": [
     {
       "name": "火山嗅探",
@@ -2580,69 +2501,6 @@
       ]
     }
   ],
-  "headers": [
-    {
-      "host": "img\\d+.doubanio.com",
-      "header": {
-        "Referer": "https://movie.douban.com"
-      }
-    },
-    {
-      "host": "img1.doubanio.com",
-      "header": {
-        "Referer": "https://movie.douban.com"
-      }
-    },
-    {
-      "host": "img2.doubanio.com",
-      "header": {
-        "Referer": "https://movie.douban.com"
-      }
-    },
-    {
-      "host": "img3.doubanio.com",
-      "header": {
-        "Referer": "https://movie.douban.com"
-      }
-    },
-    {
-      "host": "img4.doubanio.com",
-      "header": {
-        "Referer": "https://movie.douban.com"
-      }
-    },
-    {
-      "host": "img5.doubanio.com",
-      "header": {
-        "Referer": "https://movie.douban.com"
-      }
-    },
-    {
-      "host": "img6.doubanio.com",
-      "header": {
-        "Referer": "https://movie.douban.com"
-      }
-    },
-    {
-      "host": "img7.doubanio.com",
-      "header": {
-        "Referer": "https://movie.douban.com"
-      }
-    },
-    {
-      "host": "img8.doubanio.com",
-      "header": {
-        "Referer": "https://movie.douban.com"
-      }
-    },
-    {
-      "host": "img9.doubanio.com",
-      "header": {
-        "Referer": "https://movie.douban.com"
-      }
-    }
-  ],
-  "hosts": [],
   "parses": [
     {
       "name": "YYNB解析",
@@ -2764,7 +2622,7 @@
     {
       "name": "幸福年年zb",
       "type": 0,
-      "url": "http://150.158.52.248/tgyg/lib/ylzb.txt",
+      "url": "./lib/ylzb.txt",
       "playerType": 2,
       "timeout": 10,
       "epg": "https://epg.112114.eu.org/?ch={name}&date={date}",
@@ -2773,21 +2631,21 @@
     {
       "name": "☀轮播直播",
       "type": 0,
-      "url": "http://150.158.52.248/tgyg/lib/dsj.txt",
+      "url": "./lib/dsj.txt",
       "playerType": 2,
       "timeout": 10
     },
     {
       "name": "💖2500部恐怖片",
       "type": 0,
-      "url": "http://150.158.52.248/tgyg/lib/电影.txt",
+      "url": "./lib/电影.txt",
       "playerType": 2,
       "timeout": 10
     },
     {
       "name": "🐅虎牙一起看",
       "type": 0,
-      "url": "http://150.158.52.248/tgyg/lib/huyayqk.m3u",
+      "url": "./lib/huyayqk.m3u",
       "playerType": 2,
       "timeout": 10,
       "ua": "okHttp/Mod-1.5.0.0"
@@ -2795,7 +2653,7 @@
     {
       "name": "🐟斗鱼一起看",
       "type": 0,
-      "url": "http://150.158.52.248/tgyg/lib/douyuyqk.m3u",
+      "url": "./lib/douyuyqk.m3u",
       "playerType": 2,
       "timeout": 10,
       "ua": "okHttp/Mod-1.5.0.0"
@@ -2803,7 +2661,7 @@
     {
       "name": "🅱️B站直播",
       "type": 0,
-      "url": "http://150.158.52.248/tgyg/lib/bililive.m3u",
+      "url": "./lib/bililive.m3u",
       "playerType": 2,
       "timeout": 10,
       "ua": "okHttp/Mod-1.5.0.0"
@@ -2811,7 +2669,7 @@
     {
       "name": "🍊YY轮播",
       "type": 0,
-      "url": "http://150.158.52.248/tgyg/lib/yylunbo.m3u",
+      "url": "./lib/yylunbo.m3u",
       "playerType": 2,
       "timeout": 10,
       "ua": "okHttp/Mod-1.5.0.0"
@@ -2819,14 +2677,14 @@
     {
       "name": "🍊短剧直播",
       "type": 0,
-      "url": "http://150.158.52.248/tgyg/lib/dj.txt",
+      "url": "./lib/dj.txt",
       "playerType": 2,
       "timeout": 10
     },
     {
       "name": "💖天微③",
       "type": 0,
-      "url": "http://150.158.52.248/tgyg/lib/kjtwzb.txt",
+      "url": "./lib/kjtwzb.txt",
       "playerType": 2,
       "ua": "okhttp/3",
       "epg": "https://epg.112114.eu.org/?ch={name}&date={date}",
