@@ -2,69 +2,151 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>自动线路检测</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
+<title>海量接口搬运备份</title>
 
 <style>
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
-    background: #f8fafc;
-    margin: 0;
-    padding: 16px;
-    color: #0b1e33;
-  }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-  .status {
-    margin-bottom: 12px;
-    font-size: .85rem;
-    color: #2563eb;
-  }
+html, body { height:100%; }
 
-  .copy-btn {
-    background: #2563eb;
-    color: #fff;
-    border: none;
-    border-radius: 50px;
-    padding: 4px 12px;
-    font-size: .72rem;
-    cursor: pointer;
-  }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background:#eef2f7; color:#1a2b3d;
+  padding:20px 14px 10px;
+  min-height:100vh;
+  display:flex; flex-direction:column;
+  -webkit-tap-highlight-color:transparent;
+}
 
-  .copy-btn:active {
-    opacity: .8;
-  }
+.container {
+  max-width:820px; margin:auto; width:100%;
+  flex:1; display:flex; flex-direction:column;
+}
+
+/* 头部 */
+.header-block { text-align:center; margin-bottom:20px; }
+h1 { font-size:1.35rem; font-weight:700; color:#0a1a2b; }
+h1 .header-logo {
+  width:2rem; height:2rem; border-radius:50%;
+  border:1px solid #4a9eff; object-fit:cover;
+  vertical-align:-.5rem; margin-right:8px;
+}
+.header-divider { height:1px; background:#e4ebf3; margin:12px 0; }
+.subtitle { font-size:.78rem; color:#7a8fa3; line-height:1.6; }
+
+/* 状态卡片 */
+.status-card {
+  background:#fff; border-radius:8px;
+  padding:16px 18px; border:1px solid #d4dbe5;
+  margin-bottom:16px; text-align:center;
+}
+.status-text { font-size:.88rem; color:#2563eb; line-height:1.7; }
+.countdown { color:#10b981; font-weight:700; font-size:1.05rem; }
+
+/* 域名列表卡片 */
+.domains-card {
+  background:#fff; border-radius:8px;
+  padding:18px 18px 14px; border:1px solid #d4dbe5;
+}
+
+.domains-title {
+  font-size:.92rem; font-weight:600; color:#0b1e33;
+  margin-bottom:6px;
+}
+.domains-tip {
+  font-size:.74rem; color:#5a6f88; margin-bottom:10px;
+}
+
+.url-line {
+  display:flex; align-items:center; gap:8px;
+  padding:6px 14px; background:#f4f8fc;
+  border:1px solid #e0e8f0; border-radius:50px;
+  margin-top:8px; min-width:0;
+}
+.url-text {
+  flex:1; font-size:.75rem; color:#2563eb;
+  word-break:break-all; overflow-wrap:break-word;
+  line-height:1.4; min-width:0;
+}
+.copy-btn {
+  flex-shrink:0; background:#4a9eff; color:#fff; border:none;
+  border-radius:30px; padding:0 14px; font-size:.68rem; font-weight:500;
+  cursor:pointer; height:26px; display:inline-flex; align-items:center; justify-content:center;
+  white-space:nowrap; touch-action:manipulation; -webkit-user-select:none; user-select:none;
+}
+.copy-btn:active { background:#2a7ed9; transform:scale(.96); }
+.copy-btn.copied { background:#3b9b6c; }
+
+/* footer */
+.page-footer {
+  text-align:center; padding:24px 0 10px;
+  font-size:.7rem; color:#8fa3b8; line-height:1.8; margin-top:auto;
+}
+
+@media (max-width:600px) {
+  body { padding:14px 10px 6px; }
+  .status-card { padding:14px 12px; }
+  .domains-card { padding:14px 12px 10px; }
+}
 </style>
 </head>
 
 <body>
 
-<div class="status" id="status">⏳ 正在检测可用线路...</div>
+<div class="container">
 
-<!-- 你提供的备份线路 UI -->
-<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
-  <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">🌐 备份线路域名</h3>
-  <p style="margin-bottom:6px;font-size:.76rem;color:#5a6f88">四个域名互为备份，任一个可用：</p>
-
-  <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
-    <span style="flex:1;font-size:.75rem;color:#2563eb">https://0.12yue.de5.net</span>
-    <button class="copy-btn" data-url="https://0.12yue.de5.net">复制</button>
+  <!-- 头部 -->
+  <div class="header-block">
+    <h1>
+      <img class="header-logo" src="https://0.12yue.de5.net/tvbox/x/jueson.jpg" alt="Logo">
+      海量接口搬运备份
+    </h1>
+    <div class="header-divider"></div>
+    <p class="subtitle">
+      备用数据源，防屏不迷路<br>
+      QQ交流群：1067685939
+    </p>
   </div>
 
-  <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
-    <span style="flex:1;font-size:.75rem;color:#2563eb">https://0.cdz.qzz.io</span>
-    <button class="copy-btn" data-url="https://0.cdz.qzz.io">复制</button>
+  <!-- 检测状态 -->
+  <div class="status-card">
+    <div class="status-text" id="status">⏳ 正在检测可用线路...</div>
   </div>
 
-  <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
-    <span style="flex:1;font-size:.75rem;color:#2563eb">https://0.wdzb.eu.cc</span>
-    <button class="copy-btn" data-url="https://0.wdzb.eu.cc">复制</button>
+  <!-- 四域名展示 -->
+  <div class="domains-card">
+    <div class="domains-title">🌐 备份线路域名</div>
+    <div class="domains-tip">四个域名互为备份，任一个可用：</div>
+
+    <div class="url-line">
+      <span class="url-text">https://0.12yue.de5.net</span>
+      <button class="copy-btn" data-url="https://0.12yue.de5.net">复制</button>
+    </div>
+    <div class="url-line">
+      <span class="url-text">https://0.cdz.qzz.io</span>
+      <button class="copy-btn" data-url="https://0.cdz.qzz.io">复制</button>
+    </div>
+    <div class="url-line">
+      <span class="url-text">https://0.wdzb.eu.cc</span>
+      <button class="copy-btn" data-url="https://0.wdzb.eu.cc">复制</button>
+    </div>
+    <div class="url-line">
+      <span class="url-text">https://tvbox.moliys.icu</span>
+      <button class="copy-btn" data-url="https://tvbox.moliys.icu">复制</button>
+    </div>
   </div>
 
-  <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
-    <span style="flex:1;font-size:.75rem;color:#2563eb">https://tvbox.moliys.icu</span>
-    <button class="copy-btn" data-url="https://tvbox.moliys.icu">复制</button>
-  </div>
 </div>
+
+<!-- footer -->
+<footer class="page-footer">
+  <p>
+    本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。<br>
+    仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。<br>
+    如涉及侵权，请联系删除。QQ 群：1067685939。
+  </p>
+</footer>
 
 <script>
 const domains = [
@@ -76,51 +158,77 @@ const domains = [
 
 const statusEl = document.getElementById("status");
 
+/* 复制 */
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.copy-btn');
+  if (!btn) return;
+  e.preventDefault(); e.stopPropagation();
+  const url = btn.getAttribute('data-url');
+  if (!url) return;
+
+  const done = () => {
+    const original = btn.textContent;
+    btn.textContent = '✅ 已复制';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1500);
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done).catch(() => fb());
+  } else { fb(); }
+
+  function fb() {
+    const input = document.createElement('input');
+    input.value = url; input.style.position='fixed'; input.style.opacity='0';
+    document.body.appendChild(input); input.focus(); input.select();
+    try { document.execCommand('copy'); } catch(_){}
+    document.body.removeChild(input); done();
+  }
+});
+
+/* 检测域名 */
 async function checkDomain(url, timeout = 20000) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeout);
-
   try {
-    const res = await fetch(url, {
-      method: "GET",
-      mode: "no-cors",   // 避免跨域拦截
-      signal: controller.signal
-    });
+    await fetch(url, { method:"GET", mode:"no-cors", signal:controller.signal });
     clearTimeout(timer);
     return true;
-  } catch (e) {
+  } catch(e) {
     clearTimeout(timer);
     return false;
   }
 }
 
+/* 倒计时跳转 */
+function startCountdown(url, seconds = 5) {
+  let remain = seconds;
+  statusEl.innerHTML = `✅ 线路可用，<span class="countdown">${remain}</span> 秒后跳转<br><span style="font-size:.75rem;color:#5a6f88">${url}</span>`;
+
+  const t = setInterval(() => {
+    remain--;
+    if (remain > 0) {
+      statusEl.innerHTML = `✅ 线路可用，<span class="countdown">${remain}</span> 秒后跳转<br><span style="font-size:.75rem;color:#5a6f88">${url}</span>`;
+    } else {
+      clearInterval(t);
+      window.location.href = url;
+    }
+  }, 1000);
+}
+
+/* 开始检测 */
 async function startCheck() {
   for (let i = 0; i < domains.length; i++) {
     const url = domains[i];
     statusEl.textContent = `⏳ 正在检测第 ${i + 1} 个线路：${url}`;
-
     const ok = await checkDomain(url);
     if (ok) {
-      statusEl.textContent = `✅ 线路可用，正在跳转：${url}`;
-      setTimeout(() => {
-        window.location.href = url;
-      }, 800);
+      startCountdown(url, 5);
       return;
     }
   }
-
-  statusEl.textContent = "❌ 所有线路均不可用，请稍后再试";
+  statusEl.innerHTML = "❌ 所有线路均不可用，请稍后再试";
 }
-
-/* 复制按钮 */
-document.querySelectorAll('.copy-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const text = btn.getAttribute('data-url');
-    navigator.clipboard.writeText(text);
-    btn.textContent = "已复制";
-    setTimeout(() => btn.textContent = "复制", 1500);
-  });
-});
 
 startCheck();
 </script>
