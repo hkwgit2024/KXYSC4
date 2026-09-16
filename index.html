@@ -244,9 +244,9 @@ body.simple-mode #api-panel { display:block !important; }
 
   <!-- 标题 -->
   <div class="header-block">
-    <h1><img class="header-logo" src="https://0.12yue.de5.net/tvbox/x/jueson.jpg" alt="Logo">海量接口搬运备份</h1>
+    <h1><img class="header-logo" id="header-logo" src="https://0.12yue.de5.net/tvbox/x/jueson.jpg" alt="Logo">海量接口搬运备份</h1>
     <div class="header-divider"></div>
-    <p class="subtitle">备用数据源，防屏不迷路<br>QQ交流群：1067685939</p>
+    <p class="subtitle" id="header-subtitle">备用数据源，防屏不迷路<br>QQ交流群：1067685939</p>
   </div>
 
   <!-- 主卡片 -->
@@ -353,6 +353,10 @@ const searchBox = document.getElementById('search');
 const mainCard = document.querySelector('.main-card');
 const navTabs = document.getElementById('navTabs');
 
+/* 新增：从 config 读取 logo 与标题 */
+const headerLogo = document.getElementById('header-logo');
+const headerSubtitle = document.getElementById('header-subtitle');
+
 const API_DOMAINS = [
   {tag:"备份一线", base:"https://0.12yue.de5.net/tvbox/"},
   {tag:"备份二线", base:"https://0.cdz.qzz.io/tvbox/"},
@@ -442,6 +446,30 @@ async function loadConfig() {
     DOWNLOAD_SOURCES = Array.isArray(SITE_CONFIG.downloadSources) ? SITE_CONFIG.downloadSources : [];
     DANMU_SOURCES = Array.isArray(SITE_CONFIG.danmuSources) ? SITE_CONFIG.danmuSources : [];
     renderContributors(SITE_CONFIG.about && SITE_CONFIG.about.contributors);
+
+    /* 新增：从 config 更新 logo、标题、副标题 */
+    if (SITE_CONFIG.site) {
+      if (SITE_CONFIG.site.logo) {
+        headerLogo.src = SITE_CONFIG.site.logo;
+      }
+      if (SITE_CONFIG.site.title) {
+        // 保留原有文字，仅替换文本（logo 保留在 img 中）
+        const h1 = headerLogo.parentNode;
+        // 移除所有文本节点后重新添加
+        const textNodes = Array.from(h1.childNodes).filter(n => n.nodeType === Node.TEXT_NODE);
+        textNodes.forEach(n => n.remove());
+        h1.appendChild(document.createTextNode(SITE_CONFIG.site.title));
+      }
+      if (SITE_CONFIG.site.subtitle || SITE_CONFIG.site.qqGroup) {
+        let sub = SITE_CONFIG.site.subtitle || '备用数据源，防屏不迷路';
+        if (SITE_CONFIG.site.qqGroup) {
+          sub += '<br>QQ交流群：' + SITE_CONFIG.site.qqGroup;
+        } else {
+          sub += '<br>QQ交流群：1067685939';
+        }
+        headerSubtitle.innerHTML = sub;
+      }
+    }
   } catch(e) { DOWNLOAD_SOURCES=[]; DANMU_SOURCES=[]; renderContributors([]); }
 }
 
