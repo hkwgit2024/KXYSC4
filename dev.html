@@ -68,27 +68,18 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 .main-card {
   background:#fff; border-radius:8px; padding:20px 22px 18px;
   border:1px solid #d4dbe5;
-  width:100%;
-  overflow-x:hidden;
-  flex:1;
+  width:100%; overflow-x:hidden; flex:1;
 }
 
 /* 导航栏 */
 .nav-tabs {
-  display:flex;
-  gap:10px;
-  margin-bottom:16px;
-  justify-content:center;
-  flex-wrap:wrap;
+  display:flex; gap:10px; margin-bottom:16px;
+  justify-content:center; flex-wrap:wrap;
 }
 .nav-tab {
-  padding:7px 24px;
-  border:1.5px solid #4a9eff;
-  border-radius:40px;
+  padding:7px 24px; border:1.5px solid #4a9eff; border-radius:40px;
   background:#fff; color:#4a9eff;
-  font-size:.82rem; font-weight:500;
-  cursor:pointer; white-space:nowrap;
-  flex-shrink:0;
+  font-size:.82rem; font-weight:500; cursor:pointer; white-space:nowrap; flex-shrink:0;
 }
 .nav-tab.active { background:#4a9eff; color:#fff; }
 .nav-tab:active { transform:scale(.96); }
@@ -107,7 +98,6 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 .api-item-meta { display:flex; align-items:center; gap:8px; font-size:.72rem; white-space:nowrap; flex-shrink:0; }
 .badge-new { color:#16a34a; font-weight:600; }
 .badge-old { color:#ca8a04; font-weight:600; }
-
 .api-item-urls { display:flex; flex-direction:column; gap:6px; }
 .url-line {
   display:flex; align-items:center; gap:8px; padding:6px 14px;
@@ -129,15 +119,8 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 .loading { text-align:center; color:#8fa3b8; padding:60px 0; font-size:.88rem; }
 .error-msg { text-align:center; color:#dc2626; padding:16px 20px; font-size:.8rem; background:#fef2f2; border:1px solid #fecaca; border-radius:4px; margin:12px 0; word-break:break-all; }
 
-/* footer 自动沉底 */
-.page-footer {
-  text-align:center;
-  padding:24px 0 10px;
-  font-size:.7rem;
-  color:#8fa3b8;
-  line-height:1.8;
-  margin-top:auto;
-}
+/* footer */
+.page-footer { text-align:center; padding:24px 0 10px; font-size:.7rem; color:#8fa3b8; line-height:1.8; margin-top:auto; }
 
 /* 简洁模式 */
 body.simple-mode .nav-tabs { display:none !important; }
@@ -173,64 +156,40 @@ body.simple-mode #api-panel { display:block !important; }
 <div class="container">
   <button id="modeToggleBtn">切换<br>全能版</button>
 
-  <!-- 标题 -->
   <div class="header-block">
     <h1><img class="header-logo" src="https://0.12yue.de5.net/tvbox/x/jueson.jpg" alt="Logo">海量接口搬运备份</h1>
     <div class="header-divider"></div>
     <p class="subtitle">备用数据源，防屏不迷路<br>QQ交流群：1067685939</p>
   </div>
 
-  <!-- 主卡片 -->
   <div class="main-card">
-
-    <!-- 导航栏 -->
     <div class="nav-tabs" id="navTabs"></div>
-
-    <!-- 搜索框 -->
     <input class="search-box" id="search" type="text" placeholder="🔍 搜索..." oninput="globalSearch()">
 
-    <!-- 点播面板 -->
+    <!-- 点播 -->
     <div class="tab-panel active" id="api-panel">
       <div class="api-list" id="listContainer">
         <div class="loading" id="apiLoading">⏳ 正在加载接口列表...</div>
       </div>
     </div>
-
-    <!-- 直播面板 -->
+    <!-- 直播 -->
     <div class="tab-panel" id="live-panel">
-      <div class="panel-placeholder">
-        <div class="placeholder-icon">📺</div>
-        <div class="placeholder-text">直播内容加载中...</div>
-      </div>
+      <div class="panel-placeholder"><div class="placeholder-icon">📺</div><div class="placeholder-text">直播内容加载中...</div></div>
     </div>
-
-    <!-- 弹幕面板 -->
+    <!-- 弹幕 -->
     <div class="tab-panel" id="danmu-panel">
-      <div class="panel-placeholder">
-        <div class="placeholder-icon">💬</div>
-        <div class="placeholder-text">弹幕内容加载中...</div>
-      </div>
+      <div class="panel-placeholder"><div class="placeholder-icon">💬</div><div class="placeholder-text">弹幕内容加载中...</div></div>
     </div>
-
-    <!-- 下载面板 -->
+    <!-- 下载 -->
     <div class="tab-panel" id="download-panel">
-      <div class="panel-placeholder">
-        <div class="placeholder-icon">📦</div>
-        <div class="placeholder-text">下载内容加载中...</div>
-      </div>
+      <div class="panel-placeholder"><div class="placeholder-icon">📦</div><div class="placeholder-text">下载内容加载中...</div></div>
     </div>
-
-    <!-- 关于面板 -->
+    <!-- 关于 -->
     <div class="tab-panel" id="about-panel">
-      <div class="panel-placeholder">
-        <div class="placeholder-icon">ℹ️</div>
-        <div class="placeholder-text">关于内容加载中...</div>
-      </div>
+      <div class="panel-placeholder"><div class="placeholder-icon">ℹ️</div><div class="placeholder-text">关于内容加载中...</div></div>
     </div>
-
   </div>
 
-  <!-- footer -->
   <footer class="page-footer">
     <p>本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。 QQ 群：1067685939。</p>
   </footer>
@@ -238,19 +197,22 @@ body.simple-mode #api-panel { display:block !important; }
 
 <script>
 /* ============================================================
-   公共 JS
+   公共 JS（含刷新记住面板 + localStorage）
    ============================================================ */
 
 const MODE_KEY = 'site_mode';
+const TAB_KEY = 'current_tab';                       // ✅ 面板缓存 key
+const VALID_TABS = ['api','live','download','danmu','about']; // ✅ 合法面板白名单
+
 const btn = document.getElementById('modeToggleBtn');
 const searchBox = document.getElementById('search');
 const mainCard = document.querySelector('.main-card');
 const navTabs = document.getElementById('navTabs');
 
 const API_DOMAINS = [
-  { tag:"备份一线", base:"https://0.12yue.de5.net/tvbox/" },
-  { tag:"备份二线", base:"https://0.cdz.qzz.io/tvbox/" },
-  { tag:"备份三线", base:"https://0.wdzb.eu.cc/tvbox/" }
+  {tag:"备份一线", base:"https://0.12yue.de5.net/tvbox/"},
+  {tag:"备份二线", base:"https://0.cdz.qzz.io/tvbox/"},
+  {tag:"备份三线", base:"https://0.wdzb.eu.cc/tvbox/"}
 ];
 
 const API_WEIGHTS = {
@@ -262,7 +224,12 @@ const API_WEIGHTS = {
 const ROTATE_KEYWORDS = ["模糊搜索","模糊搜索"];
 
 let currentMode = localStorage.getItem(MODE_KEY) || 'simple';
-let currentTabId = 'api';
+
+// ✅ 从缓存读取上次面板，非法值回退点播
+let currentTabId = VALID_TABS.includes(localStorage.getItem(TAB_KEY))
+  ? localStorage.getItem(TAB_KEY)
+  : 'api';
+
 let topSeed = Date.now();
 let rawListText = null;
 
@@ -270,8 +237,8 @@ document.body.className = currentMode + '-mode';
 updateBtnText();
 positionSearchBox();
 
-/* 复制 */
-document.addEventListener('click', e => {
+/* ===== 全局复制 ===== */
+document.addEventListener('click', function(e) {
   const copyBtn = e.target.closest('.copy-btn');
   if (!copyBtn) return;
   e.preventDefault(); e.stopPropagation();
@@ -295,144 +262,152 @@ document.addEventListener('click', e => {
   }
 });
 
-/* 工具 */
+/* ===== 工具 ===== */
 function getTopItem(rotateItems) {
   if (!rotateItems || !rotateItems.length) return null;
   if (rotateItems.length === 1) return rotateItems[0];
-  const idx = Math.abs(Math.floor(Math.sin(topSeed) * 10000)) % rotateItems.length;
-  return rotateItems[idx];
+  return rotateItems[Math.abs(Math.floor(Math.sin(topSeed)*10000))%rotateItems.length];
 }
-
 function formatDateToChinese(d) {
-  if (!d || d.length !== 8) return '----';
+  if(!d||d.length!==8) return '----';
   return d.slice(0,4)+'年'+d.slice(4,6)+'月'+d.slice(6,8)+'日';
 }
-
 function isRecent(d) {
-  if (!d || d.length !== 8) return false;
+  if(!d||d.length!==8) return false;
   const y=parseInt(d.slice(0,4)),m=parseInt(d.slice(4,6))-1,day=parseInt(d.slice(6,8));
   return (Date.now()-new Date(y,m,day).getTime())/86400000 <= 2;
 }
 
-/* 搜索 */
+/* ===== 搜索 ===== */
 function globalSearch() {
-  const kw = (searchBox.value || '').toLowerCase().trim();
-  document.querySelectorAll('#api-panel .api-item').forEach(el => {
-    const n = el.getAttribute('data-name') || '';
-    el.classList.toggle('hidden', !n.includes(kw));
+  const kw=(searchBox.value||'').toLowerCase().trim();
+  document.querySelectorAll('#api-panel .api-item').forEach(e=>{
+    const n=e.getAttribute('data-name')||'';
+    e.classList.toggle('hidden',!n.includes(kw));
   });
+  // 子类页面需自行扩展其他面板的搜索过滤
 }
 
-/* 点播加载 */
+/* ===== 点播加载 ===== */
 async function fetchListText() {
-  if (rawListText !== null) return rawListText;
+  if(rawListText!==null) return rawListText;
   const res = await fetch('list.txt?t='+Date.now()+'&r='+Math.random(), {cache:'no-store'});
-  if (!res.ok) throw new Error('HTTP '+res.status);
-  rawListText = await res.text();
-  return rawListText;
+  if(!res.ok) throw new Error('HTTP '+res.status);
+  rawListText = await res.text(); return rawListText;
 }
-
 function parseItems(text) {
-  if (!text || !text.trim()) return [];
+  if(!text||!text.trim()) return [];
   return text.trim().split('\n').filter(l=>l.trim()).map(line=>{
-    const p=line.split('|').map(s=>s.trim());
-    if(!p[0]) return null;
-    return { file:p[0], name:p[0].replace(/\.json$/i,''), date:p[1]||'', size:p[2]||'', origUrl:p[3]||'', weight:API_WEIGHTS.hasOwnProperty(p[0])?API_WEIGHTS[p[0]]:999 };
+    const p=line.split('|').map(s=>s.trim()); if(!p[0]) return null;
+    return {file:p[0],name:p[0].replace(/\.json$/i,''),date:p[1]||'',size:p[2]||'',origUrl:p[3]||'',weight:API_WEIGHTS.hasOwnProperty(p[0])?API_WEIGHTS[p[0]]:999};
   }).filter(Boolean);
 }
-
 function renderApi() {
   const container = document.getElementById('listContainer');
   fetchListText().then(text=>{
-    const tip = document.getElementById('apiLoading');
-    if(tip) tip.style.display='none';
-    let items = parseItems(text);
-    if(!items.length){ container.innerHTML='<div class="error-msg">⚠️ 接口列表为空</div>'; return; }
-    const ri = items.filter(i=>ROTATE_KEYWORDS.some(kw=>i.name.toLowerCase().includes(kw.toLowerCase())));
-    const top = getTopItem(ri);
-    if(top) top.weight = Number.MIN_SAFE_INTEGER;
+    const tip=document.getElementById('apiLoading'); if(tip) tip.style.display='none';
+    let items=parseItems(text);
+    if(!items.length){container.innerHTML='<div class="error-msg">⚠️ 接口列表为空，请检查 list.txt</div>';return;}
+    const ri=items.filter(i=>ROTATE_KEYWORDS.some(kw=>i.name.toLowerCase().includes(kw.toLowerCase())));
+    const top=getTopItem(ri); if(top) top.weight=Number.MIN_SAFE_INTEGER;
     items.sort((a,b)=>a.weight-b.weight);
     let html='';
     items.forEach(it=>{
-      const isNew=isRecent(it.date);
-      let lines='';
+      const isNew=isRecent(it.date); let lines='';
       if(it.origUrl) lines+=`<div class="url-line"><span class="url-tag">原始线路</span><span class="url-text">${it.origUrl}</span><button class="copy-btn" data-url="${it.origUrl}">复制</button></div>`;
-      API_DOMAINS.forEach(d=>{ const u=d.base+it.name+'.json'; lines+=`<div class="url-line"><span class="url-tag">${d.tag}</span><span class="url-text">${u}</span><button class="copy-btn" data-url="${u}">复制</button></div>`; });
+      API_DOMAINS.forEach(d=>{const u=d.base+it.name+'.json';lines+=`<div class="url-line"><span class="url-tag">${d.tag}</span><span class="url-text">${u}</span><button class="copy-btn" data-url="${u}">复制</button></div>`;});
       html+=`<div class="api-item" data-name="${it.name.toLowerCase()}"><div class="api-item-header"><div class="api-item-name" title="${it.name}">${it.name}</div><div class="api-item-meta"><span class="${isNew?'badge-new':'badge-old'}">备份时间 ${formatDateToChinese(it.date)}</span>${it.size?'&nbsp;&nbsp;'+it.size:''}</div></div><div class="api-item-urls">${lines}</div></div>`;
     });
     container.innerHTML=html;
   }).catch(err=>{
-    const tip=document.getElementById('apiLoading');
-    if(tip) tip.style.display='none';
-    container.innerHTML=`<div class="error-msg">❌ 加载失败：${err.message}</div>`;
+    const tip=document.getElementById('apiLoading'); if(tip) tip.style.display='none';
+    container.innerHTML=`<div class="error-msg">❌ 接口加载失败：${err.message||err}</div>`;
   });
 }
 
-/* 标签导航 */
+/* ===== 导航 ===== */
 const tabsData = [
-  {id:"api",label:"点播"},{id:"live",label:"直播"},
-  {id:"danmu",label:"弹幕"},{id:"download",label:"下载"},{id:"about",label:"关于"}
+  {id:"api",label:"点播",hideSearch:false},
+  {id:"live",label:"直播",hideSearch:false},
+  {id:"download",label:"下载",hideSearch:true},
+  {id:"danmu",label:"弹幕",hideSearch:true},
+  {id:"about",label:"关于",hideSearch:true}
 ];
 
 function renderTabs() {
-  navTabs.innerHTML = tabsData.map(t=>`<button class="nav-tab ${t.id===currentTabId?'active':''}" data-tab="${t.id}">${t.label}</button>`).join('');
+  navTabs.innerHTML=tabsData.map(t=>`<button class="nav-tab ${t.id===currentTabId?'active':''}" data-tab="${t.id}">${t.label}</button>`).join('');
   navTabs.querySelectorAll('.nav-tab').forEach(tab=>{
     tab.addEventListener('click',function(){
       navTabs.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
       this.classList.add('active');
       currentTabId=this.getAttribute('data-tab');
+
+      // ✅ 写入面板缓存
+      localStorage.setItem(TAB_KEY, currentTabId);
+
       showPanel(currentTabId);
     });
   });
 }
 
 function showPanel(tabId) {
-  /* ✅ 搜索框：仅在点播/直播/弹幕显示，下载和关于隐藏 */
-  if (searchBox) {
-    if (tabId === 'download' || tabId === 'about') {
-      searchBox.style.display = 'none';
-    } else {
-      searchBox.style.display = '';
-    }
-    searchBox.value = '';
-    document.querySelectorAll('#api-panel .api-item.hidden').forEach(e => e.classList.remove('hidden'));
+  if(searchBox){
+    searchBox.value='';
+    document.querySelectorAll('#api-panel .api-item.hidden').forEach(e=>e.classList.remove('hidden'));
+    // 子类页面需自行清除其他面板的搜索隐藏状态
   }
 
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  const panel = document.getElementById(tabId + '-panel');
-  if (panel) panel.classList.add('active');
+  // 搜索框显隐控制
+  const t=tabsData.find(t=>t.id===tabId);
+  if(searchBox) searchBox.style.display=(t&&t.hideSearch)?'none':'';
 
-  if (tabId === 'api') {
-    topSeed = Date.now() + Math.random();
-    renderApi();
-  }
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  const panel=document.getElementById(tabId+'-panel');
+  if(panel) panel.classList.add('active');
+
+  if(tabId==='api'){topSeed=Date.now()+Math.random();renderApi();}
+  // 子类页面需在下面扩展其他面板的加载调用
 }
 
-/* 搜索框位置 */
 function positionSearchBox() {
-  if(currentMode==='simple'){
-    if(searchBox.parentNode!==mainCard.parentNode) mainCard.parentNode.insertBefore(searchBox,mainCard);
-  } else {
-    if(searchBox.parentNode!==mainCard) navTabs.insertAdjacentElement('afterend',searchBox);
-  }
+  if(currentMode==='simple'){if(searchBox.parentNode!==mainCard.parentNode) mainCard.parentNode.insertBefore(searchBox,mainCard);}
+  else{if(searchBox.parentNode!==mainCard) navTabs.insertAdjacentElement('afterend',searchBox);}
 }
+function updateBtnText(){btn.innerHTML=currentMode==='simple'?'切换<br>全能版':'切换<br>简洁版';}
 
-function updateBtnText(){ btn.innerHTML=currentMode==='simple'?'切换<br>全能版':'切换<br>简洁版'; }
-
-/* 模式切换 */
+/* ===== 模式切换 ===== */
 btn.addEventListener('click',()=>{
   topSeed=Date.now()+Math.random();
   currentMode=currentMode==='simple'?'full':'simple';
   localStorage.setItem(MODE_KEY,currentMode);
   document.body.className=currentMode+'-mode';
   updateBtnText();
-  if(currentMode!=='simple'){ positionSearchBox(); renderTabs(); showPanel(currentTabId); }
-  else{ searchBox.style.display=''; positionSearchBox(); renderApi(); }
+
+  if(currentMode!=='simple'){
+    positionSearchBox();
+    renderTabs();
+    showPanel(currentTabId);
+  } else {
+    // ✅ 简洁模式：强制回点播并写缓存
+    currentTabId='api';
+    localStorage.setItem(TAB_KEY,'api');
+    searchBox.style.display='';
+    positionSearchBox();
+    renderApi();
+  }
 });
 
-/* 启动 */
+/* ===== 启动（✅ 修复：根据模式正确恢复面板） ===== */
 renderTabs();
-renderApi();
+
+if (currentMode === 'simple') {
+  currentTabId = 'api';
+  localStorage.setItem(TAB_KEY, 'api');
+  renderApi();
+} else {
+  // ✅ 全能模式：恢复上次面板（标签 + 内容一起恢复）
+  showPanel(currentTabId);
+}
 </script>
 </body>
 </html>
