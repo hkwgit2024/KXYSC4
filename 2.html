@@ -173,9 +173,45 @@ body.simple-mode #api-panel { display:block !important; }
 .live-url-tag { font-size:.68rem; font-weight:600; color:#3a5a7a; background:#d8e8f8; padding:2px 14px; border-radius:50px; white-space:nowrap; flex-shrink:0; }
 .live-url-text { font-size:.78rem; color:#2563eb; word-break:break-all; overflow-wrap:break-word; line-height:1.4; flex:1; min-width:0; }
 
-/* ===== 下载面板 ===== */
+/* ===== 下载面板：左侧边按钮，每组一个 ===== */
 #download-panel { overflow-x:hidden; width:100%; }
 #downloads-content { width:100%; overflow-x:hidden; }
+/* 面板容器：左侧边栏 + 右侧内容 */
+#downloads-content.has-sidebar {
+  display:flex; flex-direction:row; gap:12px; align-items:flex-start;
+}
+/* 左侧边栏 */
+.dl-sidebar {
+  flex:0 0 auto; width:96px;
+  display:flex; flex-direction:column; gap:8px;
+  padding:4px 2px 4px 0;
+  position:sticky; top:0; align-self:flex-start;
+  max-height:72vh; overflow-y:auto;
+}
+.dl-side-btn {
+  width:100%; padding:11px 6px;
+  border:1.5px solid #4a9eff; border-radius:12px;
+  background:#fff; color:#4a9eff;
+  font-size:.76rem; font-weight:600; line-height:1.3;
+  cursor:pointer; text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  word-break:break-word;
+  transition:background .15s, color .15s, transform .05s;
+}
+.dl-side-btn .dl-side-icon { font-size:1.15rem; line-height:1; }
+.dl-side-btn.active { background:#4a9eff; color:#fff; }
+.dl-side-btn:active { transform:scale(.96); }
+/* 右侧内容 */
+.dl-body { flex:1; min-width:0; }
+.dl-group { display:none; width:100%; }
+.dl-group.active { display:block; }
+.dl-group-title { font-size:.95rem; font-weight:600; color:#0b1e33; margin-bottom:2px; }
+.dl-group-desc { font-size:.7rem; color:#8b9eb0; margin-bottom:10px; }
+.dl-cards {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  gap:12px; width:100%; max-width:100%; overflow:hidden;
+}
+/* 卡片（保留原样式基础） */
 .download-card {
   background:#fff; border-radius:8px; padding:16px 14px 22px; text-align:center;
   border:1px solid #e4ebf3; text-decoration:none; color:inherit;
@@ -183,6 +219,14 @@ body.simple-mode #api-panel { display:block !important; }
 }
 .download-card.hidden { display:none !important; }
 .download-card img { width:80%; max-width:100%; aspect-ratio:1/1; border-radius:8px; margin-bottom:12px; object-fit:cover; background:#f0f3f8; }
+/* 移动端：侧边栏变窄 */
+@media (max-width:600px) {
+  #downloads-content.has-sidebar { gap:8px; }
+  .dl-sidebar { width:72px; gap:6px; max-height:66vh; }
+  .dl-side-btn { padding:9px 3px; font-size:.66rem; border-radius:10px; }
+  .dl-side-btn .dl-side-icon { font-size:.95rem; }
+  .dl-cards { grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); gap:8px; }
+}
 
 /* ===== 弹幕面板 ===== */
 #danmu-panel .danmu-item.hidden { display:none !important; }
@@ -233,6 +277,78 @@ body.simple-mode #api-panel { display:block !important; }
   .live-url-body .live-url-tag { font-size:.62rem; padding:2px 10px; }
   .live-url-body .live-url-text { font-size:.72rem; }
   .live-info-inline { font-size:.6rem; }
+}
+/* ===== 合作共创：透明自适应容器（解决小屏挤压） ===== */
+.contributor-grid {
+  /* 原 grid 保留，仅增强小屏表现 */
+  gap: 10px;
+}
+
+/* 透明无边包裹容器 */
+.contributor-card {
+  background: transparent !important;      /* 无边透明 */
+  border: none !important;                 /* 去掉边框 */
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-sizing: border-box;
+
+  /* 防止内容被挤压 */
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* 头像在小屏下略微缩小，避免挤压文字 */
+.contributor-avatar {
+  width: 40px;
+  height: 40px;
+  font-size: .8rem;
+  flex-shrink: 0;
+}
+
+/* 文字区域自适应 */
+.contributor-info {
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* 名字、描述在小屏自动换行 */
+.contributor-name,
+.contributor-desc,
+.contributor-social {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ===== 小屏专项优化（≤600px） ===== */
+@media (max-width: 600px) {
+  .contributor-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px;
+  }
+
+  .contributor-card {
+    padding: 8px 10px;
+  }
+
+  .contributor-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: .75rem;
+  }
+
+  .contributor-name {
+    font-size: .78rem;
+  }
+
+  .contributor-role {
+    font-size: .58rem;
+    padding: 2px 8px;
+  }
+
+  .contributor-desc {
+    font-size: .65rem;
+    line-height: 1.35;
+  }
 }
 </style>
 </head>
@@ -366,7 +482,7 @@ const API_DOMAINS = [
 const LIVE_DOMAINS = [
   {tag:"备份一线", base:"https://0.12yue.de5.net/tvbox/live/"},
   {tag:"备份二线", base:"https://0.cdz.qzz.io/tvbox/live/"},
-  {tag:"备份三线", base:"https://0.wdzb.eu.cc/tvbox/live"}
+  {tag:"备份三线", base:"https://0.wdzb.eu.cc/tvbox/live/"}
 ];
 
 const API_WEIGHTS = {
@@ -375,7 +491,7 @@ const API_WEIGHTS = {
   "嗷呜.json":11,"南风.json":12,"小虎斑.json":13
 };
 
-const ROTATE_KEYWORDS = ["更新专用接口","菠菜","少儿频道"];
+const ROTATE_KEYWORDS = ["模糊搜索","模糊搜索"];
 
 let currentMode = localStorage.getItem(MODE_KEY) || 'simple';
 
@@ -556,31 +672,101 @@ function renderLiveList() {
   }).catch(err=>{if(loading)loading.style.display='none';container.innerHTML=`<div class="error-msg">❌ 直播列表加载失败：${err.message||err}</div>`;});
 }
 
-/* ===== 下载 ===== */
+/* ===== 下载：左侧边按钮，每组一个 ===== */
+let dlCache = new Map();      // src.url -> 解析后的卡片数组
+let dlCurrentGroup = null;    // 当前激活组的 key
+
 async function renderDownloads(force) {
-  const container=document.getElementById('downloads-content');
-  if(!container||(container.dataset.rendered&&!force)) return;
-  container.dataset.rendered='true'; container.innerHTML='<div class="loading">⏳ 正在加载下载资源...</div>';
-  if(!DOWNLOAD_SOURCES.length){container.innerHTML='<div class="error-msg">⚠️ 未配置下载源</div>';return;}
-  let html='';
-  for(const src of DOWNLOAD_SOURCES){
-    try{
-      const res=await fetch(src.url+'?t='+Date.now()+'&r='+Math.random(),{cache:'no-store'});
-      if(!res.ok) throw new Error('HTTP '+res.status);
-      const raw=await res.text();
-      const cleaned=raw.replace(/[\u201c\u201d]/g,'"').replace(/[\u2018\u2019]/g,"'").replace(/：/g,':').replace(/，/g,',');
-      const data=JSON.parse(cleaned);
-      let section=`<div style="background:#f8fafc;border-radius:12px;padding:12px 14px;margin-bottom:12px;border:1px solid #eef2f7;">`;
-      if(src.name) section+=`<div style="font-size:.95rem;font-weight:600;color:#0b1e33;margin-bottom:2px;">${src.name}</div>`;
-      if(src.description) section+=`<div style="font-size:.7rem;color:#8b9eb0;margin-bottom:10px;">${src.description}</div>`;
-      section+=`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;width:100%;max-width:100%;overflow:hidden;">`;
-      (data.list||data).forEach(group=>(group.list||[]).forEach(i=>{
-        section+=`<a class="download-card" href="${i.url||'#'}" target="_blank" rel="noopener noreferrer" data-name="${(i.name||'').toLowerCase()}"><img src="${i.icon||''}" onerror="this.style.visibility='hidden'" style="width:90%;max-width:100%;height:auto;aspect-ratio:1/1;border-radius:10px;margin-bottom:14px;object-fit:cover;background:#f0f3f8;"><div style="flex:1;width:100%;margin-top:auto;"><div style="font-size:.76rem;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${i.name||''}</div>${i.version?`<div style="font-size:.6rem;color:#8b9eb0;margin-top:2px;">${i.version}</div>`:''}</div></a>`;
-      }));
-      html+=section+'</div></div>';
-    }catch(e){html+=`<div class="error-msg">❌ ${src.name} 加载失败：${e.message}</div>`;}
+  const container = document.getElementById('downloads-content');
+  if (!container || (container.dataset.rendered && !force)) return;
+  if (!DOWNLOAD_SOURCES.length) { container.innerHTML = '<div class="error-msg">⚠️ 未配置下载源</div>'; return; }
+
+  // 只构建一次侧边栏骨架
+  if (!container.dataset.rendered) {
+    container.dataset.rendered = 'true';
+    container.className = 'has-sidebar';
+    container.innerHTML = `
+      <div class="dl-sidebar" id="dlSidebar"></div>
+      <div class="dl-body" id="dlBody"><div class="loading">⏳ 正在加载下载资源...</div></div>`;
   }
-  container.innerHTML=html;
+
+  const sidebar = document.getElementById('dlSidebar');
+  const body = document.getElementById('dlBody');
+
+  // 渲染侧边按钮（每组一个），默认激活第一个
+  if (!sidebar.dataset.built) {
+    sidebar.dataset.built = 'true';
+    sidebar.innerHTML = DOWNLOAD_SOURCES.map((src, idx) => {
+      const icon = src.icon ? `<img src="${src.icon}" style="width:1.4rem;height:1.4rem;border-radius:6px;object-fit:cover">`
+                            : `<span class="dl-side-icon">📦</span>`;
+      return `<button class="dl-side-btn ${idx === 0 ? 'active' : ''}" data-key="${src.url}">${icon}<span>${src.name || ('组' + (idx + 1))}</span></button>`;
+    }).join('');
+
+    sidebar.querySelectorAll('.dl-side-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        sidebar.querySelectorAll('.dl-side-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        showDownloadGroup(btn.getAttribute('data-key'));
+      });
+    });
+  }
+
+  // 预加载所有组的数据
+  await Promise.all(DOWNLOAD_SOURCES.map(async src => {
+    if (dlCache.has(src.url)) return;
+    try {
+      const res = await fetch(src.url + '?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const raw = await res.text();
+      const cleaned = raw.replace(/[\u201c\u201d]/g, '"').replace(/[\u2018\u2019]/g, "'").replace(/：/g, ':').replace(/，/g, ',');
+      const data = JSON.parse(cleaned);
+      // 兼容：src 直接是扁平数组，或 {list:[{list:[]}]}
+      let cards = [];
+      const arr = data.list || data;
+      if (Array.isArray(arr)) {
+        arr.forEach(group => {
+          if (group && Array.isArray(group.list)) group.list.forEach(i => cards.push(i));
+          else cards.push(group);
+        });
+      }
+      dlCache.set(src.url, { src, cards });
+    } catch (e) {
+      dlCache.set(src.url, { src, cards: [], error: e.message });
+    }
+  }));
+
+  // 默认显示第一组
+  const firstKey = DOWNLOAD_SOURCES[0].url;
+  showDownloadGroup(dlCurrentGroup || firstKey);
+}
+
+// 显示指定组的卡片
+function showDownloadGroup(key) {
+  dlCurrentGroup = key;
+  const body = document.getElementById('dlBody');
+  if (!body) return;
+  const entry = dlCache.get(key);
+  if (!entry) { body.innerHTML = '<div class="loading">⏳ 加载中...</div>'; return; }
+  const { src, cards, error } = entry;
+  if (error) { body.innerHTML = `<div class="error-msg">❌ ${src.name} 加载失败：${error}</div>`; return; }
+  if (!cards.length) { body.innerHTML = `<div class="error-msg">⚠️ ${src.name} 暂无资源</div>`; return; }
+
+  const title = src.name ? `<div class="dl-group-title">${src.name}</div>` : '';
+  const desc = src.description ? `<div class="dl-group-desc">${src.description}</div>` : '';
+  const cardsHtml = cards.map(i => `
+    <a class="download-card" href="${i.url || '#'}" target="_blank" rel="noopener noreferrer" data-name="${(i.name || '').toLowerCase()}">
+      <img src="${i.icon || ''}" onerror="this.style.visibility='hidden'" style="width:90%;max-width:100%;height:auto;aspect-ratio:1/1;border-radius:10px;margin-bottom:14px;object-fit:cover;background:#f0f3f8;">
+      <div style="flex:1;width:100%;margin-top:auto;">
+        <div style="font-size:.76rem;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${i.name || ''}</div>
+        ${i.version ? `<div style="font-size:.6rem;color:#8b9eb0;margin-top:2px;">${i.version}</div>` : ''}
+      </div>
+    </a>`).join('');
+
+  body.innerHTML = `
+    <div class="dl-group active">
+      ${title}${desc}
+      <div class="dl-cards">${cardsHtml}</div>
+    </div>`;
 }
 
 /* ===== 弹幕 ===== */
