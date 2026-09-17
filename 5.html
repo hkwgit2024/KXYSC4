@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>海量接口搬运备份</title>
+<title>海量接口搬运备份1</title>
 <style>
 /* ============================================================
    公共 CSS（dev.html 基础框架 + 1.html 全量补充）
@@ -291,61 +291,150 @@ body.simple-mode #api-panel { display:block !important; }
 .contributor-desc { margin-top:6px; font-size:.68rem; color:#7a8fa3; line-height:1.4; }
 .contributor-social { margin-top:6px; font-size:.68rem; color:#4a9eff; }
 
-/* ===== 移动端 ===== */
-@media (max-width:600px) {
-  body { padding:14px 8px 6px; }
-  #modeToggleBtn { top:10px; left:6px; width:48px; font-size:.52rem; padding:4px 2px; }
-  .main-card { padding:14px 14px 12px; }
-  .header-block { padding-top:10px; margin-bottom:12px; }
-  h1 { font-size:1.15rem; }
-  h1 .header-logo { width:1.7rem; height:1.7rem; vertical-align:-.4rem; }
+/* ============================================================
+   移动端（≤600px）
+   小瓶 · 平铺导航 · 紧凑布局
+   ============================================================ */
+@media (max-width: 600px) {
 
-  /* ✅ 导航按钮：小瓶（手机） */
+  /* ===== 页面整体 ===== */
+  body {
+    padding: 14px 8px 6px;
+  }
+
+  /* ===== 模式切换按钮 ===== */
+  #modeToggleBtn {
+    top: 10px;
+    left: 6px;
+    width: 48px;
+    font-size: .52rem;
+    padding: 4px 2px;
+  }
+
+  /* ===== 主卡片 ===== */
+  .main-card {
+    padding: 14px 14px 12px;
+  }
+
+  /* ===== 头部 ===== */
+  .header-block {
+    padding-top: 10px;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 1.15rem;
+  }
+
+  h1 .header-logo {
+    width: 1.7rem;
+    height: 1.7rem;
+    vertical-align: -.4rem;
+  }
+
+  /* ===== 导航栏：平铺 ===== */
   .nav-tabs {
+    display: flex;
     gap: 4px;
     margin-bottom: 10px;
-    justify-content: flex-start;
+    justify-content: space-between; /* ✅ 平铺 */
+    flex-wrap: nowrap;
   }
 
   .nav-tab {
-    padding: 4px 10px;
+    flex: 1;                    /* ✅ 五等分 */
+    text-align: center;
+    padding: 4px 0;
     font-size: .66rem;
     border-radius: 24px;
+    white-space: nowrap;
   }
 
-  .api-item, .live-item { padding:12px 0; }
-  .api-item-name, .live-item-name { font-size:.92rem; }
-  .url-line { padding:6px 10px; gap:6px; }
-  .url-tag, .live-url-tag { font-size:.62rem; padding:2px 10px; }
-  .url-text, .live-url-text { font-size:.72rem; }
-  .copy-btn { font-size:.62rem; padding:0 10px; height:24px; }
-  .live-top-aggregate { padding:14px 16px; }
-  .live-url-line { padding:8px 10px; }
-  .live-url-body .live-url-tag { font-size:.62rem; padding:2px 10px; }
-  .live-url-body .live-url-text { font-size:.72rem; }
-  .live-info-inline { font-size:.6rem; }
-}
+  /* ===== 点播 / 直播列表 ===== */
+  .api-item,
+  .live-item {
+    padding: 12px 0;
+  }
 
-/* ===== 合作共创：小屏适配 ===== */
-.contributor-grid { gap:10px; }
-.contributor-card {
-  background: transparent !important; border: none !important;
-  border-radius:12px; padding:10px 12px; box-sizing:border-box;
-  min-width:0; word-break:break-word;
-}
-.contributor-avatar { width:40px; height:40px; font-size:.8rem; flex-shrink:0; }
-.contributor-info { min-width:0; overflow:hidden; }
-.contributor-name,
-.contributor-desc,
-.contributor-social { word-break:break-word; overflow-wrap:break-word; }
+  .api-item-name,
+  .live-item-name {
+    font-size: .92rem;
+  }
 
-@media (max-width:600px) {
-  .contributor-grid { grid-template-columns:repeat(2,1fr) !important; gap:8px; }
-  .contributor-card { padding:8px 10px; }
-  .contributor-avatar { width:36px; height:36px; font-size:.75rem; }
-  .contributor-name { font-size:.78rem; }
-  .contributor-role { font-size:.58rem; padding:2px 8px; }
-  .contributor-desc { font-size:.65rem; line-height:1.35; }
+  /* ===== 地址行 ===== */
+  .url-line {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  .url-tag,
+  .live-url-tag {
+    font-size: .62rem;
+    padding: 2px 10px;
+  }
+
+  .url-text,
+  .live-url-text {
+    font-size: .72rem;
+  }
+
+  .copy-btn {
+    font-size: .62rem;
+    padding: 0 10px;
+    height: 24px;
+  }
+
+  /* ===== 直播聚合区 ===== */
+  .live-top-aggregate {
+    padding: 14px 16px;
+  }
+
+  .live-url-line {
+    padding: 8px 10px;
+  }
+
+  .live-url-body .live-url-tag {
+    font-size: .62rem;
+    padding: 2px 10px;
+  }
+
+  .live-url-body .live-url-text {
+    font-size: .72rem;
+  }
+
+  .live-info-inline {
+    font-size: .6rem;
+  }
+
+  /* ===== 贡献者：2 列 ===== */
+  .contributor-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px;
+  }
+
+  .contributor-card {
+    padding: 8px 10px;
+  }
+
+  .contributor-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: .75rem;
+  }
+
+  .contributor-name {
+    font-size: .78rem;
+  }
+
+  .contributor-role {
+    font-size: .58rem;
+    padding: 2px 8px;
+  }
+
+  .contributor-desc {
+    font-size: .65rem;
+    line-height: 1.35;
+  }
 }
 
 </style>
