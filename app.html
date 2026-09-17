@@ -856,3 +856,248 @@ loadConfig().then(()=>{
 </script>
 </body>
 </html>
+
+
+在这份网页代码关于和下载中间再加入一个分页"更多"然后设置侧边栏按钮模块,现在先加入第一个按钮内容"在线视频"
+代码如下
+<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7">
+      <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">🎬 在线影视</h3>
+      <p style="font-size:.76rem;color:#5a6f88;margin-bottom:10px">共 20 个在线影视站点，点击卡片直达；标注「需梯子」的需自备网络环境。</p>
+      <div class="online-grid"><a class="download-card" href="https://fdzys.com/" target="_blank" rel="noopener noreferrer" data-name="饭搭子影视 最新热门电影电视剧动漫综艺">
+        <span class="site-icon-wrap"><span class="site-ph">饭</span><img src="online-icons/0802344fa4f9.png" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="饭搭子影视">饭搭子影视</div>
+          <div class="online-desc">最新热门电影电视剧动漫综艺</div>
+        </div>
+      </a><a class="download-card" href="https://www.lsjys11.com/" target="_blank" rel="noopener noreferrer" data-name="sa视频 最新电影电视剧动漫综艺">
+        <span class="site-icon-wrap"><span class="site-ph">S</span><img src="online-icons/a5254a075986.ico" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="SA视频">SA视频</div>
+          <div class="online-desc">最新电影电视剧动漫综艺</div>
+        </div>
+      </a><a class="download-card" href="https://www.duse0.com/" target="_blank" rel="noopener noreferrer" data-name="91毒舌 最新netflix新剧、4k高清（可访问）">
+        <span class="site-icon-wrap"><span class="site-ph">9</span></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="91毒舌">91毒舌</div>
+          <div class="online-desc">最新Netflix新剧、4K高清（可访问）</div>
+        </div>
+      </a><a class="download-card" href="https://www.hhkan2.com/" target="_blank" rel="noopener noreferrer" data-name="好好看 4k高清netflix新剧（需梯子）">
+        <span class="site-icon-wrap"><span class="site-ph">好</span></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="好好看">好好看</div>
+          <div class="online-desc">4K高清Netflix新剧（需梯子）</div>
+        </div>
+      </a><a class="download-card" href="https://ifn.watch/register?code=8B1EF6" target="_blank" rel="noopener noreferrer" data-name="ifn 为数不多的真4k，部分免费">
+        <span class="site-icon-wrap"><span class="site-ph">I</span><img src="online-icons/a1843927a52d.ico" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="IFN">IFN</div>
+          <div class="online-desc">为数不多的真4K，部分免费</div>
+        </div>
+      </a><a class="download-card" href="https://ddmf.net" target="_blank" rel="noopener noreferrer" data-name="蛋蛋魔法 国内外热播剧，有福利伦理片（需梯子）">
+        <span class="site-icon-wrap"><span class="site-ph">蛋</span><img src="online-icons/85141a55b6b0.png" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="蛋蛋魔法">蛋蛋魔法</div>
+          <div class="online-desc">国内外热播剧，有福利伦理片（需梯子）</div>
+        </div>
+      </a><a class="download-card" href="https://www.sorani.net" target="_blank" rel="noopener noreferrer" data-name="青空次元 网友称最夯动漫在线站">
+        <span class="site-icon-wrap"><span class="site-ph">青</span><img src="online-icons/f34d031a58e8.png" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="青空次元">青空次元</div>
+          <div class="online-desc">网友称最夯动漫在线站</div>
+        </div>
+      </a><a class="download-card" href="https://www.appmovie.art" target="_blank" rel="noopener noreferrer" data-name="app影院 国内外热播剧，纯净无广告">
+        <span class="site-icon-wrap"><span class="site-ph">A</span><img src="online-icons/380a8a3fa218.ico" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="APP影院">APP影院</div>
+          <div class="online-desc">国内外热播剧，纯净无广告</div>
+        </div>
+      </a><a class="download-card" href="https://www.aeete.com" target="_blank" rel="noopener noreferrer" data-name="auete影视 蓝光超清精品影视，发布页auete.pro">
+        <span class="site-icon-wrap"><span class="site-ph">A</span><img src="online-icons/8015905a8a19.ico" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="Auete影视">Auete影视</div>
+          <div class="online-desc">蓝光超清精品影视，发布页auete.pro</div>
+        </div>
+      </a><a class="download-card" href="https://dyrs.tv" target="_blank" rel="noopener noreferrer" data-name="电影人生 高清电影在线观看">
+        <span class="site-icon-wrap"><span class="site-ph">电</span><img src="online-icons/f4ba07e6633e.ico" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="电影人生">电影人生</div>
+          <div class="online-desc">高清电影在线观看</div>
+        </div>
+      </a><a class="download-card" href="https://darkvod.com" target="_blank" rel="noopener noreferrer" data-name="黑夜影院 综合影视/资源多/无广告">
+        <span class="site-icon-wrap"><span class="site-ph">黑</span><img src="online-icons/dd92be420c30.jpg" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="黑夜影院">黑夜影院</div>
+          <div class="online-desc">综合影视/资源多/无广告</div>
+        </div>
+      </a><a class="download-card" href="https://www.netflixgc.com" target="_blank" rel="noopener noreferrer" data-name="奈飞工厂 最新美剧，无广告（需梯子）">
+        <span class="site-icon-wrap"><span class="site-ph">奈</span><img src="online-icons/0e32cc3eb762.png" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="奈飞工厂">奈飞工厂</div>
+          <div class="online-desc">最新美剧，无广告（需梯子）</div>
+        </div>
+      </a><a class="download-card" href="https://www.nivod.vip" target="_blank" rel="noopener noreferrer" data-name="泥视频 热门国剧，更新快，无广告">
+        <span class="site-icon-wrap"><span class="site-ph">泥</span><img src="online-icons/719483c2fc8c.png" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="泥视频">泥视频</div>
+          <div class="online-desc">热门国剧，更新快，无广告</div>
+        </div>
+      </a><a class="download-card" href="https://www.ppnix.com/cn/" target="_blank" rel="noopener noreferrer" data-name="ppnix 热门在线影视，速度快/纯净/无广告">
+        <span class="site-icon-wrap"><span class="site-ph">P</span><img src="online-icons/c133b5fbfa62.ico" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="PPnix">PPnix</div>
+          <div class="online-desc">热门在线影视，速度快/纯净/无广告</div>
+        </div>
+      </a><a class="download-card" href="https://www.duonaovod.com" target="_blank" rel="noopener noreferrer" data-name="多瑙影视 海外华人在线影院（需梯子）">
+        <span class="site-icon-wrap"><span class="site-ph">多</span><img src="online-icons/65e3e21ecb3a.png" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="多瑙影视">多瑙影视</div>
+          <div class="online-desc">海外华人在线影院（需梯子）</div>
+        </div>
+      </a><a class="download-card" href="https://www.tdgo.shop" target="_blank" rel="noopener noreferrer" data-name="白嫖者联盟 热门热播剧，无广告速度快（需梯子）">
+        <span class="site-icon-wrap"><span class="site-ph">白</span><img src="online-icons/02a6a0d200ed.svg" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="白嫖者联盟">白嫖者联盟</div>
+          <div class="online-desc">热门热播剧，无广告速度快（需梯子）</div>
+        </div>
+      </a><a class="download-card" href="https://kuhh4jo.com" target="_blank" rel="noopener noreferrer" data-name="爱电影 最新热门电影/电视剧（需梯子）">
+        <span class="site-icon-wrap"><span class="site-ph">爱</span><img src="online-icons/616afc52b4f3.png" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="爱电影">爱电影</div>
+          <div class="online-desc">最新热门电影/电视剧（需梯子）</div>
+        </div>
+      </a><a class="download-card" href="https://www.vv3nwjk.com" target="_blank" rel="noopener noreferrer" data-name="金牌影视 全网vip资源（需梯子）">
+        <span class="site-icon-wrap"><span class="site-ph">金</span><img src="online-icons/8604eb0ca8a1.png" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="金牌影视">金牌影视</div>
+          <div class="online-desc">全网VIP资源（需梯子）</div>
+        </div>
+      </a><a class="download-card" href="https://www.937tv.vip" target="_blank" rel="noopener noreferrer" data-name="937影视 看全网影视剧（需梯子）">
+        <span class="site-icon-wrap"><span class="site-ph">9</span><img src="online-icons/5d906df50fbf.png" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="937影视">937影视</div>
+          <div class="online-desc">看全网影视剧（需梯子）</div>
+        </div>
+      </a><a class="download-card" href="https://gaze.red/" target="_blank" rel="noopener noreferrer" data-name="注视影视 国内海外影视剧资源（需梯子）">
+        <span class="site-icon-wrap"><span class="site-ph">注</span><img src="online-icons/5ac4f27763cb.png" alt="" loading="lazy" onerror="this.remove()"></span>
+        <div style="flex:1;width:100%;margin-top:auto;">
+          <div class="online-name" title="注视影视">注视影视</div>
+          <div class="online-desc">国内海外影视剧资源（需梯子）</div>
+        </div>
+      </a></div>
+    </div>
+
+
+整理好后把代码里的内容归拢添加进以下config.json里
+
+{
+  "site": {
+    "title": "海量接口搬运备份",
+    "logo": "vip/jueson.jpg",
+    "subtitle": "备用数据源，防屏不迷路",
+    "qqGroup": "1067685939"
+  },
+  "tabs": [
+    { "id": "api",      "label": "接口", "type": "api" },
+    { "id": "download", "label": "下载", "type": "download" },
+    { "id": "danmu",    "label": "弹幕", "type": "danmu" },
+    { "id": "about",    "label": "关于", "type": "about", "hideSearch": true }
+  ],
+  "api": {
+    "domains": [
+      { "tag": "备份一线", "base": "https://0.12yue.de5.net/tvbox/" },
+      { "tag": "备份二线", "base": "https://0.cdz.qzz.io/tvbox/" },
+      { "tag": "备份三线", "base": "https://0.wdzb.eu.cc/tvbox/" }
+    ],
+    "weights": {
+      "菠菜园.json": 1,
+      "少儿频道.json": 2,
+      "饭太硬.json": 4,
+      "肥猫.json": 5,
+      "摸鱼.json": 6,
+      "王二小.json": 7,
+      "集多.json": 8,
+      "潇洒.json": 9,
+      "小米.json": 10,
+      "嗷呜.json": 11,
+      "南风.json": 12,
+      "小虎斑.json": 13
+    }
+  },
+  "downloadSources": [
+    { "name": "菠菜园",   "url": "ry/菠菜园下载.json",  "description": "整理者：误道者" },
+    { "name": "奇奇副本", "url": "ry/奇奇副本.json",    "description": "整理者：误道者" },
+    { "name": "无优",     "url": "ry/无忧下载.json",    "description": "云星" },
+    { "name": "潇洒",     "url": "ry/潇洒下载.json",    "description": "潇洒" },
+    { "name": "柒豪下载", "url": "ry/柒豪下载.json",    "description": "" },
+    { "name": "应用下载", "url": "ry/应用市场二.json",  "description": "" },
+    { "name": "应用市场", "url": "ry/应用市场一.json",  "description": "" }
+  ],
+  "danmuSources": [
+    { "name": "ecs源",     "url": "http://ecs.dysobo.cn:9321/87654321" },
+    { "name": "快源",       "url": "http://43.143.108.212/87654321" },
+    { "name": "阿里云源",   "url": "http://47.107.188.112:6008/87654321" },
+    { "name": "腾讯云源",   "url": "http://43.135.134.121/87654321" },
+    { "name": "华为云源",   "url": "http://114.116.228.54/87654321" },
+    { "name": "ucloud源",  "url": "http://120.131.0.58/87654321" },
+    { "name": "天翼云源",   "url": "http://106.55.240.101/87654321" },
+    { "name": "百度云源",   "url": "http://180.76.120.66/87654321" },
+    { "name": "京东云源",   "url": "http://114.67.161.57/87654321" },
+    { "name": "青云源",     "url": "http://139.198.18.248/87654321" },
+    { "name": "移动云源",   "url": "http://111.229.198.102/87654321" },
+    { "name": "联通云源",   "url": "http://123.249.36.74/87654321" }
+  ],
+  "danmuTutorial": {
+    "enabled": true,
+    "title": "弹幕使用教程",
+    "intro": "两种壳子填的东西不一样，按自己壳子的类型选对应的一段。",
+    "newShell": {
+      "title": "new 壳子：只填源本身",
+      "desc": "new 是单独一类壳子，它的弹幕接口只需要填弹幕源地址本身，填好后播放时会自动按片名+集数拉取弹幕。",
+      "format": "{弹幕源地址}"
+    },
+    "searchShell": {
+      "title": "需要搜索接口的壳子：填下面的搜索接口",
+      "desc": "如果你的壳子弹幕里需要填搜索接口，就填下面的完整地址；播放器会按片名和集数去拉弹幕。",
+      "format": "{弹幕源地址}/api/v2/fongmi/danmaku?name={name}&episode={episode}"
+    },
+    "steps": [
+      "先确认壳子类型：new 壳子只填源地址，需要搜索接口的壳子填完整地址",
+      "播放器 → 设置 → 弹幕，把对应地址粘贴进去并保存",
+      "播放时自动匹配弹幕；搜不到就换一个源"
+    ],
+    "note": "{name} 与 {episode} 是占位符，原样保留不要改成具体片名；更多弹幕源见上方「弹幕接口」。"
+  },
+  "about": {
+    "domains": [
+      "https://0.12yue.de5.net",
+      "https://0.cdz.qzz.io",
+      "https://0.wdzb.eu.cc"
+    ],
+    "declaration": "本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。",
+    "qqGroup": "1067685939",
+    "telegram": "https://t.me/+nrWtFerPAfcwOTg9",
+    "contributors": [
+      {
+        "name": "误道者",
+        "role": "站长 / 资源整理",
+        "desc": "站点发起与接口资源整理",
+        "avatar": "vip/jueson.jpg",
+        "social": ""
+      },
+      {
+        "name": "沫离",
+        "role": "弹幕分页",
+        "desc": "独立贡献弹幕接口分页模块",
+        "avatar": "vip/沫离.jpg",
+        "social": ""
+      },
+      {
+        "name": "简约风<格>",
+        "role": "推广贡献",
+        "desc": "将本网页内嵌 APP 进行推广分发",
+        "avatar": "vip/简约风格.jpg",
+        "social": ""
+      }
+    ]
+  }
+}
