@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>海量接口搬运备份2</title>
+<title>海量接口搬运备份</title>
 <style>
 /* ============================================================
    公共 CSS（dev.html 基础框架 + 1.html 全量补充）
@@ -46,6 +46,63 @@ button:focus, button:focus-visible, input:focus, input:focus-visible,
   font-size:.58rem; line-height:1.3; text-align:center; cursor:pointer;
 }
 
+/* ============================================================
+   悬浮刷新按钮（✅ 新增）
+   ============================================================ */
+#refreshBtn {
+  position: absolute;
+  top: 70px;               /* ✅ 起始在切换按钮下方 */
+  left: 6px;
+  z-index: 999;
+
+  width: 48px;
+  height: 48px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: transparent; /* ✅ 全透明 */
+  color: #4a9eff;
+
+  font-size: 1.25rem;
+  line-height: 1;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease,
+    background .15s ease;
+}
+
+#refreshBtn:active {
+  transform: scale(.88);
+}
+
+/* ✅ 吸顶状态 */
+#refreshBtn.sticky {
+  position: fixed;
+  top: 10px;               /* ✅ 吸顶后和切换按钮同高 */
+  left: 6px;
+  background: rgba(255,255,255,.85);
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+/* 移动端微调 */
+@media (max-width: 600px) {
+  #refreshBtn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
+    top: 64px;
+  }
+
+  #refreshBtn.sticky {
+    top: 10px;
+  }
+}
+
 /* 标题 */
 .header-block { text-align:center; margin-bottom:16px; padding-top:14px; }
 h1 { font-size:1.35rem; font-weight:700; color:#0a1a2b; }
@@ -83,45 +140,6 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 }
 .nav-tab.active { background:#4a9eff; color:#fff; }
 .nav-tab:active { transform:scale(.96); }
-/* ===== 导航栏：极致适配小屏 ===== */
-.nav-tabs {
-  display: flex;
-  gap: 6px;                 /* 减小间距 */
-  margin-bottom: 14px;
-  justify-content: center;
-  flex-wrap: nowrap;        /* ✅ 强制一行 */
-  overflow-x: auto;         /* ✅ 极端小屏可横向滑 */
-  -webkit-overflow-scrolling: touch;
-  padding: 2px 0;
-}
-
-/* 隐藏滚动条（美观） */
-.nav-tabs::-webkit-scrollbar {
-  display: none;
-}
-
-.nav-tab {
-  padding: 5px 12px;        /* ✅ 更小内边距 */
-  border: 1.5px solid #4a9eff;
-  border-radius: 30px;      /* ✅ 更紧凑圆角 */
-  background: #fff;
-  color: #4a9eff;
-  font-size: .72rem;        /* ✅ 更小字体 */
-  font-weight: 500;
-  cursor: pointer;
-  white-space: nowrap;
-  flex-shrink: 0;           /* ✅ 防止被压缩换行 */
-  line-height: 1.2;
-}
-
-.nav-tab.active {
-  background: #4a9eff;
-  color: #fff;
-}
-
-.nav-tab:active {
-  transform: scale(.95);
-}
 
 /* 面板 */
 .tab-panel { display:none; width:100%; }
@@ -212,7 +230,7 @@ body.simple-mode #api-panel { display:block !important; }
 .live-url-tag { font-size:.68rem; font-weight:600; color:#3a5a7a; background:#d8e8f8; padding:2px 14px; border-radius:50px; white-space:nowrap; flex-shrink:0; }
 .live-url-text { font-size:.78rem; color:#2563eb; word-break:break-all; overflow-wrap:break-word; line-height:1.4; flex:1; min-width:0; }
 
-/* ===== 下载面板：左侧边按钮，每组一个 ===== */
+/* ===== 下载面板 ===== */
 #download-panel { overflow-x:hidden; width:100%; }
 #downloads-content { width:100%; overflow-x:hidden; }
 #downloads-content.has-sidebar {
@@ -293,16 +311,11 @@ body.simple-mode #api-panel { display:block !important; }
 
 /* ============================================================
    移动端（≤600px）
-   小瓶 · 平铺导航 · 紧凑布局
    ============================================================ */
 @media (max-width: 600px) {
 
-  /* ===== 页面整体 ===== */
-  body {
-    padding: 14px 8px 6px;
-  }
+  body { padding: 14px 8px 6px; }
 
-  /* ===== 模式切换按钮 ===== */
   #modeToggleBtn {
     top: 10px;
     left: 6px;
@@ -311,130 +324,50 @@ body.simple-mode #api-panel { display:block !important; }
     padding: 4px 2px;
   }
 
-  /* ===== 主卡片 ===== */
-  .main-card {
-    padding: 14px 14px 12px;
-  }
+  .main-card { padding: 14px 14px 12px; }
 
-  /* ===== 头部 ===== */
-  .header-block {
-    padding-top: 10px;
-    margin-bottom: 12px;
-  }
+  .header-block { padding-top: 10px; margin-bottom: 12px; }
+  h1 { font-size: 1.15rem; }
+  h1 .header-logo { width: 1.7rem; height: 1.7rem; vertical-align: -.4rem; }
 
-  h1 {
-    font-size: 1.15rem;
-  }
-
-  h1 .header-logo {
-    width: 1.7rem;
-    height: 1.7rem;
-    vertical-align: -.4rem;
-  }
-
-  /* ===== 导航栏：平铺 ===== */
   .nav-tabs {
     display: flex;
     gap: 4px;
     margin-bottom: 10px;
-    justify-content: space-between; /* ✅ 平铺 */
+    justify-content: space-between;
     flex-wrap: nowrap;
   }
 
   .nav-tab {
-    flex: 1;                    /* ✅ 五等分 */
+    flex: 1;
     text-align: center;
     padding: 4px 0;
-    font-size: .95rem;
+    font-size: .75rem;
     border-radius: 24px;
     white-space: nowrap;
   }
 
-  /* ===== 点播 / 直播列表 ===== */
-  .api-item,
-  .live-item {
-    padding: 12px 0;
-  }
+  .api-item, .live-item { padding: 12px 0; }
+  .api-item-name, .live-item-name { font-size: .92rem; }
 
-  .api-item-name,
-  .live-item-name {
-    font-size: .92rem;
-  }
+  .url-line { padding: 6px 10px; gap: 6px; }
+  .url-tag, .live-url-tag { font-size: .62rem; padding: 2px 10px; }
+  .url-text, .live-url-text { font-size: .72rem; }
 
-  /* ===== 地址行 ===== */
-  .url-line {
-    padding: 6px 10px;
-    gap: 6px;
-  }
+  .copy-btn { font-size: .62rem; padding: 0 10px; height: 24px; }
 
-  .url-tag,
-  .live-url-tag {
-    font-size: .62rem;
-    padding: 2px 10px;
-  }
+  .live-top-aggregate { padding: 14px 16px; }
+  .live-url-line { padding: 8px 10px; }
+  .live-url-body .live-url-tag { font-size: .62rem; padding: 2px 10px; }
+  .live-url-body .live-url-text { font-size: .72rem; }
+  .live-info-inline { font-size: .6rem; }
 
-  .url-text,
-  .live-url-text {
-    font-size: .72rem;
-  }
-
-  .copy-btn {
-    font-size: .62rem;
-    padding: 0 10px;
-    height: 24px;
-  }
-
-  /* ===== 直播聚合区 ===== */
-  .live-top-aggregate {
-    padding: 14px 16px;
-  }
-
-  .live-url-line {
-    padding: 8px 10px;
-  }
-
-  .live-url-body .live-url-tag {
-    font-size: .62rem;
-    padding: 2px 10px;
-  }
-
-  .live-url-body .live-url-text {
-    font-size: .72rem;
-  }
-
-  .live-info-inline {
-    font-size: .6rem;
-  }
-
-  /* ===== 贡献者：2 列 ===== */
-  .contributor-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px;
-  }
-
-  .contributor-card {
-    padding: 8px 10px;
-  }
-
-  .contributor-avatar {
-    width: 36px;
-    height: 36px;
-    font-size: .75rem;
-  }
-
-  .contributor-name {
-    font-size: .78rem;
-  }
-
-  .contributor-role {
-    font-size: .58rem;
-    padding: 2px 8px;
-  }
-
-  .contributor-desc {
-    font-size: .65rem;
-    line-height: 1.35;
-  }
+  .contributor-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px; }
+  .contributor-card { padding: 8px 10px; }
+  .contributor-avatar { width: 36px; height: 36px; font-size: .75rem; }
+  .contributor-name { font-size: .78rem; }
+  .contributor-role { font-size: .58rem; padding: 2px 8px; }
+  .contributor-desc { font-size: .65rem; line-height: 1.35; }
 }
 
 </style>
@@ -443,7 +376,11 @@ body.simple-mode #api-panel { display:block !important; }
 <body class="simple-mode">
 
 <div class="container">
+  <!-- ✅ 模式切换 -->
   <button id="modeToggleBtn">切换<br>全能版</button>
+
+  <!-- ✅ 悬浮刷新按钮（新增） -->
+  <button id="refreshBtn" aria-label="刷新">🔄</button>
 
   <!-- 标题 -->
   <div class="header-block">
@@ -481,19 +418,18 @@ body.simple-mode #api-panel { display:block !important; }
       </div>
     </div>
 
-    <!-- 弹幕面板（已提前） -->
+    <!-- 弹幕面板 -->
     <div class="tab-panel" id="danmu-panel">
       <div id="danmu-content"><div class="loading">⏳ 正在加载弹幕接口...</div></div>
     </div>
 
-    <!-- 下载面板（已靠后） -->
+    <!-- 下载面板 -->
     <div class="tab-panel" id="download-panel">
       <div id="downloads-content"><div class="loading">⏳ 正在加载下载资源...</div></div>
     </div>
 
     <!-- 关于面板 -->
     <div class="tab-panel" id="about-panel">
-      <!-- 域名备份 -->
       <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
         <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">🌐 备份线路域名</h3>
         <p style="margin-bottom:6px;font-size:.76rem;color:#5a6f88">四个域名互为备份，任一个可用：</p>
@@ -514,7 +450,7 @@ body.simple-mode #api-panel { display:block !important; }
           <button class="copy-btn" data-url="https://tvbox.moliys.icu">复制</button>
         </div>
       </div>
-      <!-- 合作共创 -->
+
       <div id="contributors-card" style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
         <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">🤝 合作共创</h3>
         <p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">感谢以下伙伴对本站的内容贡献与支持（<strong style="color:#ca8a04">排名不分先后</strong>）：</p>
@@ -523,7 +459,7 @@ body.simple-mode #api-panel { display:block !important; }
         </div>
         <p style="font-size:.68rem;color:#8fa3b8;margin-top:10px;line-height:1.5;font-style:italic">* 还有部分贡献者因未留下署名信息而未在此列出，同样感谢你们的默默付出。如有遗漏请联系站长补充。</p>
       </div>
-      <!-- 声明与联系 -->
+
       <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
         <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">📢 声明与联系</h3>
         <ul style="padding-left:16px">
@@ -536,13 +472,44 @@ body.simple-mode #api-panel { display:block !important; }
     </div>
   </div>
 
-  <!-- footer -->
   <footer class="page-footer">
     <p>本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。 QQ 群：1067685939。</p>
   </footer>
 </div>
 
 <script>
+/* ============================================================
+   悬浮刷新按钮逻辑（✅ 新增）
+   ============================================================ */
+const refreshBtn = document.getElementById('refreshBtn');
+const modeBtn = document.getElementById('modeToggleBtn');
+
+function updateRefreshSticky() {
+  if (!modeBtn || !refreshBtn) return;
+  const modeRect = modeBtn.getBoundingClientRect();
+  refreshBtn.classList.toggle('sticky', modeRect.top < 0);
+}
+
+window.addEventListener('scroll', updateRefreshSticky, { passive: true });
+
+refreshBtn.addEventListener('click', () => {
+  refreshBtn.style.transform = 'rotate(360deg)';
+  refreshBtn.style.transition = 'transform .45s ease';
+  setTimeout(() => refreshBtn.style.transform = '', 450);
+
+  // 清空缓存
+  rawListText = null;
+  rawLiveText = null;
+  dlCache.clear();
+
+  if (currentTabId === 'api') renderApi();
+  else if (currentTabId === 'live') renderLiveList();
+  else if (currentTabId === 'download') renderDownloads(true);
+  else if (currentTabId === 'danmu') renderDanmu();
+
+  loadConfig();
+});
+
 /* ============================================================
    完整 JS 逻辑（下载 / 弹幕已互换）
    ============================================================ */
@@ -751,7 +718,7 @@ function renderLiveList() {
   }).catch(err=>{if(loading)loading.style.display='none';container.innerHTML=`<div class="error-msg">❌ 直播列表加载失败：${err.message||err}</div>`;});
 }
 
-/* ===== 下载：左侧边按钮，每组一个 ===== */
+/* ===== 下载 ===== */
 let dlCache = new Map();
 let dlCurrentGroup = null;
 
