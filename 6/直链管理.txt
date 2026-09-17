@@ -4,6 +4,10 @@
      "name":"xs.jar"
      },
      {
+    "url": "https://pan.szfx.top/down.php/cb89a7e6a875c55b94101ec0ae46fbdb.zip",
+     "name":"站点.zip"
+     },
+     {
     "url": "https://pan.szfx.top/down.php/440f930ef3fe699051b53f1d02d575ce.jar",
      "name":"p.jar"
      },
