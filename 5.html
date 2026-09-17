@@ -83,6 +83,45 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 }
 .nav-tab.active { background:#4a9eff; color:#fff; }
 .nav-tab:active { transform:scale(.96); }
+/* ===== 导航栏：极致适配小屏 ===== */
+.nav-tabs {
+  display: flex;
+  gap: 6px;                 /* 减小间距 */
+  margin-bottom: 14px;
+  justify-content: center;
+  flex-wrap: nowrap;        /* ✅ 强制一行 */
+  overflow-x: auto;         /* ✅ 极端小屏可横向滑 */
+  -webkit-overflow-scrolling: touch;
+  padding: 2px 0;
+}
+
+/* 隐藏滚动条（美观） */
+.nav-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-tab {
+  padding: 5px 12px;        /* ✅ 更小内边距 */
+  border: 1.5px solid #4a9eff;
+  border-radius: 30px;      /* ✅ 更紧凑圆角 */
+  background: #fff;
+  color: #4a9eff;
+  font-size: .72rem;        /* ✅ 更小字体 */
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;           /* ✅ 防止被压缩换行 */
+  line-height: 1.2;
+}
+
+.nav-tab.active {
+  background: #4a9eff;
+  color: #fff;
+}
+
+.nav-tab:active {
+  transform: scale(.95);
+}
 
 /* 面板 */
 .tab-panel { display:none; width:100%; }
@@ -292,6 +331,19 @@ body.simple-mode #api-panel { display:block !important; }
   .contributor-role { font-size:.58rem; padding:2px 8px; }
   .contributor-desc { font-size:.65rem; line-height:1.35; }
 }
+@media (max-width:600px) {
+  .nav-tabs {
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .nav-tab {
+    padding: 4px 10px;     /* ✅ 超小屏再缩小 */
+    font-size: .66rem;
+    border-radius: 24px;
+  }
+}
+
 </style>
 </head>
 
