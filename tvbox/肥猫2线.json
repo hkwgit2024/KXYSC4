@@ -1,15 +1,31 @@
 {
-  "spider": "https://img2.tofaka.com/autoupload/f/p8kvh/20260915/TE0F/aidaox-gongju-20260915-125808.jar;md5;e0b6ef0e2dde0871d753d0ac25066d8c",
+  "spider": "https://img2.tofaka.com/autoupload/f/p8kvh/20260917/EzRz/aidaox-gongju-20260917-154805.jar;md5;bd948f5f8b2d284f823b35a7812f5648",
   "wallpaper": "proxy://do=wallpaper",
   "logo": "https://jk.catvod.site/jk/assets/feimao_logo.gif?v=20260901c",
   "sites": [
+    {
+      "key": "专家库",
+      "name": "🧠专家库[应用]",
+      "type": 3,
+      "api": "csp_ZhuanJia",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
+      "changeable": 0,
+      "indexs": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 1
+      },
+      "timeout": 60
+    },
     {
       "key": "小霸王",
       "name": "🎮小霸王[游戏]",
       "type": 3,
       "api": "csp_Yikm",
-      "searchable": 1,
-      "quickSearch": 1,
+      "searchable": 0,
+      "quickSearch": 0,
       "filterable": 1,
       "changeable": 0,
       "style": {
@@ -19,13 +35,34 @@
       "timeout": 60
     },
     {
-      "key": "webhome",
-      "name": "🏠WebHome[导航]",
+      "key": "益智",
+      "name": "🧩益智[游戏]",
       "type": 3,
-      "api": "csp_Nostr",
-      "searchable": 0,
+      "api": "csp_YiZhi",
+      "searchable": 1,
+      "quickSearch": 0,
+      "filterable": 0,
       "changeable": 0,
-      "ext": "https:///{\"homePage\":\"https:/m.inftab.com\"}"
+      "style": {
+        "type": "rect",
+        "ratio": 1
+      },
+      "timeout": 60
+    },
+    {
+      "key": "几何",
+      "name": "📐几何[游戏]",
+      "type": 3,
+      "api": "csp_JiHe",
+      "searchable": 1,
+      "quickSearch": 0,
+      "filterable": 0,
+      "changeable": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 1
+      },
+      "timeout": 60
     },
     {
       "key": "mt",
@@ -35,7 +72,20 @@
       "searchable": 0,
       "changeable": 0,
       "indexs": 0,
-      "ext": "https:///{\"tool\": \"mt\"}",
+      "ext": "{\"tool\": \"mt\"}",
+      "style": {
+        "type": "list"
+      }
+    },
+    {
+      "key": "via",
+      "name": "🌐Via浏览器[工具]",
+      "type": 3,
+      "api": "csp_ShellInjectTool",
+      "searchable": 0,
+      "changeable": 0,
+      "indexs": 0,
+      "ext": "{\"tool\": \"via\"}",
       "style": {
         "type": "list"
       }
@@ -45,7 +95,7 @@
       "name": "📝造句[图库]",
       "type": 3,
       "api": "csp_Zaoju",
-      "searchable": 1,
+      "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
       "changeable": 0,
@@ -61,7 +111,7 @@
       "name": "🎨画廊[图库]",
       "type": 3,
       "api": "csp_HuaLang",
-      "searchable": 1,
+      "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
       "changeable": 0,
@@ -73,29 +123,20 @@
       "timeout": 60
     },
     {
-      "key": "via",
-      "name": "🌐Via浏览器[工具]",
+      "key": "创意",
+      "name": "✨创意[图库]",
       "type": 3,
-      "api": "csp_ShellInjectTool",
+      "api": "csp_ChuangYi",
       "searchable": 0,
-      "changeable": 0,
-      "indexs": 0,
-      "ext": "https:///{\"tool\": \"via\"}",
-      "style": {
-        "type": "list"
-      }
-    },
-    {
-      "key": "DecryptConfig",
-      "name": "🔓接口解密[工具]",
-      "type": 3,
-      "api": "csp_DecryptConfig",
-      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
       "changeable": 0,
       "indexs": 0,
       "style": {
-        "type": "list"
-      }
+        "type": "rect",
+        "ratio": 0.75
+      },
+      "timeout": 60
     },
     {
       "key": "ResMgr",
@@ -135,7 +176,7 @@
       "searchable": 0,
       "changeable": 0,
       "indexs": 0,
-      "ext": "https:///{\"tool\": \"dl\"}",
+      "ext": "{\"tool\": \"dl\"}",
       "style": {
         "type": "list"
       }
@@ -148,20 +189,7 @@
       "searchable": 0,
       "changeable": 0,
       "indexs": 0,
-      "ext": "https:///{\"tool\": \"filebox\"}",
-      "style": {
-        "type": "list"
-      }
-    },
-    {
-      "key": "shell",
-      "name": "🐚默壳管理[工具]",
-      "type": 3,
-      "api": "csp_ShellInjectTool",
-      "searchable": 0,
-      "changeable": 0,
-      "indexs": 0,
-      "ext": "https:///{\"tool\": \"shell\"}",
+      "ext": "{\"tool\": \"filebox\"}",
       "style": {
         "type": "list"
       }
