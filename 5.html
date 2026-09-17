@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -84,45 +83,35 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 }
 .nav-tab.active { background:#4a9eff; color:#fff; }
 .nav-tab:active { transform:scale(.96); }
+
 /* ===== 导航栏：极致适配小屏 ===== */
 .nav-tabs {
   display: flex;
-  gap: 6px;                 /* 减小间距 */
+  gap: 6px;
   margin-bottom: 14px;
   justify-content: center;
-  flex-wrap: nowrap;        /* ✅ 强制一行 */
-  overflow-x: auto;         /* ✅ 极端小屏可横向滑 */
+  flex-wrap: nowrap;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   padding: 2px 0;
 }
-
-/* 隐藏滚动条（美观） */
-.nav-tabs::-webkit-scrollbar {
-  display: none;
-}
+.nav-tabs::-webkit-scrollbar { display: none; }
 
 .nav-tab {
-  padding: 5px 12px;        /* ✅ 更小内边距 */
+  padding: 5px 12px;
   border: 1.5px solid #4a9eff;
-  border-radius: 30px;      /* ✅ 更紧凑圆角 */
+  border-radius: 30px;
   background: #fff;
   color: #4a9eff;
-  font-size: .72rem;        /* ✅ 更小字体 */
+  font-size: .72rem;
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  flex-shrink: 0;           /* ✅ 防止被压缩换行 */
+  flex-shrink: 0;
   line-height: 1.2;
 }
-
-.nav-tab.active {
-  background: #4a9eff;
-  color: #fff;
-}
-
-.nav-tab:active {
-  transform: scale(.95);
-}
+.nav-tab.active { background: #4a9eff; color: #fff; }
+.nav-tab:active { transform: scale(.95); }
 
 /* 面板 */
 .tab-panel { display:none; width:100%; }
@@ -160,7 +149,6 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 .loading { text-align:center; color:#8fa3b8; padding:60px 0; font-size:.88rem; }
 .error-msg { text-align:center; color:#dc2626; padding:16px 20px; font-size:.8rem; background:#fef2f2; border:1px solid #fecaca; border-radius:4px; margin:12px 0; word-break:break-all; }
 
-/* footer */
 .page-footer { text-align:center; padding:24px 0 10px; font-size:.7rem; color:#8fa3b8; line-height:1.8; margin-top:auto; }
 
 /* 简洁模式 */
@@ -294,150 +282,55 @@ body.simple-mode #api-panel { display:block !important; }
 
 /* ============================================================
    移动端（≤600px）
-   小瓶 · 平铺导航 · 紧凑布局
    ============================================================ */
 @media (max-width: 600px) {
+  body { padding: 14px 8px 6px; }
 
-  /* ===== 页面整体 ===== */
-  body {
-    padding: 14px 8px 6px;
-  }
-
-  /* ===== 模式切换按钮 ===== */
   #modeToggleBtn {
-    top: 10px;
-    left: 6px;
-    width: 48px;
-    font-size: .52rem;
+    top: 10px; left: 6px;
+    width: 48px; font-size: .52rem;
     padding: 4px 2px;
   }
 
-  /* ===== 主卡片 ===== */
-  .main-card {
-    padding: 14px 14px 12px;
-  }
+  .main-card { padding: 14px 14px 12px; }
 
-  /* ===== 头部 ===== */
-  .header-block {
-    padding-top: 10px;
-    margin-bottom: 12px;
-  }
+  .header-block { padding-top: 10px; margin-bottom: 12px; }
+  h1 { font-size: 1.15rem; }
+  h1 .header-logo { width: 1.7rem; height: 1.7rem; vertical-align: -.4rem; }
 
-  h1 {
-    font-size: 1.15rem;
-  }
-
-  h1 .header-logo {
-    width: 1.7rem;
-    height: 1.7rem;
-    vertical-align: -.4rem;
-  }
-
-  /* ===== 导航栏：平铺 ===== */
   .nav-tabs {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 10px;
-    justify-content: space-between; /* ✅ 平铺 */
+    gap: 4px; margin-bottom: 10px;
+    justify-content: space-between;
     flex-wrap: nowrap;
   }
-
   .nav-tab {
-    flex: 1;                    /* ✅ 五等分 */
-    text-align: center;
-    padding: 4px 0;
-    font-size: .95rem;
-    border-radius: 24px;
-    white-space: nowrap;
+    flex: 1; text-align: center;
+    padding: 4px 0; font-size: .95rem;
+    border-radius: 24px; white-space: nowrap;
   }
 
-  /* ===== 点播 / 直播列表 ===== */
-  .api-item,
-  .live-item {
-    padding: 12px 0;
-  }
+  .api-item, .live-item { padding: 12px 0; }
+  .api-item-name, .live-item-name { font-size: .92rem; }
 
-  .api-item-name,
-  .live-item-name {
-    font-size: .92rem;
-  }
+  .url-line { padding: 6px 10px; gap: 6px; }
+  .url-tag, .live-url-tag { font-size: .62rem; padding: 2px 10px; }
+  .url-text, .live-url-text { font-size: .72rem; }
 
-  /* ===== 地址行 ===== */
-  .url-line {
-    padding: 6px 10px;
-    gap: 6px;
-  }
+  .copy-btn { font-size: .62rem; padding: 0 10px; height: 24px; }
 
-  .url-tag,
-  .live-url-tag {
-    font-size: .62rem;
-    padding: 2px 10px;
-  }
+  .live-top-aggregate { padding: 14px 16px; }
+  .live-url-line { padding: 8px 10px; }
+  .live-url-body .live-url-tag { font-size: .62rem; padding: 2px 10px; }
+  .live-url-body .live-url-text { font-size: .72rem; }
+  .live-info-inline { font-size: .6rem; }
 
-  .url-text,
-  .live-url-text {
-    font-size: .72rem;
-  }
-
-  .copy-btn {
-    font-size: .62rem;
-    padding: 0 10px;
-    height: 24px;
-  }
-
-  /* ===== 直播聚合区 ===== */
-  .live-top-aggregate {
-    padding: 14px 16px;
-  }
-
-  .live-url-line {
-    padding: 8px 10px;
-  }
-
-  .live-url-body .live-url-tag {
-    font-size: .62rem;
-    padding: 2px 10px;
-  }
-
-  .live-url-body .live-url-text {
-    font-size: .72rem;
-  }
-
-  .live-info-inline {
-    font-size: .6rem;
-  }
-
-  /* ===== 贡献者：2 列 ===== */
-  .contributor-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px;
-  }
-
-  .contributor-card {
-    padding: 8px 10px;
-  }
-
-  .contributor-avatar {
-    width: 36px;
-    height: 36px;
-    font-size: .75rem;
-  }
-
-  .contributor-name {
-    font-size: .78rem;
-  }
-
-  .contributor-role {
-    font-size: .58rem;
-    padding: 2px 8px;
-  }
-
-  .contributor-desc {
-    font-size: .65rem;
-    line-height: 1.35;
-  }
+  .contributor-grid { grid-template-columns: repeat(2,1fr) !important; gap: 8px; }
+  .contributor-card { padding: 8px 10px; }
+  .contributor-avatar { width: 36px; height: 36px; font-size: .75rem; }
+  .contributor-name { font-size: .78rem; }
+  .contributor-role { font-size: .58rem; padding: 2px 8px; }
+  .contributor-desc { font-size: .65rem; line-height: 1.35; }
 }
-
 </style>
 </head>
 
@@ -446,16 +339,13 @@ body.simple-mode #api-panel { display:block !important; }
 <div class="container">
   <button id="modeToggleBtn">切换<br>全能版</button>
 
-  <!-- 标题 -->
   <div class="header-block">
     <h1><img class="header-logo" id="header-logo" src="https://0.12yue.de5.net/tvbox/x/jueson.jpg" alt="Logo">海量接口搬运备份</h1>
     <div class="header-divider"></div>
     <p class="subtitle" id="header-subtitle">备用数据源，防屏不迷路<br>QQ交流群：1067685939</p>
   </div>
 
-  <!-- 主卡片 -->
   <div class="main-card">
-    <!-- 导航栏 -->
     <div class="nav-tabs" id="navTabs"></div>
 
     <!-- 搜索框 -->
@@ -482,19 +372,18 @@ body.simple-mode #api-panel { display:block !important; }
       </div>
     </div>
 
-    <!-- 弹幕面板（已提前） -->
+    <!-- 弹幕面板 -->
     <div class="tab-panel" id="danmu-panel">
       <div id="danmu-content"><div class="loading">⏳ 正在加载弹幕接口...</div></div>
     </div>
 
-    <!-- 下载面板（已靠后） -->
+    <!-- 下载面板 -->
     <div class="tab-panel" id="download-panel">
       <div id="downloads-content"><div class="loading">⏳ 正在加载下载资源...</div></div>
     </div>
 
     <!-- 关于面板 -->
     <div class="tab-panel" id="about-panel">
-      <!-- 域名备份 -->
       <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
         <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">🌐 备份线路域名</h3>
         <p style="margin-bottom:6px;font-size:.76rem;color:#5a6f88">四个域名互为备份，任一个可用：</p>
@@ -515,7 +404,7 @@ body.simple-mode #api-panel { display:block !important; }
           <button class="copy-btn" data-url="https://tvbox.moliys.icu">复制</button>
         </div>
       </div>
-      <!-- 合作共创 -->
+
       <div id="contributors-card" style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
         <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">🤝 合作共创</h3>
         <p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">感谢以下伙伴对本站的内容贡献与支持（<strong style="color:#ca8a04">排名不分先后</strong>）：</p>
@@ -524,7 +413,7 @@ body.simple-mode #api-panel { display:block !important; }
         </div>
         <p style="font-size:.68rem;color:#8fa3b8;margin-top:10px;line-height:1.5;font-style:italic">* 还有部分贡献者因未留下署名信息而未在此列出，同样感谢你们的默默付出。如有遗漏请联系站长补充。</p>
       </div>
-      <!-- 声明与联系 -->
+
       <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
         <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">📢 声明与联系</h3>
         <ul style="padding-left:16px">
@@ -537,7 +426,6 @@ body.simple-mode #api-panel { display:block !important; }
     </div>
   </div>
 
-  <!-- footer -->
   <footer class="page-footer">
     <p>本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。 QQ 群：1067685939。</p>
   </footer>
@@ -545,7 +433,7 @@ body.simple-mode #api-panel { display:block !important; }
 
 <script>
 /* ============================================================
-   完整 JS 逻辑（下载 / 弹幕已互换）
+   完整 JS 逻辑（下载页不显示搜索框）
    ============================================================ */
 
 const MODE_KEY = 'site_mode';
@@ -854,11 +742,11 @@ function renderDanmu() {
 
 /* ===== 导航 ===== */
 const tabsData = [
-  {id:"api",label:"点播",hideSearch:false},
-  {id:"live",label:"直播",hideSearch:false},
-  {id:"danmu",label:"弹幕",hideSearch:true},
-  {id:"download",label:"下载",hideSearch:false},
-  {id:"about",label:"关于",hideSearch:true}
+  {id:"api",label:"点播"},
+  {id:"live",label:"直播"},
+  {id:"danmu",label:"弹幕"},
+  {id:"download",label:"下载"},
+  {id:"about",label:"关于"}
 ];
 
 function renderTabs() {
@@ -874,6 +762,9 @@ function renderTabs() {
   });
 }
 
+/* ============================================================
+   ✅ 核心修改：下载 / 弹幕 / 关于 不显示搜索框
+   ============================================================ */
 function showPanel(tabId) {
   if(searchBox){
     searchBox.value='';
@@ -883,14 +774,23 @@ function showPanel(tabId) {
     document.querySelectorAll('#danmu-panel .danmu-item.hidden').forEach(e=>e.classList.remove('hidden'));
     document.querySelectorAll('.contributor-card.hidden').forEach(e=>e.classList.remove('hidden'));
   }
-  if(tabId==='api'){topSeed=Date.now()+Math.random();renderApi();}
+
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   const panel=document.getElementById(tabId+'-panel'); if(panel) panel.classList.add('active');
+
+  /* ✅ 下载 / 弹幕 / 关于 隐藏搜索框 */
+  const hideSearchTabs = ['danmu','download','about'];
+  if(searchBox){
+    searchBox.style.display = hideSearchTabs.includes(tabId) ? 'none' : '';
+  }
+
+  if(tabId==='api'){
+    topSeed=Date.now()+Math.random();
+    renderApi();
+  }
   if(tabId==='live') renderLiveList();
   if(tabId==='download') renderDownloads();
   if(tabId==='danmu') renderDanmu();
-  const t=tabsData.find(t=>t.id===tabId);
-  if(searchBox) searchBox.style.display=(t&&t.hideSearch)?'none':'';
 }
 
 /* ===== 搜索 ===== */
@@ -907,8 +807,11 @@ function globalSearch() {
 
 /* ===== 搜索框位置 ===== */
 function positionSearchBox() {
-  if(currentMode==='simple'){if(searchBox.parentNode!==mainCard.parentNode) mainCard.parentNode.insertBefore(searchBox,mainCard);}
-  else{if(searchBox.parentNode!==mainCard) navTabs.insertAdjacentElement('afterend',searchBox);}
+  if(currentMode==='simple'){
+    if(searchBox.parentNode!==mainCard.parentNode) mainCard.parentNode.insertBefore(searchBox,mainCard);
+  } else {
+    if(searchBox.parentNode!==mainCard) navTabs.insertAdjacentElement('afterend',searchBox);
+  }
 }
 function updateBtnText(){btn.innerHTML=currentMode==='simple'?'切换<br>全能版':'切换<br>简洁版';}
 
