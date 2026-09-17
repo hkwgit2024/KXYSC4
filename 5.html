@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>海量接口搬运备份</title>
+<title>海量接口搬运备份1</title>
 <style>
 /* ============================================================
    公共 CSS（dev.html 基础框架 + 1.html 全量补充）
@@ -47,55 +47,66 @@ button:focus, button:focus-visible, input:focus, input:focus-visible,
 }
 
 /* ============================================================
-   悬浮刷新按钮（✅ 新增）
+   悬浮刷新按钮（✅ 最终版：全透明 + 大半圆箭头）
    ============================================================ */
+
 #refreshBtn {
   position: absolute;
   top: 70px;               /* ✅ 起始在切换按钮下方 */
   left: 6px;
   z-index: 999;
 
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border: none;
   border-radius: 50%;
-
   background: transparent; /* ✅ 全透明 */
   color: #4a9eff;
-
-  font-size: 1.25rem;
-  line-height: 1;
 
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 
-  transition:
-    transform .15s ease,
-    box-shadow .15s ease,
-    background .15s ease;
+  /* ✅ 旋转动画（必须放这里） */
+  transition: transform .45s cubic-bezier(.4,.2,.2,1);
 }
 
-#refreshBtn:active {
-  transform: scale(.88);
+/* ✅ 旋转刷新动画（关键） */
+#refreshBtn.refreshing {
+  transform: rotate(360deg);
 }
 
 /* ✅ 吸顶状态 */
 #refreshBtn.sticky {
   position: fixed;
-  top: 10px;               /* ✅ 吸顶后和切换按钮同高 */
+  top: 10px;
   left: 6px;
-  background: rgba(255,255,255,.85);
+  background: rgba(255,255,255,.82);
   box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+/* 刷新图标大小 */
+#refreshBtn svg {
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
 }
 
 /* 移动端微调 */
 @media (max-width: 600px) {
   #refreshBtn {
-    width: 44px;
-    height: 44px;
-    font-size: 1.15rem;
+    width: 40px;
+    height: 40px;
     top: 64px;
+  }
+
+  #refreshBtn svg {
+    width: 20px;
+    height: 20px;
   }
 
   #refreshBtn.sticky {
@@ -253,7 +264,6 @@ body.simple-mode #api-panel { display:block !important; }
   word-break:break-word;
   transition:background .15s, color .15s, transform .05s;
 }
-.dl-side-btn .dl-side-icon { font-size:1.15rem; line-height:1; }
 .dl-side-btn.active { background:#4a9eff; color:#fff; }
 .dl-side-btn:active { transform:scale(.96); }
 .dl-body { flex:1; min-width:0; }
@@ -379,8 +389,15 @@ body.simple-mode #api-panel { display:block !important; }
   <!-- ✅ 模式切换 -->
   <button id="modeToggleBtn">切换<br>全能版</button>
 
-  <!-- ✅ 悬浮刷新按钮（新增） -->
-  <button id="refreshBtn" aria-label="刷新">🔄</button>
+  <!-- ✅ 悬浮刷新按钮（最终版） -->
+  <button id="refreshBtn" aria-label="刷新">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M23 4v6h-6"/>
+      <path d="M1 20v-6h6"/>
+      <path d="M3.51 9a9 9 0 0114.85-3.36L23 10"/>
+      <path d="M20.49 15a9 9 0 01-14.85 3.36L1 14"/>
+    </svg>
+  </button>
 
   <!-- 标题 -->
   <div class="header-block">
@@ -479,8 +496,9 @@ body.simple-mode #api-panel { display:block !important; }
 
 <script>
 /* ============================================================
-   悬浮刷新按钮逻辑（✅ 新增）
+   悬浮刷新按钮逻辑（✅ 最终修复版）
    ============================================================ */
+
 const refreshBtn = document.getElementById('refreshBtn');
 const modeBtn = document.getElementById('modeToggleBtn');
 
@@ -493,19 +511,27 @@ function updateRefreshSticky() {
 window.addEventListener('scroll', updateRefreshSticky, { passive: true });
 
 refreshBtn.addEventListener('click', () => {
-  refreshBtn.style.transform = 'rotate(360deg)';
-  refreshBtn.style.transition = 'transform .45s ease';
-  setTimeout(() => refreshBtn.style.transform = '', 450);
+  // ✅ 旋转动画
+  refreshBtn.classList.add('refreshing');
+  setTimeout(() => {
+    refreshBtn.classList.remove('refreshing');
+  }, 450);
 
-  // 清空缓存
+  // ✅ 清空缓存
   rawListText = null;
   rawLiveText = null;
   dlCache.clear();
 
-  if (currentTabId === 'api') renderApi();
-  else if (currentTabId === 'live') renderLiveList();
-  else if (currentTabId === 'download') renderDownloads(true);
-  else if (currentTabId === 'danmu') renderDanmu();
+  // ✅ 重新加载当前面板
+  if (currentTabId === 'api') {
+    renderApi();
+  } else if (currentTabId === 'live') {
+    renderLiveList();
+  } else if (currentTabId === 'download') {
+    renderDownloads(true);
+  } else if (currentTabId === 'danmu') {
+    renderDanmu();
+  }
 
   loadConfig();
 });
