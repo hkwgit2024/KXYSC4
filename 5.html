@@ -86,39 +86,34 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 /* ===== 导航栏：极致适配小屏 ===== */
 .nav-tabs {
   display: flex;
-  gap: 6px;                 /* 减小间距 */
+  gap: 6px;
   margin-bottom: 14px;
   justify-content: center;
-  flex-wrap: nowrap;        /* ✅ 强制一行 */
-  overflow-x: auto;         /* ✅ 极端小屏可横向滑 */
+  flex-wrap: nowrap;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   padding: 2px 0;
 }
-
-/* 隐藏滚动条（美观） */
 .nav-tabs::-webkit-scrollbar {
   display: none;
 }
-
 .nav-tab {
-  padding: 5px 12px;        /* ✅ 更小内边距 */
+  padding: 5px 12px;
   border: 1.5px solid #4a9eff;
-  border-radius: 30px;      /* ✅ 更紧凑圆角 */
+  border-radius: 30px;
   background: #fff;
   color: #4a9eff;
-  font-size: .72rem;        /* ✅ 更小字体 */
+  font-size: .72rem;
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  flex-shrink: 0;           /* ✅ 防止被压缩换行 */
+  flex-shrink: 0;
   line-height: 1.2;
 }
-
 .nav-tab.active {
   background: #4a9eff;
   color: #fff;
 }
-
 .nav-tab:active {
   transform: scale(.95);
 }
@@ -212,7 +207,7 @@ body.simple-mode #api-panel { display:block !important; }
 .live-url-tag { font-size:.68rem; font-weight:600; color:#3a5a7a; background:#d8e8f8; padding:2px 14px; border-radius:50px; white-space:nowrap; flex-shrink:0; }
 .live-url-text { font-size:.78rem; color:#2563eb; word-break:break-all; overflow-wrap:break-word; line-height:1.4; flex:1; min-width:0; }
 
-/* ===== 下载面板：左侧边按钮，每组一个 ===== */
+/* ===== 下载面板 ===== */
 #download-panel { overflow-x:hidden; width:100%; }
 #downloads-content { width:100%; overflow-x:hidden; }
 #downloads-content.has-sidebar {
@@ -265,6 +260,91 @@ body.simple-mode #api-panel { display:block !important; }
 /* ===== 弹幕面板 ===== */
 #danmu-panel .danmu-item.hidden { display:none !important; }
 
+/* 弹幕教程卡片 —— 复用 .url-line / .copy-btn 等公共样式 */
+.danmu-tutorial-card {
+  background:#f8fafc;
+  border-radius:12px;
+  padding:14px 16px;
+  margin-bottom:12px;
+  border:1px solid #eef2f7;
+}
+.danmu-tutorial-card > h3 {
+  font-size:.92rem;
+  font-weight:600;
+  color:#0b1e33;
+  margin-bottom:8px;
+}
+.danmu-tutorial-card .section-title {
+  font-size:.78rem;
+  color:#0b1e33;
+  font-weight:600;
+  margin-top:14px;
+}
+.danmu-tutorial-card .section-desc {
+  font-size:.74rem;
+  color:#5a6f88;
+  line-height:1.7;
+  margin-top:2px;
+}
+.danmu-tutorial-card .api-format {
+  font-size:.74rem;
+  color:#5a6f88;
+  margin-top:6px;
+}
+.danmu-tutorial-card .api-format code {
+  font-size:.72rem;
+  color:#2563eb;
+  background:#eef3fa;
+  border-radius:4px;
+  padding:1px 5px;
+}
+/* 每条弹幕源复用 .url-line 结构（圆角药丸 + 复制按钮） */
+.danmu-src-line {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 14px;
+  background:#fff;
+  border-radius:50px;
+  border:1px solid #e0e6ed;
+  margin-top:6px;
+}
+.danmu-src-line .src-name {
+  flex:0 0 auto;
+  font-size:.72rem;
+  font-weight:600;
+  color:#0b1e33;
+}
+.danmu-src-line .src-url {
+  flex:1;
+  font-size:.72rem;
+  color:#2563eb;
+  word-break:break-all;
+}
+.danmu-tutorial-card .steps {
+  margin-top:12px;
+  font-size:.74rem;
+  color:#5a6f88;
+  line-height:1.8;
+}
+.danmu-tutorial-card .steps strong {
+  color:#0b1e33;
+}
+.danmu-tutorial-card .steps br { line-height:2; }
+.danmu-tutorial-card .tip {
+  margin-top:8px;
+  font-size:.72rem;
+  color:#8b9eb0;
+  line-height:1.7;
+}
+.danmu-tutorial-card .tip code {
+  font-size:.72rem;
+  color:#2563eb;
+  background:#eef3fa;
+  border-radius:4px;
+  padding:1px 5px;
+}
+
 /* ===== 关于面板 ===== */
 #about-panel > div { background:#f8fafd !important; border-radius:8px !important; padding:16px 18px !important; margin-bottom:14px !important; border:1px solid #e4ebf3 !important; }
 #about-panel h3 { font-size:.9rem !important; margin-bottom:10px !important; }
@@ -293,150 +373,40 @@ body.simple-mode #api-panel { display:block !important; }
 
 /* ============================================================
    移动端（≤600px）
-   小瓶 · 平铺导航 · 紧凑布局
    ============================================================ */
 @media (max-width: 600px) {
+  body { padding: 14px 8px 6px; }
+  #modeToggleBtn { top: 10px; left: 6px; width: 48px; font-size: .52rem; padding: 4px 2px; }
+  .main-card { padding: 14px 14px 12px; }
+  .header-block { padding-top: 10px; margin-bottom: 12px; }
+  h1 { font-size: 1.15rem; }
+  h1 .header-logo { width: 1.7rem; height: 1.7rem; vertical-align: -.4rem; }
+  .nav-tabs { gap: 4px; margin-bottom: 10px; justify-content: space-between; flex-wrap: nowrap; }
+  .nav-tab { flex: 1; text-align: center; padding: 4px 0; font-size: .95rem; border-radius: 24px; white-space: nowrap; }
+  .api-item, .live-item { padding: 12px 0; }
+  .api-item-name, .live-item-name { font-size: .92rem; }
+  .url-line { padding: 6px 10px; gap: 6px; }
+  .url-tag, .live-url-tag { font-size: .62rem; padding: 2px 10px; }
+  .url-text, .live-url-text { font-size: .72rem; }
+  .copy-btn { font-size: .62rem; padding: 0 10px; height: 24px; }
+  .live-top-aggregate { padding: 14px 16px; }
+  .live-url-line { padding: 8px 10px; }
+  .live-url-body .live-url-tag { font-size: .62rem; padding: 2px 10px; }
+  .live-url-body .live-url-text { font-size: .72rem; }
+  .live-info-inline { font-size: .6rem; }
+  .contributor-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px; }
+  .contributor-card { padding: 8px 10px; }
+  .contributor-avatar { width: 36px; height: 36px; font-size: .75rem; }
+  .contributor-name { font-size: .78rem; }
+  .contributor-role { font-size: .58rem; padding: 2px 8px; }
+  .contributor-desc { font-size: .65rem; line-height: 1.35; }
 
-  /* ===== 页面整体 ===== */
-  body {
-    padding: 14px 8px 6px;
-  }
-
-  /* ===== 模式切换按钮 ===== */
-  #modeToggleBtn {
-    top: 10px;
-    left: 6px;
-    width: 48px;
-    font-size: .52rem;
-    padding: 4px 2px;
-  }
-
-  /* ===== 主卡片 ===== */
-  .main-card {
-    padding: 14px 14px 12px;
-  }
-
-  /* ===== 头部 ===== */
-  .header-block {
-    padding-top: 10px;
-    margin-bottom: 12px;
-  }
-
-  h1 {
-    font-size: 1.15rem;
-  }
-
-  h1 .header-logo {
-    width: 1.7rem;
-    height: 1.7rem;
-    vertical-align: -.4rem;
-  }
-
-  /* ===== 导航栏：平铺 ===== */
-  .nav-tabs {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 10px;
-    justify-content: space-between; /* ✅ 平铺 */
-    flex-wrap: nowrap;
-  }
-
-  .nav-tab {
-    flex: 1;                    /* ✅ 五等分 */
-    text-align: center;
-    padding: 4px 0;
-    font-size: .95rem;
-    border-radius: 24px;
-    white-space: nowrap;
-  }
-
-  /* ===== 点播 / 直播列表 ===== */
-  .api-item,
-  .live-item {
-    padding: 12px 0;
-  }
-
-  .api-item-name,
-  .live-item-name {
-    font-size: .92rem;
-  }
-
-  /* ===== 地址行 ===== */
-  .url-line {
-    padding: 6px 10px;
-    gap: 6px;
-  }
-
-  .url-tag,
-  .live-url-tag {
-    font-size: .62rem;
-    padding: 2px 10px;
-  }
-
-  .url-text,
-  .live-url-text {
-    font-size: .72rem;
-  }
-
-  .copy-btn {
-    font-size: .62rem;
-    padding: 0 10px;
-    height: 24px;
-  }
-
-  /* ===== 直播聚合区 ===== */
-  .live-top-aggregate {
-    padding: 14px 16px;
-  }
-
-  .live-url-line {
-    padding: 8px 10px;
-  }
-
-  .live-url-body .live-url-tag {
-    font-size: .62rem;
-    padding: 2px 10px;
-  }
-
-  .live-url-body .live-url-text {
-    font-size: .72rem;
-  }
-
-  .live-info-inline {
-    font-size: .6rem;
-  }
-
-  /* ===== 贡献者：2 列 ===== */
-  .contributor-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px;
-  }
-
-  .contributor-card {
-    padding: 8px 10px;
-  }
-
-  .contributor-avatar {
-    width: 36px;
-    height: 36px;
-    font-size: .75rem;
-  }
-
-  .contributor-name {
-    font-size: .78rem;
-  }
-
-  .contributor-role {
-    font-size: .58rem;
-    padding: 2px 8px;
-  }
-
-  .contributor-desc {
-    font-size: .65rem;
-    line-height: 1.35;
-  }
+  /* 移动端弹幕源行：缩小内边距，允许垂直堆叠 */
+  .danmu-src-line { padding: 6px 10px; gap: 6px; }
+  .danmu-src-line .src-name { font-size: .68rem; }
+  .danmu-src-line .src-url { font-size: .68rem; }
+  .danmu-src-line .copy-btn { font-size: .62rem; padding: 0 10px; height: 24px; }
 }
-
 </style>
 </head>
 
@@ -481,12 +451,12 @@ body.simple-mode #api-panel { display:block !important; }
       </div>
     </div>
 
-    <!-- 弹幕面板（已提前） -->
+    <!-- 弹幕面板 -->
     <div class="tab-panel" id="danmu-panel">
       <div id="danmu-content"><div class="loading">⏳ 正在加载弹幕接口...</div></div>
     </div>
 
-    <!-- 下载面板（已靠后） -->
+    <!-- 下载面板 -->
     <div class="tab-panel" id="download-panel">
       <div id="downloads-content"><div class="loading">⏳ 正在加载下载资源...</div></div>
     </div>
@@ -541,6 +511,89 @@ body.simple-mode #api-panel { display:block !important; }
     <p>本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。 QQ 群：1067685939。</p>
   </footer>
 </div>
+
+<!-- ============================================================
+     弹幕教程模板（新增：弹幕接口 + 弹幕教程 两个顶部按钮）
+     ============================================================ -->
+<template id="danmu-panel-template">
+  <!-- ① 弹幕接口 -->
+  <div class="danmu-block" data-block="interface">
+    <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7">
+      <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">💬 弹幕接口</h3>
+      <p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">共 <span id="danmu-count">0</span> 条，点击「复制」把地址填入播放器。</p>
+      <div id="danmu-list"></div>
+    </div>
+  </div>
+
+  <!-- ② 弹幕使用教程 -->
+  <div class="danmu-block" data-block="tutorial" style="margin-top:14px;">
+    <div class="danmu-tutorial-card">
+      <h3>💬 弹幕使用教程</h3>
+      <p class="section-desc">两种壳子填的东西不一样，按自己壳子的类型选对应的一段。</p>
+
+      <!-- ① new 壳子 -->
+      <p class="section-title">① new 壳子：只填源本身</p>
+      <p class="section-desc">new 是单独一类壳子，它的弹幕接口只需要填弹幕源地址本身，填好后播放时会自动按片名+集数拉取弹幕。</p>
+      <p class="api-format">弹幕接口：<code>{弹幕源地址}</code></p>
+
+      <div class="danmu-src-line">
+        <span class="src-name">ecs源</span>
+        <span class="src-url">http://ecs.dysobo.cn:9321/87654321</span>
+        <button class="copy-btn" data-url="http://ecs.dysobo.cn:9321/87654321">复制</button>
+      </div>
+      <div class="danmu-src-line">
+        <span class="src-name">量大</span>
+        <span class="src-url">http://38.207.186.41/87654321</span>
+        <button class="copy-btn" data-url="http://38.207.186.41/87654321">复制</button>
+      </div>
+      <div class="danmu-src-line">
+        <span class="src-name">sym源</span>
+        <span class="src-url">https://danmu1.sym9233.dpdns.org/87654321</span>
+        <button class="copy-btn" data-url="https://danmu1.sym9233.dpdns.org/87654321">复制</button>
+      </div>
+      <div class="danmu-src-line">
+        <span class="src-name">777775源</span>
+        <span class="src-url">https://danmu.7777735.xyz/87654321</span>
+        <button class="copy-btn" data-url="https://danmu.7777735.xyz/87654321">复制</button>
+      </div>
+
+      <!-- ② 需要搜索接口的壳子 -->
+      <p class="section-title">② 需要搜索接口的壳子：填下面的搜索接口</p>
+      <p class="section-desc">如果你的壳子弹幕里需要填搜索接口，就填下面的完整地址；播放器会按片名和集数去拉弹幕。</p>
+      <p class="api-format">搜索接口：<code>{弹幕源地址}/api/v2/fongmi/danmaku?name={name}&amp;episode={episode}</code></p>
+
+      <div class="danmu-src-line">
+        <span class="src-name">ecs源</span>
+        <span class="src-url">http://ecs.dysobo.cn:9321/87654321/api/v2/fongmi/danmaku?name={name}&amp;episode={episode}</span>
+        <button class="copy-btn" data-url="http://ecs.dysobo.cn:9321/87654321/api/v2/fongmi/danmaku?name={name}&amp;episode={episode}">复制</button>
+      </div>
+      <div class="danmu-src-line">
+        <span class="src-name">量大</span>
+        <span class="src-url">http://38.207.186.41/87654321/api/v2/fongmi/danmaku?name={name}&amp;episode={episode}</span>
+        <button class="copy-btn" data-url="http://38.207.186.41/87654321/api/v2/fongmi/danmaku?name={name}&amp;episode={episode}">复制</button>
+      </div>
+      <div class="danmu-src-line">
+        <span class="src-name">sym源</span>
+        <span class="src-url">https://danmu1.sym9233.dpdns.org/87654321/api/v2/fongmi/danmaku?name={name}&amp;episode={episode}</span>
+        <button class="copy-btn" data-url="https://danmu1.sym9233.dpdns.org/87654321/api/v2/fongmi/danmaku?name={name}&amp;episode={episode}">复制</button>
+      </div>
+      <div class="danmu-src-line">
+        <span class="src-name">777775源</span>
+        <span class="src-url">https://danmu.7777735.xyz/87654321/api/v2/fongmi/danmaku?name={name}&amp;episode={episode}</span>
+        <button class="copy-btn" data-url="https://danmu.7777735.xyz/87654321/api/v2/fongmi/danmaku?name={name}&amp;episode={episode}">复制</button>
+      </div>
+
+      <!-- 使用步骤 -->
+      <p class="steps">
+        <strong>使用步骤：</strong><br>
+        1. 先确认壳子类型：new 壳子只填源地址，需要搜索接口的壳子填完整地址<br>
+        2. 播放器 → 设置 → 弹幕，把对应地址粘贴进去并保存<br>
+        3. 播放时自动匹配弹幕；搜不到就换一个源
+      </p>
+      <p class="tip">提示：<code>{name}</code> 与 <code>{episode}</code> 是占位符，原样保留不要改成具体片名；更多弹幕源见上方「弹幕」标签页。</p>
+    </div>
+  </div>
+</template>
 
 <script>
 /* ============================================================
@@ -842,13 +895,42 @@ function showDownloadGroup(key) {
     </div>`;
 }
 
-/* ===== 弹幕 ===== */
+/* ============================================================
+   弹幕面板：接口 + 教程 两个顶部区块
+   ============================================================ */
 function renderDanmu() {
-  const container=document.getElementById('danmu-content'); if(!container) return;
-  if(!DANMU_SOURCES.length){container.innerHTML='<div class="error-msg">⚠️ 未配置弹幕源，请检查 config.json 中的 danmuSources</div>';return;}
-  let rows='';
-  DANMU_SOURCES.forEach(s=>{rows+=`<div class="danmu-item" data-name="${s.name.toLowerCase()}" style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:8px"><span style="flex:0 0 auto;font-size:.78rem;font-weight:600;color:#0b1e33">${s.name}</span><span style="flex:1;font-size:.75rem;color:#2563eb;word-break:break-all">${s.url}</span><button class="copy-btn" data-url="${s.url}">复制</button></div>`;});
-  container.innerHTML=`<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7"><h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">💬 弹幕接口</h3><p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">共 ${DANMU_SOURCES.length} 条，点击「复制」把地址填入播放器的弹幕接口。</p>${rows}</div>`;
+  const container = document.getElementById('danmu-content');
+  if (!container) return;
+
+  // 首次渲染：从 <template> 克隆完整结构（接口 + 教程）
+  if (!container.dataset.built) {
+    container.dataset.built = 'true';
+    const tpl = document.getElementById('danmu-panel-template');
+    if (tpl) {
+      container.appendChild(tpl.content.cloneNode(true));
+    }
+  }
+
+  // —— 区块①：弹幕接口（保持原逻辑，从 DANMU_SOURCES 动态渲染）——
+  const listEl = container.querySelector('#danmu-list');
+  const countEl = container.querySelector('#danmu-count');
+  if (listEl) {
+    if (!DANMU_SOURCES.length) {
+      listEl.innerHTML = '<div class="error-msg">⚠️ 未配置弹幕源，请检查 config.json 中的 danmuSources</div>';
+    } else {
+      let rows = '';
+      DANMU_SOURCES.forEach(s => {
+        rows += `<div class="danmu-src-line danmu-item" data-name="${s.name.toLowerCase()}">
+          <span class="src-name">${s.name}</span>
+          <span class="src-url">${s.url}</span>
+          <button class="copy-btn" data-url="${s.url}">复制</button>
+        </div>`;
+      });
+      listEl.innerHTML = rows;
+    }
+    if (countEl) countEl.textContent = DANMU_SOURCES.length;
+  }
+  // 区块②（教程）为静态内容，已在 template 中，无需重复渲染
 }
 
 /* ===== 导航 ===== */
