@@ -299,7 +299,20 @@ body.simple-mode #api-panel { display:block !important; }
   .header-block { padding-top:10px; margin-bottom:12px; }
   h1 { font-size:1.15rem; }
   h1 .header-logo { width:1.7rem; height:1.7rem; vertical-align:-.4rem; }
-  .nav-tab { padding:6px 18px; font-size:.75rem; }
+
+  /* ✅ 导航按钮：小瓶（手机） */
+  .nav-tabs {
+    gap: 4px;
+    margin-bottom: 10px;
+    justify-content: flex-start;
+  }
+
+  .nav-tab {
+    padding: 4px 10px;
+    font-size: .66rem;
+    border-radius: 24px;
+  }
+
   .api-item, .live-item { padding:12px 0; }
   .api-item-name, .live-item-name { font-size:.92rem; }
   .url-line { padding:6px 10px; gap:6px; }
@@ -312,6 +325,8 @@ body.simple-mode #api-panel { display:block !important; }
   .live-url-body .live-url-text { font-size:.72rem; }
   .live-info-inline { font-size:.6rem; }
 }
+
+/* ===== 合作共创：小屏适配 ===== */
 .contributor-grid { gap:10px; }
 .contributor-card {
   background: transparent !important; border: none !important;
@@ -323,6 +338,7 @@ body.simple-mode #api-panel { display:block !important; }
 .contributor-name,
 .contributor-desc,
 .contributor-social { word-break:break-word; overflow-wrap:break-word; }
+
 @media (max-width:600px) {
   .contributor-grid { grid-template-columns:repeat(2,1fr) !important; gap:8px; }
   .contributor-card { padding:8px 10px; }
@@ -330,18 +346,6 @@ body.simple-mode #api-panel { display:block !important; }
   .contributor-name { font-size:.78rem; }
   .contributor-role { font-size:.58rem; padding:2px 8px; }
   .contributor-desc { font-size:.65rem; line-height:1.35; }
-}
-@media (max-width:600px) {
-  .nav-tabs {
-    gap: 4px;
-    margin-bottom: 10px;
-  }
-
-  .nav-tab {
-    padding: 4px 10px;     /* ✅ 超小屏再缩小 */
-    font-size: .66rem;
-    border-radius: 24px;
-  }
 }
 
 </style>
