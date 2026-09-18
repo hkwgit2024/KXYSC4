@@ -73,26 +73,38 @@
     { "id": "musicSource", "label": "音源", "icon": "🎵" },
     { "id": "onlineVideo", "label": "在线影视", "icon": "🎬" }
   ],
-
   "about": {
-    "backupDomains": [
+    "domains": [
       "https://0.12yue.de5.net",
       "https://0.cdz.qzz.io",
-      "https://0.wdzb.eu.cc",
-      "https://tvbox.moliys.icu"
+      "https://0.wdzb.eu.cc"
     ],
-    "contributorsTitle": "🤝 合作共创",
-    "contributorsDesc": "感谢以下伙伴对本站的内容贡献与支持（<strong style=\"color:#ca8a04\">排名不分先后</strong>）：",
-    "contributorsNote": "* 还有部分贡献者因未留下署名信息而未在此列出，同样感谢你们的默默付出。如有遗漏请联系站长补充。",
-    "declarationTitle": "📢 声明与联系",
-    "declarationText": "本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。",
-    "contact": {
-      "qqGroup": "1067685939",
-      "qqGroupLink": "https://qm.qq.com/q/gmRKKPT3x0",
-      "telegram": "https://t.me/+nrWtFerPAfcwOTg9",
-      "github": "https://github.com/lubin776/tvbox-api-backup"
-    },
-    "contributors": []
+    "declaration": "本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。",
+    "qqGroup": "1067685939",
+    "telegram": "https://t.me/+nrWtFerPAfcwOTg9",
+    "contributors": [
+      {
+        "name": "误道者",
+        "role": "站长 / 资源整理",
+        "desc": "站点发起与接口资源整理",
+        "avatar": "vip/jueson.jpg",
+        "social": ""
+      },
+      {
+        "name": "沫离",
+        "role": "弹幕分页",
+        "desc": "独立贡献弹幕接口分页模块",
+        "avatar": "vip/沫离.jpg",
+        "social": ""
+      },
+      {
+        "name": "简约风<格>",
+        "role": "推广贡献",
+        "desc": "将本网页内嵌 APP 进行推广分发",
+        "avatar": "vip/简约风格.jpg",
+        "social": ""
+      }
+    ]
   },
 
   "footer": "本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。 QQ 群：1067685939。",
