@@ -126,7 +126,10 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 
 /* 简洁模式 */
 body.simple-mode .nav-tabs { display:none !important; }
-body.simple-mode #more-panel { display:none !important; }
+body.simple-mode #live-panel,
+body.simple-mode #download-panel,
+body.simple-mode #danmu-panel,
+body.simple-mode #about-panel { display:none !important; }
 body.simple-mode #api-panel { display:block !important; }
 
 /* ===== 直播面板 ===== */
@@ -235,7 +238,7 @@ body.simple-mode #api-panel { display:block !important; }
 /* ===== 弹幕面板 ===== */
 #danmu-panel .danmu-item.hidden { display:none !important; }
 
-/* ===== 更多面板 ===== */
+/* ===== 更多面板（k.html 同步版） ===== */
 #more-panel { overflow-x:hidden; width:100%; }
 #more-content { width:100%; overflow-x:hidden; }
 #more-content.has-sidebar {
@@ -429,10 +432,77 @@ body.simple-mode #api-panel { display:block !important; }
       </div>
     </div>
 
-    <!-- 更多面板 -->
+    <!-- 直播面板 -->
+    <div class="tab-panel" id="live-panel">
+      <div class="live-top-aggregate">
+        <h3>海量直播聚合多线路专用接口</h3>
+        <div class="domain-line">
+          <span>https://0.12yue.de5.net/tvbox/海量直播线路.json</span>
+          <button class="copy-btn" data-url="https://0.12yue.de5.net/tvbox/海量直播线路.json">复制</button>
+        </div>
+      </div>
+      <div class="live-list" id="liveListContainer">
+        <div class="loading" id="liveLoading">⏳ 正在加载直播列表...</div>
+      </div>
+    </div>
+
+    <!-- 弹幕面板 -->
+    <div class="tab-panel" id="danmu-panel">
+      <div id="danmu-content"><div class="loading">⏳ 正在加载弹幕接口...</div></div>
+    </div>
+
+    <!-- 下载面板 -->
+    <div class="tab-panel" id="download-panel">
+      <div id="downloads-content"><div class="loading">⏳ 正在加载下载资源...</div></div>
+    </div>
+
+    <!-- 更多面板（k.html 动态版） -->
     <div class="tab-panel" id="more-panel">
       <div id="more-content">
         <div class="loading">⏳ 正在加载更多资源...</div>
+      </div>
+    </div>
+
+    <!-- 关于面板 -->
+    <div class="tab-panel" id="about-panel">
+      <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
+        <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">🌐 备份线路域名</h3>
+        <p style="margin-bottom:6px;font-size:.76rem;color:#5a6f88">四个域名互为备份，任一个可用：</p>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
+          <span style="flex:1;font-size:.75rem;color:#2563eb">https://0.12yue.de5.net</span>
+          <button class="copy-btn" data-url="https://0.12yue.de5.net">复制</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
+          <span style="flex:1;font-size:.75rem;color:#2563eb">https://0.cdz.qzz.io</span>
+          <button class="copy-btn" data-url="https://0.cdz.qzz.io">复制</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
+          <span style="flex:1;font-size:.75rem;color:#2563eb">https://0.wdzb.eu.cc</span>
+          <button class="copy-btn" data-url="https://0.wdzb.eu.cc">复制</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:6px">
+          <span style="flex:1;font-size:.75rem;color:#2563eb">https://tvbox.moliys.icu</span>
+          <button class="copy-btn" data-url="https://tvbox.moliys.icu">复制</button>
+        </div>
+      </div>
+
+      <div id="contributors-card" style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
+        <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">🤝 合作共创</h3>
+        <p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">感谢以下伙伴对本站的内容贡献与支持（<strong style="color:#ca8a04">排名不分先后</strong>）：</p>
+        <div class="contributor-grid" id="contributors-list">
+          <div class="loading">⏳ 正在加载贡献者...</div>
+        </div>
+        <p style="font-size:.68rem;color:#8fa3b8;margin-top:10px;line-height:1.5;font-style:italic">* 还有部分贡献者因未留下署名信息而未在此列出，同样感谢你们的默默付出。如有遗漏请联系站长补充。</p>
+      </div>
+
+      <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;margin-bottom:12px;border:1px solid #eef2f7">
+        <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:8px">📢 声明与联系</h3>
+        <ul style="padding-left:16px">
+          <li style="font-size:.76rem;color:#5a6f88;line-height:1.6">本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。</li>
+        </ul>
+        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">QQ 交流群：<a href="https://qm.qq.com/q/gmRKKPT3x0" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">1067685939</a></p>
+        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<a href="https://t.me/+nrWtFerPAfcwOTg9" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">https://t.me/+nrWtFerPAfcwOTg9</a></p>
+        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">项目地址：<a href="https://github.com/lubin776/tvbox-api-backup" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">https://github.com/lubin776/tvbox-api-backup</a></p>
       </div>
     </div>
   </div>
@@ -449,7 +519,7 @@ body.simple-mode #api-panel { display:block !important; }
 
 const MODE_KEY = 'site_mode';
 const TAB_KEY = 'current_tab';
-const VALID_TABS = ['api','more'];
+const VALID_TABS = ['api','live','danmu','download','more','about'];
 
 const btn = document.getElementById('modeToggleBtn');
 const searchBox = document.getElementById('search');
@@ -463,6 +533,12 @@ const API_DOMAINS = [
   {tag:"备份一线", base:"https://0.12yue.de5.net/tvbox/"},
   {tag:"备份二线", base:"https://0.cdz.qzz.io/tvbox/"},
   {tag:"备份三线", base:"https://0.wdzb.eu.cc/tvbox/"}
+];
+
+const LIVE_DOMAINS = [
+  {tag:"备份一线", base:"https://0.12yue.de5.net/tvbox/live/"},
+  {tag:"备份二线", base:"https://0.cdz.qzz.io/tvbox/live/"},
+  {tag:"备份三线", base:"https://0.wdzb.eu.cc/tvbox/live/"}
 ];
 
 const API_WEIGHTS = {
@@ -480,6 +556,11 @@ let currentTabId = VALID_TABS.includes(localStorage.getItem(TAB_KEY))
 
 let topSeed = Date.now();
 let rawListText = null;
+let rawLiveText = null;
+let DOWNLOAD_SOURCES = [];
+let DANMU_SOURCES = [];
+let SITE_CONFIG = null;
+let configData = null; // k.html 更多面板用
 
 document.body.className = currentMode + '-mode';
 updateBtnText();
@@ -525,55 +606,63 @@ function isRecent(d) {
   const y=parseInt(d.slice(0,4)),m=parseInt(d.slice(4,6))-1,day=parseInt(d.slice(6,8));
   return (Date.now()-new Date(y,m,day).getTime())/86400000 <= 2;
 }
+function getInitials(name) { return name ? name.slice(0,1).toUpperCase() : '?'; }
 
-/* ===== 点播 ===== */
-async function fetchListText() {
-  if(rawListText!==null) return rawListText;
-  const res = await fetch('list.txt?t='+Date.now()+'&r='+Math.random(), {cache:'no-store',headers:{'Cache-Control':'no-cache'}});
-  if(!res.ok) throw new Error('HTTP '+res.status);
-  rawListText = await res.text(); return rawListText;
-}
-function parseItems(text) {
-  if(!text||!text.trim()) return [];
-  return text.trim().split('\n').filter(l=>l.trim()).map(line=>{
-    const p=line.split('|').map(s=>s.trim()); if(!p[0]) return null;
-    return {file:p[0],name:p[0].replace(/\.json$/i,''),date:p[1]||'',size:p[2]||'',origUrl:p[3]||'',weight:API_WEIGHTS.hasOwnProperty(p[0])?API_WEIGHTS[p[0]]:999};
-  }).filter(Boolean);
-}
-function renderApi() {
-  const container = document.getElementById('listContainer');
-  fetchListText().then(text=>{
-    const tip=document.getElementById('apiLoading'); if(tip) tip.style.display='none';
-    let items=parseItems(text);
-    if(!items.length){container.innerHTML='<div class="error-msg">⚠️ 接口列表为空，请检查 list.txt</div>';return;}
-    const ri=items.filter(i=>ROTATE_KEYWORDS.some(kw=>i.name.toLowerCase().includes(kw.toLowerCase())));
-    const top=getTopItem(ri); if(top) top.weight=Number.MIN_SAFE_INTEGER;
-    items.sort((a,b)=>a.weight-b.weight);
-    let html='';
-    items.forEach(it=>{
-      const isNew=isRecent(it.date); let lines='';
-      if(it.origUrl) lines+=`<div class="url-line"><span class="url-tag">原始线路</span><span class="url-text">${it.origUrl}</span><button class="copy-btn" data-url="${it.origUrl}">复制</button></div>`;
-      API_DOMAINS.forEach(d=>{const u=d.base+it.name+'.json';lines+=`<div class="url-line"><span class="url-tag">${d.tag}</span><span class="url-text">${u}</span><button class="copy-btn" data-url="${u}">复制</button></div>`;});
-      html+=`<div class="api-item" data-name="${it.name.toLowerCase()}"><div class="api-item-header"><div class="api-item-name" title="${it.name}">${it.name}</div><div class="api-item-meta"><span class="${isNew?'badge-new':'badge-old'}">备份时间 ${formatDateToChinese(it.date)}</span>${it.size?'&nbsp;&nbsp;'+it.size:''}</div></div><div class="api-item-urls">${lines}</div></div>`;
-    });
-    container.innerHTML=html;
-  }).catch(err=>{
-    const tip=document.getElementById('apiLoading'); if(tip) tip.style.display='none';
-    container.innerHTML=`<div class="error-msg">❌ 接口加载失败：${err.message||err}</div>`;
-  });
-}
-
-/* ===== 更多面板（config.json 动态渲染） ===== */
-let configData = null;
-
+/* ===== 配置加载（原有 + k.html 扩展） ===== */
 async function loadConfig() {
-  if (configData) return configData;
-  const res = await fetch('config.json?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
-  if (!res.ok) throw new Error('HTTP ' + res.status);
-  configData = await res.json();
-  return configData;
+  if (SITE_CONFIG) return SITE_CONFIG;
+  try {
+    const res = await fetch('config.json?t='+Date.now()+'&r='+Math.random(), {cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    SITE_CONFIG = await res.json();
+    configData = SITE_CONFIG; // 同步给 k.html 的更多面板用
+    DOWNLOAD_SOURCES = Array.isArray(SITE_CONFIG.downloadSources) ? SITE_CONFIG.downloadSources : [];
+    DANMU_SOURCES = Array.isArray(SITE_CONFIG.danmuSources) ? SITE_CONFIG.danmuSources : [];
+    renderContributors(SITE_CONFIG.about && SITE_CONFIG.about.contributors);
+
+    if (SITE_CONFIG.site) {
+      if (SITE_CONFIG.site.logo) headerLogo.src = SITE_CONFIG.site.logo;
+      if (SITE_CONFIG.site.title) {
+        const h1 = headerLogo.parentNode;
+        let found = false;
+        h1.childNodes.forEach(n => {
+          if (n.nodeType === Node.TEXT_NODE && n.textContent.trim()) {
+            if (!found) { n.textContent = SITE_CONFIG.site.title; found = true; }
+            else n.textContent = '';
+          }
+        });
+        if (!found) h1.appendChild(document.createTextNode(SITE_CONFIG.site.title));
+      }
+      if (SITE_CONFIG.site.subtitle || SITE_CONFIG.site.qqGroup) {
+        let sub = SITE_CONFIG.site.subtitle || '备用数据源，防屏不迷路';
+        if (SITE_CONFIG.site.qqGroup) {
+          sub += '<br>QQ交流群：' + SITE_CONFIG.site.qqGroup;
+        } else {
+          sub += '<br>QQ交流群：1067685939';
+        }
+        headerSubtitle.innerHTML = sub;
+      }
+    }
+    return SITE_CONFIG;
+  } catch(e) { DOWNLOAD_SOURCES=[]; DANMU_SOURCES=[]; renderContributors([]); throw e; }
 }
 
+function renderContributors(list) {
+  const c = document.getElementById('contributors-list'); if(!c) return;
+  if(!Array.isArray(list)||!list.length){ c.innerHTML='<div class="error-msg">暂无合作共创人员</div>'; return; }
+  c.innerHTML = list.map(c=>`
+    <div class="contributor-card" data-name="${(c.name||'').toLowerCase()}">
+      ${c.avatar?`<img class="contributor-avatar" src="${c.avatar}" alt="${c.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="contributor-avatar" style="display:none">${getInitials(c.name)}</div>`:`<div class="contributor-avatar">${getInitials(c.name)}</div>`}
+      <div class="contributor-info">
+        <div class="contributor-name" title="${c.name}">${c.name}</div>
+        ${c.role?`<div class="contributor-role">${c.role}</div>`:''}
+        ${c.desc?`<div class="contributor-desc">${c.desc}</div>`:''}
+        ${c.social?`<div class="contributor-social">${c.social}</div>`:''}
+      </div>
+    </div>`).join('');
+}
+
+/* ===== k.html 更多面板渲染函数 ===== */
 function renderApiItemCard(item) {
   let noteHtml = item.note ? `<div style="font-size:.68rem;color:#8b9eb0;margin-top:6px">${item.note}</div>` : '';
   return `<div class="api-item" data-name="${item.name.toLowerCase()}">
@@ -595,6 +684,7 @@ function renderApiItemCard(item) {
 function renderOnlineItem(item) {
   const host = (item.url.match(/https?:\/\/([^/]+)/) || [, ''])[1];
   const ph = item.name.charAt(0);
+  // 链接强制显示中文，不使用 UTF-8 编码，favicon 服务直接传中文域名
   return `<a class="online-item" href="${item.url}" target="_blank" rel="noopener noreferrer">
   <span class="online-item-icon"><img src="https://favicon.im/${host}?larger=true" alt="${item.name}" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/${host}';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">${ph}</span></span>
   <div class="online-item-info"><div class="online-item-name">${item.name}</div><div class="online-item-desc">${item.desc}</div></div>
@@ -625,15 +715,21 @@ async function renderMore() {
 
   let cfg;
   try {
-    cfg = await loadConfig();
+    cfg = await loadConfig(); // 复用已有的 loadConfig
   } catch (err) {
     container.innerHTML = `<div class="error-msg">❌ 配置加载失败：${err.message || err}<br>请确认 config.json 文件存在且可访问。</div>`;
     container.dataset.rendered = '';
     return;
   }
 
-  // 渲染侧边栏
+  // 渲染侧边栏（从 config.json 的 moreTabs 读取）
   const tabs = cfg.moreTabs || [];
+  if (!tabs.length) {
+    container.innerHTML = `<div class="error-msg">⚠️ config.json 中未配置 moreTabs</div>`;
+    container.dataset.rendered = '';
+    return;
+  }
+
   const sidebarHtml = tabs.map((t, i) =>
     `<button class="dl-side-btn${i === 0 ? ' active' : ''}" data-more-tab="${t.id}">
       <span class="dl-side-icon">${t.icon}</span>
@@ -678,10 +774,182 @@ async function renderMore() {
   });
 }
 
+/* ===== 点播 ===== */
+async function fetchListText() {
+  if(rawListText!==null) return rawListText;
+  const res = await fetch('list.txt?t='+Date.now()+'&r='+Math.random(), {cache:'no-store',headers:{'Cache-Control':'no-cache'}});
+  if(!res.ok) throw new Error('HTTP '+res.status);
+  rawListText = await res.text(); return rawListText;
+}
+function parseItems(text) {
+  if(!text||!text.trim()) return [];
+  return text.trim().split('\n').filter(l=>l.trim()).map(line=>{
+    const p=line.split('|').map(s=>s.trim()); if(!p[0]) return null;
+    return {file:p[0],name:p[0].replace(/\.json$/i,''),date:p[1]||'',size:p[2]||'',origUrl:p[3]||'',weight:API_WEIGHTS.hasOwnProperty(p[0])?API_WEIGHTS[p[0]]:999};
+  }).filter(Boolean);
+}
+function renderApi() {
+  const container = document.getElementById('listContainer');
+  fetchListText().then(text=>{
+    const tip=document.getElementById('apiLoading'); if(tip) tip.style.display='none';
+    let items=parseItems(text);
+    if(!items.length){container.innerHTML='<div class="error-msg">⚠️ 接口列表为空，请检查 list.txt</div>';return;}
+    const ri=items.filter(i=>ROTATE_KEYWORDS.some(kw=>i.name.toLowerCase().includes(kw.toLowerCase())));
+    const top=getTopItem(ri); if(top) top.weight=Number.MIN_SAFE_INTEGER;
+    items.sort((a,b)=>a.weight-b.weight);
+    let html='';
+    items.forEach(it=>{
+      const isNew=isRecent(it.date); let lines='';
+      if(it.origUrl) lines+=`<div class="url-line"><span class="url-tag">原始线路</span><span class="url-text">${it.origUrl}</span><button class="copy-btn" data-url="${it.origUrl}">复制</button></div>`;
+      API_DOMAINS.forEach(d=>{const u=d.base+it.name+'.json';lines+=`<div class="url-line"><span class="url-tag">${d.tag}</span><span class="url-text">${u}</span><button class="copy-btn" data-url="${u}">复制</button></div>`;});
+      html+=`<div class="api-item" data-name="${it.name.toLowerCase()}"><div class="api-item-header"><div class="api-item-name" title="${it.name}">${it.name}</div><div class="api-item-meta"><span class="${isNew?'badge-new':'badge-old'}">备份时间 ${formatDateToChinese(it.date)}</span>${it.size?'&nbsp;&nbsp;'+it.size:''}</div></div><div class="api-item-urls">${lines}</div></div>`;
+    });
+    container.innerHTML=html;
+  }).catch(err=>{
+    const tip=document.getElementById('apiLoading'); if(tip) tip.style.display='none';
+    container.innerHTML=`<div class="error-msg">❌ 接口加载失败：${err.message||err}</div>`;
+  });
+}
+
+/* ===== 直播 ===== */
+async function fetchLiveText() {
+  if(rawLiveText!==null) return rawLiveText;
+  const res = await fetch('livelist.txt?t='+Date.now(), {cache:'no-store'});
+  if(!res.ok) throw new Error('HTTP '+res.status);
+  rawLiveText = await res.text(); return rawLiveText;
+}
+function parseLiveItems(text) {
+  if(!text||!text.trim()) return [];
+  return text.trim().split('\n').filter(l=>l.trim()).map(line=>{
+    const p=line.split('|').map(s=>s.trim()); if(!p[0]) return null;
+    return {name:p[0]||'',displayName:p[0].replace(/\.[^.]+$/,'') ,date:p[1]||'',size:p[2]||'',origUrl:p[3]||'',source:p[4]||'',ua:p[5]||''};
+  }).filter(Boolean);
+}
+function renderLiveList() {
+  const container=document.getElementById('liveListContainer'); const loading=document.getElementById('liveLoading');
+  fetchLiveText().then(text=>{
+    if(loading) loading.style.display='none';
+    const items=parseLiveItems(text);
+    if(!items.length){container.innerHTML='<div class="error-msg">⚠️ 直播列表为空，请检查 livelist.txt</div>';return;}
+    let html='';
+    items.forEach(it=>{
+      const isNew=isRecent(it.date); let urls='';
+      if(it.origUrl) urls+=`<div class="live-url-line"><div class="live-info-inline"><span>来源：${it.source||'未知'}</span>${it.ua?'<span class="sep">|</span><span>UA：'+it.ua+'</span>':''}</div><div class="live-url-body"><span class="live-url-tag">原始线路</span><span class="live-url-text">${it.origUrl}</span><button class="copy-btn" data-url="${it.origUrl}">复制</button></div></div>`;
+      LIVE_DOMAINS.forEach(d=>{const u=d.base+it.name;urls+=`<div class="live-url-line"><div class="live-url-body"><span class="live-url-tag">${d.tag}</span><span class="live-url-text">${u}</span><button class="copy-btn" data-url="${u}">复制</button></div></div>`;});
+      html+=`<div class="live-item" data-name="${it.displayName.toLowerCase()}"><div class="live-item-header"><div class="live-item-name" title="${it.displayName}">${it.displayName}</div><div class="live-item-meta"><span class="${isNew?'live-badge-new':'live-badge-old'}">备份时间 ${formatDateToChinese(it.date)}</span>${it.size?'&nbsp;&nbsp;'+it.size:''}</div></div><div class="live-item-urls">${urls}</div></div>`;
+    });
+    container.innerHTML=html;
+  }).catch(err=>{if(loading)loading.style.display='none';container.innerHTML=`<div class="error-msg">❌ 直播列表加载失败：${err.message||err}</div>`;});
+}
+
+/* ===== 下载 ===== */
+let dlCache = new Map();
+let dlCurrentGroup = null;
+
+async function renderDownloads(force) {
+  const container = document.getElementById('downloads-content');
+  if (!container || (container.dataset.rendered && !force)) return;
+  if (!DOWNLOAD_SOURCES.length) { container.innerHTML = '<div class="error-msg">⚠️ 未配置下载源</div>'; return; }
+
+  if (!container.dataset.rendered) {
+    container.dataset.rendered = 'true';
+    container.className = 'has-sidebar';
+    container.innerHTML = `
+      <div class="dl-sidebar" id="dlSidebar"></div>
+      <div class="dl-body" id="dlBody"><div class="loading">⏳ 正在加载下载资源...</div></div>`;
+  }
+
+  const sidebar = document.getElementById('dlSidebar');
+  const body = document.getElementById('dlBody');
+
+  if (!sidebar.dataset.built) {
+    sidebar.dataset.built = 'true';
+    sidebar.innerHTML = DOWNLOAD_SOURCES.map((src, idx) => {
+      const icon = src.icon ? `<img src="${src.icon}" style="width:1.4rem;height:1.4rem;border-radius:6px;object-fit:cover">`
+                            : `<span class="dl-side-icon">📦</span>`;
+      return `<button class="dl-side-btn ${idx === 0 ? 'active' : ''}" data-key="${src.url}">${icon}<span>${src.name || ('组' + (idx + 1))}</span></button>`;
+    }).join('');
+
+    sidebar.querySelectorAll('.dl-side-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        sidebar.querySelectorAll('.dl-side-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        showDownloadGroup(btn.getAttribute('data-key'));
+      });
+    });
+  }
+
+  await Promise.all(DOWNLOAD_SOURCES.map(async src => {
+    if (dlCache.has(src.url)) return;
+    try {
+      const res = await fetch(src.url + '?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const raw = await res.text();
+      const cleaned = raw.replace(/[\u201c\u201d]/g, '"').replace(/[\u2018\u2019]/g, "'").replace(/：/g, ':').replace(/，/g, ',');
+      const data = JSON.parse(cleaned);
+      let cards = [];
+      const arr = data.list || data;
+      if (Array.isArray(arr)) {
+        arr.forEach(group => {
+          if (group && Array.isArray(group.list)) group.list.forEach(i => cards.push(i));
+          else cards.push(group);
+        });
+      }
+      dlCache.set(src.url, { src, cards });
+    } catch (e) {
+      dlCache.set(src.url, { src, cards: [], error: e.message });
+    }
+  }));
+
+  const firstKey = DOWNLOAD_SOURCES[0].url;
+  showDownloadGroup(dlCurrentGroup || firstKey);
+}
+
+function showDownloadGroup(key) {
+  dlCurrentGroup = key;
+  const body = document.getElementById('dlBody');
+  if (!body) return;
+  const entry = dlCache.get(key);
+  if (!entry) { body.innerHTML = '<div class="loading">⏳ 加载中...</div>'; return; }
+  const { src, cards, error } = entry;
+  if (error) { body.innerHTML = `<div class="error-msg">❌ ${src.name} 加载失败：${error}</div>`; return; }
+  if (!cards.length) { body.innerHTML = `<div class="error-msg">⚠️ ${src.name} 暂无资源</div>`; return; }
+
+  const title = src.name ? `<div class="dl-group-title">${src.name}</div>` : '';
+  const desc = src.description ? `<div class="dl-group-desc">${src.description}</div>` : '';
+  const cardsHtml = cards.map(i => `
+    <a class="download-card" href="${i.url || '#'}" target="_blank" rel="noopener noreferrer" data-name="${(i.name || '').toLowerCase()}">
+      <img src="${i.icon || ''}" onerror="this.style.visibility='hidden'" style="width:90%;max-width:100%;height:auto;aspect-ratio:1/1;border-radius:10px;margin-bottom:14px;object-fit:cover;background:#f0f3f8;">
+      <div style="flex:1;width:100%;margin-top:auto;">
+        <div style="font-size:.76rem;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${i.name || ''}</div>
+        ${i.version ? `<div style="font-size:.6rem;color:#8b9eb0;margin-top:2px;">${i.version}</div>` : ''}
+      </div>
+    </a>`).join('');
+
+  body.innerHTML = `
+    <div class="dl-group active">
+      ${title}${desc}
+      <div class="dl-cards">${cardsHtml}</div>
+    </div>`;
+}
+
+/* ===== 弹幕 ===== */
+function renderDanmu() {
+  const container=document.getElementById('danmu-content'); if(!container) return;
+  if(!DANMU_SOURCES.length){container.innerHTML='<div class="error-msg">⚠️ 未配置弹幕源，请检查 config.json 中的 danmuSources</div>';return;}
+  let rows='';
+  DANMU_SOURCES.forEach(s=>{rows+=`<div class="danmu-item" data-name="${s.name.toLowerCase()}" style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:8px"><span style="flex:0 0 auto;font-size:.78rem;font-weight:600;color:#0b1e33">${s.name}</span><span style="flex:1;font-size:.75rem;color:#2563eb;word-break:break-all">${s.url}</span><button class="copy-btn" data-url="${s.url}">复制</button></div>`;});
+  container.innerHTML=`<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7"><h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">💬 弹幕接口</h3><p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">共 ${DANMU_SOURCES.length} 条，点击「复制」把地址填入播放器的弹幕接口。</p>${rows}</div>`;
+}
+
 /* ===== 导航 ===== */
 const tabsData = [
   {id:"api",label:"点播"},
-  {id:"more",label:"更多"}
+  {id:"live",label:"直播"},
+  {id:"danmu",label:"弹幕"},
+  {id:"download",label:"下载"},
+  {id:"more",label:"更多"},
+  {id:"about",label:"关于"}
 ];
 
 function renderTabs() {
@@ -701,12 +969,16 @@ function showPanel(tabId) {
   if(searchBox){
     searchBox.value='';
     document.querySelectorAll('#api-panel .api-item.hidden').forEach(e=>e.classList.remove('hidden'));
+    document.querySelectorAll('#live-panel .live-item.hidden').forEach(e=>e.classList.remove('hidden'));
+    document.querySelectorAll('.download-card.hidden').forEach(e=>e.classList.remove('hidden'));
+    document.querySelectorAll('#danmu-panel .danmu-item.hidden').forEach(e=>e.classList.remove('hidden'));
+    document.querySelectorAll('.contributor-card.hidden').forEach(e=>e.classList.remove('hidden'));
   }
 
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   const panel=document.getElementById(tabId+'-panel'); if(panel) panel.classList.add('active');
 
-  const hideSearchTabs = ['more'];
+  const hideSearchTabs = ['danmu','download','more','about'];
   if(searchBox){
     searchBox.style.display = hideSearchTabs.includes(tabId) ? 'none' : '';
   }
@@ -715,6 +987,9 @@ function showPanel(tabId) {
     topSeed=Date.now()+Math.random();
     renderApi();
   }
+  if(tabId==='live') renderLiveList();
+  if(tabId==='download') renderDownloads();
+  if(tabId==='danmu') renderDanmu();
   if(tabId==='more') renderMore();
 }
 
@@ -722,6 +997,12 @@ function showPanel(tabId) {
 function globalSearch() {
   const kw=(searchBox.value||'').toLowerCase().trim();
   document.querySelectorAll('#api-panel .api-item').forEach(e=>{const n=e.getAttribute('data-name')||'';e.classList.toggle('hidden',!n.includes(kw));});
+  document.querySelectorAll('#live-panel .live-item').forEach(e=>{const n=e.getAttribute('data-name')||'';e.classList.toggle('hidden',!n.includes(kw));});
+  if(currentMode!=='simple'){
+    document.querySelectorAll('.download-card').forEach(c=>{const n=c.getAttribute('data-name')||'';c.classList.toggle('hidden',!n.includes(kw));});
+    document.querySelectorAll('#danmu-panel .danmu-item').forEach(e=>{const n=e.getAttribute('data-name')||'';e.classList.toggle('hidden',!n.includes(kw));});
+    document.querySelectorAll('.contributor-card').forEach(c=>{const n=c.getAttribute('data-name')||'';c.classList.toggle('hidden',!n.includes(kw));});
+  }
 }
 
 function positionSearchBox() {
@@ -762,6 +1043,14 @@ if (currentMode === 'simple') {
 } else {
   showPanel(currentTabId);
 }
+
+loadConfig().then(()=>{
+  if(currentMode!=='simple'){
+    renderDownloads();
+    renderDanmu();
+    renderMore();
+  }
+});
 </script>
 </body>
 </html>
