@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:-1 tvg-name="应该能看",应该能看
+#EXTINF:-1 tvg-name="iptv直播｜Tg：@huliys9",iptv直播｜Tg：@huliys9
 汕头频道,#genre#
 汕头,http://183.10.180.69:202/tsfile/live/1000_1.m3u8?key=txiptv&playlive=1&down=1
 汕头,http://183.10.180.89:202/tsfile/live/1000_1.m3u8?key=txiptv&playlive=1&down=1
