@@ -129,7 +129,6 @@ body.simple-mode .nav-tabs { display:none !important; }
 body.simple-mode #live-panel,
 body.simple-mode #download-panel,
 body.simple-mode #danmu-panel,
-body.simple-mode #more-panel,
 body.simple-mode #about-panel { display:none !important; }
 body.simple-mode #api-panel { display:block !important; }
 
@@ -239,16 +238,7 @@ body.simple-mode #api-panel { display:block !important; }
 /* ===== 弹幕面板 ===== */
 #danmu-panel .danmu-item.hidden { display:none !important; }
 
-/* ===== 更多面板 ===== */
-#more-panel { overflow-x:hidden; width:100%; }
-#more-content { width:100%; overflow-x:hidden; }
-#more-content.has-sidebar {
-  display:flex; flex-direction:row; gap:12px; align-items:flex-start;
-}
-.more-group { display:none; width:100%; }
-.more-group.active { display:block; }
-
-/* ===== 更多面板 ===== */
+/* ===== 更多面板（k.html 同步版） ===== */
 #more-panel { overflow-x:hidden; width:100%; }
 #more-content { width:100%; overflow-x:hidden; }
 #more-content.has-sidebar {
@@ -332,7 +322,6 @@ body.simple-mode #api-panel { display:block !important; }
   color:#8b9eb0;
   margin-top:3px;
   line-height:1.4;
-  /* 小屏允许换行，不被截断 */
   white-space:normal;
   display:-webkit-box;
   -webkit-line-clamp:2;
@@ -467,7 +456,7 @@ body.simple-mode #api-panel { display:block !important; }
       <div id="downloads-content"><div class="loading">⏳ 正在加载下载资源...</div></div>
     </div>
 
-    <!-- 更多面板 -->
+    <!-- 更多面板（k.html 动态版） -->
     <div class="tab-panel" id="more-panel">
       <div id="more-content">
         <div class="loading">⏳ 正在加载更多资源...</div>
@@ -571,6 +560,7 @@ let rawLiveText = null;
 let DOWNLOAD_SOURCES = [];
 let DANMU_SOURCES = [];
 let SITE_CONFIG = null;
+let configData = null; // k.html 更多面板用
 
 document.body.className = currentMode + '-mode';
 updateBtnText();
@@ -618,12 +608,14 @@ function isRecent(d) {
 }
 function getInitials(name) { return name ? name.slice(0,1).toUpperCase() : '?'; }
 
-/* ===== 配置加载 ===== */
+/* ===== 配置加载（原有 + k.html 扩展） ===== */
 async function loadConfig() {
+  if (SITE_CONFIG) return SITE_CONFIG;
   try {
     const res = await fetch('config.json?t='+Date.now()+'&r='+Math.random(), {cache:'no-store'});
     if(!res.ok) throw new Error('HTTP '+res.status);
     SITE_CONFIG = await res.json();
+    configData = SITE_CONFIG; // 同步给 k.html 的更多面板用
     DOWNLOAD_SOURCES = Array.isArray(SITE_CONFIG.downloadSources) ? SITE_CONFIG.downloadSources : [];
     DANMU_SOURCES = Array.isArray(SITE_CONFIG.danmuSources) ? SITE_CONFIG.danmuSources : [];
     renderContributors(SITE_CONFIG.about && SITE_CONFIG.about.contributors);
@@ -651,7 +643,8 @@ async function loadConfig() {
         headerSubtitle.innerHTML = sub;
       }
     }
-  } catch(e) { DOWNLOAD_SOURCES=[]; DANMU_SOURCES=[]; renderContributors([]); }
+    return SITE_CONFIG;
+  } catch(e) { DOWNLOAD_SOURCES=[]; DANMU_SOURCES=[]; renderContributors([]); throw e; }
 }
 
 function renderContributors(list) {
@@ -667,6 +660,118 @@ function renderContributors(list) {
         ${c.social?`<div class="contributor-social">${c.social}</div>`:''}
       </div>
     </div>`).join('');
+}
+
+/* ===== k.html 更多面板渲染函数 ===== */
+function renderApiItemCard(item) {
+  let noteHtml = item.note ? `<div style="font-size:.68rem;color:#8b9eb0;margin-top:6px">${item.note}</div>` : '';
+  return `<div class="api-item" data-name="${item.name.toLowerCase()}">
+  <div class="api-item-header">
+    <div class="api-item-name" title="${item.name}">${item.name}</div>
+    <div class="api-item-meta"><span class="badge-new">${item.badge || ''}</span></div>
+  </div>
+  <div class="api-item-urls">
+    <div class="url-line">
+      <span class="url-tag">${item.tag || '导入'}</span>
+      <span class="url-text">${item.url}</span>
+      <button class="copy-btn" data-url="${item.url}">复制</button>
+    </div>
+  </div>
+  ${noteHtml}
+</div>`;
+}
+
+function renderOnlineItem(item) {
+  const host = (item.url.match(/https?:\/\/([^/]+)/) || [, ''])[1];
+  const ph = item.name.charAt(0);
+  // 链接强制显示中文，不使用 UTF-8 编码，favicon 服务直接传中文域名
+  return `<a class="online-item" href="${item.url}" target="_blank" rel="noopener noreferrer">
+  <span class="online-item-icon"><img src="https://favicon.im/${host}?larger=true" alt="${item.name}" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/${host}';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">${ph}</span></span>
+  <div class="online-item-info"><div class="online-item-name">${item.name}</div><div class="online-item-desc">${item.desc}</div></div>
+</a>`;
+}
+
+function renderSourceGroup(title, description, items, isOnlineVideo) {
+  let bodyHtml = '';
+  if (isOnlineVideo) {
+    bodyHtml = `<div class="online-list">${items.map(renderOnlineItem).join('\n')}</div>`;
+  } else {
+    bodyHtml = `<div class="api-list">${items.map(renderApiItemCard).join('\n')}</div>`;
+  }
+
+  return `<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7">
+  <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">${title}</h3>
+  <p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">${description}</p>
+  ${bodyHtml}
+</div>`;
+}
+
+async function renderMore() {
+  const container = document.getElementById('more-content');
+  if (!container || container.dataset.rendered) return;
+  container.dataset.rendered = 'true';
+  container.className = 'has-sidebar';
+  container.innerHTML = `<div class="loading">⏳ 正在加载更多资源...</div>`;
+
+  let cfg;
+  try {
+    cfg = await loadConfig(); // 复用已有的 loadConfig
+  } catch (err) {
+    container.innerHTML = `<div class="error-msg">❌ 配置加载失败：${err.message || err}<br>请确认 config.json 文件存在且可访问。</div>`;
+    container.dataset.rendered = '';
+    return;
+  }
+
+  // 渲染侧边栏（从 config.json 的 moreTabs 读取）
+  const tabs = cfg.moreTabs || [];
+  if (!tabs.length) {
+    container.innerHTML = `<div class="error-msg">⚠️ config.json 中未配置 moreTabs</div>`;
+    container.dataset.rendered = '';
+    return;
+  }
+
+  const sidebarHtml = tabs.map((t, i) =>
+    `<button class="dl-side-btn${i === 0 ? ' active' : ''}" data-more-tab="${t.id}">
+      <span class="dl-side-icon">${t.icon}</span>
+      <span>${t.label}</span>
+    </button>`
+  ).join('\n');
+
+  // 渲染每个面板
+  const panelMap = {
+    'book-source': cfg.bookSource,
+    'comic-source': cfg.comicSource,
+    'music-source': cfg.musicSource,
+    'online-video': cfg.onlineVideo
+  };
+
+  const bodyHtml = tabs.map((t, i) => {
+    const data = panelMap[t.id];
+    if (!data) return '';
+    const isOnline = t.id === 'online-video';
+    const content = renderSourceGroup(data.title, data.description, data.items, isOnline);
+    return `<div class="more-group${i === 0 ? ' active' : ''}" id="more-${t.id}">${content}</div>`;
+  }).join('\n');
+
+  container.innerHTML = `
+    <div class="dl-sidebar" id="moreSidebar">
+      ${sidebarHtml}
+    </div>
+    <div class="dl-body" id="moreBody">
+      ${bodyHtml}
+    </div>`;
+
+  // 侧边栏切换逻辑
+  document.querySelectorAll('#moreSidebar .dl-side-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#moreSidebar .dl-side-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tab = btn.getAttribute('data-more-tab');
+      document.querySelectorAll('.more-group').forEach(g => g.classList.remove('active'));
+      const target = document.getElementById('more-' + tab);
+      if (target) target.classList.add('active');
+    });
+  });
 }
 
 /* ===== 点播 ===== */
@@ -835,142 +940,6 @@ function renderDanmu() {
   let rows='';
   DANMU_SOURCES.forEach(s=>{rows+=`<div class="danmu-item" data-name="${s.name.toLowerCase()}" style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:8px"><span style="flex:0 0 auto;font-size:.78rem;font-weight:600;color:#0b1e33">${s.name}</span><span style="flex:1;font-size:.75rem;color:#2563eb;word-break:break-all">${s.url}</span><button class="copy-btn" data-url="${s.url}">复制</button></div>`;});
   container.innerHTML=`<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7"><h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">💬 弹幕接口</h3><p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">共 ${DANMU_SOURCES.length} 条，点击「复制」把地址填入播放器的弹幕接口。</p>${rows}</div>`;
-}
-
-/* ===== 更多面板（favicon 外链版） ===== */
-function renderMore() {
-  const container = document.getElementById('more-content');
-  if (!container || container.dataset.rendered) return;
-  container.dataset.rendered = 'true';
-  container.className = 'has-sidebar';
-  container.innerHTML = `
-    <div class="dl-sidebar" id="moreSidebar">
-      <button class="dl-side-btn active" data-more-tab="online-video">
-        <span class="dl-side-icon">🎬</span>
-        <span>在线视频</span>
-      </button>
-    </div>
-    <div class="dl-body" id="moreBody">
-      <div class="more-group active" id="more-online-video">
-        <div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7">
-          <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">🎬 在线影视</h3>
-          <p style="font-size:.76rem;color:#5a6f88;margin-bottom:10px">共 20 个在线影视站点，点击卡片直达；标注「需梯子」的需自备网络环境。</p>
-<div class="online-list">
-<a class="online-item" href="https://fdzys.com/" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/fdzys.com?larger=true" alt="饭搭子影视" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/fdzys.com';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">饭</span></span>
-  <div class="online-item-info"><div class="online-item-name">饭搭子影视</div><div class="online-item-desc">最新热门电影电视剧动漫综艺</div></div>
-</a>
-
-<a class="online-item" href="https://www.lsjys11.com/" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/lsjys11.com?larger=true" alt="SA视频" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/lsjys11.com';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">S</span></span>
-  <div class="online-item-info"><div class="online-item-name">SA视频</div><div class="online-item-desc">最新电影电视剧动漫综艺</div></div>
-</a>
-
-<a class="online-item" href="https://www.duse0.com/" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/duse0.com?larger=true" alt="91毒舌" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/duse0.com';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">9</span></span>
-  <div class="online-item-info"><div class="online-item-name">91毒舌</div><div class="online-item-desc">最新Netflix新剧、4K高清</div></div>
-</a>
-
-<a class="online-item" href="https://www.hhkan2.com/" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/hhkan2.com?larger=true" alt="好好看" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/hhkan2.com';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">好</span></span>
-  <div class="online-item-info"><div class="online-item-name">好好看</div><div class="online-item-desc">4K高清Netflix新剧（需梯子）</div></div>
-</a>
-
-<a class="online-item" href="https://ifn.watch/register?code=8B1EF6" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/ifn.watch?larger=true" alt="IFN" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/ifn.watch';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">I</span></span>
-  <div class="online-item-info"><div class="online-item-name">IFN</div><div class="online-item-desc">为数不多的真4K，部分免费</div></div>
-</a>
-
-<a class="online-item" href="https://ddmf.net" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/ddmf.net?larger=true" alt="蛋蛋魔法" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/ddmf.net';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">蛋</span></span>
-  <div class="online-item-info"><div class="online-item-name">蛋蛋魔法</div><div class="online-item-desc">国内外热播剧（需梯子）</div></div>
-</a>
-
-<a class="online-item" href="https://www.sorani.net" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/sorani.net?larger=true" alt="青空次元" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/sorani.net';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">青</span></span>
-  <div class="online-item-info"><div class="online-item-name">青空次元</div><div class="online-item-desc">网友称最夯动漫在线站</div></div>
-</a>
-
-<a class="online-item" href="https://www.appmovie.art" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/appmovie.art?larger=true" alt="APP影院" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/appmovie.art';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">A</span></span>
-  <div class="online-item-info"><div class="online-item-name">APP影院</div><div class="online-item-desc">国内外热播剧，纯净无广告</div></div>
-</a>
-
-<a class="online-item" href="https://www.aeete.com" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/aeete.com?larger=true" alt="Auete影视" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/aeete.com';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">A</span></span>
-  <div class="online-item-info"><div class="online-item-name">Auete影视</div><div class="online-item-desc">蓝光超清精品影视</div></div>
-</a>
-
-<a class="online-item" href="https://dyrs.tv" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/dyrs.tv?larger=true" alt="电影人生" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/dyrs.tv';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">电</span></span>
-  <div class="online-item-info"><div class="online-item-name">电影人生</div><div class="online-item-desc">高清电影在线观看</div></div>
-</a>
-
-<a class="online-item" href="https://darkvod.com" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/darkvod.com?larger=true" alt="黑夜影院" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/darkvod.com';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">黑</span></span>
-  <div class="online-item-info"><div class="online-item-name">黑夜影院</div><div class="online-item-desc">综合影视/资源多/无广告</div></div>
-</a>
-
-<a class="online-item" href="https://www.netflixgc.com" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/netflixgc.com?larger=true" alt="奈飞工厂" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/netflixgc.com';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">奈</span></span>
-  <div class="online-item-info"><div class="online-item-name">奈飞工厂</div><div class="online-item-desc">最新美剧，无广告（需梯子）</div></div>
-</a>
-
-<a class="online-item" href="https://www.nivod.vip" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/nivod.vip?larger=true" alt="泥视频" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/nivod.vip';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">泥</span></span>
-  <div class="online-item-info"><div class="online-item-name">泥视频</div><div class="online-item-desc">热门国剧，更新快，无广告</div></div>
-</a>
-
-<a class="online-item" href="https://www.ppnix.com/cn/" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/ppnix.com?larger=true" alt="PPnix" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/ppnix.com';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">P</span></span>
-  <div class="online-item-info"><div class="online-item-name">PPnix</div><div class="online-item-desc">热门在线影视，速度快/纯净</div></div>
-</a>
-
-<a class="online-item" href="https://www.duonaovod.com" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/duonaovod.com?larger=true" alt="多瑙影视" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/duonaovod.com';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">多</span></span>
-  <div class="online-item-info"><div class="online-item-name">多瑙影视</div><div class="online-item-desc">海外华人在线影院（需梯子）</div></div>
-</a>
-
-<a class="online-item" href="https://www.tdgo.shop" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/tdgo.shop?larger=true" alt="白嫖者联盟" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/tdgo.shop';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">白</span></span>
-  <div class="online-item-info"><div class="online-item-name">白嫖者联盟</div><div class="online-item-desc">热门热播剧（需梯子）</div></div>
-</a>
-
-<a class="online-item" href="https://kuhh4jo.com" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/kuhh4jo.com?larger=true" alt="爱电影" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/kuhh4jo.com';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">爱</span></span>
-  <div class="online-item-info"><div class="online-item-name">爱电影</div><div class="online-item-desc">最新热门电影/电视剧（需梯子）</div></div>
-</a>
-
-<a class="online-item" href="https://www.vv3nwjk.com" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/vv3nwjk.com?larger=true" alt="金牌影视" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/vv3nwjk.com';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">金</span></span>
-  <div class="online-item-info"><div class="online-item-name">金牌影视</div><div class="online-item-desc">全网VIP资源（需梯子）</div></div>
-</a>
-
-<a class="online-item" href="https://www.937tv.vip" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/937tv.vip?larger=true" alt="937影视" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/937tv.vip';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">9</span></span>
-  <div class="online-item-info"><div class="online-item-name">937影视</div><div class="online-item-desc">看全网影视剧（需梯子）</div></div>
-</a>
-
-<a class="online-item" href="https://gaze.red/" target="_blank" rel="noopener noreferrer">
-  <span class="online-item-icon"><img src="https://favicon.im/gaze.red?larger=true" alt="注视影视" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/gaze.red';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">注</span></span>
-  <div class="online-item-info"><div class="online-item-name">注视影视</div><div class="online-item-desc">国内海外影视剧资源（需梯子）</div></div>
-</a>
-          </div>
-        </div>
-      </div>
-    </div>`;
-
-  // 侧边栏切换逻辑
-  document.querySelectorAll('#moreSidebar .dl-side-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('#moreSidebar .dl-side-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const tab = btn.getAttribute('data-more-tab');
-      document.querySelectorAll('.more-group').forEach(g => g.classList.remove('active'));
-      const target = document.getElementById('more-' + tab);
-      if (target) target.classList.add('active');
-    });
-  });
 }
 
 /* ===== 导航 ===== */
