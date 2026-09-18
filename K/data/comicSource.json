@@ -1,3 +1,13 @@
-[
-  { "name": "【漫画党福音】83个精品漫画书源", "tag": "导入", "url": "https://gcore.jsdelivr.net/gh/yuedu520/yuedu/250424.json", "badge": "83 个源", "note": "" }
-]
+{
+  "title": "📖 漫画源收集",
+  "description": "阅读APP漫画书源合集，导入即可使用",
+  "items": [
+    {
+      "name": "【漫画党福音】83个精品漫画书源",
+      "tag": "线路",
+      "url": "https://gcore.jsdelivr.net/gh/yuedu520/yuedu/250424.json",
+      "badge": "83 个源",
+      "note": ""
+    }
+  ]
+}
