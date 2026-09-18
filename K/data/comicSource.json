@@ -2,12 +2,1062 @@
   "title": "📖 漫画源收集",
   "description": "阅读APP漫画书源合集，导入即可使用",
   "items": [
-    {
-      "name": "【漫画党福音】83个精品漫画书源",
-      "tag": "线路",
-      "url": "https://gcore.jsdelivr.net/gh/yuedu520/yuedu/250424.json",
-      "badge": "83 个源",
-      "note": ""
-    }
-  ]
+  {
+    "name": "粉丝漫画",
+    "tag": "漫画源",
+    "url": "https://apifans.dushimh.com/",
+    "badge": "apifans.dushimh.com",
+    "note": ""
+  },
+  {
+    "name": "好看漫画",
+    "tag": "漫画源",
+    "url": "https://www.9comic.cn/",
+    "badge": "www.9comic.cn",
+    "note": ""
+  },
+  {
+    "name": "🖼微博博主",
+    "tag": "漫画源",
+    "url": "https://m.weibo.cn",
+    "badge": "m.weibo.cn",
+    "note": ""
+  },
+  {
+    "name": "话本小说",
+    "tag": "漫画源",
+    "url": "https://so.ihuaben.com",
+    "badge": "so.ihuaben.com",
+    "note": ""
+  },
+  {
+    "name": "🎨 漫客栈",
+    "tag": "漫画源",
+    "url": "https://comic.mkzhan.com",
+    "badge": "comic.mkzhan.com",
+    "note": ""
+  },
+  {
+    "name": "🗒 笔下文学",
+    "tag": "漫画源",
+    "url": "http://open.bxzwapp.com",
+    "badge": "open.bxzwapp.com",
+    "note": ""
+  },
+  {
+    "name": "🗒 妙华台藏",
+    "tag": "漫画源",
+    "url": "https://m.manhuatai.com",
+    "badge": "m.manhuatai.com",
+    "note": ""
+  },
+  {
+    "name": "🗒 仙漫网站",
+    "tag": "漫画源",
+    "url": "https://www.xianman123.com",
+    "badge": "www.xianman123.com",
+    "note": ""
+  },
+  {
+    "name": "国漫吧",
+    "tag": "漫画源",
+    "url": "http://www.guoman8.cc",
+    "badge": "www.guoman8.cc",
+    "note": ""
+  },
+  {
+    "name": "🗒 非常爱漫",
+    "tag": "漫画源",
+    "url": "http://wap.veryim.com",
+    "badge": "wap.veryim.com",
+    "note": ""
+  },
+  {
+    "name": "漫客栈",
+    "tag": "漫画源",
+    "url": "http://comic.mkzhan.com",
+    "badge": "comic.mkzhan.com",
+    "note": ""
+  },
+  {
+    "name": "🗒 大魔兔网",
+    "tag": "漫画源",
+    "url": "http://m.damotu.com",
+    "badge": "m.damotu.com",
+    "note": ""
+  },
+  {
+    "name": "🌵漫客栈🌵",
+    "tag": "漫画源",
+    "url": "https://www.mkzhan.com/",
+    "badge": "www.mkzhan.com",
+    "note": ""
+  },
+  {
+    "name": "FORUM GIRL//请大佬帮忙完善",
+    "tag": "漫画源",
+    "url": "www.superbeautygirlx.com",
+    "badge": "",
+    "note": ""
+  },
+  {
+    "name": "🎨 漫画看",
+    "tag": "漫画源",
+    "url": "https://m.mhkan.com",
+    "badge": "m.mhkan.com",
+    "note": ""
+  },
+  {
+    "name": "快看漫画M",
+    "tag": "漫画源",
+    "url": "http://m.kuaikanmanhua.com",
+    "badge": "m.kuaikanmanhua.com",
+    "note": ""
+  },
+  {
+    "name": "大树漫画",
+    "tag": "漫画源",
+    "url": "https://www.dashuhuwai.com",
+    "badge": "www.dashuhuwai.com",
+    "note": ""
+  },
+  {
+    "name": "1359漫画",
+    "tag": "漫画源",
+    "url": "https://www.bdido.com",
+    "badge": "www.bdido.com",
+    "note": ""
+  },
+  {
+    "name": "🗒 天花板网",
+    "tag": "漫画源",
+    "url": "https://newsmiss.lofter.com",
+    "badge": "newsmiss.lofter.com",
+    "note": ""
+  },
+  {
+    "name": "腾讯漫画📱",
+    "tag": "漫画源",
+    "url": "https://m.ac.qq.com",
+    "badge": "m.ac.qq.com",
+    "note": ""
+  },
+  {
+    "name": "🎨追追漫画₁🅰",
+    "tag": "漫画源",
+    "url": "http://api.ilikemanga.com",
+    "badge": "api.ilikemanga.com",
+    "note": ""
+  },
+  {
+    "name": "🎨漫漫漫画",
+    "tag": "漫画源",
+    "url": "https://www.manmanapp.com",
+    "badge": "www.manmanapp.com",
+    "note": ""
+  },
+  {
+    "name": "🎨 爱奇艺漫画",
+    "tag": "漫画源",
+    "url": "https://www.iqiyi.com/manhua",
+    "badge": "www.iqiyi.com",
+    "note": ""
+  },
+  {
+    "name": "漫畫狗",
+    "tag": "漫画源",
+    "url": "https://dogemanga.com",
+    "badge": "dogemanga.com",
+    "note": ""
+  },
+  {
+    "name": "🎨新新漫画-xyz",
+    "tag": "漫画源",
+    "url": "https://m.77mh.xyz",
+    "badge": "m.77mh.xyz",
+    "note": ""
+  },
+  {
+    "name": "包子漫画5",
+    "tag": "漫画源",
+    "url": "https://cn.webmota.com",
+    "badge": "cn.webmota.com",
+    "note": ""
+  },
+  {
+    "name": "八极漫画",
+    "tag": "漫画源",
+    "url": "http://www.8jj.com",
+    "badge": "www.8jj.com",
+    "note": ""
+  },
+  {
+    "name": "2022.11.22 更新",
+    "tag": "漫画源",
+    "url": "https://yuedu",
+    "badge": "yuedu",
+    "note": ""
+  },
+  {
+    "name": "🎨漫画台🅰",
+    "tag": "漫画源",
+    "url": "https://m.manhuatai.com/api",
+    "badge": "m.manhuatai.com",
+    "note": ""
+  },
+  {
+    "name": "奇热漫画📱💰",
+    "tag": "漫画源",
+    "url": "https://m.qiremanhua.com",
+    "badge": "m.qiremanhua.com",
+    "note": ""
+  },
+  {
+    "name": "🎨 神漫画",
+    "tag": "漫画源",
+    "url": "https://m.taomanhua.com",
+    "badge": "m.taomanhua.com",
+    "note": ""
+  },
+  {
+    "name": "🎨 新新漫画",
+    "tag": "漫画源",
+    "url": "https://m.77mh.nl",
+    "badge": "m.77mh.nl",
+    "note": ""
+  },
+  {
+    "name": "🎨爱优漫",
+    "tag": "漫画源",
+    "url": "https://m.iyouman.com",
+    "badge": "m.iyouman.com",
+    "note": ""
+  },
+  {
+    "name": "🎨 趣话漫画",
+    "tag": "漫画源",
+    "url": "https://api.iqhmh.com",
+    "badge": "api.iqhmh.com",
+    "note": ""
+  },
+  {
+    "name": "🎨新漫画",
+    "tag": "漫画源",
+    "url": "https://xapi.xinmanhua.net",
+    "badge": "xapi.xinmanhua.net",
+    "note": ""
+  },
+  {
+    "name": "一个漫画",
+    "tag": "漫画源",
+    "url": "https://www.amcomic.com",
+    "badge": "www.amcomic.com",
+    "note": ""
+  },
+  {
+    "name": "包子漫画",
+    "tag": "漫画源",
+    "url": "https://cn.baozimh.com/",
+    "badge": "cn.baozimh.com",
+    "note": ""
+  },
+  {
+    "name": "哔哩哔哩漫画 #Haxc",
+    "tag": "漫画源",
+    "url": "https://manga.bilibili.com#♤Haxc",
+    "badge": "manga.bilibili.com",
+    "note": ""
+  },
+  {
+    "name": "🎨UAA漫画",
+    "tag": "漫画源",
+    "url": "https://www.uaa.com/app",
+    "badge": "www.uaa.com",
+    "note": ""
+  },
+  {
+    "name": "🎨 爱看漫画",
+    "tag": "漫画源",
+    "url": "http://wap.65dm.com",
+    "badge": "wap.65dm.com",
+    "note": ""
+  },
+  {
+    "name": "古风漫画",
+    "tag": "漫画源",
+    "url": "http://www.gufengmh9.com",
+    "badge": "www.gufengmh9.com",
+    "note": ""
+  },
+  {
+    "name": "酷看漫画",
+    "tag": "漫画源",
+    "url": "https://www.kukk.net",
+    "badge": "www.kukk.net",
+    "note": ""
+  },
+  {
+    "name": "MOXI动漫(8本)™",
+    "tag": "漫画源",
+    "url": "http://www.moxidongman.com",
+    "badge": "www.moxidongman.com",
+    "note": ""
+  },
+  {
+    "name": "漫画大全",
+    "tag": "漫画源",
+    "url": "https://www.manhuadb.com#♤Haxc",
+    "badge": "www.manhuadb.com",
+    "note": ""
+  },
+  {
+    "name": "✐ 八极漫画 #Haxc",
+    "tag": "漫画源",
+    "url": "http://www.8jj.com#♤Haxc",
+    "badge": "www.8jj.com",
+    "note": ""
+  },
+  {
+    "name": "✐ 漫画DB #Haxc1107",
+    "tag": "漫画源",
+    "url": "https://www.manhuadb.com#Haxc1107",
+    "badge": "www.manhuadb.com",
+    "note": ""
+  },
+  {
+    "name": "㊣✐ 漫客栈 #一程",
+    "tag": "漫画源",
+    "url": "https://www.mkzhan.com#yc1101",
+    "badge": "www.mkzhan.com",
+    "note": ""
+  },
+  {
+    "name": "㊣✐ 漫漫漫画 #一程1101",
+    "tag": "漫画源",
+    "url": "https://www.manmanapp.com#yc1101",
+    "badge": "www.manmanapp.com",
+    "note": ""
+  },
+  {
+    "name": "㊣✐ 腾讯漫画 #一程",
+    "tag": "漫画源",
+    "url": "https://m.ac.qq.com#♤yc",
+    "badge": "m.ac.qq.com",
+    "note": ""
+  },
+  {
+    "name": "✐ 趣话漫画🅰💰 #Haxc",
+    "tag": "漫画源",
+    "url": "https://api.iqhmh.com#♤Haxc",
+    "badge": "api.iqhmh.com",
+    "note": ""
+  },
+  {
+    "name": "奇米动漫",
+    "tag": "漫画源",
+    "url": "http://www.qimiqimi.net/",
+    "badge": "www.qimiqimi.net",
+    "note": ""
+  },
+  {
+    "name": "🎨 拷贝漫画➠移动不可用",
+    "tag": "漫画源",
+    "url": "https://copymanga.com",
+    "badge": "copymanga.com",
+    "note": ""
+  },
+  {
+    "name": "友漫",
+    "tag": "漫画源",
+    "url": "UAA·漫画",
+    "badge": "",
+    "note": ""
+  },
+  {
+    "name": "🎨看漫画M",
+    "tag": "漫画源",
+    "url": "https://m.kanman.com",
+    "badge": "m.kanman.com",
+    "note": ""
+  },
+  {
+    "name": "🎨 快看漫画$",
+    "tag": "漫画源",
+    "url": "http://m.kuaikanmanhua.com已整理",
+    "badge": "m.kuaikanmanhua.xn--com-be2fl54ap4v",
+    "note": ""
+  },
+  {
+    "name": "SF漫画💰",
+    "tag": "漫画源",
+    "url": "https://mm.sfacg.com",
+    "badge": "mm.sfacg.com",
+    "note": ""
+  },
+  {
+    "name": "🎟️啵乐漫画",
+    "tag": "漫画源",
+    "url": "https://mybl.xyz/",
+    "badge": "mybl.xyz",
+    "note": ""
+  },
+  {
+    "name": "追追漫画M",
+    "tag": "漫画源",
+    "url": "http://zz.ilikemanga.com",
+    "badge": "zz.ilikemanga.com",
+    "note": ""
+  },
+  {
+    "name": "久久漫画-ζ",
+    "tag": "漫画源",
+    "url": "https://www.jjmhw.cc",
+    "badge": "www.jjmhw.cc",
+    "note": ""
+  },
+  {
+    "name": "🎨 神漫画",
+    "tag": "漫画源",
+    "url": "https://m.taomanhua.com#Haxc1107",
+    "badge": "m.taomanhua.com",
+    "note": ""
+  },
+  {
+    "name": "🍅大灰狼漫画5.0(独立版)",
+    "tag": "漫画源",
+    "url": "https://api.langge.cf/#漫画/",
+    "badge": "api.langge.cf",
+    "note": ""
+  },
+  {
+    "name": "漫蛙",
+    "tag": "漫画源",
+    "url": "https://www.manwaku.com/",
+    "badge": "www.manwaku.com",
+    "note": ""
+  },
+  {
+    "name": "学外漫画",
+    "tag": "漫画源",
+    "url": "https://www.xwmanhua.com",
+    "badge": "www.xwmanhua.com",
+    "note": ""
+  },
+  {
+    "name": "漫画鱼",
+    "tag": "漫画源",
+    "url": "https://www.manhuayu8.com",
+    "badge": "www.manhuayu8.com",
+    "note": ""
+  },
+  {
+    "name": "光社漫畫（优+）",
+    "tag": "漫画源",
+    "url": "https://m.g-mh.org/",
+    "badge": "m.g-mh.org",
+    "note": ""
+  },
+  {
+    "name": "漫画搬运（优+）",
+    "tag": "漫画源",
+    "url": "https://www.antbyw.com",
+    "badge": "www.antbyw.com",
+    "note": ""
+  },
+  {
+    "name": "曼哈漫画（优+）",
+    "tag": "漫画源",
+    "url": "https://mangadex.org",
+    "badge": "mangadex.org",
+    "note": ""
+  },
+  {
+    "name": "酷看漫画（优+）",
+    "tag": "漫画源",
+    "url": "https://www.kukk.net#Haxc1107",
+    "badge": "www.kukk.net",
+    "note": ""
+  },
+  {
+    "name": "包子漫画（优+）",
+    "tag": "漫画源",
+    "url": "https://cn.bzmanga.com",
+    "badge": "cn.bzmanga.com",
+    "note": ""
+  },
+  {
+    "name": "裤裤漫画（优）",
+    "tag": "漫画源",
+    "url": "http://www.kukuc.net",
+    "badge": "www.kukuc.net",
+    "note": ""
+  },
+  {
+    "name": "野蛮漫画（优）",
+    "tag": "漫画源",
+    "url": "https://mhbao.colacomic.com",
+    "badge": "mhbao.colacomic.com",
+    "note": ""
+  },
+  {
+    "name": "盗随动漫（优+）",
+    "tag": "漫画源",
+    "url": "https://myself-bbs.com",
+    "badge": "myself-bbs.com",
+    "note": ""
+  },
+  {
+    "name": "快看漫画",
+    "tag": "漫画源",
+    "url": "https://m.kuaikanmanhua.com/",
+    "badge": "m.kuaikanmanhua.com",
+    "note": ""
+  },
+  {
+    "name": "快看漫画",
+    "tag": "漫画源",
+    "url": "http://m.kuaikanmanhua.com#♤Haxc",
+    "badge": "m.kuaikanmanhua.com",
+    "note": ""
+  },
+  {
+    "name": "酸奶漫画",
+    "tag": "漫画源",
+    "url": "https://m.1kkk.com",
+    "badge": "m.1kkk.com",
+    "note": ""
+  },
+  {
+    "name": "酷爱漫画",
+    "tag": "漫画源",
+    "url": "https://www.kuimh.com#♤Haxc",
+    "badge": "www.kuimh.com",
+    "note": ""
+  },
+  {
+    "name": "G社漫画/包子漫画",
+    "tag": "漫画源",
+    "url": "https://manhuafree.com",
+    "badge": "manhuafree.com",
+    "note": ""
+  },
+  {
+    "name": "蛙漫漫画",
+    "tag": "漫画源",
+    "url": "https://www.manwamh.com/",
+    "badge": "www.manwamh.com",
+    "note": ""
+  },
+  {
+    "name": "彩绘漫画（优）",
+    "tag": "漫画源",
+    "url": "https://m.kanman.com#Haxc1107",
+    "badge": "m.kanman.com",
+    "note": ""
+  },
+  {
+    "name": "看漫画吧（优）",
+    "tag": "漫画源",
+    "url": "http://m.kanman.com/",
+    "badge": "m.kanman.com",
+    "note": ""
+  },
+  {
+    "name": "菠萝漫画",
+    "tag": "漫画源",
+    "url": "https://api.sfacg.com#漫画",
+    "badge": "api.sfacg.com",
+    "note": ""
+  },
+  {
+    "name": "漫客栈子",
+    "tag": "漫画源",
+    "url": "https://www.mkzhan.com#♤Haxc",
+    "badge": "www.mkzhan.com",
+    "note": ""
+  },
+  {
+    "name": "爱奇艺",
+    "tag": "漫画源",
+    "url": "https://m.iqiyi.com/",
+    "badge": "m.iqiyi.com",
+    "note": ""
+  },
+  {
+    "name": "出处源-仓库名著阅读",
+    "tag": "漫画源",
+    "url": "https://api.520diandu.com/",
+    "badge": "api.520diandu.com",
+    "note": ""
+  },
+  {
+    "name": "美图网（可搜索）",
+    "tag": "漫画源",
+    "url": "https://meitulu.me/",
+    "badge": "meitulu.me",
+    "note": ""
+  },
+  {
+    "name": "知音漫客",
+    "tag": "漫画源",
+    "url": "https://m.zymk.cn",
+    "badge": "m.zymk.cn",
+    "note": ""
+  },
+  {
+    "name": "全免漫画",
+    "tag": "漫画源",
+    "url": "https://api-cdn.kaimanhua.com/##@遇知",
+    "badge": "api-cdn.kaimanhua.com",
+    "note": ""
+  },
+  {
+    "name": "爱看漫画（优）",
+    "tag": "漫画源",
+    "url": "https://m.kanman.com已校验",
+    "badge": "m.kanman.xn--com-be2fo36bww7e",
+    "note": ""
+  },
+  {
+    "name": "新爱漫画",
+    "tag": "漫画源",
+    "url": "https://xapi.xinmanhua.net已整理",
+    "badge": "xapi.xinmanhua.xn--net-be2fl54ap4v",
+    "note": ""
+  },
+  {
+    "name": "漫画小屋（优）",
+    "tag": "漫画源",
+    "url": "https://m.dm5.com",
+    "badge": "m.dm5.com",
+    "note": ""
+  },
+  {
+    "name": "咚漫",
+    "tag": "漫画源",
+    "url": "https://m.dongmanmanhua.cn",
+    "badge": "m.dongmanmanhua.cn",
+    "note": ""
+  },
+  {
+    "name": "武芊漫画（优+）",
+    "tag": "漫画源",
+    "url": "https://comic.mkzcdn.com",
+    "badge": "comic.mkzcdn.com",
+    "note": ""
+  },
+  {
+    "name": "快看漫画",
+    "tag": "漫画源",
+    "url": "https://api.kkmh.com",
+    "badge": "api.kkmh.com",
+    "note": ""
+  },
+  {
+    "name": "新人漫画",
+    "tag": "漫画源",
+    "url": "https://xapi.xinmanhua.net#",
+    "badge": "xapi.xinmanhua.net",
+    "note": ""
+  },
+  {
+    "name": "晚点漫画（外部）",
+    "tag": "漫画源",
+    "url": "https://www.colamanga.com/",
+    "badge": "www.colamanga.com",
+    "note": ""
+  },
+  {
+    "name": "🎨丁斐🅰",
+    "tag": "漫画源",
+    "url": "http://comic.321mh.com",
+    "badge": "comic.321mh.com",
+    "note": ""
+  },
+  {
+    "name": "🎨大树漫画",
+    "tag": "漫画源",
+    "url": "https://www.dashumanhua.com",
+    "badge": "www.dashumanhua.com",
+    "note": ""
+  },
+  {
+    "name": "出处源-仓库名著阅读",
+    "tag": "漫画源",
+    "url": "https://api.diandu.com/",
+    "badge": "api.diandu.com",
+    "note": ""
+  },
+  {
+    "name": "漫画小屋（优）",
+    "tag": "漫画源",
+    "url": "https://m.dm.com/",
+    "badge": "m.dm.com",
+    "note": ""
+  },
+  {
+    "name": "酸奶漫画",
+    "tag": "漫画源",
+    "url": "https://m.kkk.com",
+    "badge": "m.kkk.com",
+    "note": ""
+  },
+  {
+    "name": "瑞雪漫画（魔法）",
+    "tag": "漫画源",
+    "url": "https://www.yydsmh.com/",
+    "badge": "www.yydsmh.com",
+    "note": ""
+  },
+  {
+    "name": "全免漫画（优）",
+    "tag": "漫画源",
+    "url": "https://api-cdn.kaimanhua.com",
+    "badge": "api-cdn.kaimanhua.com",
+    "note": ""
+  },
+  {
+    "name": "爱漫客栈",
+    "tag": "漫画源",
+    "url": "https://www.mkzhan.comHaxc",
+    "badge": "www.mkzhan.comhaxc",
+    "note": ""
+  },
+  {
+    "name": "💰爱奇艺漫画",
+    "tag": "漫画源",
+    "url": "https://www.iqiyi.com/manhua#♤Haxc",
+    "badge": "www.iqiyi.com",
+    "note": ""
+  },
+  {
+    "name": "✐ 新漫画",
+    "tag": "漫画源",
+    "url": "https://xapi.xinmanhua.net♤Haxc",
+    "badge": "xapi.xinmanhua.xn--nethaxc-im7d",
+    "note": ""
+  },
+  {
+    "name": "新爱漫画（优+）",
+    "tag": "漫画源",
+    "url": "https://xapi.xinmanhua.net#♤Haxc",
+    "badge": "xapi.xinmanhua.net",
+    "note": ""
+  },
+  {
+    "name": "漫客栈",
+    "tag": "漫画源",
+    "url": "http://comic.mkzhan.comHaxc",
+    "badge": "comic.mkzhan.comhaxc",
+    "note": ""
+  },
+  {
+    "name": "彩绘漫画（优）",
+    "tag": "漫画源",
+    "url": "https://m.kanman.comHaxc",
+    "badge": "m.kanman.comhaxc",
+    "note": ""
+  },
+  {
+    "name": "丁斐",
+    "tag": "漫画源",
+    "url": "http://comic.mh.com",
+    "badge": "comic.mh.com",
+    "note": ""
+  },
+  {
+    "name": "🔰 开心看mh",
+    "tag": "漫画源",
+    "url": "http://www.kxkmh2.vip",
+    "badge": "www.kxkmh2.vip",
+    "note": ""
+  },
+  {
+    "name": "🎨新新漫画💞",
+    "tag": "漫画源",
+    "url": "https://www.77mh.nl",
+    "badge": "www.77mh.nl",
+    "note": ""
+  },
+  {
+    "name": "178漫画网-幕惜",
+    "tag": "漫画源",
+    "url": "https://www.patternrecognition.cn",
+    "badge": "www.patternrecognition.cn",
+    "note": ""
+  },
+  {
+    "name": "（favcomic）喜漫漫画",
+    "tag": "漫画源",
+    "url": "https://www.favcomic.net",
+    "badge": "www.favcomic.net",
+    "note": ""
+  },
+  {
+    "name": "包子漫画（优）",
+    "tag": "漫画源",
+    "url": "https://cn.baozimhcn.com",
+    "badge": "cn.baozimhcn.com",
+    "note": ""
+  },
+  {
+    "name": "💰快看漫画 json #Haxc1107",
+    "tag": "漫画源",
+    "url": "https://api.kkmh.com#Haxc1107",
+    "badge": "api.kkmh.com",
+    "note": ""
+  },
+  {
+    "name": "漫客栈",
+    "tag": "漫画源",
+    "url": "http://comic.mkzhan.com#Haxc1107",
+    "badge": "comic.mkzhan.com",
+    "note": ""
+  },
+  {
+    "name": "🎨漫客栈 #Haxc1107",
+    "tag": "漫画源",
+    "url": "https://www.mkzhan.com#Haxc1107",
+    "badge": "www.mkzhan.com",
+    "note": ""
+  },
+  {
+    "name": "🌊漫神◎辞晨◎",
+    "tag": "漫画源",
+    "url": "https://m.mhkami.com",
+    "badge": "m.mhkami.com",
+    "note": ""
+  },
+  {
+    "name": "Căng Cực",
+    "tag": "漫画源",
+    "url": "https://cangcuc.com/",
+    "badge": "cangcuc.com",
+    "note": ""
+  },
+  {
+    "name": "😈 komiic",
+    "tag": "漫画源",
+    "url": "https://komiic.com",
+    "badge": "komiic.com",
+    "note": ""
+  },
+  {
+    "name": "😈 顶通漫画",
+    "tag": "漫画源",
+    "url": "顶通漫画",
+    "badge": "",
+    "note": ""
+  },
+  {
+    "name": "红牛资源",
+    "tag": "漫画源",
+    "url": "https://hongniuziyuan.com",
+    "badge": "hongniuziyuan.com",
+    "note": ""
+  },
+  {
+    "name": "曼哈漫画（优+）",
+    "tag": "漫画源",
+    "url": "https://www.mangabz.com",
+    "badge": "www.mangabz.com",
+    "note": ""
+  },
+  {
+    "name": "棉衣漫画（优+）",
+    "tag": "漫画源",
+    "url": "https://mycomic.com/cn",
+    "badge": "mycomic.com",
+    "note": ""
+  },
+  {
+    "name": "追更漫画（优+）",
+    "tag": "漫画源",
+    "url": "http://www.zhuigeng.cc",
+    "badge": "www.zhuigeng.cc",
+    "note": ""
+  },
+  {
+    "name": "野蛮漫画（优）",
+    "tag": "漫画源",
+    "url": "https://yemancomic.com",
+    "badge": "yemancomic.com",
+    "note": ""
+  },
+  {
+    "name": "奇漫屋网（优）",
+    "tag": "漫画源",
+    "url": "https://m.qimanwu.org/",
+    "badge": "m.qimanwu.org",
+    "note": ""
+  },
+  {
+    "name": "霓虹漫画（优）",
+    "tag": "漫画源",
+    "url": "https://rawkuma.com/",
+    "badge": "rawkuma.com",
+    "note": ""
+  },
+  {
+    "name": "星火漫画（优）",
+    "tag": "漫画源",
+    "url": "http://www.vomicmh.com",
+    "badge": "www.vomicmh.com",
+    "note": ""
+  },
+  {
+    "name": "蛮歌漫画（优）",
+    "tag": "漫画源",
+    "url": "http://www.mangabz.com",
+    "badge": "www.mangabz.com",
+    "note": ""
+  },
+  {
+    "name": "动漫屋子（优）",
+    "tag": "漫画源",
+    "url": "http://m.dm5.com",
+    "badge": "m.dm5.com",
+    "note": ""
+  },
+  {
+    "name": "八极漫画",
+    "tag": "漫画源",
+    "url": "http://www.8jj.com#Haxc1107",
+    "badge": "www.8jj.com",
+    "note": ""
+  },
+  {
+    "name": "漫漫漫画",
+    "tag": "漫画源",
+    "url": "https://www.manmanapp.com#一程",
+    "badge": "www.manmanapp.com",
+    "note": ""
+  },
+  {
+    "name": "品如漫画",
+    "tag": "漫画源",
+    "url": "https://m.rumanhua.com",
+    "badge": "m.rumanhua.com",
+    "note": ""
+  },
+  {
+    "name": "动漫之家",
+    "tag": "漫画源",
+    "url": "https://api.dmzj.com#Haxc1107",
+    "badge": "api.dmzj.com",
+    "note": ""
+  },
+  {
+    "name": "漫画人吧",
+    "tag": "漫画源",
+    "url": "http://www.manhuaren.com",
+    "badge": "www.manhuaren.com",
+    "note": ""
+  },
+  {
+    "name": "梅花漫画（英文）",
+    "tag": "漫画源",
+    "url": "https://manhuaus.com/",
+    "badge": "manhuaus.com",
+    "note": ""
+  },
+  {
+    "name": "包子漫画",
+    "tag": "漫画源",
+    "url": "https://cn.baozimh.com/##@okou",
+    "badge": "cn.baozimh.com",
+    "note": ""
+  },
+  {
+    "name": "酷漫漫画",
+    "tag": "漫画源",
+    "url": "https://kumanapp.com/",
+    "badge": "kumanapp.com",
+    "note": ""
+  },
+  {
+    "name": "花瓣插画（发现）",
+    "tag": "漫画源",
+    "url": "https://huaban.com",
+    "badge": "huaban.com",
+    "note": ""
+  },
+  {
+    "name": "点外漫画（英文）",
+    "tag": "漫画源",
+    "url": "https://manhwatop.com/",
+    "badge": "manhwatop.com",
+    "note": ""
+  },
+  {
+    "name": "古风漫画（魔法）",
+    "tag": "漫画源",
+    "url": "https://www.gufengmh9.com",
+    "badge": "www.gufengmh9.com",
+    "note": ""
+  },
+  {
+    "name": "酝酿漫画（魔法）",
+    "tag": "漫画源",
+    "url": "http://www.xmanhua.com",
+    "badge": "www.xmanhua.com",
+    "note": ""
+  },
+  {
+    "name": "嘤嘤漫画（英文）",
+    "tag": "漫画源",
+    "url": "https://mangaonlineteam.com/",
+    "badge": "mangaonlineteam.com",
+    "note": ""
+  },
+  {
+    "name": "动漫之家",
+    "tag": "漫画源",
+    "url": "https://api.dmzj.com",
+    "badge": "api.dmzj.com",
+    "note": ""
+  },
+  {
+    "name": "图文漫画（魔法）",
+    "tag": "漫画源",
+    "url": "https://www.webtoons.com/zh-hant",
+    "badge": "www.webtoons.com",
+    "note": ""
+  },
+  {
+    "name": "笔趣漫画",
+    "tag": "漫画源",
+    "url": "https://www.biqug.org/",
+    "badge": "www.biqug.org",
+    "note": ""
+  },
+  {
+    "name": "古风漫画",
+    "tag": "漫画源",
+    "url": "https://m.gufengmh8.com",
+    "badge": "m.gufengmh8.com",
+    "note": ""
+  },
+  {
+    "name": "漫画柜吧",
+    "tag": "漫画源",
+    "url": "https://www.mhgui.com",
+    "badge": "www.mhgui.com",
+    "note": ""
+  },
+  {
+    "name": "红茶漫画",
+    "tag": "漫画源",
+    "url": "https://www.webtoons.com",
+    "badge": "www.webtoons.com",
+    "note": ""
+  },
+  {
+    "name": "优看漫画",
+    "tag": "漫画源",
+    "url": "https://api.kkmh.com#yc1101",
+    "badge": "api.kkmh.com",
+    "note": ""
+  }
+]
 }
