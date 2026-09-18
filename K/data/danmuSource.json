@@ -1,0 +1,8 @@
+{
+  "title": "💬 弹幕接口",
+  "description": "共 {count} 条，点击「复制」把地址填入播放器的弹幕接口。",
+  "items": [
+    { "name": "LogVar弹幕API", "url": "http://ecs.dysobo.cn:9321/87654321", "badge": "v1.21.1" },
+    { "name": "快源弹幕", "url": "http://43.143.108.212/87654321", "badge": "备用" }
+  ]
+}
