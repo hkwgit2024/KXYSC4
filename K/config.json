@@ -1,41 +1,104 @@
 {
   "site": {
     "title": "海量接口搬运备份",
-    "logo": "https://0.12yue.de5.net/tvbox/x/jueson.jpg",
+    "logo": "vip/jueson.jpg",
     "subtitle": "备用数据源，防屏不迷路",
     "qqGroup": "1067685939"
   },
+
+  "theme": {
+    "primary": "#4a9eff",
+    "primaryDark": "#1e6fda",
+    "success": "#16a34a",
+    "warning": "#ca8a04",
+    "danger": "#dc2626",
+    "bg": "#eef2f7",
+    "cardBg": "#ffffff",
+    "textMain": "#0a1a2b",
+    "textMuted": "#7a8fa3"
+  },
+
   "api": {
-    "listFile": "list.txt"
+    "listFile": "list.txt",
+    "domains": [
+      { "tag": "备份一线", "base": "https://0.12yue.de5.net/tvbox/" },
+      { "tag": "备份二线", "base": "https://0.cdz.qzz.io/tvbox/" },
+      { "tag": "备份三线", "base": "https://0.wdzb.eu.cc/tvbox/" }
+    ],
+    "weights": {
+      "轮替占位.json": 1, "神马都没有.json": 2, "饭太硬.json": 4, "肥猫.json": 5,
+      "摸鱼.json": 6, "王二小.json": 7, "集多.json": 8, "潇洒.json": 9, "小米.json": 10,
+      "嗷呜.json": 11, "南风.json": 12, "小虎斑.json": 13
+    },
+    "rotateKeywords": ["X4", "更新", "菠菜"]
   },
+
   "live": {
-    "listFile": "livelist.txt"
-  },
-  "downloadSources": [
-    { "name": "菠菜园",   "url": "data/ry/菠菜园下载.json",  "description": "整理者：误道者" },
-    { "name": "奇奇副本", "url": "data/ry/奇奇副本.json",    "description": "整理者：误道者" }
-  ],
-  "danmuSources": [
-    { "name": "ecs源", "url": "http://ecs.dysobo.cn:9321/87654321" },
-    { "name": "快源",   "url": "http://43.143.108.212/87654321" }
-  ],
-  "moreTabs": [
-    { "id": "book-source",   "icon": "📚", "label": "书源" },
-    { "id": "comic-source",  "icon": "📖", "label": "漫画源" },
-    { "id": "music-source",  "icon": "🎵", "label": "音源" },
-    { "id": "online-video",  "icon": "🎬", "label": "在线视频" }
-  ],
-  "moreData": {
-    "book-source":   "data/bookSource.json",
-    "comic-source":  "data/comicSource.json",
-    "music-source":  "data/musicSource.json",
-    "online-video":  "data/onlineVideo.json"
-  },
-  "about": {
-    "contributors": [
-      { "name": "误道者", "role": "站长 / 资源整理", "desc": "站点发起与接口资源整理", "avatar": "vip/jueson.jpg" },
-      { "name": "沫离", "role": "弹幕分页", "desc": "独立贡献弹幕接口分页模块", "avatar": "vip/沫离.jpg" },
-      { "name": "简约风<格>", "role": "推广贡献", "desc": "将本网页内嵌 APP 进行推广分发", "avatar": "vip/简约风格.jpg" }
+    "listFile": "livelist.txt",
+    "aggregateUrl": "https://0.12yue.de5.net/tvbox/海量直播线路.json",
+    "aggregateTitle": "海量直播聚合多线路专用接口",
+    "domains": [
+      { "tag": "备份一线", "base": "https://0.12yue.de5.net/tvbox/live/" },
+      { "tag": "备份二线", "base": "https://0.cdz.qzz.io/tvbox/live/" },
+      { "tag": "备份三线", "base": "https://0.wdzb.eu.cc/tvbox/live/" }
     ]
-  }
+  },
+
+  "tabs": [
+    { "id": "api", "label": "点播" },
+    { "id": "live", "label": "直播" },
+    { "id": "danmu", "label": "弹幕" },
+    { "id": "download", "label": "下载" },
+    { "id": "more", "label": "更多" },
+    { "id": "about", "label": "关于" }
+  ],
+
+  "downloadSources": [
+    { "name": "菠菜园", "url": "ry/bcy.json", "icon": "", "description": "" },
+    { "name": "奇奇副本", "url": "ry/qiqi.json", "icon": "", "description": "" }
+  ],
+
+  "danmuData": "data/danmuSource.json",
+
+  "moreData": {
+    "bookSource": "data/bookSource.json",
+    "comicSource": "data/comicSource.json",
+    "musicSource": "data/musicSource.json",
+    "onlineVideo": "data/onlineVideo.json"
+  },
+
+  "moreTabs": [
+    { "id": "bookSource", "label": "书源", "icon": "📚" },
+    { "id": "comicSource", "label": "漫画", "icon": "📖" },
+    { "id": "musicSource", "label": "音源", "icon": "🎵" },
+    { "id": "onlineVideo", "label": "在线影视", "icon": "🎬" }
+  ],
+
+  "about": {
+    "backupDomains": [
+      "https://0.12yue.de5.net",
+      "https://0.cdz.qzz.io",
+      "https://0.wdzb.eu.cc",
+      "https://tvbox.moliys.icu"
+    ],
+    "contributorsTitle": "🤝 合作共创",
+    "contributorsDesc": "感谢以下伙伴对本站的内容贡献与支持（<strong style=\"color:#ca8a04\">排名不分先后</strong>）：",
+    "contributorsNote": "* 还有部分贡献者因未留下署名信息而未在此列出，同样感谢你们的默默付出。如有遗漏请联系站长补充。",
+    "declarationTitle": "📢 声明与联系",
+    "declarationText": "本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。",
+    "contact": {
+      "qqGroup": "1067685939",
+      "qqGroupLink": "https://qm.qq.com/q/gmRKKPT3x0",
+      "telegram": "https://t.me/+nrWtFerPAfcwOTg9",
+      "github": "https://github.com/lubin776/tvbox-api-backup"
+    },
+    "contributors": []
+  },
+
+  "footer": "本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。 QQ 群：1067685939。",
+
+  "modeToggle": { "simpleText": "切换<br>全能版", "fullText": "切换<br>简洁版" },
+  "search": { "placeholder": "🔍 搜索..." },
+  "loadingText": "⏳ 正在加载...",
+  "errorText": "❌ 加载失败"
 }
