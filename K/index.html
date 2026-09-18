@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>海量接口搬运备份2</title>
+<title>海量接口搬运备份</title>
 <style>
 /* ============================================================
    公共 CSS
@@ -435,10 +435,10 @@ body.simple-mode #api-panel { display:block !important; }
     <!-- 直播面板 -->
     <div class="tab-panel" id="live-panel">
       <div class="live-top-aggregate">
-        <h3 id="live-aggregate-title">海量直播聚合多线路专用接口</h3>
+        <h3>海量直播聚合多线路专用接口</h3>
         <div class="domain-line">
-          <span id="live-aggregate-url">加载中...</span>
-          <button class="copy-btn" id="live-aggregate-copy" data-url="">复制</button>
+          <span>https://0.12yue.de5.net/tvbox/海量直播线路.json</span>
+          <button class="copy-btn" data-url="https://0.12yue.de5.net/tvbox/海量直播线路.json">复制</button>
         </div>
       </div>
       <div class="live-list" id="liveListContainer">
@@ -620,16 +620,6 @@ async function loadConfig() {
     DANMU_SOURCES = Array.isArray(SITE_CONFIG.danmuSources) ? SITE_CONFIG.danmuSources : [];
     renderContributors(SITE_CONFIG.about && SITE_CONFIG.about.contributors);
 
-    // 直播聚合区配置（k.html 方式）
-    if (SITE_CONFIG.live) {
-      const aggTitle = document.getElementById('live-aggregate-title');
-      const aggUrl = document.getElementById('live-aggregate-url');
-      const aggCopy = document.getElementById('live-aggregate-copy');
-      if (aggTitle && SITE_CONFIG.live.aggregateTitle) aggTitle.textContent = SITE_CONFIG.live.aggregateTitle;
-      if (aggUrl && SITE_CONFIG.live.aggregateUrl) aggUrl.textContent = SITE_CONFIG.live.aggregateUrl;
-      if (aggCopy && SITE_CONFIG.live.aggregateUrl) aggCopy.setAttribute('data-url', SITE_CONFIG.live.aggregateUrl);
-    }
-
     if (SITE_CONFIG.site) {
       if (SITE_CONFIG.site.logo) headerLogo.src = SITE_CONFIG.site.logo;
       if (SITE_CONFIG.site.title) {
@@ -723,18 +713,23 @@ async function renderMore() {
   container.className = 'has-sidebar';
   container.innerHTML = `<div class="loading">⏳ 正在加载更多资源...</div>`;
 
-  // 从 CONFIG 读取（k.html 方式）
-  const cfg = SITE_CONFIG;
-  const tabs = (cfg && cfg.moreTabs) || [];
-  const paths = (cfg && cfg.moreData) || {};
+  let cfg;
+  try {
+    cfg = await loadConfig(); // 复用已有的 loadConfig
+  } catch (err) {
+    container.innerHTML = `<div class="error-msg">❌ 配置加载失败：${err.message || err}<br>请确认 config.json 文件存在且可访问。</div>`;
+    container.dataset.rendered = '';
+    return;
+  }
 
+  // 渲染侧边栏（从 config.json 的 moreTabs 读取）
+  const tabs = cfg.moreTabs || [];
   if (!tabs.length) {
     container.innerHTML = `<div class="error-msg">⚠️ config.json 中未配置 moreTabs</div>`;
     container.dataset.rendered = '';
     return;
   }
 
-  // 侧边栏
   const sidebarHtml = tabs.map((t, i) =>
     `<button class="dl-side-btn${i === 0 ? ' active' : ''}" data-more-tab="${t.id}">
       <span class="dl-side-icon">${t.icon}</span>
@@ -742,26 +737,19 @@ async function renderMore() {
     </button>`
   ).join('\n');
 
-  // k.html 方式：从 moreData 路径动态 fetch 每个面板数据
-  const panelMap = {};
-  await Promise.all(tabs.map(async t => {
-    const p = paths[t.id];
-    if (!p) return;
-    try {
-      const r = await fetch(p + '?t=' + Date.now(), { cache: 'no-store' });
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      panelMap[t.id] = await r.json();
-    } catch (e) {
-      panelMap[t.id] = null;
-    }
-  }));
+  // 渲染每个面板
+  const panelMap = {
+    'book-source': cfg.bookSource,
+    'comic-source': cfg.comicSource,
+    'music-source': cfg.musicSource,
+    'online-video': cfg.onlineVideo
+  };
 
-  // 渲染每个面板（保持 app.html 的展示方式）
   const bodyHtml = tabs.map((t, i) => {
-    const d = panelMap[t.id];
-    if (!d) return `<div class="more-group${i === 0 ? ' active' : ''}" id="more-${t.id}"><div class="error-msg">❌ ${t.label} 加载失败</div></div>`;
+    const data = panelMap[t.id];
+    if (!data) return '';
     const isOnline = t.id === 'online-video';
-    const content = renderSourceGroup(d.title || t.label, d.description || '', d.items || d, isOnline);
+    const content = renderSourceGroup(data.title, data.description, data.items, isOnline);
     return `<div class="more-group${i === 0 ? ' active' : ''}" id="more-${t.id}">${content}</div>`;
   }).join('\n');
 
@@ -786,12 +774,10 @@ async function renderMore() {
   });
 }
 
-/* ===== 点播（k.html 加载方式：CONFIG.api.listFile 路径） ===== */
+/* ===== 点播 ===== */
 async function fetchListText() {
   if(rawListText!==null) return rawListText;
-  // 从 CONFIG.api.listFile 读取路径（k.html 方式），fallback 到默认 list.txt
-  const listFile = (SITE_CONFIG && SITE_CONFIG.api && SITE_CONFIG.api.listFile) || 'list.txt';
-  const res = await fetch(listFile + '?t=' + Date.now() + '&r=' + Math.random(), {cache:'no-store', headers:{'Cache-Control':'no-cache'}});
+  const res = await fetch('list.txt?t='+Date.now()+'&r='+Math.random(), {cache:'no-store',headers:{'Cache-Control':'no-cache'}});
   if(!res.ok) throw new Error('HTTP '+res.status);
   rawListText = await res.text(); return rawListText;
 }
@@ -808,23 +794,14 @@ function renderApi() {
     const tip=document.getElementById('apiLoading'); if(tip) tip.style.display='none';
     let items=parseItems(text);
     if(!items.length){container.innerHTML='<div class="error-msg">⚠️ 接口列表为空，请检查 list.txt</div>';return;}
-
-    // 从 CONFIG 读取权重和域名（k.html 方式），fallback 到硬编码
-    const weights = (SITE_CONFIG && SITE_CONFIG.api && SITE_CONFIG.api.weights) || API_WEIGHTS;
-    const domains = (SITE_CONFIG && SITE_CONFIG.api && SITE_CONFIG.api.domains) || API_DOMAINS;
-    const rotateKw = (SITE_CONFIG && SITE_CONFIG.api && SITE_CONFIG.api.rotateKeywords) || ROTATE_KEYWORDS;
-
-    // 重新计算权重（因为 parseItems 用了 API_WEIGHTS 默认值）
-    items.forEach(it => { it.weight = weights.hasOwnProperty(it.file) ? weights[it.file] : 999; });
-
-    const ri=items.filter(i=>rotateKw.some(kw=>i.name.toLowerCase().includes(kw.toLowerCase())));
+    const ri=items.filter(i=>ROTATE_KEYWORDS.some(kw=>i.name.toLowerCase().includes(kw.toLowerCase())));
     const top=getTopItem(ri); if(top) top.weight=Number.MIN_SAFE_INTEGER;
     items.sort((a,b)=>a.weight-b.weight);
     let html='';
     items.forEach(it=>{
       const isNew=isRecent(it.date); let lines='';
       if(it.origUrl) lines+=`<div class="url-line"><span class="url-tag">原始线路</span><span class="url-text">${it.origUrl}</span><button class="copy-btn" data-url="${it.origUrl}">复制</button></div>`;
-      domains.forEach(d=>{const u=d.base+it.name+'.json';lines+=`<div class="url-line"><span class="url-tag">${d.tag}</span><span class="url-text">${u}</span><button class="copy-btn" data-url="${u}">复制</button></div>`;});
+      API_DOMAINS.forEach(d=>{const u=d.base+it.name+'.json';lines+=`<div class="url-line"><span class="url-tag">${d.tag}</span><span class="url-text">${u}</span><button class="copy-btn" data-url="${u}">复制</button></div>`;});
       html+=`<div class="api-item" data-name="${it.name.toLowerCase()}"><div class="api-item-header"><div class="api-item-name" title="${it.name}">${it.name}</div><div class="api-item-meta"><span class="${isNew?'badge-new':'badge-old'}">备份时间 ${formatDateToChinese(it.date)}</span>${it.size?'&nbsp;&nbsp;'+it.size:''}</div></div><div class="api-item-urls">${lines}</div></div>`;
     });
     container.innerHTML=html;
@@ -834,12 +811,10 @@ function renderApi() {
   });
 }
 
-/* ===== 直播（k.html 加载方式：CONFIG.live.listFile 路径） ===== */
+/* ===== 直播 ===== */
 async function fetchLiveText() {
   if(rawLiveText!==null) return rawLiveText;
-  // 从 CONFIG.live.listFile 读取路径（k.html 方式），fallback 到默认 livelist.txt
-  const listFile = (SITE_CONFIG && SITE_CONFIG.live && SITE_CONFIG.live.listFile) || 'livelist.txt';
-  const res = await fetch(listFile + '?t=' + Date.now(), {cache:'no-store'});
+  const res = await fetch('livelist.txt?t='+Date.now(), {cache:'no-store'});
   if(!res.ok) throw new Error('HTTP '+res.status);
   rawLiveText = await res.text(); return rawLiveText;
 }
@@ -856,32 +831,25 @@ function renderLiveList() {
     if(loading) loading.style.display='none';
     const items=parseLiveItems(text);
     if(!items.length){container.innerHTML='<div class="error-msg">⚠️ 直播列表为空，请检查 livelist.txt</div>';return;}
-
-    // 从 CONFIG 读取直播域名（k.html 方式），fallback 到硬编码
-    const domains = (SITE_CONFIG && SITE_CONFIG.live && SITE_CONFIG.live.domains) || LIVE_DOMAINS;
-
     let html='';
     items.forEach(it=>{
       const isNew=isRecent(it.date); let urls='';
       if(it.origUrl) urls+=`<div class="live-url-line"><div class="live-info-inline"><span>来源：${it.source||'未知'}</span>${it.ua?'<span class="sep">|</span><span>UA：'+it.ua+'</span>':''}</div><div class="live-url-body"><span class="live-url-tag">原始线路</span><span class="live-url-text">${it.origUrl}</span><button class="copy-btn" data-url="${it.origUrl}">复制</button></div></div>`;
-      domains.forEach(d=>{const u=d.base+it.name;urls+=`<div class="live-url-line"><div class="live-url-body"><span class="live-url-tag">${d.tag}</span><span class="live-url-text">${u}</span><button class="copy-btn" data-url="${u}">复制</button></div></div>`;});
+      LIVE_DOMAINS.forEach(d=>{const u=d.base+it.name;urls+=`<div class="live-url-line"><div class="live-url-body"><span class="live-url-tag">${d.tag}</span><span class="live-url-text">${u}</span><button class="copy-btn" data-url="${u}">复制</button></div></div>`;});
       html+=`<div class="live-item" data-name="${it.displayName.toLowerCase()}"><div class="live-item-header"><div class="live-item-name" title="${it.displayName}">${it.displayName}</div><div class="live-item-meta"><span class="${isNew?'live-badge-new':'live-badge-old'}">备份时间 ${formatDateToChinese(it.date)}</span>${it.size?'&nbsp;&nbsp;'+it.size:''}</div></div><div class="live-item-urls">${urls}</div></div>`;
     });
     container.innerHTML=html;
   }).catch(err=>{if(loading)loading.style.display='none';container.innerHTML=`<div class="error-msg">❌ 直播列表加载失败：${err.message||err}</div>`;});
 }
 
-/* ===== 下载（k.html 加载方式 + app.html 展示方式） ===== */
+/* ===== 下载 ===== */
 let dlCache = new Map();
 let dlCurrentGroup = null;
 
 async function renderDownloads(force) {
   const container = document.getElementById('downloads-content');
   if (!container || (container.dataset.rendered && !force)) return;
-
-  // 从 CONFIG 读取下载源（k.html 方式）
-  const sources = (SITE_CONFIG && SITE_CONFIG.downloadSources) || DOWNLOAD_SOURCES;
-  if (!sources.length) { container.innerHTML = '<div class="error-msg">⚠️ 未配置下载源</div>'; return; }
+  if (!DOWNLOAD_SOURCES.length) { container.innerHTML = '<div class="error-msg">⚠️ 未配置下载源</div>'; return; }
 
   if (!container.dataset.rendered) {
     container.dataset.rendered = 'true';
@@ -896,7 +864,7 @@ async function renderDownloads(force) {
 
   if (!sidebar.dataset.built) {
     sidebar.dataset.built = 'true';
-    sidebar.innerHTML = sources.map((src, idx) => {
+    sidebar.innerHTML = DOWNLOAD_SOURCES.map((src, idx) => {
       const icon = src.icon ? `<img src="${src.icon}" style="width:1.4rem;height:1.4rem;border-radius:6px;object-fit:cover">`
                             : `<span class="dl-side-icon">📦</span>`;
       return `<button class="dl-side-btn ${idx === 0 ? 'active' : ''}" data-key="${src.url}">${icon}<span>${src.name || ('组' + (idx + 1))}</span></button>`;
@@ -911,13 +879,14 @@ async function renderDownloads(force) {
     });
   }
 
-  // k.html 方式：直接从 src.url fetch JSON（不做文本清洗，直接 parse）
-  await Promise.all(sources.map(async src => {
+  await Promise.all(DOWNLOAD_SOURCES.map(async src => {
     if (dlCache.has(src.url)) return;
     try {
-      const res = await fetch(src.url + '?t=' + Date.now(), { cache: 'no-store' });
+      const res = await fetch(src.url + '?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
       if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
+      const raw = await res.text();
+      const cleaned = raw.replace(/[\u201c\u201d]/g, '"').replace(/[\u2018\u2019]/g, "'").replace(/：/g, ':').replace(/，/g, ',');
+      const data = JSON.parse(cleaned);
       let cards = [];
       const arr = data.list || data;
       if (Array.isArray(arr)) {
@@ -932,7 +901,7 @@ async function renderDownloads(force) {
     }
   }));
 
-  const firstKey = sources[0].url;
+  const firstKey = DOWNLOAD_SOURCES[0].url;
   showDownloadGroup(dlCurrentGroup || firstKey);
 }
 
@@ -964,34 +933,13 @@ function showDownloadGroup(key) {
     </div>`;
 }
 
-/* ===== 弹幕（k.html 加载方式：CONFIG.danmuData 路径动态 fetch JSON） ===== */
-let danmuDataCache = null;
-
-async function renderDanmu() {
-  const container = document.getElementById('danmu-content'); if(!container) return;
-  if (danmuDataCache) { renderDanmuList(danmuDataCache); return; }
-
-  // 从 CONFIG.danmuData 路径加载（k.html 方式）
-  const danmuPath = (SITE_CONFIG && SITE_CONFIG.danmuData) || 'data/danmuSource.json';
-  try {
-    const res = await fetch(danmuPath + '?t=' + Date.now(), { cache: 'no-store' });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-    danmuDataCache = data;
-    renderDanmuList(data);
-  } catch (e) {
-    container.innerHTML = '<div class="error-msg">❌ 弹幕加载失败：' + (e.message || e) + '</div>';
-  }
-}
-
-function renderDanmuList(data) {
-  const container = document.getElementById('danmu-content');
-  const items = data.items || [];
-  let rows = '';
-  items.forEach(s => {
-    rows += `<div class="danmu-item" data-name="${s.name.toLowerCase()}" style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:8px"><span style="flex:0 0 auto;font-size:.78rem;font-weight:600;color:#0b1e33">${s.name}</span>${s.badge ? `<span style="font-size:.6rem;color:#4a9eff;background:#e8f2ff;padding:2px 10px;border-radius:50px">${s.badge}</span>` : ''}<span style="flex:1;font-size:.75rem;color:#2563eb;word-break:break-all">${s.url}</span><button class="copy-btn" data-url="${s.url}">复制</button></div>`;
-  });
-  container.innerHTML = `<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7"><h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">💬 ${data.title || '弹幕接口'}</h3><p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">${(data.description || '共 {count} 条弹幕接口').replace('{count}', items.length)}</p>${rows}</div>`;
+/* ===== 弹幕 ===== */
+function renderDanmu() {
+  const container=document.getElementById('danmu-content'); if(!container) return;
+  if(!DANMU_SOURCES.length){container.innerHTML='<div class="error-msg">⚠️ 未配置弹幕源，请检查 config.json 中的 danmuSources</div>';return;}
+  let rows='';
+  DANMU_SOURCES.forEach(s=>{rows+=`<div class="danmu-item" data-name="${s.name.toLowerCase()}" style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:8px"><span style="flex:0 0 auto;font-size:.78rem;font-weight:600;color:#0b1e33">${s.name}</span><span style="flex:1;font-size:.75rem;color:#2563eb;word-break:break-all">${s.url}</span><button class="copy-btn" data-url="${s.url}">复制</button></div>`;});
+  container.innerHTML=`<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7"><h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">💬 弹幕接口</h3><p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">共 ${DANMU_SOURCES.length} 条，点击「复制」把地址填入播放器的弹幕接口。</p>${rows}</div>`;
 }
 
 /* ===== 导航 ===== */
