@@ -54,8 +54,8 @@
   ],
 
   "downloadSources": [
-    { "name": "菠菜园", "url": "ry/bcy.json", "icon": "", "description": "" },
-    { "name": "奇奇副本", "url": "ry/qiqi.json", "icon": "", "description": "" }
+    { "name": "菠菜园", "url": "bcy.json", "icon": "", "description": "" },
+    { "name": "奇奇副本", "url": "qiqi.json", "icon": "", "description": "" }
   ],
 
   "danmuData": "data/danmuSource.json",
