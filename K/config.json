@@ -23,14 +23,25 @@
     "domains": [
       { "tag": "备份一线", "base": "https://0.12yue.de5.net/tvbox/" },
       { "tag": "备份二线", "base": "https://0.cdz.qzz.io/tvbox/" },
-      { "tag": "备份三线", "base": "https://0.wdzb.eu.cc/tvbox/" }
+      { "tag": "备份三线", "base": "https://0.wdzb.eu.cc/tvbox/" },
+      { "tag": "备份四线", "base": "https://tvbox.moliys.icu/tvbox/" }
     ],
     "weights": {
-      "轮替占位.json": 1, "神马都没有.json": 2, "饭太硬.json": 4, "肥猫.json": 5,
-      "摸鱼.json": 6, "王二小.json": 7, "集多.json": 8, "潇洒.json": 9, "小米.json": 10,
-      "嗷呜.json": 11, "南风.json": 12, "小虎斑.json": 13
+      "没有.json": 0,
+      "轮替占位.json": 1,
+      "神马都没有.json": 2,
+      "饭太硬.json": 4,
+      "肥猫.json": 5,
+      "摸鱼.json": 6,
+      "王二小.json": 7,
+      "集多.json": 8,
+      "潇洒.json": 9,
+      "小米.json": 10,
+      "嗷呜.json": 11,
+      "南风.json": 12,
+      "小虎斑.json": 13
     },
-    "rotateKeywords": ["X4", "更新", "菠菜"]
+    "rotateKeywords": ["X4", "更新", "菠菜", "幸福年年"]
   },
 
   "live": {
@@ -54,8 +65,18 @@
   ],
 
   "downloadSources": [
-    { "name": "菠菜园", "url": "bcy.json", "icon": "", "description": "" },
-    { "name": "奇奇副本", "url": "qiqi.json", "icon": "", "description": "" }
+    {
+      "name": "菠菜园",
+      "url": "bcy.json",
+      "icon": "",
+      "description": "菠菜园系列下载资源"
+    },
+    {
+      "name": "奇奇副本",
+      "url": "qiqi.json",
+      "icon": "",
+      "description": "奇奇系列下载资源"
+    }
   ],
 
   "danmuData": "data/danmuSource.json",
@@ -64,53 +85,50 @@
     "bookSource": "data/bookSource.json",
     "comicSource": "data/comicSource.json",
     "musicSource": "data/musicSource.json",
-    "onlineVideo": "data/onlineVideo.json"
+    "onlineVideo": "data/onlineVideo.json",
+    "download": "data/downloadSource.json"
   },
 
   "moreTabs": [
     { "id": "bookSource", "label": "书源", "icon": "📚" },
     { "id": "comicSource", "label": "漫画", "icon": "📖" },
     { "id": "musicSource", "label": "音源", "icon": "🎵" },
-    { "id": "onlineVideo", "label": "在线影视", "icon": "🎬" }
+    { "id": "onlineVideo", "label": "在线影视", "icon": "🎬" },
+    { "id": "download", "label": "下载资源", "icon": "📦" }
   ],
+
   "about": {
-    "domains": [
+    "backupDomains": [
       "https://0.12yue.de5.net",
       "https://0.cdz.qzz.io",
-      "https://0.wdzb.eu.cc"
+      "https://0.wdzb.eu.cc",
+      "https://tvbox.moliys.icu"
     ],
-    "declaration": "本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。",
-    "qqGroup": "1067685939",
-    "telegram": "https://t.me/+nrWtFerPAfcwOTg9",
-    "contributors": [
-      {
-        "name": "误道者",
-        "role": "站长 / 资源整理",
-        "desc": "站点发起与接口资源整理",
-        "avatar": "vip/jueson.jpg",
-        "social": ""
-      },
-      {
-        "name": "沫离",
-        "role": "弹幕分页",
-        "desc": "独立贡献弹幕接口分页模块",
-        "avatar": "vip/沫离.jpg",
-        "social": ""
-      },
-      {
-        "name": "简约风<格>",
-        "role": "推广贡献",
-        "desc": "将本网页内嵌 APP 进行推广分发",
-        "avatar": "vip/简约风格.jpg",
-        "social": ""
-      }
-    ]
+    "contributorsTitle": "🤝 合作共创",
+    "contributorsDesc": "感谢以下伙伴对本站的内容贡献与支持（<strong style=\"color:#ca8a04\">排名不分先后</strong>）：",
+    "contributorsNote": "* 还有部分贡献者因未留下署名信息而未在此列出，同样感谢你们的默默付出。如有遗漏请联系站长补充。",
+    "contributors": [],
+    "declarationTitle": "📢 声明与联系",
+    "declarationText": "本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。",
+    "contact": {
+      "qqGroup": "1067685939",
+      "qqGroupLink": "https://qm.qq.com/q/gmRKKPT3x0",
+      "telegram": "https://t.me/+nrWtFerPAfcwOTg9",
+      "github": "https://github.com/lubin776/tvbox-api-backup"
+    }
   },
 
   "footer": "本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。 QQ 群：1067685939。",
 
-  "modeToggle": { "simpleText": "切换<br>全能版", "fullText": "切换<br>简洁版" },
-  "search": { "placeholder": "🔍 搜索..." },
+  "modeToggle": {
+    "simpleText": "切换<br>全能版",
+    "fullText": "切换<br>简洁版"
+  },
+
+  "search": {
+    "placeholder": "🔍 搜索..."
+  },
+
   "loadingText": "⏳ 正在加载...",
   "errorText": "❌ 加载失败"
 }
