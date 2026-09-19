@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>海量接口搬运备份</title>
+<title>海量接口搬运备份00</title>
 <style>
 /* ============================================================
    公共 CSS
@@ -707,13 +707,11 @@ function renderContributors(list) {
 
 /* ===== k.html 更多面板渲染函数 ===== */
 function renderApiItemCard(item) {
-  const badge = item.badge || item.count || '';
-  const note = item.note || item.desc || '';
-  let noteHtml = note ? `<div style="font-size:.68rem;color:#8b9eb0;margin-top:6px">${note}</div>` : '';
+  let noteHtml = item.note ? `<div style="font-size:.68rem;color:#8b9eb0;margin-top:6px">${item.note}</div>` : '';
   return `<div class="api-item" data-name="${item.name.toLowerCase()}">
   <div class="api-item-header">
     <div class="api-item-name" title="${item.name}">${item.name}</div>
-    <div class="api-item-meta"><span class="badge-new">${badge}</span></div>
+    <div class="api-item-meta"><span class="badge-new">${item.badge || ''}</span></div>
   </div>
   <div class="api-item-urls">
     <div class="url-line">
@@ -753,8 +751,8 @@ function renderSourceGroup(title, description, items, isOnlineVideo) {
 
 async function renderMore() {
   const container = document.getElementById('more-content');
-  if (!container || container.dataset.rendered) return;
-  container.dataset.rendered = 'true';
+  if (!container) return;
+  // 每次切换都重新渲染，避免切换按钮后不加载
   container.className = 'has-sidebar';
   container.innerHTML = `<div class="loading">⏳ 正在加载更多资源...</div>`;
 
@@ -767,11 +765,13 @@ async function renderMore() {
     return;
   }
 
-  // 固定侧边栏：通用资源（在上方）+ 在线视频
-  const tabs = [
-    { id: 'general-source', label: '通用资源', icon: '🧩' },
-    { id: 'online-video', label: '在线视频', icon: '📺' }
-  ];
+  // 渲染侧边栏（从 config.json 的 moreTabs 读取）
+  const tabs = cfg.moreTabs || [];
+  if (!tabs.length) {
+    container.innerHTML = `<div class="error-msg">⚠️ config.json 中未配置 moreTabs</div>`;
+    container.dataset.rendered = '';
+    return;
+  }
 
   const sidebarHtml = tabs.map((t, i) =>
     `<button class="dl-side-btn${i === 0 ? ' active' : ''}" data-more-tab="${t.id}">
@@ -780,9 +780,11 @@ async function renderMore() {
     </button>`
   ).join('\n');
 
-  // 渲染每个面板 —— 只保留通用资源和在线视频
+  // 渲染每个面板
   const panelMap = {
-    'general-source': cfg.generalSource,
+    'book-source': cfg.bookSource,
+    'comic-source': cfg.comicSource,
+    'music-source': cfg.musicSource,
     'online-video': cfg.onlineVideo
   };
 
@@ -889,36 +891,32 @@ let dlCurrentGroup = null;
 
 async function renderDownloads(force) {
   const container = document.getElementById('downloads-content');
-  if (!container || (container.dataset.rendered && !force)) return;
+  if (!container) return;
   if (!DOWNLOAD_SOURCES.length) { container.innerHTML = '<div class="error-msg">⚠️ 未配置下载源</div>'; return; }
 
-  if (!container.dataset.rendered) {
-    container.dataset.rendered = 'true';
-    container.className = 'has-sidebar';
-    container.innerHTML = `
-      <div class="dl-sidebar" id="dlSidebar"></div>
-      <div class="dl-body" id="dlBody"><div class="loading">⏳ 正在加载下载资源...</div></div>`;
-  }
+  // 每次切换都重建侧栏与内容，避免切换按钮后不加载
+  container.className = 'has-sidebar';
+  container.innerHTML = `
+    <div class="dl-sidebar" id="dlSidebar"></div>
+    <div class="dl-body" id="dlBody"><div class="loading">⏳ 正在加载下载资源...</div></div>`;
 
   const sidebar = document.getElementById('dlSidebar');
   const body = document.getElementById('dlBody');
 
-  if (!sidebar.dataset.built) {
-    sidebar.dataset.built = 'true';
-    sidebar.innerHTML = DOWNLOAD_SOURCES.map((src, idx) => {
-      const icon = src.icon ? `<img src="${src.icon}" style="width:1.4rem;height:1.4rem;border-radius:6px;object-fit:cover">`
-                            : `<span class="dl-side-icon">📦</span>`;
-      return `<button class="dl-side-btn ${idx === 0 ? 'active' : ''}" data-key="${src.url}">${icon}<span>${src.name || ('组' + (idx + 1))}</span></button>`;
-    }).join('');
+  // 每次重建侧栏并绑定事件，确保切换后可正常加载
+  sidebar.innerHTML = DOWNLOAD_SOURCES.map((src, idx) => {
+    const icon = src.icon ? `<img src="${src.icon}" style="width:1.4rem;height:1.4rem;border-radius:6px;object-fit:cover">`
+                          : `<span class="dl-side-icon">📦</span>`;
+    return `<button class="dl-side-btn ${idx === 0 ? 'active' : ''}" data-key="${src.url}">${icon}<span>${src.name || ('组' + (idx + 1))}</span></button>`;
+  }).join('');
 
-    sidebar.querySelectorAll('.dl-side-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        sidebar.querySelectorAll('.dl-side-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        showDownloadGroup(btn.getAttribute('data-key'));
-      });
+  sidebar.querySelectorAll('.dl-side-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      sidebar.querySelectorAll('.dl-side-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      showDownloadGroup(btn.getAttribute('data-key'));
     });
-  }
+  });
 
   await Promise.all(DOWNLOAD_SOURCES.map(async src => {
     if (dlCache.has(src.url)) return;
