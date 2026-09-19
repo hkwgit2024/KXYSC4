@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>海量接口搬运备份</title>
+<title>海量接口搬运备份0000</title>
 <style>
 /* ============================================================
    公共 CSS
@@ -707,11 +707,13 @@ function renderContributors(list) {
 
 /* ===== k.html 更多面板渲染函数 ===== */
 function renderApiItemCard(item) {
-  let noteHtml = item.note ? `<div style="font-size:.68rem;color:#8b9eb0;margin-top:6px">${item.note}</div>` : '';
+  const badge = item.badge || item.count || '';
+  const note = item.note || item.desc || '';
+  let noteHtml = note ? `<div style="font-size:.68rem;color:#8b9eb0;margin-top:6px">${note}</div>` : '';
   return `<div class="api-item" data-name="${item.name.toLowerCase()}">
   <div class="api-item-header">
     <div class="api-item-name" title="${item.name}">${item.name}</div>
-    <div class="api-item-meta"><span class="badge-new">${item.badge || ''}</span></div>
+    <div class="api-item-meta"><span class="badge-new">${badge}</span></div>
   </div>
   <div class="api-item-urls">
     <div class="url-line">
@@ -765,13 +767,11 @@ async function renderMore() {
     return;
   }
 
-  // 渲染侧边栏（从 config.json 的 moreTabs 读取）
-  const tabs = cfg.moreTabs || [];
-  if (!tabs.length) {
-    container.innerHTML = `<div class="error-msg">⚠️ config.json 中未配置 moreTabs</div>`;
-    container.dataset.rendered = '';
-    return;
-  }
+  // 固定侧边栏：通用资源（在上方）+ 在线视频
+  const tabs = [
+    { id: 'general-source', label: '通用资源', icon: '🧩' },
+    { id: 'online-video', label: '在线视频', icon: '📺' }
+  ];
 
   const sidebarHtml = tabs.map((t, i) =>
     `<button class="dl-side-btn${i === 0 ? ' active' : ''}" data-more-tab="${t.id}">
@@ -780,11 +780,9 @@ async function renderMore() {
     </button>`
   ).join('\n');
 
-  // 渲染每个面板
+  // 渲染每个面板 —— 只保留通用资源和在线视频
   const panelMap = {
-    'book-source': cfg.bookSource,
-    'comic-source': cfg.comicSource,
-    'music-source': cfg.musicSource,
+    'general-source': cfg.generalSource,
     'online-video': cfg.onlineVideo
   };
 
