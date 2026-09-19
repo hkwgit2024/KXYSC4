@@ -205,34 +205,77 @@ body.simple-mode #api-panel { display:block !important; }
 .dl-group.active { display:block; }
 .dl-group-title { font-size:.95rem; font-weight:600; color:#0b1e33; margin-bottom:2px; }
 .dl-group-desc { font-size:.7rem; color:#8b9eb0; margin-bottom:10px; }
+/* 下载卡片列表 —— 与在线视频模块 .online-list 对齐 */
 .dl-cards {
-  display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
-  gap:12px; width:100%; max-width:100%; overflow:hidden;
+  display:flex; flex-direction:column;
+  gap:10px; width:100%; max-width:100%; overflow:hidden;
 }
 .download-card {
-  background:#fff; border-radius:8px; padding:16px 14px 22px; text-align:center;
-  border:1px solid #e4ebf3; text-decoration:none; color:inherit;
-  display:flex; flex-direction:column; align-items:center; min-height:170px; min-width:0; max-width:100%; overflow:hidden;
+  display:flex; align-items:center; gap:12px;
+  background:#fff; border:1px solid #e4ebf3; border-radius:10px;
+  padding:10px 12px; text-decoration:none; color:inherit;
+  transition:border-color .15s, box-shadow .15s;
+  min-width:0; width:100%;
+}
+.download-card:active {
+  border-color:#4a9eff;
+  box-shadow:0 2px 8px rgba(74,158,255,.15);
 }
 .download-card.hidden { display:none !important; }
-.download-card img { width:80%; max-width:100%; aspect-ratio:1/1; border-radius:8px; margin-bottom:12px; object-fit:cover; background:#f0f3f8; }
-.site-icon-wrap {
-  width:80%; max-width:100%; aspect-ratio:1/1; border-radius:8px; margin-bottom:12px;
-  display:flex; align-items:center; justify-content:center;
-  background:#f0f3f8; overflow:hidden;
+
+/* 左侧图标 */
+.dl-item-icon {
+  flex-shrink:0; width:44px; height:44px; border-radius:10px;
+  overflow:hidden; display:flex; align-items:center; justify-content:center;
+  background:#f0f3f8;
 }
-.site-icon-wrap img { width:100%; height:100%; object-fit:cover; border-radius:8px; }
-.site-ph {
-  font-size:1.5rem; font-weight:700; color:#4a9eff;
+.dl-item-icon img { width:100%; height:100%; object-fit:cover; border-radius:10px; }
+.dl-item-icon .site-ph { font-size:1.2rem; font-weight:700; color:#4a9eff; }
+
+/* 中间文字 */
+.dl-item-info {
+  flex:1; min-width:0;
+  display:flex; flex-direction:column; justify-content:center;
 }
-.online-name { font-size:.76rem; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.online-desc { font-size:.6rem; color:#8b9eb0; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.dl-item-name {
+  font-size:.82rem; font-weight:600; color:#0a1a2b;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.dl-item-desc {
+  font-size:.68rem; color:#8b9eb0; margin-top:3px; line-height:1.4;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+
+/* 右侧下载按钮 */
+.dl-item-btn {
+  flex-shrink:0;
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:4px;
+  height:32px; padding:0 14px;
+  background:#4a9eff; color:#fff;
+  border:none; border-radius:30px;
+  font-size:.7rem; font-weight:500; line-height:1;
+  cursor:pointer; white-space:nowrap;
+  transition:background .15s, transform .05s;
+}
+.dl-item-btn:active { background:#2a7ed9; transform:scale(.96); }
+
+/* 大屏：两列 */
+@media (min-width:600px) {
+  .dl-cards {
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:10px;
+  }
+}
+
 @media (max-width:600px) {
   #downloads-content.has-sidebar { gap:8px; }
   .dl-sidebar { width:72px; gap:6px; max-height:66vh; }
   .dl-side-btn { padding:9px 3px; font-size:.66rem; border-radius:10px; }
   .dl-side-btn .dl-side-icon { font-size:.95rem; }
-  .dl-cards { grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); gap:8px; }
+  .dl-item-icon { width:40px; height:40px; }
+  .dl-item-btn { height:30px; padding:0 12px; font-size:.66rem; }
 }
 
 /* ===== 弹幕面板 ===== */
@@ -917,14 +960,21 @@ function showDownloadGroup(key) {
 
   const title = src.name ? `<div class="dl-group-title">${src.name}</div>` : '';
   const desc = src.description ? `<div class="dl-group-desc">${src.description}</div>` : '';
-  const cardsHtml = cards.map(i => `
+  const cardsHtml = cards.map(i => {
+    const ph = (i.name || '?').slice(0, 1).toUpperCase();
+    const iconImg = i.icon
+      ? `<img src="${i.icon}" alt="${i.name}" loading="lazy" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';">`
+      : '';
+    return `
     <a class="download-card" href="${i.url || '#'}" target="_blank" rel="noopener noreferrer" data-name="${(i.name || '').toLowerCase()}">
-      <img src="${i.icon || ''}" onerror="this.style.visibility='hidden'" style="width:90%;max-width:100%;height:auto;aspect-ratio:1/1;border-radius:10px;margin-bottom:14px;object-fit:cover;background:#f0f3f8;">
-      <div style="flex:1;width:100%;margin-top:auto;">
-        <div style="font-size:.76rem;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${i.name || ''}</div>
-        ${i.version ? `<div style="font-size:.6rem;color:#8b9eb0;margin-top:2px;">${i.version}</div>` : ''}
-      </div>
-    </a>`).join('');
+      <span class="dl-item-icon">${iconImg}<span class="site-ph" style="display:${i.icon ? 'none' : 'flex'}">${ph}</span></span>
+      <span class="dl-item-info">
+        <span class="dl-item-name">${i.name || ''}</span>
+        ${i.version ? `<span class="dl-item-desc">${i.version}</span>` : ''}
+      </span>
+      <span class="dl-item-btn">⬇ 下载</span>
+    </a>`;
+  }).join('');
 
   body.innerHTML = `
     <div class="dl-group active">
