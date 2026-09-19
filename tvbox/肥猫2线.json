@@ -1,5 +1,5 @@
 {
-  "spider": "https://img2.tofaka.com/autoupload/f/p8kvh/20260919/HrpT/aidaox-gongju-20260919-102609.jar;md5;5fc0ca18eecc513a63280265f539d2ed",
+  "spider": "https://img2.tofaka.com/autoupload/f/p8kvh/20260919/VqLC/aidaox-gongju-20260919-122929.jar;md5;1ce7ab436757c2899dfd787e16270fb1",
   "wallpaper": "proxy://do=wallpaper",
   "logo": "https://jk.catvod.site/jk/assets/feimao_logo.gif?v=20260901c",
   "sites": [
@@ -173,7 +173,7 @@
       "name": "🎬创意库[图库]",
       "type": 3,
       "api": "csp_ChuangYiV",
-      "searchable": 1,
+      "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
       "changeable": 0,
@@ -189,7 +189,7 @@
       "name": "📝提示词[应用]",
       "type": 3,
       "api": "csp_ManJu",
-      "searchable": 1,
+      "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
       "changeable": 0,
