@@ -1,5 +1,5 @@
 {
-  "spider": "https://img2.tofaka.com/autoupload/f/p8kvh/20260917/EzRz/aidaox-gongju-20260917-154805.jar;md5;bd948f5f8b2d284f823b35a7812f5648",
+  "spider": "https://img2.tofaka.com/autoupload/f/p8kvh/20260919/HrpT/aidaox-gongju-20260919-102609.jar;md5;5fc0ca18eecc513a63280265f539d2ed",
   "wallpaper": "proxy://do=wallpaper",
   "logo": "https://jk.catvod.site/jk/assets/feimao_logo.gif?v=20260901c",
   "sites": [
@@ -35,6 +35,62 @@
       "timeout": 60
     },
     {
+      "key": "mt",
+      "name": "🗂️MT管理器[工具]",
+      "type": 3,
+      "api": "csp_ShellInjectTool",
+      "searchable": 0,
+      "changeable": 0,
+      "indexs": 0,
+      "ext": "{\"tool\": \"mt\"}",
+      "style": {
+        "type": "list"
+      }
+    },
+    {
+      "key": "via",
+      "name": "🌐Via浏览器[工具]",
+      "type": 3,
+      "api": "csp_ShellInjectTool",
+      "searchable": 0,
+      "changeable": 0,
+      "indexs": 0,
+      "ext": "{\"tool\": \"via\"}",
+      "style": {
+        "type": "list"
+      }
+    },
+    {
+      "key": "书签",
+      "name": "🔖书签[自定义]",
+      "type": 3,
+      "api": "csp_ResMgr",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
+      "changeable": 0,
+      "timeout": 60,
+      "ext": "{\"entry\":\"bookmark\"}",
+      "style": {
+        "type": "list"
+      }
+    },
+    {
+      "key": "文本",
+      "name": "📝文本[应用]",
+      "type": 3,
+      "api": "csp_ResMgr",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
+      "changeable": 0,
+      "timeout": 60,
+      "ext": "{\"entry\":\"editor\"}",
+      "style": {
+        "type": "list"
+      }
+    },
+    {
       "key": "益智",
       "name": "🧩益智[游戏]",
       "type": 3,
@@ -65,33 +121,7 @@
       "timeout": 60
     },
     {
-      "key": "mt",
-      "name": "🗂️MT管理器[工具]",
-      "type": 3,
-      "api": "csp_ShellInjectTool",
-      "searchable": 0,
-      "changeable": 0,
-      "indexs": 0,
-      "ext": "{\"tool\": \"mt\"}",
-      "style": {
-        "type": "list"
-      }
-    },
-    {
-      "key": "via",
-      "name": "🌐Via浏览器[工具]",
-      "type": 3,
-      "api": "csp_ShellInjectTool",
-      "searchable": 0,
-      "changeable": 0,
-      "indexs": 0,
-      "ext": "{\"tool\": \"via\"}",
-      "style": {
-        "type": "list"
-      }
-    },
-    {
-      "key": "提示词",
+      "key": "造句",
       "name": "📝造句[图库]",
       "type": 3,
       "api": "csp_Zaoju",
@@ -139,8 +169,56 @@
       "timeout": 60
     },
     {
+      "key": "创意库",
+      "name": "🎬创意库[图库]",
+      "type": 3,
+      "api": "csp_ChuangYiV",
+      "searchable": 1,
+      "quickSearch": 0,
+      "filterable": 1,
+      "changeable": 0,
+      "indexs": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 1.777
+      },
+      "timeout": 60
+    },
+    {
+      "key": "提示词",
+      "name": "📝提示词[应用]",
+      "type": 3,
+      "api": "csp_ManJu",
+      "searchable": 1,
+      "quickSearch": 0,
+      "filterable": 1,
+      "changeable": 0,
+      "indexs": 0,
+      "ext": "https://jk.catvod.site/jk/t4/manju.json",
+      "style": {
+        "type": "list"
+      },
+      "timeout": 60
+    },
+    {
       "key": "ResMgr",
-      "name": "📦资源[配置]",
+      "name": "📦资源[应用]",
+      "type": 3,
+      "api": "csp_ShellInjectTool",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0,
+      "changeable": 0,
+      "timeout": 60,
+      "ext": "{\"tool\":\"browse\"}",
+      "style": {
+        "type": "grid",
+        "ratio": 0.75
+      }
+    },
+    {
+      "key": "小说",
+      "name": "📖小说[本地]",
       "type": 3,
       "api": "csp_ResMgr",
       "searchable": 0,
@@ -148,9 +226,38 @@
       "filterable": 1,
       "changeable": 0,
       "timeout": 60,
+      "ext": "{\"entry\":\"novel\"}",
       "style": {
-        "type": "grid",
+        "type": "rect",
         "ratio": 0.75
+      }
+    },
+    {
+      "key": "资源画廊",
+      "name": "🖼️画廊[自定义]",
+      "type": 3,
+      "api": "csp_ResMgr",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
+      "changeable": 0,
+      "timeout": 60,
+      "ext": "{\"entry\":\"gallery\"}",
+      "style": {
+        "type": "rect",
+        "ratio": 0.75
+      }
+    },
+    {
+      "key": "解密",
+      "name": "🔓解密[工具]",
+      "type": 3,
+      "api": "csp_DecryptConfig",
+      "searchable": 0,
+      "changeable": 0,
+      "indexs": 0,
+      "style": {
+        "type": "list"
       }
     },
     {
@@ -206,6 +313,19 @@
       "style": {
         "type": "rect",
         "ratio": 0.56
+      }
+    },
+    {
+      "key": "shell",
+      "name": "🐚默壳管理[工具]",
+      "type": 3,
+      "api": "csp_ShellInjectTool",
+      "searchable": 0,
+      "changeable": 0,
+      "indexs": 0,
+      "ext": "{\"tool\": \"shell\"}",
+      "style": {
+        "type": "list"
       }
     }
   ]
