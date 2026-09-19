@@ -5,33 +5,6 @@
     "subtitle": "备用数据源，防屏不迷路",
     "qqGroup": "1067685939"
   },
-  "moreTabs": [
-    {
-      "id": "book-source",
-      "label": "书源",
-      "icon": "📚"
-    },
-    {
-      "id": "comic-source",
-      "label": "漫画",
-      "icon": "🎨"
-    },
-    {
-      "id": "music-source",
-      "label": "音乐",
-      "icon": "🎵"
-    },
-    {
-      "id": "online-video",
-      "label": "在线视频",
-      "icon": "📺"
-    },
-    {
-      "id": "general-source",
-      "label": "通用资源",
-      "icon": "🧩"
-    }
-  ],
   "bookSource": {
     "title": "阅读书源",
     "description": "适用于阅读APP的精品书源",
@@ -53,22 +26,22 @@
     "items": []
   },
   "generalSource": {
-    "title": "通用资源示例模块",
-    "description": "可用于聚合各类通用接口、工具、资源地址等",
+    "title": "示例资源模块标题",
+    "description": "模块说明",
     "items": [
       {
         "name": "资源一名称",
-        "count": "更新于 9 月",
-        "desc": "这是一个通用资源示例说明",
-        "tag": "推荐",
+        "count": "说明一",
+        "desc": "说明二",
+        "tag": "标签",
         "url": "https://example.com/resource1.json",
         "id": 1
       },
       {
-        "name": "资源二名称",
+        "name": "资源二",
         "count": "",
         "desc": "",
-        "tag": "备用",
+        "tag": "标签",
         "url": "https://example.com/resource2.json",
         "id": 2
       }
