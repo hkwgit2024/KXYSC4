@@ -72,10 +72,6 @@ ray.json|20260918|14.1K|https://raw.githubusercontent.com/dxawi/0/main/0.json
 沐辰2线.json|20260918|2.4K|https://raw.githubusercontent.com/4TVBox/TVBox/refs/heads/main/config.json
 雷蒙.json|20260918|194.7K|https://raw.githubusercontent.com/n3rddd/N3RD/master/JN/lemj.json
 黄金.json|20260918|112B|https://gitlab.com/lzc1021lzc/hjfggzs.hjys/-/raw/main/hjys.free.json
-更新专用接口.json|20260917|4.4K|https://0.12yue.de5.net/tvbox/更新专用接口.json
-菠菜pro.json|20260917|115.0K|https://0.12yue.de5.net/5/x4pro.json
-菠菜园.json|20260917|70.2K|https://0.12yue.de5.net/5/x4.json
-少儿频道.json|20260917|32.2K|https://0.12yue.de5.net/5/tv少儿.json
 集多.json|20260914|35.5K|http://rihou.cc:88/demo.php
 集多3线.json|20260914|35.5K|http://rihou.cc:88/demoabc.json
 驸马.json|20260914|44.4K|http://fmys.top/fmys.json
