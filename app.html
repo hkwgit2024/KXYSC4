@@ -128,6 +128,7 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 body.simple-mode .nav-tabs { display:none !important; }
 body.simple-mode #live-panel,
 body.simple-mode #download-panel,
+body.simple-mode #video-panel,
 body.simple-mode #danmu-panel,
 body.simple-mode #about-panel { display:none !important; }
 body.simple-mode #api-panel { display:block !important; }
@@ -499,6 +500,13 @@ body.simple-mode #api-panel { display:block !important; }
       <div id="downloads-content"><div class="loading">⏳ 正在加载下载资源...</div></div>
     </div>
 
+    <!-- 视频面板（从「更多」面板的在线视频模块独立出来） -->
+    <div class="tab-panel" id="video-panel">
+      <div id="video-content">
+        <div class="loading">⏳ 正在加载在线视频...</div>
+      </div>
+    </div>
+
     <!-- 更多面板（k.html 动态版） -->
     <div class="tab-panel" id="more-panel">
       <div id="more-content">
@@ -562,7 +570,7 @@ body.simple-mode #api-panel { display:block !important; }
 
 const MODE_KEY = 'site_mode';
 const TAB_KEY = 'current_tab';
-const VALID_TABS = ['api','live','danmu','download','more','about'];
+const VALID_TABS = ['api','live','danmu','download','video','more','about'];
 
 const btn = document.getElementById('modeToggleBtn');
 const searchBox = document.getElementById('search');
@@ -707,12 +715,16 @@ function renderContributors(list) {
 
 /* ===== k.html 更多面板渲染函数 ===== */
 function renderApiItemCard(item) {
-  let noteHtml = item.note ? `<div style="font-size:.68rem;color:#8b9eb0;margin-top:6px">${item.note}</div>` : '';
+  // 兼容 badge / count（说明一），note / desc（说明二）
+  const badge = item.badge || item.count || '';
+  const note  = item.note  || item.desc  || '';
+  let noteHtml = note ? `<div style="font-size:.68rem;color:#8b9eb0;margin-top:6px">${note}</div>` : '';
   return `<div class="api-item" data-name="${item.name.toLowerCase()}">
   <div class="api-item-header">
     <div class="api-item-name" title="${item.name}">${item.name}</div>
-    <div class="api-item-meta"><span class="badge-new">${item.badge || ''}</span></div>
+    <div class="api-item-meta"><span class="badge-new">${badge}</span></div>
   </div>
+  ${noteHtml}
   <div class="api-item-urls">
     <div class="url-line">
       <span class="url-tag">${item.tag || '导入'}</span>
@@ -720,7 +732,6 @@ function renderApiItemCard(item) {
       <button class="copy-btn" data-url="${item.url}">复制</button>
     </div>
   </div>
-  ${noteHtml}
 </div>`;
 }
 
@@ -728,7 +739,7 @@ function renderOnlineItem(item) {
   const host = (item.url.match(/https?:\/\/([^/]+)/) || [, ''])[1];
   const ph = item.name.charAt(0);
   // 链接强制显示中文，不使用 UTF-8 编码，favicon 服务直接传中文域名
-  return `<a class="online-item" href="${item.url}" target="_blank" rel="noopener noreferrer">
+  return `<a class="online-item" href="${item.url}" target="_blank" rel="noopener noreferrer" data-name="${(item.name||'').toLowerCase()}">
   <span class="online-item-icon"><img src="https://favicon.im/${host}?larger=true" alt="${item.name}" loading="lazy" onerror="this.onerror=null;this.src='https://icon.horse/icon/${host}';this.addEventListener('error',()=>{this.style.display='none';this.nextElementSibling.style.display='flex';},{once:true})"><span class="site-ph" style="display:none">${ph}</span></span>
   <div class="online-item-info"><div class="online-item-name">${item.name}</div><div class="online-item-desc">${item.desc}</div></div>
 </a>`;
@@ -749,10 +760,33 @@ function renderSourceGroup(title, description, items, isOnlineVideo) {
 </div>`;
 }
 
+/* ===== 视频（在线视频独立页，数据来自 config.json 的 onlineVideo） ===== */
+async function renderVideo() {
+  const container = document.getElementById('video-content');
+  if (!container) return;
+
+  // 等待 config 就绪（loadConfig 为幂等单例，可安全重复调用）
+  let cfg;
+  try { cfg = await loadConfig(); } catch (err) {
+    container.innerHTML = `<div class="error-msg">❌ 配置加载失败：${err.message || err}<br>请确认 config.json 文件存在且可访问。</div>`;
+    return;
+  }
+
+  const data = cfg.onlineVideo;
+  if (!data || !Array.isArray(data.items) || !data.items.length) {
+    container.innerHTML = `<div class="error-msg">⚠️ config.json 中未配置 onlineVideo 或列表为空</div>`;
+    return;
+  }
+
+  // 复用在线视频卡片渲染，构成与「更多」面板完全一致的结构
+  const groupHtml = renderSourceGroup(data.title || '在线视频', data.description || '', data.items, true);
+  container.innerHTML = groupHtml;
+}
+
 async function renderMore() {
   const container = document.getElementById('more-content');
-  if (!container || container.dataset.rendered) return;
-  container.dataset.rendered = 'true';
+  if (!container) return;
+  // 每次进入都重建（解决切换/返回不刷新问题）
   container.className = 'has-sidebar';
   container.innerHTML = `<div class="loading">⏳ 正在加载更多资源...</div>`;
 
@@ -761,7 +795,6 @@ async function renderMore() {
     cfg = await loadConfig(); // 复用已有的 loadConfig
   } catch (err) {
     container.innerHTML = `<div class="error-msg">❌ 配置加载失败：${err.message || err}<br>请确认 config.json 文件存在且可访问。</div>`;
-    container.dataset.rendered = '';
     return;
   }
 
@@ -769,7 +802,6 @@ async function renderMore() {
   const tabs = cfg.moreTabs || [];
   if (!tabs.length) {
     container.innerHTML = `<div class="error-msg">⚠️ config.json 中未配置 moreTabs</div>`;
-    container.dataset.rendered = '';
     return;
   }
 
@@ -780,19 +812,21 @@ async function renderMore() {
     </button>`
   ).join('\n');
 
-  // 渲染每个面板
-  const panelMap = {
-    'book-source': cfg.bookSource,
-    'comic-source': cfg.comicSource,
-    'music-source': cfg.musicSource,
-    'online-video': cfg.onlineVideo
-  };
+  // 自动映射：优先独立字段，兜底 sourceGroups
+  const panelMap = {};
+  tabs.forEach(t => {
+    panelMap[t.id] = cfg[t.id] !== undefined
+      ? cfg[t.id]
+      : (cfg.sourceGroups && cfg.sourceGroups[t.id] !== undefined)
+        ? cfg.sourceGroups[t.id]
+        : null;
+  });
 
   const bodyHtml = tabs.map((t, i) => {
     const data = panelMap[t.id];
     if (!data) return '';
     const isOnline = t.id === 'online-video';
-    const content = renderSourceGroup(data.title, data.description, data.items, isOnline);
+    const content = renderSourceGroup(data.title || t.label, data.description || '', data.items || [], isOnline);
     return `<div class="more-group${i === 0 ? ' active' : ''}" id="more-${t.id}">${content}</div>`;
   }).join('\n');
 
@@ -998,6 +1032,7 @@ const tabsData = [
   {id:"live",label:"直播"},
   {id:"danmu",label:"弹幕"},
   {id:"download",label:"下载"},
+  {id:"video",label:"视频"},
   {id:"more",label:"更多"},
   {id:"about",label:"关于"}
 ];
@@ -1028,7 +1063,7 @@ function showPanel(tabId) {
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   const panel=document.getElementById(tabId+'-panel'); if(panel) panel.classList.add('active');
 
-  const hideSearchTabs = ['danmu','download','more','about'];
+  const hideSearchTabs = ['danmu','download','video','more','about'];
   if(searchBox){
     searchBox.style.display = hideSearchTabs.includes(tabId) ? 'none' : '';
   }
@@ -1039,6 +1074,7 @@ function showPanel(tabId) {
   }
   if(tabId==='live') renderLiveList();
   if(tabId==='download') renderDownloads();
+  if(tabId==='video') renderVideo();
   if(tabId==='danmu') renderDanmu();
   if(tabId==='more') renderMore();
 }
@@ -1051,6 +1087,7 @@ function globalSearch() {
   if(currentMode!=='simple'){
     document.querySelectorAll('.download-card').forEach(c=>{const n=c.getAttribute('data-name')||'';c.classList.toggle('hidden',!n.includes(kw));});
     document.querySelectorAll('#danmu-panel .danmu-item').forEach(e=>{const n=e.getAttribute('data-name')||'';e.classList.toggle('hidden',!n.includes(kw));});
+    document.querySelectorAll('#video-panel .online-item').forEach(e=>{const n=e.getAttribute('data-name')||'';e.classList.toggle('hidden',!n.includes(kw));});
     document.querySelectorAll('.contributor-card').forEach(c=>{const n=c.getAttribute('data-name')||'';c.classList.toggle('hidden',!n.includes(kw));});
   }
 }
@@ -1098,6 +1135,7 @@ loadConfig().then(()=>{
   if(currentMode!=='simple'){
     renderDownloads();
     renderDanmu();
+    renderVideo();
     renderMore();
   }
 });
