@@ -151,6 +151,18 @@
       "source": "摸鱼三线"
     },
     {
+      "name": "本地live文件",
+      "url": "http://127.0.0.1:9978/file/XYQTVBox/live.txt",
+      "ua": "",
+      "source": "高天流云_XYQ"
+    },
+    {
+      "name": "FMM_IPV6",
+      "url": "https://m3u.ibert.me/txt/fmml_ipv6.txt",
+      "ua": "",
+      "source": "高天流云_XYQ"
+    },
+    {
       "name": "裤佬",
       "url": "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/refs/heads/Jsnzkpg/Jsnzkpg1",
       "ua": "",
@@ -221,6 +233,12 @@
       "url": "https://gh-proxy.org/https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv4.m3u",
       "ua": "",
       "source": "东篱2线"
+    },
+    {
+      "name": "南风直播源",
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt",
+      "ua": "okhttp/3.15",
+      "source": "健康家用"
     },
     {
       "name": "无界Updated Daily版",
@@ -949,6 +967,12 @@
       "source": "澜露2线"
     },
     {
+      "name": "Ray",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/dxawi/0/main/tvlive.txt",
+      "ua": "",
+      "source": "高天流云js"
+    },
+    {
       "name": "Yoursmile1线",
       "url": "https://gh-proxy.org/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt",
       "ua": "okhttp/3.15",
@@ -1043,12 +1067,6 @@
       "url": "https://gh.llkk.cc/http://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
       "ua": "",
       "source": "肥猫一线"
-    },
-    {
-      "name": "Ray",
-      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/dxawi/0/main/tvlive.txt",
-      "ua": "",
-      "source": "高天流云"
     },
     {
       "name": "奥斯卡",
