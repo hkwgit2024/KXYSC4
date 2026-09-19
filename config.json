@@ -147,11 +147,19 @@
       "items": [
         {
           "name": "资源一名称",
-          "badge": "说明一",
+          "count": "说明一",
           "desc": "说明二",
           "tag": "标签",
           "url": "https://example.com/resource1.json",
           "id": 1
+        },
+        {
+          "name": "资源二",
+          "count": "",
+          "desc": "",
+          "tag": "标签",
+          "url": "https://example.com/resource2.json",
+          "id": 2
         }
       ]
     },
@@ -161,7 +169,7 @@
       "items": [
         {
           "name": "资源二名称",
-          "badge": "更新于 9 月",
+          "count": "更新于 9 月",
           "desc": "适用于多端同步",
           "tag": "备用",
           "url": "https://example.com/resource2.json",
@@ -175,7 +183,7 @@
       "items": [
         {
           "name": "资源三名称",
-          "badge": "长期维护",
+          "count": "长期维护",
           "desc": "支持自定义规则",
           "tag": "高级",
           "url": "https://example.com/resource3.json",
