@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
-<title>海量接口搬运备份00</title>
+<title>海量接口搬运备份</title>
 <style>
 /* ============================================================
    公共 CSS
@@ -707,14 +707,16 @@ function renderContributors(list) {
 
 /* ===== k.html 更多面板渲染函数 ===== */
 function renderApiItemCard(item) {
+  // 兼容 badge / count（说明一），note / desc（说明二）
   const badge = item.badge || item.count || '';
-  const note = item.note || item.desc || '';
+  const note  = item.note  || item.desc  || '';
   let noteHtml = note ? `<div style="font-size:.68rem;color:#8b9eb0;margin-top:6px">${note}</div>` : '';
   return `<div class="api-item" data-name="${item.name.toLowerCase()}">
   <div class="api-item-header">
     <div class="api-item-name" title="${item.name}">${item.name}</div>
     <div class="api-item-meta"><span class="badge-new">${badge}</span></div>
   </div>
+  ${noteHtml}
   <div class="api-item-urls">
     <div class="url-line">
       <span class="url-tag">${item.tag || '导入'}</span>
@@ -722,7 +724,6 @@ function renderApiItemCard(item) {
       <button class="copy-btn" data-url="${item.url}">复制</button>
     </div>
   </div>
-  ${noteHtml}
 </div>`;
 }
 
@@ -753,8 +754,8 @@ function renderSourceGroup(title, description, items, isOnlineVideo) {
 
 async function renderMore() {
   const container = document.getElementById('more-content');
-  if (!container || container.dataset.rendered) return;
-  container.dataset.rendered = 'true';
+  if (!container) return;
+  // 每次进入都重建（解决切换/返回不刷新问题）
   container.className = 'has-sidebar';
   container.innerHTML = `<div class="loading">⏳ 正在加载更多资源...</div>`;
 
@@ -763,15 +764,15 @@ async function renderMore() {
     cfg = await loadConfig(); // 复用已有的 loadConfig
   } catch (err) {
     container.innerHTML = `<div class="error-msg">❌ 配置加载失败：${err.message || err}<br>请确认 config.json 文件存在且可访问。</div>`;
-    container.dataset.rendered = '';
     return;
   }
 
-  // 固定侧边栏：通用资源（在上方）+ 在线视频
-  const tabs = [
-    { id: 'general-source', label: '通用资源', icon: '🧩' },
-    { id: 'online-video', label: '在线视频', icon: '📺' }
-  ];
+  // 渲染侧边栏（从 config.json 的 moreTabs 读取）
+  const tabs = cfg.moreTabs || [];
+  if (!tabs.length) {
+    container.innerHTML = `<div class="error-msg">⚠️ config.json 中未配置 moreTabs</div>`;
+    return;
+  }
 
   const sidebarHtml = tabs.map((t, i) =>
     `<button class="dl-side-btn${i === 0 ? ' active' : ''}" data-more-tab="${t.id}">
@@ -780,17 +781,21 @@ async function renderMore() {
     </button>`
   ).join('\n');
 
-  // 渲染每个面板 —— 只保留通用资源和在线视频
-  const panelMap = {
-    'general-source': cfg.generalSource,
-    'online-video': cfg.onlineVideo
-  };
+  // 自动映射：优先独立字段，兜底 sourceGroups
+  const panelMap = {};
+  tabs.forEach(t => {
+    panelMap[t.id] = cfg[t.id] !== undefined
+      ? cfg[t.id]
+      : (cfg.sourceGroups && cfg.sourceGroups[t.id] !== undefined)
+        ? cfg.sourceGroups[t.id]
+        : null;
+  });
 
   const bodyHtml = tabs.map((t, i) => {
     const data = panelMap[t.id];
     if (!data) return '';
     const isOnline = t.id === 'online-video';
-    const content = renderSourceGroup(data.title, data.description, data.items, isOnline);
+    const content = renderSourceGroup(data.title || t.label, data.description || '', data.items || [], isOnline);
     return `<div class="more-group${i === 0 ? ' active' : ''}" id="more-${t.id}">${content}</div>`;
   }).join('\n');
 
