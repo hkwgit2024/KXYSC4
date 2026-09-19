@@ -1,4 +1,26 @@
 {
+  "generalSource": {
+    "title": "示例资源模块标题",
+    "description": "模块说明",
+    "items": [
+      {
+        "name": "资源一名称",
+        "count": "说明一",
+        "desc": "说明二",
+        "tag": "标签",
+        "url": "https://example.com/resource1.json",
+        "id": 1
+      },
+      {
+        "name": "资源二",
+        "count": "",
+        "desc": "",
+        "tag": "标签",
+        "url": "https://example.com/resource2.json",
+        "id": 2
+      }
+    ]
+  },
   "site": {
     "title": "海量接口搬运备份",
     "logo": "vip/jueson.jpg",
