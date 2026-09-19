@@ -28,10 +28,10 @@
     "qqGroup": "1067685939"
   },
   "tabs": [
-    { "id": "api",      "label": "接口", "type": "api" },
+    { "id": "api", "label": "接口", "type": "api" },
     { "id": "download", "label": "下载", "type": "download" },
-    { "id": "danmu",    "label": "弹幕", "type": "danmu" },
-    { "id": "about",    "label": "关于", "type": "about", "hideSearch": true }
+    { "id": "danmu", "label": "弹幕", "type": "danmu" },
+    { "id": "about", "label": "关于", "type": "about", "hideSearch": true }
   ],
   "api": {
     "domains": [
@@ -55,27 +55,27 @@
     }
   },
   "downloadSources": [
-    { "name": "菠菜园",   "url": "ry/菠菜园下载.json",  "description": "整理者：误道者" },
-    { "name": "奇奇副本", "url": "ry/奇奇副本.json",    "description": "整理者：误道者" },
-    { "name": "无忧",     "url": "ry/无忧下载.json",    "description": "云星" },
-    { "name": "潇洒",     "url": "ry/潇洒下载.json",    "description": "潇洒" },
-    { "name": "柒豪下载", "url": "ry/柒豪下载.json",    "description": "" },
-    { "name": "应用下载", "url": "ry/应用市场二.json",  "description": "" },
-    { "name": "应用市场", "url": "ry/应用市场一.json",  "description": "" }
+    { "name": "菠菜园", "url": "ry/菠菜园下载.json", "description": "整理者：误道者" },
+    { "name": "奇奇副本", "url": "ry/奇奇副本.json", "description": "整理者：误道者" },
+    { "name": "无忧", "url": "ry/无忧下载.json", "description": "云星" },
+    { "name": "潇洒", "url": "ry/潇洒下载.json", "description": "潇洒" },
+    { "name": "柒豪下载", "url": "ry/柒豪下载.json", "description": "" },
+    { "name": "应用下载", "url": "ry/应用市场二.json", "description": "" },
+    { "name": "应用市场", "url": "ry/应用市场一.json", "description": "" }
   ],
   "danmuSources": [
-    { "name": "ecs源",     "url": "http://ecs.dysobo.cn:9321/87654321" },
-    { "name": "快源",       "url": "http://43.143.108.212/87654321" },
-    { "name": "阿里云源",   "url": "http://47.107.188.112:6008/87654321" },
-    { "name": "腾讯云源",   "url": "http://43.135.134.121/87654321" },
-    { "name": "华为云源",   "url": "http://114.116.228.54/87654321" },
-    { "name": "ucloud源",  "url": "http://120.131.0.58/87654321" },
-    { "name": "天翼云源",   "url": "http://106.55.240.101/87654321" },
-    { "name": "百度云源",   "url": "http://180.76.120.66/87654321" },
-    { "name": "京东云源",   "url": "http://114.67.161.57/87654321" },
-    { "name": "青云源",     "url": "http://139.198.18.248/87654321" },
-    { "name": "移动云源",   "url": "http://111.229.198.102/87654321" },
-    { "name": "联通云源",   "url": "http://123.249.36.74/87654321" }
+    { "name": "ecs源", "url": "http://ecs.dysobo.cn:9321/87654321" },
+    { "name": "快源", "url": "http://43.143.108.212/87654321" },
+    { "name": "阿里云源", "url": "http://47.107.188.112:6008/87654321" },
+    { "name": "腾讯云源", "url": "http://43.135.134.121/87654321" },
+    { "name": "华为云源", "url": "http://114.116.228.54/87654321" },
+    { "name": "ucloud源", "url": "http://120.131.0.58/87654321" },
+    { "name": "天翼云源", "url": "http://106.55.240.101/87654321" },
+    { "name": "百度云源", "url": "http://180.76.120.66/87654321" },
+    { "name": "京东云源", "url": "http://114.67.161.57/87654321" },
+    { "name": "青云源", "url": "http://139.198.18.248/87654321" },
+    { "name": "移动云源", "url": "http://111.229.198.102/87654321" },
+    { "name": "联通云源", "url": "http://123.249.36.74/87654321" }
   ],
   "danmuTutorial": {
     "enabled": true,
@@ -135,8 +135,55 @@
     { "id": "book-source", "icon": "📚", "label": "书源" },
     { "id": "comic-source", "icon": "📖", "label": "漫画源" },
     { "id": "music-source", "icon": "🎵", "label": "音源" },
+    { "id": "general-source-1", "icon": "🧩", "label": "通用资源" },
+    { "id": "general-source-2", "icon": "🧩", "label": "通用资源二" },
+    { "id": "general-source-3", "icon": "🧩", "label": "通用资源三" },
     { "id": "online-video", "icon": "🎬", "label": "在线视频" }
   ],
+  "sourceGroups": {
+    "general-source-1": {
+      "title": "通用资源",
+      "description": "常用接口合集",
+      "items": [
+        {
+          "name": "资源一名称",
+          "badge": "说明一",
+          "desc": "说明二",
+          "tag": "标签",
+          "url": "https://example.com/resource1.json",
+          "id": 1
+        }
+      ]
+    },
+    "general-source-2": {
+      "title": "通用资源二",
+      "description": "备用资源合集",
+      "items": [
+        {
+          "name": "资源二名称",
+          "badge": "更新于 9 月",
+          "desc": "适用于多端同步",
+          "tag": "备用",
+          "url": "https://example.com/resource2.json",
+          "id": 2
+        }
+      ]
+    },
+    "general-source-3": {
+      "title": "通用资源三",
+      "description": "特殊用途接口",
+      "items": [
+        {
+          "name": "资源三名称",
+          "badge": "长期维护",
+          "desc": "支持自定义规则",
+          "tag": "高级",
+          "url": "https://example.com/resource3.json",
+          "id": 3
+        }
+      ]
+    }
+  },
   "bookSource": {
     "title": "📚 书源收集",
     "description": "共 7 组书源。使用方法：阅读3.0（Legado）→ 我的 → 书源管理 → 右上角菜单 → 网络导入 → 粘贴地址 → 确定。",
