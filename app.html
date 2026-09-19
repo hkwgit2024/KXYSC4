@@ -129,7 +129,6 @@ body.simple-mode .nav-tabs { display:none !important; }
 body.simple-mode #live-panel,
 body.simple-mode #download-panel,
 body.simple-mode #video-panel,
-body.simple-mode #danmu-panel,
 body.simple-mode #about-panel { display:none !important; }
 body.simple-mode #api-panel { display:block !important; }
 
@@ -278,9 +277,6 @@ body.simple-mode #api-panel { display:block !important; }
   .dl-item-icon { width:40px; height:40px; }
   .dl-item-btn { height:30px; padding:0 12px; font-size:.66rem; }
 }
-
-/* ===== 弹幕面板 ===== */
-#danmu-panel .danmu-item.hidden { display:none !important; }
 
 /* ===== 更多面板（k.html 同步版） ===== */
 #more-panel { overflow-x:hidden; width:100%; }
@@ -490,11 +486,6 @@ body.simple-mode #api-panel { display:block !important; }
       </div>
     </div>
 
-    <!-- 弹幕面板 -->
-    <div class="tab-panel" id="danmu-panel">
-      <div id="danmu-content"><div class="loading">⏳ 正在加载弹幕接口...</div></div>
-    </div>
-
     <!-- 下载面板 -->
     <div class="tab-panel" id="download-panel">
       <div id="downloads-content"><div class="loading">⏳ 正在加载下载资源...</div></div>
@@ -570,7 +561,7 @@ body.simple-mode #api-panel { display:block !important; }
 
 const MODE_KEY = 'site_mode';
 const TAB_KEY = 'current_tab';
-const VALID_TABS = ['api','live','danmu','download','video','more','about'];
+const VALID_TABS = ['api','live','download','video','more','about'];
 
 const btn = document.getElementById('modeToggleBtn');
 const searchBox = document.getElementById('search');
@@ -609,7 +600,6 @@ let topSeed = Date.now();
 let rawListText = null;
 let rawLiveText = null;
 let DOWNLOAD_SOURCES = [];
-let DANMU_SOURCES = [];
 let SITE_CONFIG = null;
 let configData = null; // k.html 更多面板用
 
@@ -668,7 +658,6 @@ async function loadConfig() {
     SITE_CONFIG = await res.json();
     configData = SITE_CONFIG; // 同步给 k.html 的更多面板用
     DOWNLOAD_SOURCES = Array.isArray(SITE_CONFIG.downloadSources) ? SITE_CONFIG.downloadSources : [];
-    DANMU_SOURCES = Array.isArray(SITE_CONFIG.danmuSources) ? SITE_CONFIG.danmuSources : [];
     renderContributors(SITE_CONFIG.about && SITE_CONFIG.about.contributors);
 
     if (SITE_CONFIG.site) {
@@ -695,7 +684,7 @@ async function loadConfig() {
       }
     }
     return SITE_CONFIG;
-  } catch(e) { DOWNLOAD_SOURCES=[]; DANMU_SOURCES=[]; renderContributors([]); throw e; }
+  } catch(e) { DOWNLOAD_SOURCES=[]; renderContributors([]); throw e; }
 }
 
 function renderContributors(list) {
@@ -1017,20 +1006,10 @@ function showDownloadGroup(key) {
     </div>`;
 }
 
-/* ===== 弹幕 ===== */
-function renderDanmu() {
-  const container=document.getElementById('danmu-content'); if(!container) return;
-  if(!DANMU_SOURCES.length){container.innerHTML='<div class="error-msg">⚠️ 未配置弹幕源，请检查 config.json 中的 danmuSources</div>';return;}
-  let rows='';
-  DANMU_SOURCES.forEach(s=>{rows+=`<div class="danmu-item" data-name="${s.name.toLowerCase()}" style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-radius:50px;border:1px solid #e0e6ed;margin-top:8px"><span style="flex:0 0 auto;font-size:.78rem;font-weight:600;color:#0b1e33">${s.name}</span><span style="flex:1;font-size:.75rem;color:#2563eb;word-break:break-all">${s.url}</span><button class="copy-btn" data-url="${s.url}">复制</button></div>`;});
-  container.innerHTML=`<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7"><h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">💬 弹幕接口</h3><p style="font-size:.76rem;color:#5a6f88;margin-bottom:4px">共 ${DANMU_SOURCES.length} 条，点击「复制」把地址填入播放器的弹幕接口。</p>${rows}</div>`;
-}
-
 /* ===== 导航 ===== */
 const tabsData = [
   {id:"api",label:"点播"},
   {id:"live",label:"直播"},
-  {id:"danmu",label:"弹幕"},
   {id:"download",label:"下载"},
   {id:"video",label:"视频"},
   {id:"more",label:"更多"},
@@ -1056,14 +1035,13 @@ function showPanel(tabId) {
     document.querySelectorAll('#api-panel .api-item.hidden').forEach(e=>e.classList.remove('hidden'));
     document.querySelectorAll('#live-panel .live-item.hidden').forEach(e=>e.classList.remove('hidden'));
     document.querySelectorAll('.download-card.hidden').forEach(e=>e.classList.remove('hidden'));
-    document.querySelectorAll('#danmu-panel .danmu-item.hidden').forEach(e=>e.classList.remove('hidden'));
     document.querySelectorAll('.contributor-card.hidden').forEach(e=>e.classList.remove('hidden'));
   }
 
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   const panel=document.getElementById(tabId+'-panel'); if(panel) panel.classList.add('active');
 
-  const hideSearchTabs = ['danmu','download','video','more','about'];
+  const hideSearchTabs = ['download','video','more','about'];
   if(searchBox){
     searchBox.style.display = hideSearchTabs.includes(tabId) ? 'none' : '';
   }
@@ -1075,7 +1053,6 @@ function showPanel(tabId) {
   if(tabId==='live') renderLiveList();
   if(tabId==='download') renderDownloads();
   if(tabId==='video') renderVideo();
-  if(tabId==='danmu') renderDanmu();
   if(tabId==='more') renderMore();
 }
 
@@ -1086,7 +1063,6 @@ function globalSearch() {
   document.querySelectorAll('#live-panel .live-item').forEach(e=>{const n=e.getAttribute('data-name')||'';e.classList.toggle('hidden',!n.includes(kw));});
   if(currentMode!=='simple'){
     document.querySelectorAll('.download-card').forEach(c=>{const n=c.getAttribute('data-name')||'';c.classList.toggle('hidden',!n.includes(kw));});
-    document.querySelectorAll('#danmu-panel .danmu-item').forEach(e=>{const n=e.getAttribute('data-name')||'';e.classList.toggle('hidden',!n.includes(kw));});
     document.querySelectorAll('#video-panel .online-item').forEach(e=>{const n=e.getAttribute('data-name')||'';e.classList.toggle('hidden',!n.includes(kw));});
     document.querySelectorAll('.contributor-card').forEach(c=>{const n=c.getAttribute('data-name')||'';c.classList.toggle('hidden',!n.includes(kw));});
   }
