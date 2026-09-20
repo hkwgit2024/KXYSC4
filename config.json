@@ -1,26 +1,4 @@
 {
-  "generalSource": {
-    "title": "示例资源模块标题",
-    "description": "模块说明",
-    "items": [
-      {
-        "name": "资源一名称",
-        "count": "说明一",
-        "desc": "说明二",
-        "tag": "标签",
-        "url": "https://example.com/resource1.json",
-        "id": 1
-      },
-      {
-        "name": "资源二",
-        "count": "",
-        "desc": "",
-        "tag": "标签",
-        "url": "https://example.com/resource2.json",
-        "id": 2
-      }
-    ]
-  },
   "site": {
     "title": "海量接口搬运备份",
     "logo": "vip/jueson.jpg",
@@ -135,10 +113,9 @@
     { "id": "book-source", "icon": "📚", "label": "书源" },
     { "id": "comic-source", "icon": "📖", "label": "漫画源" },
     { "id": "music-source", "icon": "🎵", "label": "音源" },
-    { "id": "general-source-1", "icon": "🧩", "label": "通用资源" },
-    { "id": "general-source-2", "icon": "💬", "label": "弹幕接口" },
-    { "id": "general-source-3", "icon": "🧩", "label": "通用资源三" },
-    { "id": "online-video", "icon": "🎬", "label": "在线视频" }
+    { "id": "general-source-1", "icon": "💬", "label": "弹幕接口" },
+    { "id": "general-source-2", "icon": "🧩", "label": "通用资源二" },
+    { "id": "general-source-3", "icon": "🧩", "label": "通用资源三" }
   ],
   "sourceGroups": {
     "general-source-1": {
