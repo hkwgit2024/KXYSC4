@@ -263,3 +263,7 @@ OK影视|OK影视|type: 1|api: https://api.okzyw.net/api.php/provide/vod/from/ok
 松视开通3|松视3|type: 1|api: https://api.sexnguon.com/api.php/provide/vod/
 api.sexnguon.com|🔞Sexnguon|type: 1|api: http://api.sexnguon.com/api.php/provide/vod/
 hav6.beauty|🔞黄AV|type: 0|api: https://www.pgxdy.com/api/xml.php
+黄色仓库|AV|🦋 黄色仓库(旧)｜🔞|type: 1|api: https://hsckzy.vip/api.php/provide/vod/
+桃花资源|AV|🦋 桃花资源｜🔞|type: 1|api: https://thzy1.me/api.php/provide/vod/
+乐播资源|AV|🦋 乐播资源｜🔞|type: 1|api: https://lbapi9.com/api.php/provide/vod/
+lsb资源|AV|🦋 lsb资源｜🔞|type: 1|api: https://apilsbzy1.com/api.php/provide/vod/
