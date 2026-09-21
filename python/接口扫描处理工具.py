@@ -35,8 +35,8 @@ AGGREGATE_JSON = SCAN_DIR / "海量直播聚合接口.json"          # ← 已�
 LIVELIST_PATH = REPO_ROOT / "livelist.txt"
 
 # 新增路径
-CJ_LIST_PATH = SCAN_DIR / "cjlist.txt"
-PY_LIST_PATH = SCAN_DIR / "pylist.txt"
+CJ_LIST_PATH = REPO_ROOT / "cjlist.txt"
+PY_LIST_PATH = REPO_ROOT / "pylist.txt"
 PY_AGG_JSON = SCAN_DIR / "海量py聚合接口.json"
 CJ_AGG_JSON = SCAN_DIR / "海量采集聚合接口.json"
 
