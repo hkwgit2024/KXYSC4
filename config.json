@@ -118,7 +118,7 @@
     { "id": "general-source-3", "icon": "🧩", "label": "通用资源三" }
   ],
   "sourceGroups": {
-    "general-source-1": {
+    "general-source-2": {
       "title": "通用资源",
       "description": "常用接口合集",
       "items": [
@@ -140,7 +140,7 @@
         }
       ]
     },
-    "general-source-2": {
+    "general-source-1": {
   "title": "💬 弹幕接口",
   "description": "点击「复制」把地址填入播放器的弹幕接口。",
   "items": [
