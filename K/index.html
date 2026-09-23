@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
 <title>海量接口搬运备份</title>
 <style>
-```
 /* ============================================================
    公共 CSS
    ============================================================ */
@@ -91,8 +89,6 @@ body:not(.simple-mode) .search-box { margin-bottom:14px; }
 /* 面板 */
 .tab-panel { display:none; width:100%; }
 .tab-panel.active { display:block; }
-```
-
 
 /* ===== 点播列表 ===== */
 .api-list { display:flex; flex-direction:column; width:100%; }
@@ -135,8 +131,6 @@ body.simple-mode #download-panel,
 body.simple-mode #video-panel,
 body.simple-mode #about-panel { display:none !important; }
 body.simple-mode #api-panel { display:block !important; }
-```
-
 
 /* ===== 直播面板 ===== */
 #live-panel { overflow-x:hidden; width:100%; }
@@ -179,7 +173,7 @@ body.simple-mode #api-panel { display:block !important; }
 .live-url-body { display:flex; align-items:center; gap:8px; min-width:0; }
 .live-url-tag { font-size:.68rem; font-weight:600; color:#3a5a7a; background:#d8e8f8; padding:2px 14px; border-radius:50px; white-space:nowrap; flex-shrink:0; }
 .live-url-text { font-size:.78rem; color:#2563eb; word-break:break-all; overflow-wrap:break-word; line-height:1.4; flex:1; min-width:0; }
-```
+
 /* ===== 下载面板 ===== */
 #download-panel { overflow-x:hidden; width:100%; }
 #downloads-content { width:100%; overflow-x:hidden; }
@@ -390,7 +384,7 @@ body.simple-mode #api-panel { display:block !important; }
     grid-template-columns:repeat(2, 1fr);
   }
 }
-```
+
 /* ===== 快链面板 - 左侧按钮分组 ===== */
 #video-content.has-sidebar {
   display:flex; flex-direction:row; gap:12px; align-items:flex-start;
@@ -479,7 +473,6 @@ body.simple-mode #api-panel { display:block !important; }
 .contributor-role { display:inline-block; margin-top:4px; font-size:.6rem; font-weight:500; color:#4a9eff; background:#e8f2ff; padding:2px 10px; border-radius:50px; }
 .contributor-desc { margin-top:6px; font-size:.68rem; color:#7a8fa3; line-height:1.4; }
 .contributor-social { margin-top:6px; font-size:.68rem; color:#4a9eff; }
-```
 
 /* ============================================================
    移动端（≤600px）
@@ -519,7 +512,7 @@ body.simple-mode #api-panel { display:block !important; }
 </head>
 
 <body class="simple-mode">
-```
+
 <div class="container">
   <button id="modeToggleBtn">切换<br>全能版</button>
 
@@ -613,7 +606,7 @@ body.simple-mode #api-panel { display:block !important; }
           <li style="font-size:.76rem;color:#5a6f88;line-height:1.6">本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。</li>
         </ul>
         <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">QQ 交流群：<a href="https://qm.qq.com/q/gmRKKPT3x0" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">1067685939</a></p>
-        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<a href="https://t.me/+nrWtFerPAfcwOTg9" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">https://t.me/+nrWtFerPAfcwOTg9</a></p>
+        <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">Telegram群组：<a href="https://t.me/tg6603" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">https://t.me/tg6603</a></p>
         <p style="margin-top:10px;font-size:.76rem;color:#5a6f88">项目地址：<a href="https://github.com/lubin776/tvbox-api-backup" target="_blank" rel="noopener noreferrer" style="color:#4a9eff;text-decoration:none;font-weight:600">https://github.com/lubin776/tvbox-api-backup</a></p>
       </div>
     </div>
@@ -623,7 +616,7 @@ body.simple-mode #api-panel { display:block !important; }
     <p>本站接口资源由【误道者】整理。所有资源均来自互联网，版权归原作者所有。仅供测试学习使用，请勿用于违法及商业用途，请勿付费购买。如涉及侵权，请联系删除。 QQ 群：1067685939。</p>
   </footer>
 </div>
-```
+
 <script>
 /* ============================================================
    完整 JS 逻辑
@@ -654,9 +647,9 @@ const LIVE_DOMAINS = [
 ];
 
 const API_WEIGHTS = {
-  "轮替占位.json":1,"神马都没有.json":2,"饭太硬.json":4,"肥猫.json":5,
+  "轮替占位.json":1,"神马都没有.json":2,"饭太硬.json":4,"肥猫已死.json":5,
   "摸鱼.json":6,"王二小.json":7,"集多.json":8,"潇洒.json":9,"小米.json":10,
-  "嗷呜.json":11,"南风.json":12,"小虎斑.json":13
+  "嗷呜.json":11,"南风.json":12,"幸福年年.json":13
 };
 
 const ROTATE_KEYWORDS = ["X4","更新","菠菜"];
@@ -771,7 +764,6 @@ function renderContributors(list) {
       </div>
     </div>`).join('');
 }
-```
 
 /* ===== k.html 更多面板渲染函数 ===== */
 function renderApiItemCard(item) {
@@ -822,7 +814,31 @@ function renderSourceGroup(title, description, items, isOnlineVideo) {
 
 /* ===== 快链面板（原「视频」页面，改为快链 + 左侧按钮分组） =====
    分组一：在线视频（数据来自 config.json 的 onlineVideo）
-   分组二：常用工具（数据来自 config.json 的 quickLinks） */
+   分组二：常用工具（内置 20 个固定链接） */
+
+// 常用工具 —— 图标 + 名称 + 链接 + 简短说明
+const COMMON_TOOLS = [
+  { icon:'▶️', name:'酷9',     url:'https://pan.xunlei.com/x/VOc19v6j083vscOuJTHMotXXA1?pwd=prgs#', desc:'安卓播放器' },
+  { icon:'📺', name:'TVBox',   url:'https://www.kdocs.cn/l/cbqzlC3waPFX', desc:'开源影视壳' },
+  { icon:'🎬', name:'BBLL改版', url:'https://pan.xunlei.com/x/VOcdMl7EZcqq_jOBuwZoyEiMA1?pwd=i5r9#', desc:'BBLL 定制版' },
+  { icon:'📡', name:'OrionTV', url:'https://github.com/orion-lib/OrionTV/releases', desc:'轻量直播壳' },
+  { icon:'🌸', name:'网易爆米花', url:'https://bmh.163.com/', desc:'智能媒体库' },
+  { icon:'🌐', name:'IPV6查询', url:'https://ipconfig.com/zh', desc:'网络信息检测' },
+  { icon:'🚀', name:'GitHub加速', url:'https://proxy.pipers.cn/', desc:'镜像加速' },
+  { icon:'🔄', name:'TXT/M3U转换', url:'https://www.qiushui.vip/gj/zh.html', desc:'格式互转' },
+  { icon:'🎞️', name:'Potplayer', url:'https://www.kdocs.cn/l/clmJIYpDA4mH', desc:'本地播放器' },
+  { icon:'✅', name:'M3U检测', url:'https://pan.xunlei.com/s/VObOEh5aX766n2zOEttkN1oPA1?pwd=t6ku#', desc:'源有效性检测' },
+  { icon:'📡', name:'IPTV源1', url:'http://iptv.cqshushu.com', desc:'每日更新直播源' },
+  { icon:'📡', name:'IPTV源2', url:'https://iptvs.hacks.tools/', desc:'IPv4/IPv6 源' },
+  { icon:'📡', name:'IPTV源3', url:'https://tonkiang.us/', desc:'电视直播源' },
+  { icon:'🔍', name:'IPTV源4', url:'https://iptv-search.com/zh-hans/', desc:'直播源搜索' },
+  { icon:'🧰', name:'转换/去重', url:'https://yang-1989.eu.org/Conversion.php', desc:'播放列表处理' },
+  { icon:'🛡️', name:'FOFA',    url:'https://fofa.info/', desc:'网络空间测绘' },
+  { icon:'🛡️', name:'Quake',   url:'https://quake.360.net/quake/#/index', desc:'360 测绘' },
+  { icon:'🛡️', name:'Hunter',  url:'https://hunter.qianxin.com/', desc:'奇安信测绘' },
+  { icon:'🛡️', name:'ZoomEye', url:'https://www.zoomeye.org/', desc:'知道创宇测绘' },
+  { icon:'🛡️', name:'Censys',  url:'https://search.censys.io/', desc:'资产发现' }
+];
 
 async function renderVideo() {
   const container = document.getElementById('video-content');
@@ -835,7 +851,7 @@ async function renderVideo() {
     return;
   }
 
-  // 分组数据：在线视频（来自 config）+ 常用工具（来自 config.quickLinks）
+  // 分组数据：在线视频（来自 config）+ 常用工具（内置）
   const groups = [];
   const ov = cfg.onlineVideo;
   if (ov && Array.isArray(ov.items) && ov.items.length) {
@@ -855,30 +871,25 @@ async function renderVideo() {
       }
     });
   }
-
-  // 常用工具分组：从 config.quickLinks 读取，HTML 只负责渲染
-  const ql = cfg.quickLinks;
-  if (ql && Array.isArray(ql.items) && ql.items.length) {
-    groups.push({
-      id: 'tools',
-      icon: '🧰',
-      label: ql.title || '常用工具',
-      title: ql.title || '常用工具',
-      description: ql.description || '',
-      render: () => {
-        const chips = ql.items.map(t =>
-          `<a class="tool-chip" href="${t.url}" target="_blank" rel="noopener noreferrer" title="${t.desc || ''}" data-name="${(t.name || '').toLowerCase()}">
-            <span class="tool-icon">${t.icon || ''}</span><span>${t.name || ''}</span>
-          </a>`
-        ).join('\n');
-        return `<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7">
-          <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">${ql.title || '常用工具'}</h3>
-          <p style="font-size:.76rem;color:#5a6f88;margin-bottom:10px">${ql.description || ''}</p>
-          <div class="tools-grid">${chips}</div>
-        </div>`;
-      }
-    });
-  }
+  groups.push({
+    id: 'tools',
+    icon: '🧰',
+    label: '常用工具',
+    title: '常用工具',
+    description: '播放器 / 直播源 / 格式转换 / 网络空间测绘',
+    render: () => {
+      const chips = COMMON_TOOLS.map(t =>
+        `<a class="tool-chip" href="${t.url}" target="_blank" rel="noopener noreferrer" title="${t.desc}" data-name="${(t.name || '').toLowerCase()}">
+          <span class="tool-icon">${t.icon}</span><span>${t.name}</span>
+        </a>`
+      ).join('\n');
+      return `<div style="background:#f8fafc;border-radius:12px;padding:14px 16px;border:1px solid #eef2f7">
+        <h3 style="font-size:.92rem;font-weight:600;color:#0b1e33;margin-bottom:4px">常用工具</h3>
+        <p style="font-size:.76rem;color:#5a6f88;margin-bottom:10px">播放器 · 直播源 · 格式转换 · 网络空间测绘</p>
+        <div class="tools-grid">${chips}</div>
+      </div>`;
+    }
+  });
 
   if (!groups.length) {
     container.innerHTML = `<div class="error-msg">⚠️ 暂无可用分组数据</div>`;
@@ -918,7 +929,7 @@ async function renderVideo() {
     });
   });
 }
-```
+
 async function renderMore() {
   const container = document.getElementById('more-content');
   if (!container) return;
@@ -1023,7 +1034,6 @@ function renderApi() {
     container.innerHTML=`<div class="error-msg">❌ 接口加载失败：${err.message||err}</div>`;
   });
 }
-```
 
 /* ===== 直播 ===== */
 async function fetchLiveText() {
@@ -1153,7 +1163,6 @@ function showDownloadGroup(key) {
       <div class="dl-cards">${cardsHtml}</div>
     </div>`;
 }
-```
 
 /* ===== 导航 ===== */
 const tabsData = [
@@ -1260,6 +1269,7 @@ if (currentMode === 'simple') {
 loadConfig().then(()=>{
   if(currentMode!=='simple'){
     renderDownloads();
+    renderDanmu();
     renderVideo();
     renderMore();
   }
