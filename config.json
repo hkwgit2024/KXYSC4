@@ -122,12 +122,12 @@
     ]
   },
   "moreTabs": [
+    { "id": "general-source-1", "icon": "💬", "label": "弹幕接口" },
     { "id": "book-source", "icon": "📚", "label": "书源" },
     { "id": "comic-source", "icon": "📖", "label": "漫画源" },
     { "id": "music-source", "icon": "🎵", "label": "音源" },
-    { "id": "general-source-1", "icon": "💬", "label": "弹幕接口" },
-    { "id": "general-source-2", "icon": "🧩", "label": "通用资源二" },
-    { "id": "general-source-3", "icon": "🧩", "label": "通用资源三" }
+    { "id": "general-source-2", "icon": "🧩", "label": "通用资源1" },
+    { "id": "general-source-3", "icon": "🧩", "label": "通用资源2" }
   ],
   "sourceGroups": {
     "general-source-2": {
