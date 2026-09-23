@@ -1,26 +1,16 @@
 {
-  "generalSource": {
-    "title": "示例资源模块标题",
-    "description": "模块说明",
-    "items": [
-      {
-        "name": "资源一名称",
-        "count": "说明一",
-        "desc": "说明二",
-        "tag": "标签",
-        "url": "https://example.com/resource1.json",
-        "id": 1
-      },
-      {
-        "name": "资源二",
-        "count": "",
-        "desc": "",
-        "tag": "标签",
-        "url": "https://example.com/resource2.json",
-        "id": 2
-      }
-    ]
-  },
+"quickLinks": {
+  "title": "常用工具",
+  "description": "播放器 · 直播源 · 格式转换 · 网络空间测绘",
+  "items": [
+    { "icon": "▶️", "name": "酷9",       "url": "https://pan.xunlei.com/x/VOc19v6j083vscOuJTHMotXXA1?pwd=prgs#", "desc": "安卓播放器" },
+    { "icon": "📺", "name": "TVBox",     "url": "https://www.kdocs.cn/l/cbqzlC3waPFX", "desc": "开源影视壳" },
+    { "icon": "🎬", "name": "BBLL改版",  "url": "https://pan.xunlei.com/x/VOcdMl7EZcqq_jOBuwZoyEiMA1?pwd=i5r9#", "desc": "BBLL 定制版" },
+    { "icon": "📡", "name": "OrionTV",   "url": "https://github.com/orion-lib/OrionTV/releases", "desc": "轻量直播壳" },
+    { "icon": "🌸", "name": "网易爆米花", "url": "https://bmh.163.com/", "desc": "智能媒体库" },
+    { "icon": "🌐", "name": "IPV6查询",  "url": "https://ipconfig.com/zh", "desc": "网络信息检测" }
+  ]
+},
   "site": {
     "title": "海量接口搬运备份",
     "logo": "vip/jueson.jpg",
@@ -118,7 +108,7 @@
       {
         "name": "沫离",
         "role": "弹幕分页",
-        "desc": "独立贡献弹幕接口分页模块",
+        "desc": "贡献弹幕书源音乐源漫画源等模块",
         "avatar": "vip/沫离.jpg",
         "social": ""
       },
@@ -132,16 +122,15 @@
     ]
   },
   "moreTabs": [
+    { "id": "general-source-1", "icon": "💬", "label": "弹幕接口" },
     { "id": "book-source", "icon": "📚", "label": "书源" },
     { "id": "comic-source", "icon": "📖", "label": "漫画源" },
     { "id": "music-source", "icon": "🎵", "label": "音源" },
-    { "id": "general-source-1", "icon": "🧩", "label": "通用资源" },
-    { "id": "general-source-2", "icon": "💬", "label": "弹幕接口" },
-    { "id": "general-source-3", "icon": "🧩", "label": "通用资源三" },
-    { "id": "online-video", "icon": "🎬", "label": "在线视频" }
+    { "id": "general-source-2", "icon": "🧩", "label": "通用资源1" },
+    { "id": "general-source-3", "icon": "🧩", "label": "通用资源2" }
   ],
   "sourceGroups": {
-    "general-source-1": {
+    "general-source-2": {
       "title": "通用资源",
       "description": "常用接口合集",
       "items": [
@@ -163,7 +152,7 @@
         }
       ]
     },
-    "general-source-2": {
+    "general-source-1": {
   "title": "💬 弹幕接口",
   "description": "点击「复制」把地址填入播放器的弹幕接口。",
   "items": [
