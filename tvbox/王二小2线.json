@@ -1,6 +1,6 @@
 {
-  "spider": "http://oss4liview.moji.com/thd_file/2026/09/20/73c02ea3ecd704dc1d50278db9e6e441.jpg;md5;7be82cf9f66e0070ed430fd7b2d2ba64",
-  "wallpaper": "http://王二小放牛娃牛逼.999888987.xyz",
+  "spider": "http://oss4liview.moji.com/thd_file/2026/11/02/c9050ddf2e4eb65bc925f27924695099.jpg;md5;a5006e8f9c77331a30309c0e5f138481",
+  "wallpaper": "https://www.loliapi.com/acg/",
   "logo": "https://storage.7x24cc.com/storage-server/presigned/ss1/a6-online-fileupload/newMediaFile/3CEAE9E_773_wexfnw_20250911190012684newMediaFile.gif",
   "sites": [
     {
@@ -16,7 +16,7 @@
     },
     {
       "key": "Doubanaaaa",
-      "name": "🐮【更新日期:20260920】🐮",
+      "name": "🐮【更新日期:20261102】🐮",
       "type": 3,
       "api": "csp_NewDouBanGuard",
       "indexs": 1,
@@ -117,6 +117,33 @@
       "name": "💓多多┃4K💓",
       "type": 3,
       "api": "csp_AiNewDuoDuoGuard",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 0
+    },
+    {
+      "key": "AiNewKuaiYing",
+      "name": "💓快影┃4K💓",
+      "type": 3,
+      "api": "csp_AiNewKuaiYingGuard",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 0
+    },
+    {
+      "key": "AiNewLaBi",
+      "name": "💓蜡笔┃4K💓",
+      "type": 3,
+      "api": "csp_AiNewLaBiGuard",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 0
+    },
+    {
+      "key": "AiNewShanDian",
+      "name": "💓闪电┃4K💓",
+      "type": 3,
+      "api": "csp_AiNewShanDianGuard",
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0
@@ -506,6 +533,14 @@
       "type": 3,
       "类型": "短剧",
       "api": "csp_DuanJuAiWeiGuanGuard",
+      "searchable": 1,
+      "changeable": 0
+    },
+    {
+      "key": "AnimeAiGongHeGuo",
+      "name": "🤡共和┃动漫🤡",
+      "type": 3,
+      "api": "csp_AnimeAiGongHeGuoGuard",
       "searchable": 1,
       "changeable": 0
     },
@@ -942,14 +977,6 @@
       "name": "🎠九七┃综合🎠",
       "type": 3,
       "api": "csp_SoAiPanSooGuard",
-      "searchable": 1,
-      "changeable": 0
-    },
-    {
-      "key": "SoAiQuPanShe",
-      "name": "🎠趣搜┃百度🎠",
-      "type": 3,
-      "api": "csp_SoAiQuPanSheGuard",
       "searchable": 1,
       "changeable": 0
     },

@@ -10,6 +10,22 @@
       "filterable": 0
     },
     {
+      "key": "py_shortfilm",
+      "name": "短剧[py]",
+      "type": 3,
+      "api": "https://clun.top/py/shortfilm.py",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "changeable": 1
+    },
+    {
+      "key": "py_apples",
+      "name": "苹果[py]",
+      "type": 3,
+      "api": "https://clun.top/py/apples.py"
+    },
+    {
       "key": "py_maple",
       "name": "枫叶[py]",
       "type": 3,
@@ -17,14 +33,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "ext": {
-        "sites": [
-          "https://www.zzztool.com",
-          "https://maihaolian.com",
-          "https://www.cd-zj.com"
-        ],
-        "sitesIndex": 0
-      }
+      "ext": {}
     },
     {
       "key": "py_juzong",
@@ -73,6 +82,33 @@
       "filterable": 1
     },
     {
+      "key": "py_如意",
+      "name": "如意[py]",
+      "type": 3,
+      "api": "https://clun.top/py/ruyishipin.py",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+    {
+      "key": "py_8kvod",
+      "name": "酷客[py]",
+      "type": 3,
+      "api": "https://clun.top/py/8kvod.py"
+    },
+    {
+      "key": "py_yysub",
+      "name": "人人[py]",
+      "type": 3,
+      "api": "https://clun.top/py/yysub.py"
+    },
+    {
+      "key": "py_ppnix",
+      "name": "PPnix[py]",
+      "type": 3,
+      "api": "https://clun.top/py/ppnix.py"
+    },
+    {
       "key": "py_libvio",
       "name": "LIBVIO[py]",
       "type": 3,
@@ -82,15 +118,13 @@
       "filterable": 1
     },
     {
-      "key": "聚合短剧",
-      "name": "聚合短剧[js]",
+      "key": "py_wbbb",
+      "name": "歪比巴卜[py]",
       "type": 3,
-      "api": "https://clun.top/js/聚合短剧.js",
-      "style": {
-        "type": "rect",
-        "ratio": 1.33
-      },
-      "changeable": 1
+      "api": "https://clun.top/py/wbbb.py",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
     },
     {
       "key": "py_kkys",
@@ -169,7 +203,7 @@
       "filterable": 1
     },
     {
-      "key": "py_蛋挞",
+      "key": "py_dantatv",
       "name": "蛋挞影视[py]",
       "type": 3,
       "api": "https://clun.top/py/dantatv.py",
@@ -195,19 +229,19 @@
       "filterable": 1
     },
     {
-      "key": "py_yunduo",
-      "name": "云朵影视[py]",
+      "key": "py_duoduo",
+      "name": "多多影视[py]",
       "type": 3,
-      "api": "https://clun.top/py/yunduo.py",
+      "api": "https://clun.top/py/duoduo.py",
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1
     },
     {
-      "key": "py_duoduo",
-      "name": "多多影视[py]",
+      "key": "py_oule",
+      "name": "欧乐影院[py]",
       "type": 3,
-      "api": "https://clun.top/py/duoduo.py",
+      "api": "https://clun.top/py/oule.py",
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1
@@ -232,16 +266,27 @@
       "api": "https://clun.top/js/荐片.js"
     },
     {
+      "key": "金牌影院",
+      "name": "金牌[js]",
+      "type": 3,
+      "api": "https://clun.top/js/金牌影视.js"
+    },
+    {
       "key": "apple",
       "name": "apple[js]",
       "type": 3,
       "api": "https://clun.top/js/apple.js"
     },
     {
-      "key": "金牌影院",
-      "name": "金牌[js]",
+      "key": "聚合短剧",
+      "name": "聚合短剧[js]",
       "type": 3,
-      "api": "https://clun.top/js/金牌影视.js"
+      "api": "https://clun.top/js/聚合短剧.js",
+      "style": {
+        "type": "rect",
+        "ratio": 1.33
+      },
+      "changeable": 1
     },
     {
       "key": "2",
@@ -271,7 +316,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "api": "https://clun.top/py/金牌.py",
+      "api": "https://clun.top/py/goldmedal.py",
       "order_num": 5,
       "ext": ""
     },
@@ -301,7 +346,7 @@
       "key": "py_jieyingshi",
       "name": "界影视[py]",
       "type": 3,
-      "api": "https://clun.top/py/py_jieyingshi.py",
+      "api": "https://clun.top/py/jieyingshi.py",
       "searchable": 1,
       "quickSearch": 0,
       "filterable": 0,
@@ -319,10 +364,10 @@
       "ext": ""
     },
     {
-      "key": "py_国外",
+      "key": "py_guowaiju",
       "name": "国外剧情[py]",
       "type": 3,
-      "api": "https://clun.top/py/py_guowaiju.py",
+      "api": "https://clun.top/py/guowaiju.py",
       "quickSearch": 1,
       "searchable": 1,
       "filterable": 1
@@ -456,14 +501,6 @@
       "ext": "https://clun.top/js/s/全网看.json"
     },
     {
-      "key": "free影视",
-      "name": "free影视",
-      "type": 3,
-      "click": "document.querySelector(\"#playleft iframe\").contentWindow.document.querySelector(\"#start\").click();",
-      "api": "csp_XBPQ",
-      "ext": "https://clun.top/js/s/free.json"
-    },
-    {
       "key": "喝茶影视",
       "name": "喝茶影视",
       "type": 3,
@@ -534,60 +571,22 @@
       "key": "360",
       "name": "360 | 采集",
       "type": 1,
-      "searchable": 1,
-      "changeable": 1,
       "api": "https://360zy.com/api.php/provide/vod/",
-      "categories": [
-        "动作片",
-        "爱情片",
-        "恐怖片",
-        "剧情片",
-        "国产剧",
-        "香港剧",
-        "韩国剧",
-        "欧美剧",
-        "悬疑片",
-        "纪录片",
-        "动画片",
-        "台湾剧",
-        "日本剧",
-        "海外剧",
-        "泰国剧",
-        "大陆综艺",
-        "港台综艺",
-        "日韩综艺",
-        "国产动漫",
-        "欧美动漫",
-        "日韩动漫",
-        "爽文短剧"
-      ]
+      "searchable": 1,
+      "changeable": 1
     },
     {
       "key": "豆瓣",
       "name": "豆瓣 | 采集",
       "type": 1,
-      "quickSearch": 1,
-      "api": "https://caiji.dbzy.tv/api.php/provide/vod/",
-      "categories": [
-        "动作片",
-        "喜剧片",
-        "爱情片",
-        "恐怖片",
-        "剧情片",
-        "国产剧",
-        "香港剧",
-        "韩国剧",
-        "欧美剧",
-        "台湾剧",
-        "日本剧",
-        "泰国剧",
-        "大陆综艺",
-        "港台综艺",
-        "日韩综艺",
-        "国产动漫",
-        "日韩动漫",
-        "欧美动漫"
-      ]
+      "api": "https://caiji.dbzy5.com/api.php/provide/vod/",
+      "quickSearch": 1
+    },
+    {
+      "key": "创享",
+      "name": "创享 | 采集",
+      "type": 1,
+      "api": "https://ys.cxkjg.cn/api/provide/vod/"
     },
     {
       "key": "索尼",
@@ -596,34 +595,7 @@
       "api": "https://suoniapi.com/api.php/provide/vod/",
       "quickSearch": 1,
       "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "动作片",
-        "爱情片",
-        "剧情片",
-        "国产剧",
-        "欧美剧",
-        "韩剧",
-        "日剧",
-        "泰剧",
-        "纪录片",
-        "大陆综艺",
-        "日韩综艺",
-        "港台综艺",
-        "欧美综艺",
-        "国产动漫",
-        "日韩动漫",
-        "欧美动漫",
-        "动画片",
-        "西方伦理",
-        "女频恋爱",
-        "反转爽剧",
-        "古装仙侠",
-        "年代穿越",
-        "脑洞悬疑",
-        "现代都市",
-        "漫剧"
-      ]
+      "changeable": 1
     },
     {
       "key": "量子",
@@ -632,33 +604,7 @@
       "api": "https://cj.lziapi.com/api.php/provide/vod/",
       "quickSearch": 1,
       "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "动作片",
-        "喜剧片",
-        "爱情片",
-        "恐怖片",
-        "剧情片",
-        "国产剧",
-        "香港剧",
-        "韩国剧",
-        "欧美剧",
-        "台湾剧",
-        "日本剧",
-        "泰国剧",
-        "大陆综艺",
-        "港台综艺",
-        "日韩综艺",
-        "国产动漫",
-        "日韩动漫",
-        "欧美动漫",
-        "电影解说",
-        "足球",
-        "篮球",
-        "短剧",
-        "动画片",
-        "AI漫剧"
-      ]
+      "changeable": 1
     },
     {
       "key": "非凡",
@@ -667,32 +613,7 @@
       "api": "https://cj.ffzyapi.com/api.php/provide/vod/",
       "quickSearch": 1,
       "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "动作片",
-        "喜剧片",
-        "爱情片",
-        "恐怖片",
-        "剧情片",
-        "战争片",
-        "国产剧",
-        "香港剧",
-        "韩国剧",
-        "欧美剧",
-        "记录片",
-        "台湾剧",
-        "日本剧",
-        "海外剧",
-        "泰国剧",
-        "大陆综艺",
-        "港台综艺",
-        "日韩综艺",
-        "国产动漫",
-        "日韩动漫",
-        "欧美动漫",
-        "伦理片",
-        "短剧"
-      ]
+      "changeable": 1
     },
     {
       "key": "无尽",
@@ -701,33 +622,7 @@
       "api": "https://api.wujinapi.net/api.php/provide/vod/",
       "quickSearch": 1,
       "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "动作片",
-        "爱情片",
-        "剧情片",
-        "国产剧",
-        "台湾剧",
-        "美国剧",
-        "韩国剧",
-        "日本剧",
-        "海外剧",
-        "大陆综艺",
-        "日韩综艺",
-        "港台综艺",
-        "欧美综艺",
-        "国产动漫",
-        "日韩动漫",
-        "欧美动漫",
-        "动画片",
-        "泰剧",
-        "女频恋爱",
-        "反转爽剧",
-        "年代穿越",
-        "古装仙侠",
-        "现代都市",
-        "漫剧"
-      ]
+      "changeable": 1
     },
     {
       "key": "金鹰",
@@ -736,36 +631,16 @@
       "api": "https://jyzyapi.com/api.php/provide/vod/",
       "quickSearch": 1,
       "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "欧美剧",
-        "韩剧",
-        "日剧",
-        "马泰剧",
-        "动作片",
-        "喜剧片",
-        "恐怖片",
-        "剧情片",
-        "记录片",
-        "内地剧",
-        "中国动漫",
-        "日本动漫",
-        "欧美动漫",
-        "台湾剧",
-        "足球",
-        "篮球",
-        "大陆综艺",
-        "日韩综艺",
-        "欧美综艺",
-        "古装仙侠",
-        "现代都市",
-        "穿越年代",
-        "言情总裁",
-        "重生民国",
-        "反转爽剧",
-        "脑洞悬疑",
-        "AI漫剧"
-      ]
+      "changeable": 1
+    },
+    {
+      "key": "新浪",
+      "name": "新浪 | 采集",
+      "type": 1,
+      "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/",
+      "quickSearch": 1,
+      "searchable": 1,
+      "changeable": 1
     },
     {
       "key": "速播",
@@ -774,93 +649,31 @@
       "api": "https://subocaiji.com/api.php/provide/vod/",
       "quickSearch": 1,
       "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "纪录片",
-        "动作片",
-        "剧情片",
-        "恐怖片",
-        "喜剧片",
-        "大陆剧",
-        "台湾剧",
-        "韩剧",
-        "美剧",
-        "日剧",
-        "泰剧",
-        "中国动漫",
-        "日本动漫",
-        "足球",
-        "篮球",
-        "大陆综艺",
-        "日韩综艺",
-        "古装仙侠",
-        "现代都市",
-        "穿越年代",
-        "言情总裁",
-        "重生民国",
-        "反转爽剧",
-        "脑洞悬疑",
-        "AI漫剧"
-      ]
+      "changeable": 1
+    },
+    {
+      "key": "优质",
+      "name": "优质 | 采集",
+      "type": 1,
+      "api": "https://api.yyzy-tv.vip/inc/apijson.php",
+      "quickSearch": 1,
+      "searchable": 1,
+      "changeable": 1
     },
     {
       "key": "樱花",
       "name": "樱花 | 采集",
       "type": 1,
-      "api": "https://m3u8.apiyhzy.com/api.php/provide/vod/at/xml/",
+      "api": "https://m3u8.apiyhzy.com/api.php/provide/vod/",
       "quickSearch": 1,
-      "searchable": 1,
-      "categories": [
-        "动作片",
-        "喜剧片",
-        "爱情片",
-        "恐怖片",
-        "剧情片",
-        "国产剧",
-        "台湾剧",
-        "韩国剧",
-        "犯罪片",
-        "纪录片",
-        "动画电影",
-        "日本剧",
-        "欧美剧",
-        "海外剧",
-        "大陆综艺",
-        "日韩综艺",
-        "港台综艺",
-        "欧美综艺",
-        "国产动漫",
-        "日本动漫",
-        "欧美动漫",
-        "伦理片"
-      ]
+      "searchable": 1
     },
     {
       "key": "黑木耳",
       "name": "黑木耳 | 采集",
       "type": 1,
       "api": "https://json02.heimuer.xyz/api.php/provide/vod/",
-      "quickSearch": 1,
-      "categories": [
-        "动作片",
-        "喜剧片",
-        "爱情片",
-        "恐怖片",
-        "剧情片",
-        "国产剧",
-        "香港剧",
-        "韩国剧",
-        "欧美剧",
-        "台湾剧",
-        "日本剧",
-        "泰国剧",
-        "大陆综艺",
-        "港台综艺",
-        "日韩综艺",
-        "国产动漫",
-        "日韩动漫",
-        "欧美动漫"
-      ]
+      "quickSearch": 1
     },
     {
       "key": "电影天堂",
@@ -870,31 +683,7 @@
       "searchable": 1,
       "quickSearch": 0,
       "filterable": 0,
-      "changeable": 0,
-      "categories": [
-        "动作片",
-        "喜剧片",
-        "爱情片",
-        "恐怖片",
-        "剧情片",
-        "国产剧",
-        "香港剧",
-        "韩国剧",
-        "欧美剧",
-        "记录片",
-        "台湾剧",
-        "日本剧",
-        "海外剧",
-        "泰国剧",
-        "大陆综艺",
-        "港台综艺",
-        "日韩综艺",
-        "欧美综艺",
-        "国产动漫",
-        "日韩动漫",
-        "欧美动漫",
-        "动画片"
-      ]
+      "changeable": 0
     },
     {
       "key": "ikun",
@@ -903,30 +692,7 @@
       "api": "https://ikunzyapi.com/api.php/provide/vod/",
       "playerType": 1,
       "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "喜剧片",
-        "恐怖片",
-        "剧情片",
-        "惊悚片",
-        "悬疑片",
-        "记录片",
-        "动画片",
-        "国产剧",
-        "香港剧",
-        "韩国剧",
-        "欧美剧",
-        "台湾剧",
-        "日本剧",
-        "海外剧",
-        "泰国剧",
-        "大陆综艺",
-        "港台综艺",
-        "日韩综艺",
-        "国产动漫",
-        "欧美动漫",
-        "日本动漫"
-      ]
+      "changeable": 1
     },
     {
       "key": "暴風",
@@ -934,35 +700,7 @@
       "type": 1,
       "api": "https://bfzyapi.com/api.php/provide/vod/",
       "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "动作片",
-        "恐怖片",
-        "科幻片",
-        "剧情片",
-        "纪录片",
-        "国产剧",
-        "欧美剧",
-        "香港剧",
-        "韩国剧",
-        "台湾剧",
-        "日本剧",
-        "泰国剧",
-        "国产动漫",
-        "日韩动漫",
-        "欧美动漫",
-        "大陆综艺",
-        "港台综艺",
-        "日韩综艺",
-        "网球",
-        "斯诺克",
-        "重生民国",
-        "现代言情",
-        "反转爽文",
-        "闪婚离婚",
-        "古装仙侠",
-        "AI漫剧"
-      ]
+      "changeable": 1
     },
     {
       "key": "旺旺",
@@ -971,27 +709,7 @@
       "api": "https://api.wwzy.tv/api.php/provide/vod/",
       "playerType": 1,
       "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "动作片",
-        "喜剧片",
-        "爱情片",
-        "恐怖片",
-        "剧情片",
-        "国产剧",
-        "香港剧",
-        "韩国剧",
-        "欧美剧",
-        "台湾剧",
-        "日本剧",
-        "泰国剧",
-        "大陆综艺",
-        "港台综艺",
-        "日韩综艺",
-        "国产动漫",
-        "日韩动漫",
-        "欧美动漫"
-      ]
+      "changeable": 1
     },
     {
       "key": "艾旦",
@@ -1003,29 +721,7 @@
       "api": "https://www.lovedan.net/api.php/provide/vod/",
       "quickSearch": 1,
       "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "动作片",
-        "喜剧片",
-        "爱情片",
-        "恐怖片",
-        "犯罪片",
-        "剧情片",
-        "国产剧",
-        "港台剧",
-        "日韩剧",
-        "欧美剧",
-        "动画电影",
-        "纪录片",
-        "日韩综艺",
-        "港台综艺",
-        "国产动漫",
-        "日韩动漫",
-        "欧美动漫",
-        "海外剧",
-        "大陆综艺",
-        "短剧"
-      ]
+      "changeable": 1
     },
     {
       "key": "四个圈",
@@ -1034,27 +730,7 @@
       "api": "https://pg.fenwe078.cf/api.php/provide/vod/",
       "quickSearch": 1,
       "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "动作片",
-        "喜剧片",
-        "爱情片",
-        "恐怖片",
-        "剧情片",
-        "国产剧",
-        "香港剧",
-        "韩国剧",
-        "欧美剧",
-        "台湾剧",
-        "日本剧",
-        "泰国剧",
-        "大陆综艺",
-        "港台综艺",
-        "日韩综艺",
-        "国产动漫",
-        "日韩动漫",
-        "欧美动漫"
-      ]
+      "changeable": 1
     },
     {
       "key": "茅台",
@@ -1063,29 +739,7 @@
       "api": "https://mtzy.me/api.php/provide/vod/",
       "quickSearch": 1,
       "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "纪录片",
-        "动作片",
-        "恐怖片",
-        "剧情片",
-        "国产剧",
-        "欧美剧",
-        "韩剧",
-        "泰国剧",
-        "日本剧",
-        "海外剧",
-        "大陆综艺",
-        "日韩综艺",
-        "港台综艺",
-        "国产动漫",
-        "日本动漫",
-        "篮球",
-        "重生民国",
-        "穿越现代",
-        "现代都市",
-        "古装仙侠"
-      ]
+      "changeable": 1
     },
     {
       "key": "6",
@@ -1121,29 +775,21 @@
       "name": "--- 7 ---"
     },
     {
-      "key": "MXDM",
-      "name": "MXDM｜动漫",
-      "type": 3,
-      "api": "csp_XBPQ",
-      "ext": "https://clun.top/js/s/mx.json"
-    },
-    {
-      "key": "MiFun",
+      "key": "py_mifun",
       "name": "MiFun｜动漫",
       "type": 3,
-      "api": "https://clun.top/py/MiFunP.py",
+      "api": "https://clun.top/py/mifun.py",
       "quickSearch": 1,
       "filterable": 1,
       "playerType": 2
     },
     {
-      "key": "CliCli",
-      "name": "CliCli｜动漫",
+      "key": "py_yinhuaone",
+      "name": "樱花｜动漫",
       "type": 3,
-      "api": "https://clun.top/py/CliCli动漫.py",
+      "api": "https://clun.top/py/yinhuaone.py",
       "quickSearch": 1,
-      "filterable": 1,
-      "playerType": 2
+      "filterable": 1
     },
     {
       "key": "8",
@@ -1292,6 +938,15 @@
       ],
       "script": [
         "const play=document.getElementsByClassName('play_icon')[0],event=new MouseEvent('click',{bubbles:!0,cancelable:!0,view:window,screenX:100,screenY:100,clientX:50,clientY:50,button:0,shiftKey:!1,ctrlKey:!1,altKey:!1,metaKey:!1,modifierState:0});play.dispatchEvent(event);"
+      ]
+    },
+    {
+      "name": "央視官網播放器",
+      "hosts": [
+        "tv.cctv.com"
+      ],
+      "script": [
+        "(function(){if(typeof livePlayerObjs==='object'&&!livePlayerObjs.player&&typeof playzhibo==='function'){playzhibo();}})()"
       ]
     },
     {
